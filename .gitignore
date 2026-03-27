@@ -1,0 +1,29 @@
+# API Keys and Secrets
+.env
+.env.*
+
+# Python Virtual Environments
+venv/
+env/
+.venv/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Execution Logs
+*.log
+proxy.log
+AssertionForge/logs/
+
+# GraphRAG Output and Artifacts (Optional: remove if you want to upload generated data)
+AssertionForge/data/*/output/
+
+# macOS / OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes

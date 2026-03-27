@@ -1,0 +1,33 @@
+Signal PADDR:
+Plan 1: PADDR: that when PADDR is within the range of 0 to 63, in the next cycle PADDR will remain within the range of 0 to 63, using the signals 'PCLK' for the clock edge and 'PADDR' for the address being checked.
+Plan 2: PADDR: that the address 'PADDR' is within the valid range when not in reset, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 3: PADDR: that if the address 'PADDR' is within the range of 16 to 31 inclusive, then in the subsequent cycles, 'PADDR' must continue to be within the range of 0 to 31 inclusive, using the signals 'PADDR' and 'PCLK'.
+Plan 4: PADDR: that the address 'PADDR' has a value between 0 and 15, inclusive, 2 clock cycles after the reset signal 'PRESETn' becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 5: PADDR: that the address signal 'PADDR' is within the range 32 to 47 inclusive, starting from three clock cycles after the reset signal 'PRESETn' becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 6: PADDR: that when 'PADDR' is within the range of 48 to 63, 'PSLVERR' will be 0 in the next cycle, using the signals 'PCLK', 'PADDR', and 'PSLVERR'.
+Plan 7: PADDR: that if 'PADDR' is outside the range of 0 to 63, 'PSLVERR' will be 1, using the signals 'PADDR' and 'PSLVERR'.
+Plan 8: PADDR: that the address 'PADDR' remains within the range of 0 to 63 when 'PWRITE' is 1, using the signals 'PWRITE', 'PCLK', and 'PADDR'.
+Plan 9: PADDR: that when 'PADDR' is within the range of 0 to 15, 'PRDATA' will have a valid value in the next cycle, using the signals 'PCLK', 'PADDR', and 'PRDATA'.
+Plan 10: PADDR: that the address 'PADDR' is within the range 0 to 31 when 'PSEL' is 1, using the signals 'PSEL', 'PCLK', and 'PADDR'.
+
+Signal PCLK:
+Plan 11: PCLK: that when PCLK rises, the output signal PREADY will be set to 1 if PENABLE is high and PSEL is high, using the signals 'PCLK', 'PENABLE', 'PSEL', and 'PREADY'.
+Plan 12: PCLK: that the input signal PADDR will be stable for at least one clock cycle after PCLK rises, using the signals 'PCLK' and 'PADDR'.
+Plan 13: PCLK: that when PCLK falls, the output signal PSLVERR will be set to 0 if PWRITE is low and PSEL is high, using the signals 'PCLK', 'PWRITE', 'PSEL', and 'PSLVERR'.
+Plan 14: PCLK: that the output signal PRDATA will be updated on every rising edge of PCLK if PENABLE is high and PSEL is high, using the signals 'PCLK', 'PENABLE', 'PSEL', and 'PRDATA'.
+Plan 15: PCLK: that when PCLK rises, the internal state machine will transition from IDLE to ACCESS if PSEL is high and PENABLE is high, using the signals 'PCLK', 'PSEL', 'PENABLE'.
+Plan 16: PCLK: that the signal PWDATA will be latched on the rising edge of PCLK when PWRITE is high and PSEL is high, using the signals 'PCLK', 'PWDATA', 'PWRITE', 'PSEL'.
+Plan 17: PCLK: that the output signal PREADY will be deasserted when PCLK falls and PENABLE is low, using the signals 'PCLK', 'PENABLE', 'PREADY'.
+Plan 18: PCLK: that when PCLK rises, the signal PSLVERR will be evaluated and set accordingly based on the current state of PWRITE, PSEL, and PADDR, using the signals 'PCLK', 'PWRITE', 'PSEL', 'PADDR', 'PSLVERR'.
+
+Signal PENABLE:
+Plan 19: PENABLE: that when PENABLE is high and PSEL is high, PREADY will be high in the next cycle, indicating the completion of the transfer.
+Plan 20: PENABLE: that if PENABLE is low, the state will remain in the IDLE phase and PREADY will be low, indicating that the transfer is not ready to complete.
+Plan 21: PENABLE: that when PENABLE and PSEL are high, and PADDR is within the valid range, PSLVERR will be low, indicating that the transfer is successful.
+Plan 22: PENABLE: that if PENABLE is high and PWRITE is high, the write operation will be performed, and PRDATA will be updated accordingly.
+Plan 23: PENABLE: that when PENABLE and PSEL are high, and PADDR is out of range, PSLVERR will be high, indicating an error in the transfer.
+Plan 24: PENABLE: that if PENABLE is low and PSEL is high, the state will transition to the ACCESS phase in the next cycle, and PREADY will be low.
+Plan 25: PENABLE: that when PENABLE is high and PSEL is low, the state will remain in the IDLE phase, and PREADY will be high.
+Plan 26: PENABLE: that if PENABLE is high and PADDR is within the valid range, the read or write operation will be performed, and PREADY will be high.
+Plan 27: PENABLE: that when PENABLE is high and PSEL is high, the transfer will be completed in the next cycle, and PREADY will be high, regardless of the value of PWRITE.
+
