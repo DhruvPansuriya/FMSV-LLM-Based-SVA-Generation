@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d4" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d3" for="edge" attr.name="description" attr.type="string" />
+  <key id="d2" for="node" attr.name="id" attr.type="string" />
+  <key id="d1" for="node" attr.name="description" attr.type="string" />
+  <key id="d0" for="node" attr.name="type" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="APB">
+      <data key="d0">PROTOCOL</data>
+      <data key="d1">The APB is a part of the AMBA protocol family with a low-cost interface for minimal power consumption and reduced interface complexity.</data>
+      <data key="d2">fbdea67e-2ea8-4434-b47b-ff108dfa5716</data>
+    </node>
+    <node id="AMBA PROTOCOL FAMILY">
+      <data key="d0">PROTOCOL</data>
+      <data key="d1">The AMBA protocol family is a set of protocols for bus communication, of which APB is a part.</data>
+      <data key="d2">3e57ffd6-7954-4cec-873e-9080634d52f8</data>
+    </node>
+    <node id="PCLK">
+      <data key="d0">SIGNAL</data>
+      <data key="d1">PCLK is the clock signal for the APB interface.</data>
+      <data key="d2">2e49663b-e751-42ff-abce-188e4bc55385</data>
+    </node>
+    <node id="PRESETN">
+      <data key="d0">SIGNAL</data>
+      <data key="d1">PRESETn is the active low reset signal for the APB interface.</data>
+      <data key="d2">56cc3f16-aa5e-4a8d-a6aa-d9fa91a1dd94</data>
+    </node>
+    <node id="PADDR">
+      <data key="d0">BUS</data>
+      <data key="d1">PADDR is the address bus for the APB interface, supporting up to 32 bits.</data>
+      <data key="d2">bf74b4a6-8ac5-4e0b-a6e2-6d8f87250dca</data>
+    </node>
+    <node id="PSEL">
+      <data key="d0">SIGNAL</data>
+      <data key="d1">PSEL is the select signal for the APB interface.</data>
+      <data key="d2">574a8361-56f7-4e31-9f0e-ead07f651001</data>
+    </node>
+    <node id="PENABLE">
+      <data key="d0">SIGNAL</data>
+      <data key="d1">PENABLE is the enable signal for the APB interface.</data>
+      <data key="d2">19eabf08-4bf5-459b-993d-b904104fd3cc</data>
+    </node>
+    <node id="PWRITE">
+      <data key="d0">SIGNAL</data>
+      <data key="d1">PWRITE is the read/write control signal for the APB interface, high for write and low for read.</data>
+      <data key="d2">eae8905a-5058-4fb2-8dbc-06550367d2a9</data>
+    </node>
+    <node id="PWDATA">
+      <data key="d0">BUS</data>
+      <data key="d1">PWDATA is the write data bus for the APB interface, supporting up to 32 bits.</data>
+      <data key="d2">d8dd3883-6b52-404c-890f-9f928b998ed7</data>
+    </node>
+    <node id="PRDATA">
+      <data key="d0">BUS</data>
+      <data key="d1">PRDATA is the read data bus for the APB interface, supporting up to 32 bits.</data>
+      <data key="d2">bc59ec93-033a-40aa-a404-f4153156ce83</data>
+    </node>
+    <node id="PREADY">
+      <data key="d0">SIGNAL</data>
+      <data key="d1">PREADY is the ready signal for the APB interface.</data>
+      <data key="d2">10e5c0f2-3edf-4619-9c99-5650986ba28e</data>
+    </node>
+    <node id="PSLVERR">
+      <data key="d0">SIGNAL</data>
+      <data key="d1">PSLVERR is the slave error signal for the APB interface.</data>
+      <data key="d2">112acc09-e66d-4eea-8b64-f497b79d1cfa</data>
+    </node>
+    <node id="IDLE">
+      <data key="d0">STATE</data>
+      <data key="d1">IDLE is the default state of the state machine for APB transfers.</data>
+      <data key="d2">8365df9e-bb13-4903-8b6c-0c76e759e5f1</data>
+    </node>
+    <node id="SETUP">
+      <data key="d0">STATE</data>
+      <data key="d1">SETUP is a state in the APB state machine during transfer setup.</data>
+      <data key="d2">07ae630b-0daa-454d-b443-2d8c9c446c04</data>
+    </node>
+    <node id="ACCESS">
+      <data key="d0">STATE</data>
+      <data key="d1">ACCESS is a state in the APB state machine during access.</data>
+      <data key="d2">5f03b8b4-014b-4427-93ed-e85c1d981744</data>
+    </node>
+    <node id="WRITE TRANSFER">
+      <data key="d0">OPERATION</data>
+      <data key="d1">A write transfer in the APB protocol involves asserting address, write data, PWRITE, and PSEL at the start and PENABLE one cycle later.</data>
+      <data key="d2">91b835e1-abb2-454a-95ab-214425ac5017</data>
+    </node>
+    <node id="READ TRANSFER">
+      <data key="d0">OPERATION</data>
+      <data key="d1">A read transfer in the APB protocol involves asserting address, PWRITE, and PSEL at the start and PENABLE one cycle later, with the slave providing data on PRDATA when PENABLE is high and PREADY is high.</data>
+      <data key="d2">55e5fb5f-4d9c-4c2f-8d53-73eefd1093c9</data>
+    </node>
+    <node id="ERROR RESPONSE">
+      <data key="d0">OPERATION</data>
+      <data key="d1">An error response in the APB protocol involves PSLVERR indicating an error condition on the transfer, valid only when PSEL, PENABLE, and PREADY are all high.</data>
+      <data key="d2">5a371abf-2578-425a-969e-53618438a451</data>
+    </node>
+    <edge source="APB" target="PCLK">
+      <data key="d3">The APB uses the PCLK clock signal for timing its operations.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="PRESETN">
+      <data key="d3">The APB uses the PRESETn signal for reset operations.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="PADDR">
+      <data key="d3">The APB uses the PADDR bus for address transfer.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="PSEL">
+      <data key="d3">The APB uses the PSEL signal for select operations.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="PENABLE">
+      <data key="d3">The APB uses the PENABLE signal for enable operations.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="PWRITE">
+      <data key="d3">The APB uses the PWRITE signal for read/write mode control.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="PWDATA">
+      <data key="d3">The APB uses the PWDATA bus for write data transfer.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="PRDATA">
+      <data key="d3">The APB uses the PRDATA bus for read data transfer.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="PREADY">
+      <data key="d3">The APB uses the PREADY signal for ready indication.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="PSLVERR">
+      <data key="d3">The APB uses the PSLVERR signal for error indication.</data>
+      <data key="d4">18.0</data>
+    </edge>
+    <edge source="APB" target="IDLE">
+      <data key="d3">The APB starts in the IDLE state and transitions to other states as needed.</data>
+      <data key="d4">20.0</data>
+    </edge>
+    <edge source="APB" target="SETUP">
+      <data key="d3">The APB transitions to the SETUP state when a transfer is required.</data>
+      <data key="d4">20.0</data>
+    </edge>
+    <edge source="APB" target="ACCESS">
+      <data key="d3">The APB transitions to the ACCESS state on the next clock edge.</data>
+      <data key="d4">20.0</data>
+    </edge>
+    <edge source="PWRITE" target="WRITE TRANSFER">
+      <data key="d3">A write transfer asserts the PWRITE signal for read/write mode control.</data>
+      <data key="d4">9.0</data>
+    </edge>
+    <edge source="PWRITE" target="READ TRANSFER">
+      <data key="d3">A read transfer asserts the PWRITE signal for read/write mode control.</data>
+      <data key="d4">9.0</data>
+    </edge>
+    <edge source="PRDATA" target="READ TRANSFER">
+      <data key="d3">A read transfer involves providing data on the PRDATA bus when PENABLE is high and PREADY is high.</data>
+      <data key="d4">9.0</data>
+    </edge>
+    <edge source="PSLVERR" target="ERROR RESPONSE">
+      <data key="d3">An error response involves asserting the PSLVERR signal for error indication.</data>
+      <data key="d4">9.0</data>
+    </edge>
+  </graph>
+</graphml>

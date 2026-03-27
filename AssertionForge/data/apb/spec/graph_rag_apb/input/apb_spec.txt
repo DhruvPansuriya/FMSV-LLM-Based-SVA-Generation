@@ -1,0 +1,30 @@
+The APB (Advanced Peripheral Bus) is part of the AMBA protocol family. It provides a low-cost interface that is optimized for minimal power consumption and reduced interface complexity.
+The APB interface consists of the following signals:
+- PCLK: Clock signal.
+- PRESETn: Active low reset signal.
+- PADDR: Address bus (up to 32 bits).
+- PSEL: Select signal.
+- PENABLE: Enable signal.
+- PWRITE: Read/Write control signal. High for write, low for read.
+- PWDATA: Write data bus (up to 32 bits).
+- PRDATA: Read data bus (up to 32 bits).
+- PREADY: Ready signal.
+- PSLVERR: Slave error signal.
+Protocol Operation:
+The state machine for APB transfers includes IDLE, SETUP, and ACCESS states.
+1. IDLE: Default state. PSEL and PENABLE are low.
+2. SETUP: When a transfer is required, the bus moves to SETUP.
+   - PSEL is asserted.
+   - PENABLE remains low.
+   - Address, Write, and Data signals must be stable.
+3. ACCESS: The bus moves to ACCESS on the next clock edge.
+   - PENABLE is asserted.
+   - PSEL remains high.
+   - If PREADY is high, the transfer completes at the end of the ACCESS cycle, and the bus returns to IDLE (or SETUP if another transfer follows).
+   - If PREADY is low, the bus remains in ACCESS state until PREADY goes high.
+Write transfers:
+Address, write data (PWDATA), PWRITE, and PSEL are asserted at the start of the transfer. PENABLE is asserted one cycle later.
+Read transfers:
+Address, PWRITE, and PSEL are asserted at the start. PENABLE is asserted one cycle later. The slave must provide data on PRDATA when PENABLE is high and PREADY is high.
+Error response:
+PSLVERR indicates an error condition on the transfer. It is valid only when PSEL, PENABLE, and PREADY are all high.

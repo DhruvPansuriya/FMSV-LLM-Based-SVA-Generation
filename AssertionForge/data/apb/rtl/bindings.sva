@@ -1,0 +1,3 @@
+module apb_bindings;
+    bind apb_slave apb_props inst_apb_props (.*);
+endmodule
