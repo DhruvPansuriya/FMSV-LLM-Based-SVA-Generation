@@ -1,6 +1,10 @@
 # Add your own LLM client
 
 import os
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 import time
 import re
 from litellm import completion
@@ -21,7 +25,9 @@ def init_gptcache():
         return
     print("Initiating GPTCache with Semantic Search capabilities...")
     embedder = Huggingface(model="sentence-transformers/all-MiniLM-L6-v2")
-    cache_path = os.path.join(os.getcwd(), 'AssertionForge', 'gptcache_data')
+    # Resolve absolute path relative to this script so it works from any directory
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    cache_path = os.path.join(base_dir, 'gptcache_data')
     os.makedirs(cache_path, exist_ok=True)
     sqlite_path = os.path.join(cache_path, 'gptcache.db')
     faiss_path = os.path.join(cache_path, 'faiss.index')
@@ -62,6 +68,53 @@ def load_keys():
 
 load_keys()
 
+# Custom Callbacks for GPTCache to avoid litellm serialization limits
+class MockMessage:
+    def __init__(self, content): self.content = content
+class MockChoice:
+    def __init__(self, message): self.message = message
+class MockResponse:
+    def __init__(self, choices): self.choices = choices
+
+def my_cache_data_converter(cache_data):
+    # Returns the cached text wrapped in a fake litellm structure
+    return MockResponse([MockChoice(MockMessage(cache_data))])
+
+def my_update_cache_callback(llm_data, update_cache_func, **kwargs):
+    # Extracts pure raw text to permanently save in SQLite
+    update_cache_func(llm_data.choices[0].message.content)
+    return llm_data
+
+# Global stats metrics to log deep details for the user
+gptcache_stats = {
+    "hits": 0,
+    "misses": 0,
+    "bypassed_prompts": []
+}
+
+import atexit
+def print_gptcache_summary():
+    try:
+        from gptcache import cache
+        if getattr(cache, "has_init", False):
+            cache.flush()
+            print("💾 Successfully persisted GPTCache mappings to disk.")
+    except Exception as e:
+        print(f"⚠️ Failed to persist GPTCache: {e}")
+
+    print(f"\n{'='*50}")
+    print(f"🧠 GPTCACHE DEEP SUMMARY")
+    print(f"{'='*50}")
+    print(f"Total Cache Hits (Bypassed API): {gptcache_stats['hits']}")
+    print(f"Total Cache Misses (Hit API): {gptcache_stats['misses']}")
+    if gptcache_stats['hits'] > 0:
+        print("\n[Bypassed Prompts Sample (First 100 chars)]:")
+        for i, p in enumerate(gptcache_stats['bypassed_prompts'], 1):
+            print(f"  {i}. {p[:100].replace(chr(10), ' ')}...")
+    print(f"{'='*50}\n")
+
+atexit.register(print_gptcache_summary)
+
 class LiteLLMAgent:
     def __init__(self, model):
         self.model = model
@@ -77,8 +130,8 @@ class LiteLLMAgent:
                 # Using litellm defaults for OpenAI models, or groq/ prefix if needed
                 resp = adapt(
                     completion,
-                    cache_data_convert=api._cache_data_converter,
-                    update_cache_callback=api._update_cache_callback,
+                    cache_data_convert=my_cache_data_converter,
+                    update_cache_callback=my_update_cache_callback,
                     model=self.model,
                     messages=messages,
                     temperature=temperature,
@@ -88,9 +141,17 @@ class LiteLLMAgent:
                 elapsed = time.time() - start_time
                 
                 if elapsed < 0.5:
-                    print(f"⚡ [GPTCache Hit] Bypassed Groq API locally! (Took {elapsed:.3f}s)")
+                    gptcache_stats["hits"] += 1
+                    gptcache_stats["bypassed_prompts"].append(prompt)
+                    print(f"\n⚡ [GPTCache HIT] Bypassed Groq API entirely! Loaded in {elapsed:.3f}s from FAISS/SQLite.")
+                    print(f"👉 Rate Limits Avoided For Request #{gptcache_stats['hits']}")
+                    # print snippet of bypassed prompt
+                    print(f"    (Prompt Snippet: {prompt[:100]}...)\n")
                 else:
-                    print(f"Step complete. Pausing 15s to respect Groq API rate limits... (Took {elapsed:.3f}s)")
+                    gptcache_stats["misses"] += 1
+                    print(f"\n☁️ [Cache Miss] Prompt evaluated. Network API used (Took {elapsed:.3f}s)")
+                    print(f"Step complete. Pausing 15s to respect Groq API TPM limits...\n")
+                    print(f"    (Prompt Snippet: {prompt[:100]}...)\n")
                     time.sleep(15) 
                 
                 return resp.choices[0].message.content

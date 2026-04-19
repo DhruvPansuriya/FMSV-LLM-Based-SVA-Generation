@@ -44,7 +44,7 @@ class PathBasedContextGenerator:
                 print(f"No mapping found for '{start_node}', using as-is")
 
         # Remove duplicates and check if they exist in the graph
-        mapped_nodes = list(set(mapped_nodes))
+        mapped_nodes = sorted(sorted(list(set(mapped_nodes))))
         valid_nodes = [node for node in mapped_nodes if node in self.G]
         print(
             f"Using {len(valid_nodes)}/{len(mapped_nodes)} valid nodes for path context generation"

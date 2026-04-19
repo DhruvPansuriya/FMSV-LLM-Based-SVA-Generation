@@ -1,6 +1,9 @@
 
 #!/opt/conda/bin/python
 
+import random
+random.seed(42)
+
 from gen_plan import gen_plan
 from gen_KG_graphRAG import build_KG
 from use_KG import use_KG

@@ -179,7 +179,7 @@ def build_signal_to_node_mapping(
     print(f"Number of nodes in KG: {len(kg.get('nodes', []))}")
 
     # Create a set for O(1) lookups
-    valid_signal_set = set(valid_signals)
+    valid_signal_set = sorted(list(set(valid_signals)))
 
     # Debug counters
     node_types_count = {}
@@ -343,7 +343,7 @@ class MotifContextGenerator:
                 print(f"No mapping found for '{start_node}', using as-is")
 
         # Remove duplicates
-        mapped_nodes = list(set(mapped_nodes))
+        mapped_nodes = sorted(sorted(list(set(mapped_nodes))))
         print(f"Using {len(mapped_nodes)} mapped nodes for motif context generation")
 
         # Skip processing if no valid nodes are found in the graph
@@ -763,7 +763,7 @@ class CommunityContextGenerator:
                 print(f"No mapping found for '{start_node}', using as-is")
 
         # Remove duplicates
-        mapped_nodes = list(set(mapped_nodes))
+        mapped_nodes = sorted(sorted(list(set(mapped_nodes))))
         print(
             f"Using {len(mapped_nodes)} mapped nodes for community context generation"
         )

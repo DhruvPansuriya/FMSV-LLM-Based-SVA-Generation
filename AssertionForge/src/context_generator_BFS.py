@@ -47,7 +47,7 @@ class LocalExpansionContextGenerator:
                 print(f"No mapping found for '{start_node}', using as-is")
 
         # Remove duplicates
-        mapped_nodes = list(set(mapped_nodes))
+        mapped_nodes = sorted(sorted(list(set(mapped_nodes))))
         print(
             f"Using {len(mapped_nodes)} mapped nodes for local expansion context generation"
         )
