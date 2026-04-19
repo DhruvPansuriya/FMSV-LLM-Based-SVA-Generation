@@ -27,8 +27,38 @@ import pandas as pd
 from tabulate import tabulate
 from pathlib import Path
 from tqdm import tqdm
+import torch
 
 print = saver.log_info
+
+_llmlingua_compressor = None
+
+# Global dictionary to track token compression stats
+llmlingua_stats = {
+    "dynamic_nl_origin": 0,
+    "dynamic_nl_compressed": 0,
+    "static_nl_origin": 0,
+    "static_nl_compressed": 0,
+    "dynamic_sva_origin": 0,
+    "dynamic_sva_compressed": 0,
+    "static_sva_origin": 0,
+    "static_sva_compressed": 0
+}
+
+def get_compressor():
+    global _llmlingua_compressor
+    if _llmlingua_compressor is None:
+        print("Initializing LLMLingua compressor (microsoft/llmlingua-2-xlm-roberta-large-meetingbank)...")
+        from llmlingua import PromptCompressor
+        
+        # Use GPU or MPS if available (important for Groq users since CPU inference of llmlingua takes time)
+        device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
+        _llmlingua_compressor = PromptCompressor(
+            model_name="microsoft/llmlingua-2-xlm-roberta-large-meetingbank",
+            use_llmlingua2=True,
+            device_map=device
+        )
+    return _llmlingua_compressor
 
 FALLBACK_APB_SPEC = """
 The APB (Advanced Peripheral Bus) is part of the AMBA protocol family. It provides a low-cost interface that is optimized for minimal power consumption and reduced interface complexity.
@@ -262,6 +292,36 @@ def gen_plan():
             print("Step 11: Analyzing and printing results...")
             analyze_results(pdf_stats, nl_plans, svas, jasper_reports, coverage_report)
             timer.time_and_clear("Analyze results")
+            
+            # ======== Write LLMLingua Token Reduction Summary ========
+            total_origin = sum([v for k, v in llmlingua_stats.items() if "origin" in k])
+            total_compressed = sum([v for k, v in llmlingua_stats.items() if "compressed" in k])
+            
+            if total_origin > 0:
+                reduction_pct = ((total_origin - total_compressed) / total_origin) * 100
+                summary_content = (
+                    f"LLMLingua Token Reduction Summary\n"
+                    f"=================================\n\n"
+                    f"Overall Statistics:\n"
+                    f"  Tokens without LLMLingua : {total_origin}\n"
+                    f"  Tokens with LLMLingua    : {total_compressed}\n"
+                    f"  Total Token Reduction    : {reduction_pct:.2f}%\n\n"
+                    f"Detailed Breakdown:\n"
+                    f"  Dynamic NL Generation:\n"
+                    f"    Origin: {llmlingua_stats['dynamic_nl_origin']}, Compressed: {llmlingua_stats['dynamic_nl_compressed']}\n"
+                    f"  Static NL Generation:\n"
+                    f"    Origin: {llmlingua_stats['static_nl_origin']}, Compressed: {llmlingua_stats['static_nl_compressed']}\n"
+                    f"  Dynamic SVA Generation:\n"
+                    f"    Origin: {llmlingua_stats['dynamic_sva_origin']}, Compressed: {llmlingua_stats['dynamic_sva_compressed']}\n"
+                    f"  Static SVA Generation:\n"
+                    f"    Origin: {llmlingua_stats['static_sva_origin']}, Compressed: {llmlingua_stats['static_sva_compressed']}\n"
+                )
+                summary_path = os.path.join(saver.get_log_dir(), "llmlingua_summary.txt")
+                with open(summary_path, "w") as f:
+                    f.write(summary_content)
+                print(f"LLMLingua summary written to {summary_path}")
+                print(f"Total Token Reduction: {reduction_pct:.2f}% ({total_origin} -> {total_compressed})")
+            # =========================================================
 
             print('Test plan generation and coverage evaluation process completed.')
 
@@ -545,25 +605,72 @@ def generate_dynamic_nl_plans(
             # No need to call add_enhanced_context here anymore
 
             # Rest of the existing code...
-            full_prompt = construct_static_nl_prompt(
-                dynamic_context,
-                kg=None,  # KG info already included in dynamic context
-                valid_signals=valid_signals,
-            )
-            full_prompt += f"\n\nGenerate diverse test plans for the signal '{signal_name}'. Each test plan should be on a new line and start with 'Plan: '."
+            instruction = f"Generate diverse test plans for the signal '{signal_name}'. Each test plan should be on a new line and start with 'Plan: '."
 
             try:
-                # Get LLM response for this context prompt
-                result = llm_inference(
-                    llm_agent, full_prompt, f"NL_Plans_{signal_name}_{context_idx+1}"
+                # ====== LLMLINGUA COMPRESSION ADDED ======
+                comp = get_compressor()
+                print(f"Compressing the context prompt for {signal_name} (dynamic context {context_idx+1})...")
+                
+                # Compress ONLY the context text (non-prompt thing) so that instructions are not destroyed
+                compressed_res = comp.compress_prompt(
+                    context=[dynamic_context],
+                    instruction="", # Leave blank so it doesn't inject it into output
+                    question="",
+                    rate=0.9, # Tunable figure: 90% retention (10% compression)
+                    condition_compare=True,
+                    condition_in_question='after',
+                    rank_method='longllmlingua' # Recommended for LLMLingua-2
                 )
+                
+                # Fetch pure compressed context and strip out excessive spaces
+                compressed_dynamic_context = compressed_res["compressed_prompt"].strip()
+                print(f"Compression Complete: {compressed_res['origin_tokens']} -> {compressed_res['compressed_tokens']} tokens.")
+
+                # UPDATE STATS
+                llmlingua_stats["dynamic_nl_origin"] += compressed_res['origin_tokens']
+                llmlingua_stats["dynamic_nl_compressed"] += compressed_res['compressed_tokens']
+
+                # Re-wrap the compressed context with the strict instructions, warnings, and examples intact!
+                full_prompt_compressed = construct_static_nl_prompt(
+                    compressed_dynamic_context,
+                    kg=None,  # KG info already included in dynamic context
+                    valid_signals=valid_signals,
+                )
+                full_prompt_compressed += f"\n\n{instruction}"
+
+                # Get LLM response for this context prompt (using compressed prompt)
+                result = llm_inference(
+                    llm_agent, full_prompt_compressed, f"NL_Plans_{signal_name}_{context_idx+1}"
+                )
+                print(f"DEBUG: Raw output from LLM for {signal_name}:\n{result}\n")
 
                 # Extract plans from the result
+                import re
                 context_plans = []
                 for line in result.split('\n'):
-                    if line.strip().startswith('Plan:'):
-                        plan = line.split(':', 1)[-1].strip()
-                        context_plans.append(plan)
+                    # More robust parsing: handle bullet points, numbering, and markdown bolding
+                    clean_line = re.sub(r'^(\d+\.|\-|\*)\s*', '', line.strip())
+                    clean_line = clean_line.replace('**', '').strip()
+                    lower_line = clean_line.lower()
+                    
+                    is_plan = False
+                    # Only accept assertions explicitly defined as "Plan:" or ones targeting the specific signal we requested
+                    if lower_line.startswith('plan:'):
+                        is_plan = True
+                    elif lower_line.startswith(signal_name.lower()):
+                        is_plan = True
+                    
+                    if is_plan:
+                        plan = clean_line
+                        if ':' in clean_line:
+                            plan = clean_line.split(':', 1)[-1].strip()
+                        
+                        if plan and len(plan) > 5:
+                            # Prepend the signal name if it wasn't already there to maintain the expected downstream format if necessary
+                            if not plan.lower().startswith(signal_name.lower()):
+                                plan = f"{signal_name}: {plan}"
+                            context_plans.append(plan)
 
                 all_signal_plans.extend(context_plans)
                 print(
@@ -599,7 +706,30 @@ def generate_dynamic_nl_plans(
 def generate_static_nl_plans(
     spec_text: str, kg: Optional[Dict], llm_agent, valid_signals: Optional[Set[str]]
 ) -> Dict[str, List[str]]:
-    nl_gen_prompt = construct_static_nl_prompt(spec_text, kg, valid_signals)
+    instruction = "Generate diverse test plans for the given signals. Each test plan should be on a new line and start with 'Plan: '."
+    
+    comp = get_compressor()
+    print("Compressing static NL prompt...")
+    # Compress ONLY the spec context
+    compressed_res = comp.compress_prompt(
+        context=[spec_text],
+        instruction="",
+        question="",
+        rate=0.9, # Tunable 30% retention figure
+        condition_compare=True,
+        condition_in_question='after',
+        rank_method='longllmlingua'
+    )
+    compressed_spec = compressed_res["compressed_prompt"].strip()
+    print(f"Static Compression Complete: {compressed_res['origin_tokens']} -> {compressed_res['compressed_tokens']} tokens.")
+
+    # UPDATE STATS
+    llmlingua_stats["static_nl_origin"] += compressed_res['origin_tokens']
+    llmlingua_stats["static_nl_compressed"] += compressed_res['compressed_tokens']
+
+    # Re-wrap uncompressed instructions with compressed context
+    nl_gen_prompt = construct_static_nl_prompt(compressed_spec, kg, valid_signals)
+    nl_gen_prompt += f"\n\n{instruction}"
 
     try:
         result = llm_inference(llm_agent, nl_gen_prompt, "NL_Plans")
@@ -752,14 +882,38 @@ def generate_dynamic_svas(
                         f'Processing context {context_idx+1} with all {len(plans)} plans'
                     )
 
-                # Create the full prompt for this context
-                full_prompt = (
-                    f"{dynamic_context}\n\n"
-                    f"Natural Language Test Plans for signal '{signal_name}':\n{current_plans_text}\n\n"
-                    f"{sva_examples}\n\n"
+                instruction = (
                     "Generate one SVA for each of the provided natural language test plans. "
                     "Enclose each SVA in triple backticks (```) and prefix it with 'SVA:'."
                 )
+                
+                comp = get_compressor()
+                print(f"Compressing SVA prompt for {signal_name} (context {context_idx+1})...")
+                # Compress ONLY the context text (non-prompt thing)
+                compressed_res = comp.compress_prompt(
+                    context=[dynamic_context],
+                    instruction="",
+                    question="",
+                    rate=0.9, # Tunable 30% retention figure 
+                    condition_compare=True,
+                    condition_in_question='after',
+                    rank_method='longllmlingua'
+                )
+                compressed_dynamic_context = compressed_res["compressed_prompt"].strip()
+                print(f"Compression Complete: {compressed_res['origin_tokens']} -> {compressed_res['compressed_tokens']} tokens.")
+
+                # UPDATE STATS
+                llmlingua_stats["dynamic_sva_origin"] += compressed_res['origin_tokens']
+                llmlingua_stats["dynamic_sva_compressed"] += compressed_res['compressed_tokens']
+
+                # Complete full prompt keeping SVA plans, examples, and instructions perfectly intact
+                full_prompt = (
+                    f"{compressed_dynamic_context}\n\n"
+                    f"Natural Language Test Plans for signal '{signal_name}':\n{current_plans_text}\n\n"
+                    f"{sva_examples}\n\n"
+                    f"{instruction}"
+                )
+
                 result = llm_inference(
                     llm_agent, full_prompt, f"SVAs_{signal_name}_{context_idx+1}"
                 )
@@ -822,7 +976,33 @@ def generate_static_svas(
     Returns:
         List[str]: A list of generated SVAs.
     """
-    sva_gen_prompt = construct_static_sva_prompt(spec_text, nl_plans, kg, valid_signals)
+    instruction = (
+        "Generate one SVA for each of the provided natural language test plans. "
+        "Enclose each SVA in triple backticks (```) and prefix it with 'SVA:'."
+    )
+
+    comp = get_compressor()
+    print("Compressing static SVA prompt...")
+    # Compress ONLY the spec context
+    compressed_res = comp.compress_prompt(
+        context=[spec_text],
+        instruction="",
+        question="",
+        rate=0.9, # Tunable 30% retention figure
+        condition_compare=True,
+        condition_in_question='after',
+        rank_method='longllmlingua'
+    )
+    compressed_spec = compressed_res["compressed_prompt"].strip()
+    print(f"Static Compression Complete: {compressed_res['origin_tokens']} -> {compressed_res['compressed_tokens']} tokens.")
+
+    # UPDATE STATS
+    llmlingua_stats["static_sva_origin"] += compressed_res['origin_tokens']
+    llmlingua_stats["static_sva_compressed"] += compressed_res['compressed_tokens']
+
+    # Re-wrap uncompressed plans, examples, and instructions with compressed context
+    sva_gen_prompt = construct_static_sva_prompt(compressed_spec, nl_plans, kg, valid_signals)
+    sva_gen_prompt += f"\n\n{instruction}"
 
     # try:
 

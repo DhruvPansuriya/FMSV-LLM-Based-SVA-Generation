@@ -3,8 +3,8 @@ from pathlib import Path
 from utils import get_user, get_host
 from collections import OrderedDict 
 
-# task = 'gen_plan'
-task = 'build_KG'
+# task = 'build_KG'
+task = 'gen_plan'
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -23,7 +23,8 @@ if task == 'gen_plan':
         # design_name = 'openMSP430'
         # design_name = 'tiny_pairing'
         # design_name = 'uart'
-        design_name = 'sockit'
+        design_name = 'apb'
+        # design_name = 'sockit'
 
         if design_name == 'apb':
 
@@ -268,7 +269,8 @@ elif task == 'build_KG':
     # design_name = 'openMSP430'
     # design_name = 'tiny_pairing'
     # design_name = 'uart'
-    design_name = 'sockit'
+    design_name = 'apb'
+    # design_name = 'sockit'
 
     if design_name == 'apb':
 
