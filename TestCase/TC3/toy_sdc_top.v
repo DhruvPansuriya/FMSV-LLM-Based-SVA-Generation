@@ -2,37 +2,37 @@
 // Tests signal alignment: spec names vs RTL names differ deliberately.
 
 module sdc_top (
-    input  wire        nRST,      // Spec: "system reset"        (active-low)
-    input  wire        PCLK,      // Spec: "system clock"
-    input  wire        PSEL,      // Spec: "peripheral select"
-    input  wire        PENABLE,   // Spec: "transfer enable"
-    input  wire        PWRITE,    // Spec: "write enable"
-    input  wire [7:0]  PADDR,     // Spec: "register address"
-    input  wire [31:0] PWDATA,    // Spec: "write data bus"
-    output reg  [31:0] PRDATA,    // Spec: "read data bus"
-    output wire        PREADY,    // Spec: "transfer acknowledge"
-    output wire        SCK,       // Spec: "serial clock"
-    output wire        MOSI,      // Spec: "master data output"
-    input  wire        MISO,      // Spec: "master data input"
-    output reg         SS_N,      // Spec: "chip select"         (active-low)
-    output reg         IRQ_OUT,   // Spec: "interrupt request"
-    output wire        WE_N       // Spec: "write enable strobe" (active-low)
+    input  wire        nRST,     
+    input  wire        PCLK,      
+    input  wire        PSEL,      
+    input  wire        PENABLE,  
+    input  wire        PWRITE,   
+    input  wire [7:0]  PADDR,    
+    input  wire [31:0] PWDATA,    
+    output reg  [31:0] PRDATA,   
+    output wire        PREADY,    
+    output wire        SCK,       
+    output wire        MOSI,    
+    input  wire        MISO,     
+    output reg         SS_N,      
+    output reg         IRQ_OUT,   
+    output wire        WE_N       
 );
 
     localparam ADDR_CTRL   = 8'h00;
     localparam ADDR_BAUD   = 8'h04;
     localparam ADDR_STATUS = 8'h08;
 
-    reg [15:0] BAUD_DIV_REG;   // Spec: "baud rate divisor"
+    reg [15:0] BAUD_DIV_REG;   
     reg [7:0]  CTRL_REG;
-    reg        tx_ack_flag;    // Spec: "transmit acknowledge"
-    reg        par_err_latch;  // Spec: "parity error flag"
+    reg        tx_ack_flag;    
+    reg        par_err_latch;  
 
-    wire       TX_FIFO_MT;     // Spec: "FIFO empty status"   (MT = empty)
-    wire       dv_out;         // Spec: "data valid"
-    wire       tx_done_pulse;  // Spec: "transmission complete"
-    wire       RX_BUF_FULL_N;  // Spec: "receive buffer full"  (active-low)
-    wire       fc_en;          // Spec: "flow control enable"
+    wire       TX_FIFO_MT;     
+    wire       dv_out;        
+    wire       tx_done_pulse;  
+    wire       RX_BUF_FULL_N;  
+    wire       fc_en;         
 
     assign WE_N   = ~(PSEL & PENABLE & PWRITE);
     assign PREADY = 1'b1;

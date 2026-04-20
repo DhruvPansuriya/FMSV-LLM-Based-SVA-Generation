@@ -1,0 +1,318 @@
+SIGNAL MAPPING TASK — DEEP DIVE DOCUMENTATION
+=============================================
+
+Project: AssertionForge
+Purpose: Explain the exact logic implemented in the signal mapping stage (Spec <-> RTL)
+Audience: Documentation / paper-writing team
+
+
+0) EXECUTIVE SUMMARY
+--------------------
+The signal mapping stage does three things:
+
+1) Uses an LLM to propose semantic mappings from RTL signals to spec mentions.
+2) Converts those proposals into a lookup/alias table.
+3) Attempts to write graph bridge edges (spec node -> RTL signal node) using confidence gating.
+
+Core output is NOT only text logs; it is intended to update the combined KG with
+`corresponds_to` edges (plus metadata).
+
+
+1) WHERE THIS STAGE RUNS IN PIPELINE
+------------------------------------
+Entry flow:
+
+`gen_plan.py` -> `rtl_parsing.refine_kg_from_rtl()`
+            -> `rtl_parsing.link_spec_and_rtl_graphs()`
+            -> SignalAligner initialization
+            -> `SignalAligner.build_alias_table(...)`
+            -> `link_signals_to_spec(..., aligner)`
+
+Important modules:
+- `AssertionForge/src/rtl_parsing.py`
+- `AssertionForge/src/signal_aligner.py`
+
+
+2) HIGH-LEVEL DATAFLOW (ASCII DIAGRAM)
+--------------------------------------
+
+                    +---------------------------+
+                    |  Spec KG (GraphRAG graph) |
+                    +-------------+-------------+
+                                  |
+                                  | extract signal-like spec entities
+                                  v
++--------------------+      +------------------------+      +---------------------+
+| RTL parse knowledge| ---> | SignalAligner prompt   | ---> | LLM (JSON alignment)|
+| (modules/ports)    |      | builder               |      | output              |
++---------+----------+      +-----------+------------+      +----------+----------+
+          |                             |                               |
+          | extract module.port list    | save prompts + raw response   |
+          v                             v                               v
++----------------------+      +----------------------+      +----------------------+
+| rtl_signals.json     |      | alignment_* .txt     |      | signal_aliases.json  |
++----------------------+      +----------------------+      +----------+-----------+
+                                                                      |
+                                                                      | load alias table
+                                                                      v
+                                                       +------------------------------+
+                                                       | link_signals_to_spec(...)    |
+                                                       | confidence gate + fallback   |
+                                                       +---------------+--------------+
+                                                                       |
+                                                                       | add edges in KG
+                                                                       v
+                                                       +------------------------------+
+                                                       | combined_kg updated          |
+                                                       | (corresponds_to/references)  |
+                                                       +------------------------------+
+
+
+3) DETAILED LOGIC — STEP BY STEP
+--------------------------------
+
+3.1 Build combined graph
+~~~~~~~~~~~~~~~~~~~~~~~~
+File: `rtl_parsing.py` (`link_spec_and_rtl_graphs`)
+
+- Builds RTL KG from parsed RTL knowledge.
+- Merges it with spec KG.
+- Prefixes RTL nodes as `rtl_*` and tags `source='rtl'`.
+- Adds design-root bridge links:
+  - `contains_spec`
+  - `contains_implementation`
+
+This creates one unified graph context before signal-level alignment.
+
+
+3.2 Extract alignment inputs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+File: `signal_aligner.py`
+
+A) `extract_spec_signal_entities(g0)`
+- Reads spec-side nodes only (`source != 'rtl'`).
+- Keeps entity types in:
+  `SIGNAL, PORT, REGISTER, FIFO, INTERRUPT, CLOCK, RESET`.
+- Emits deduplicated list: `{name, description, entity_type}`.
+
+B) `extract_rtl_signal_list(rtl_parse_result)`
+- Walks RTL modules and ports.
+- Normalizes noisy strings via `_normalize_signal_name(...)`.
+- Emits list:
+  `{module_name, signal_name, raw_signal_name, direction, width, is_port}`.
+
+
+3.3 Prompt construction and LLM call
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+File: `signal_aligner.py` (`build_alignment_prompt`, `call_llm_alignment`)
+
+- Creates system prompt with hardware conventions (APB/SPI/UART, active-low, abbreviations).
+- Creates user prompt containing:
+  - spec entity list
+  - RTL signal list (module.signal)
+  - top 2000 chars of spec text for context
+  - strict JSON output schema
+
+LLM call:
+- `llm_inference(..., identifier='signal_alignment', temperature=0)`
+- Retry once (`signal_alignment_retry`) if JSON parse fails.
+
+Expected JSON shape:
+{
+  "design_name": "...",
+  "alignments": [
+    {
+      "canonical_name": "...",
+      "spec_mentions": [...],
+      "rtl_name": "module.signal",
+      "rtl_module": "...",
+      "active_low": true/false,
+      "confidence": 0.0..1.0,
+      "match_method": "llm_alignment" or unresolved,
+      "reasoning": "..."
+    }
+  ]
+}
+
+
+3.4 Alias table construction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+File: `signal_aligner.py` (`build_alias_table`)
+
+- Saves LLM JSON to `signal_aliases.json`.
+- Builds in-memory lookup maps:
+  - `alias_table`: key = normalized RTL signal token(s)
+  - `canonical_map`: key = canonical_name
+- Writes helper snapshots:
+  - `alias_summary.json`
+  - `alias_lookup_table.json`
+
+Lookup behavior:
+- Exact normalized-key lookup first.
+- If not found, substring fallback over lookup keys.
+
+
+3.5 Graph edge creation from alignments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+File: `rtl_parsing.py` (`link_signals_to_spec`)
+
+For each RTL signal node (`type in ['port','signal']`, `source='rtl'`):
+
+A) Ask aligner:
+- `alignment = aligner.lookup_by_rtl_name(signal_name)`
+
+B) Decision:
+- If alignment exists AND `confidence >= 0.7`:
+  - Iterate `alignment.spec_mentions`
+  - Match mention against spec candidate node names (normalized/fuzzy)
+  - Add edge:
+    - `relationship='corresponds_to'`
+    - `type='corresponds_to'`
+    - `confidence`, `canonical`, `active_low`, `method`
+
+- Else fallback:
+  - String match RTL token in spec node text
+  - Add edge:
+    - `relationship='references'`
+    - `type='corresponds_to'` (kept for downstream compatibility)
+    - `confidence=0.5`
+    - `method='string_fuzzy'`
+
+C) Persist diagnostics:
+- Plain text call-by-call log
+- Structured per-signal decision JSON
+
+
+4) DECISION LOGIC DIAGRAM
+-------------------------
+
+for each RTL signal node:
+    normalize(signal_name)
+    alignment = alias_lookup(signal_name)
+
+    if alignment exists and alignment.confidence >= 0.7:
+        for mention in alignment.spec_mentions:
+            if mention matches spec node name:
+                add edge: corresponds_to
+    else:
+        if normalized signal appears in spec text:
+            add edge: references (fallback)
+
+
+5) FILES GENERATED BY THIS TASK
+-------------------------------
+
+5.1 LLM + aligner artifacts (under run output/design)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Path pattern:
+`<run_logdir>/output/<design_name>/...`
+
+Example from your run:
+`AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/output/TC3/`
+
+Files and meaning:
+- `alignment_system_prompt.txt`:
+  exact system prompt sent to LLM.
+- `alignment_user_prompt.txt`:
+  exact user prompt with entities/signals/spec context.
+- `alignment_full_prompt.txt`:
+  final concatenated prompt actually sent.
+- `alignment_raw_response.txt`:
+  raw LLM response text.
+- `alignment_raw_response_retry.txt` (optional):
+  retry response if first JSON parse failed.
+- `spec_entities.json`:
+  spec-side entities extracted for alignment input.
+- `rtl_signals.json`:
+  RTL signal list extracted for alignment input.
+- `alignment_input_bundle.json`:
+  combined input payload snapshot.
+- `signal_aliases.json`:
+  normalized LLM alignment result JSON.
+- `alias_summary.json`:
+  compact mapping summary.
+- `alias_lookup_table.json`:
+  lookup keys and canonical map snapshot.
+
+5.2 Mapping-stage diagnostics (under run root)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Path pattern:
+`<run_logdir>/...`
+
+Example run root:
+`AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/`
+
+Files:
+- `signal_mapping_overview.json`:
+  top-level summary and path pointers.
+- `signal_mapping_calls.txt`:
+  per-RTL-signal textual log; includes
+  `LLM Alignment output: {...}` lines.
+- `signal_mapping_decisions.json`:
+  structured decisions, alias entries, per-signal outcomes.
+
+
+6) WHAT EACH MAJOR FILE IS USED FOR
+-----------------------------------
+
+- `signal_aliases.json`: source of truth for LLM semantic mappings.
+- `signal_mapping_calls.txt`: easiest human-readable debug timeline.
+- `signal_mapping_decisions.json`: programmatic forensic analysis (counts, confidence, links).
+- `alignment_full_prompt.txt` + `alignment_raw_response.txt`: reproducibility/audit pair.
+
+
+7) CONFIDENCE + QUALITY GATES
+-----------------------------
+
+- Confidence threshold in edge-creation path: `0.7`.
+- Unresolved mappings are tracked via `get_unresolved_signals()`.
+- Fallback mode exists to avoid complete drop when alignment is missing.
+
+
+8) CURRENT RUN OBSERVATION (IMPORTANT)
+--------------------------------------
+
+In your example run (`gen_plan_2026-04-20T08-00-33...`):
+- LLM produced many high-confidence alignments in logs.
+- But `signal_mapping_decisions.json` shows `created_link_count: 0`.
+
+Interpretation:
+- LLM alignment generation is functioning.
+- Edge materialization (spec mention -> spec node match and edge add) did not produce links for that run,
+  so downstream graph may still rely mostly on module-root bridges and fallback behavior.
+
+
+9) TROUBLESHOOTING CHECKLIST
+----------------------------
+
+If mapping quality seems poor:
+
+1) Verify LLM quality:
+   - Open `alignment_raw_response.txt`.
+2) Verify parsed aliases:
+   - Open `signal_aliases.json`, `alias_summary.json`.
+3) Verify edge creation:
+   - Check `signal_mapping_decisions.json -> created_link_count`.
+4) Verify graph edges exist:
+   - Inspect resulting graph for edges where `relationship='corresponds_to'`.
+
+
+10) SHORT "METHOD" PARAGRAPH FOR PAPER/DOCS
+--------------------------------------------
+
+We perform semantic signal alignment between natural-language specification entities and RTL ports using an
+LLM-guided mapping stage. The aligner receives extracted spec entities, normalized RTL signal lists, and local
+spec context, and returns JSON alignments with canonical names, polarity hints, confidence, and rationale.
+Mappings above a confidence threshold are projected into the unified knowledge graph as `corresponds_to` edges,
+while unresolved signals fall back to text-based fuzzy references. The pipeline logs all prompts, raw model outputs,
+alias tables, and per-signal decisions to support traceability and reproducibility.
+
+
+11) REFERENCE FILES (IMPLEMENTATION)
+------------------------------------
+
+- `AssertionForge/src/signal_aligner.py`
+- `AssertionForge/src/rtl_parsing.py`
+
+
+END OF DOCUMENT
