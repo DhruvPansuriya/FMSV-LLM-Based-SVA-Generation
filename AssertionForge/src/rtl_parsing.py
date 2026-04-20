@@ -1,9 +1,13 @@
-
 from utils_gen_plan import count_tokens_in_file
 import os
 import re
 import sys
 import networkx as nx
+from signal_aligner import SignalAligner
+from utils_LLM import get_llm
+import os
+
+from rtl_kg import build_knowledge_graph
 from config import FLAGS
 from saver import saver
 
@@ -121,8 +125,29 @@ def link_spec_and_rtl_graphs(spec_kg: nx.Graph, design_dir: str) -> nx.Graph:
     link_count = link_modules_to_spec(combined_kg, rtl_node_mapping)
     print(f"Created {link_count} links between specification and RTL nodes")
 
+    # Extract spec text
+    spec_text = ""
+    for node, data in spec_kg.nodes(data=True):
+        if 'text' in data:
+            spec_text += data['text'] + "\n"
+    
+    # Initialize and run SignalAligner
+    
+    # Use saver.logdir if available, otherwise just use a local output dir
+    out_dir = os.path.join(saver.logdir, "output") if hasattr(saver, 'logdir') and saver.logdir else os.path.join(os.getcwd(), "output")
+    
+    aligner = SignalAligner(
+        llm_client=get_llm(getattr(FLAGS, 'llm_model', 'groq/llama-3.3-70b-versatile')), 
+        output_dir=out_dir, 
+        design_name=os.path.basename(design_dir)
+    )
+    alias_table = aligner.build_alias_table(spec_text, rtl_knowledge, spec_kg)
+    print(f"SignalAligner returned {len(alias_table)} lookup keys")
+    unresolved = aligner.get_unresolved_signals()
+    print(f"SignalAligner unresolved entries (<0.7 confidence): {len(unresolved)}")
+
     # Add additional links based on signal name matching
-    signal_link_count = link_signals_to_spec(combined_kg, rtl_node_mapping)
+    signal_link_count = link_signals_to_spec(combined_kg, rtl_node_mapping, aligner)
     print(f"Created {signal_link_count} additional links based on signal name matching")
 
     # Ensure graph connectivity by adding a root node if necessary
@@ -153,11 +178,24 @@ def link_modules_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict) -> int:
     ]
 
     # Identify spec nodes
-    spec_nodes = [
-        node
-        for node, data in combined_kg.nodes(data=True)
-        if data.get('source') != 'rtl'
-    ]
+    allowed_spec_types = {
+        'SIGNAL',
+        'PORT',
+        'REGISTER',
+        'CLOCK',
+        'RESET',
+        'INTERFACE',
+        'PROTOCOL',
+        'BUS',
+        'PARAMETER',
+    }
+    spec_nodes = []
+    for node, data in combined_kg.nodes(data=True):
+        if data.get('source') == 'rtl':
+            continue
+        node_type = str(data.get('type', '')).strip('"').upper()
+        if node_type in allowed_spec_types:
+            spec_nodes.append(node)
 
     # Create a "design" node as a bridge between spec and RTL if it doesn't exist
     design_node = "design_root"
@@ -319,19 +357,21 @@ def link_modules_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict) -> int:
     return link_count
 
 
-def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict) -> int:
+def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict, aligner=None) -> int:
     """
     Link signal nodes from RTL KG to relevant nodes in the spec KG based on name matching.
 
     Args:
         combined_kg (nx.Graph): Combined Knowledge Graph
         rtl_node_mapping (dict): Mapping from original RTL node IDs to new IDs
+        aligner: SignalAligner instance for advanced matching
 
     Returns:
         int: Number of links created
     """
     link_count = 0
     created_links = []  # Store details of created links
+    mapping_logs = []   # Store logs specifically for saving to file
 
     # Identify RTL signal nodes (ports and internal signals)
     rtl_signal_nodes = [
@@ -350,6 +390,35 @@ def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict) -> int:
     print(
         f"\nAttempting to link {len(rtl_signal_nodes)} RTL signals to {len(spec_nodes)} spec nodes"
     )
+    mapping_logs.append(f"Attempting to link {len(rtl_signal_nodes)} RTL signals to {len(spec_nodes)} spec nodes\n")
+
+    # Log the RTL and Spec signal lists for full traceability
+    try:
+        rtl_names = [combined_kg.nodes[n].get('name', str(n)) for n in rtl_signal_nodes]
+        spec_names = [combined_kg.nodes[n].get('name', str(n)) for n in spec_nodes]
+        mapping_logs.append("RTL signals found:")
+        for rn in rtl_names:
+            mapping_logs.append(f"  - {rn}")
+        mapping_logs.append("Spec candidate nodes:")
+        for sn in spec_names[:200]:
+            mapping_logs.append(f"  - {sn}")
+        if len(spec_names) > 200:
+            mapping_logs.append(f"  ... (+{len(spec_names)-200} more spec nodes)")
+    except Exception:
+        pass
+
+    # Report alias table snapshot (if available)
+    try:
+        if aligner is not None and hasattr(aligner, 'alias_table'):
+            alias_keys = list(aligner.alias_table.keys())
+            mapping_logs.append(f"Alias table entries: {len(alias_keys)}")
+            mapping_logs.append("Alias table sample keys:")
+            for k in alias_keys[:50]:
+                mapping_logs.append(f"  - {k}")
+            if len(alias_keys) > 50:
+                mapping_logs.append(f"  ... (+{len(alias_keys)-50} more)")
+    except Exception:
+        pass
 
     # For each signal, try to find matching spec nodes
     for signal_node in rtl_signal_nodes:
@@ -357,39 +426,115 @@ def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict) -> int:
         if not signal_name:
             continue
 
-        # Find matching spec nodes
-        for spec_node in spec_nodes:
-            if 'text' in combined_kg.nodes[spec_node]:
-                spec_text = combined_kg.nodes[spec_node].get('text', '')
+        normalized_signal_name = (
+            aligner._normalize_signal_name(signal_name)
+            if aligner and hasattr(aligner, '_normalize_signal_name')
+            else signal_name
+        )
 
-                # If signal name appears in the specification text
-                if re.search(
-                    r'\b' + re.escape(signal_name) + r'\b', spec_text, re.IGNORECASE
-                ):
-                    combined_kg.add_edge(
-                        spec_node,
-                        signal_node,
-                        relationship="references",
-                        weight=1.0,
-                        match_type="signal_in_text",
+        alignment = aligner.lookup_by_rtl_name(signal_name) if aligner else None
+        
+        mapping_logs.append(f"RTL Signal: {signal_name}")
+        mapping_logs.append(f"  -> normalized: {normalized_signal_name}")
+        if alignment:
+            mapping_logs.append(f"  --> LLM Alignment output: {alignment}")
+        else:
+            mapping_logs.append(f"  --> No LLM Alignment output found")
+
+        if alignment and alignment.get('confidence', 0) >= 0.7:
+            # Use alias table result
+            matched_spec_nodes = set()
+            for spec_mention in alignment.get('spec_mentions', []):
+                mention_norm = str(spec_mention).strip().lower()
+                if mention_norm in {'', 'signal'}:
+                    continue
+
+                # find node by name (fuzzy search over spec_nodes)
+                for spec_node in spec_nodes:
+                    if spec_node in matched_spec_nodes:
+                        continue
+
+                    node_name = combined_kg.nodes[spec_node].get('name', '')
+                    node_desc = combined_kg.nodes[spec_node].get('description', '')
+                    node_name_norm = str(node_name).strip('"').strip().lower()
+                    node_desc_norm = str(node_desc).lower()
+                    is_match = (
+                        mention_norm == node_name_norm
+                        or mention_norm in node_name_norm
+                        or node_name_norm in mention_norm
+                        or (len(mention_norm) >= 6 and mention_norm in node_desc_norm)
                     )
-                    link_count += 1
-                    created_links.append(
-                        {
+
+                    if is_match:
+                        combined_kg.add_edge(
+                            spec_node, 
+                            signal_node,
+                            relationship="corresponds_to",
+                            type="corresponds_to",
+                            confidence=alignment.get('confidence'),
+                            canonical=alignment.get('canonical_name'),
+                            active_low=alignment.get('active_low', False),
+                            method=alignment.get('match_method', 'llm_alignment')
+                        )
+                        link_count += 1
+                        created_links.append({
                             "source": spec_node,
                             "target": signal_node,
-                            "relationship": "references",
+                            "relationship": "corresponds_to",
                             "signal_name": signal_name,
-                            "spec_text_excerpt": (
-                                spec_text[:50] + "..."
-                                if len(spec_text) > 50
-                                else spec_text
-                            ),
-                        }
-                    )
-                    print(
-                        f"Linked spec node to RTL signal: {spec_node} --references--> {signal_node}"
-                    )
+                            "spec_text_excerpt": spec_mention
+                        })
+                        msg = f"Linked spec node to RTL signal (LLM): {spec_node} --corresponds_to--> {signal_node}"
+                        print(msg)
+                        mapping_logs.append(f"  [SUCCESS] {msg}")
+                        matched_spec_nodes.add(spec_node)
+        else:
+            # Fallback to existing logic
+            mapping_logs.append("  [FALLBACK] Using string matching fallback")
+            for spec_node in spec_nodes:
+                if 'text' in combined_kg.nodes[spec_node]:
+                    spec_text = combined_kg.nodes[spec_node].get('text', '')
+                    
+                    # If signal name appears in the specification text
+                    candidate_name = normalized_signal_name or signal_name
+                    if re.search(
+                        r'\b' + re.escape(candidate_name) + r'\b', spec_text, re.IGNORECASE
+                    ):
+                        combined_kg.add_edge(
+                            spec_node,
+                            signal_node,
+                            relationship="references",
+                            type="corresponds_to",
+                            confidence=0.5,
+                            method="string_fuzzy",
+                            match_type="signal_in_text",
+                        )
+                        link_count += 1
+                        created_links.append(
+                            {
+                                "source": spec_node,
+                                "target": signal_node,
+                                "relationship": "references",
+                                "signal_name": signal_name,
+                                "spec_text_excerpt": (
+                                    spec_text[:50] + "..."
+                                    if len(spec_text) > 50
+                                    else spec_text
+                                ),
+                            }
+                        )
+                        msg = f"Linked spec node to RTL signal (String matching): {spec_node} --references--> {signal_node}"
+                        print(msg)
+                        mapping_logs.append(f"  [SUCCESS] {msg}")
+        mapping_logs.append("-" * 40)
+
+    # Save mapping logs to file
+    if hasattr(saver, 'logdir') and saver.logdir:
+        import os
+        log_file_path = os.path.join(saver.logdir, "signal_mapping_calls.txt")
+        with open(log_file_path, "w") as f:
+            f.write("\n".join(mapping_logs))
+        print(f"Saved signal mapping log to {log_file_path}")
 
     # Print summary of signal links
     if link_count > 0:

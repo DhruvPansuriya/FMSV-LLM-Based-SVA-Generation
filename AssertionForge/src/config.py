@@ -4,6 +4,7 @@ from utils import get_user, get_host
 from collections import OrderedDict 
 
 # task = 'build_KG'
+# task = 'build_KG'
 task = 'gen_plan'
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,10 +24,15 @@ if task == 'gen_plan':
         # design_name = 'openMSP430'
         # design_name = 'tiny_pairing'
         # design_name = 'uart'
-        design_name = 'apb'
+        # design_name = 'apb'
         # design_name = 'sockit'
+        design_name = 'toy_sdc_controller'
 
-        if design_name == 'apb':
+        if design_name == 'toy_sdc_controller':
+            file_path = str(ROOT.parent / 'TestCase/TC3/toy_sdc_spec.pdf')
+            design_dir = str(ROOT.parent / 'TestCase/TC3')
+            KG_path = str(ROOT.parent / 'TestCase/TC3/graph_rag_toy_sdc_controller/output/clustered_graph.graphml')
+        elif design_name == 'apb':
 
             # The path calculation was wrong for running from AssertionForge directory vs workspace root
             # Let's fix it by pointing to the absolute path relative to the repo root *parent* (workspace) if needed,
@@ -234,8 +240,8 @@ if task == 'gen_plan':
         gen_plan_sva_using_valid_signals = True
 
         if gen_plan_sva_using_valid_signals:
-            # valid_signals = None
-            valid_signals = ['PCLK', 'PRESETn', 'PSEL', 'PENABLE', 'PWRITE', 'PADDR', 'PWDATA', 'PRDATA', 'PREADY', 'PSLVERR']
+            valid_signals = None
+            # valid_signals = ['PCLK', 'PRESETn', 'PSEL', 'PENABLE', 'PWRITE', 'PADDR', 'PWDATA', 'PRDATA', 'PREADY', 'PSLVERR']
             # valid_signals = ['baud_clk', 'baud_freq']
 
         # generate_SVAs = True
@@ -269,10 +275,14 @@ elif task == 'build_KG':
     # design_name = 'openMSP430'
     # design_name = 'tiny_pairing'
     # design_name = 'uart'
-    design_name = 'apb'
+    # design_name = 'apb'
     # design_name = 'sockit'
+    design_name = 'toy_sdc_controller'
 
-    if design_name == 'apb':
+    if design_name == 'toy_sdc_controller':
+        input_file_path = str(ROOT.parent / 'TestCase/TC3/toy_sdc_spec.pdf')
+        
+    elif design_name == 'apb':
 
         input_file_path = str(ROOT / 'data/apb/spec/apb_spec.pdf')
 

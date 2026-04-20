@@ -1207,8 +1207,17 @@ def write_svas_to_file(svas: List[str]) -> Tuple[List[str], Set[str]]:
     original_sva_path = os.path.join(FLAGS.design_dir, "property_goldmine.sva")
 
     # Extract the module interface from the original file
-    with open(original_sva_path, "r") as f:
-        original_content = f.read()
+    if os.path.exists(original_sva_path):
+        with open(original_sva_path, "r") as f:
+            original_content = f.read()
+    else:
+        # Fallback to looking for a Verilog file
+        import glob
+        v_files = glob.glob(os.path.join(FLAGS.design_dir, "*.v"))
+        if not v_files:
+            raise ValueError(f"Could not find {original_sva_path} or any .v files in {FLAGS.design_dir}")
+        with open(v_files[0], "r") as f:
+            original_content = f.read()
 
     # Use regex to find the module declaration, including parameters if present
     module_match = re.search(
