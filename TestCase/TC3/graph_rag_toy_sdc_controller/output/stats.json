@@ -1,68 +1,68 @@
 {
-    "total_runtime": 5.746017217636108,
+    "total_runtime": 6.032201766967773,
     "num_documents": 1,
     "update_documents": 0,
     "input_load_time": 0,
     "workflows": {
         "load_input_documents": {
-            "overall": 0.06369209289550781,
-            "peak_memory_bytes": 913355,
-            "memory_delta_bytes": 740431,
-            "tracemalloc_overhead_bytes": 422768
+            "overall": 0.05571389198303223,
+            "peak_memory_bytes": 911866,
+            "memory_delta_bytes": 738849,
+            "tracemalloc_overhead_bytes": 421744
         },
         "create_base_text_units": {
-            "overall": 0.7355239391326904,
+            "overall": 0.7313969135284424,
             "peak_memory_bytes": 42864816,
-            "memory_delta_bytes": 24685082,
-            "tracemalloc_overhead_bytes": 29800976
+            "memory_delta_bytes": 24688587,
+            "tracemalloc_overhead_bytes": 29803088
         },
         "create_final_documents": {
-            "overall": 0.00864720344543457,
-            "peak_memory_bytes": 189785,
-            "memory_delta_bytes": 20080,
-            "tracemalloc_overhead_bytes": 54864
+            "overall": 0.008732080459594727,
+            "peak_memory_bytes": 190617,
+            "memory_delta_bytes": 20865,
+            "tracemalloc_overhead_bytes": 55376
         },
         "extract_graph": {
-            "overall": 1.3327951431274414,
-            "peak_memory_bytes": 2473317,
-            "memory_delta_bytes": 2011193,
-            "tracemalloc_overhead_bytes": 1634608
+            "overall": 0.10590195655822754,
+            "peak_memory_bytes": 369185,
+            "memory_delta_bytes": 137392,
+            "tracemalloc_overhead_bytes": 415312
         },
         "finalize_graph": {
-            "overall": 0.02487325668334961,
-            "peak_memory_bytes": 281178,
-            "memory_delta_bytes": 21230,
-            "tracemalloc_overhead_bytes": 70896
+            "overall": 0.022316932678222656,
+            "peak_memory_bytes": 240760,
+            "memory_delta_bytes": 16796,
+            "tracemalloc_overhead_bytes": 69872
         },
         "extract_covariates": {
-            "overall": 8.296966552734375e-05,
+            "overall": 8.606910705566406e-05,
             "peak_memory_bytes": 6353,
             "memory_delta_bytes": 448,
             "tracemalloc_overhead_bytes": 1872
         },
         "create_communities": {
-            "overall": 0.07334780693054199,
-            "peak_memory_bytes": 398079,
-            "memory_delta_bytes": 94780,
-            "tracemalloc_overhead_bytes": 389552
+            "overall": 0.07909178733825684,
+            "peak_memory_bytes": 420242,
+            "memory_delta_bytes": 97941,
+            "tracemalloc_overhead_bytes": 392112
         },
         "create_final_text_units": {
-            "overall": 0.020511388778686523,
-            "peak_memory_bytes": 226711,
-            "memory_delta_bytes": 30045,
-            "tracemalloc_overhead_bytes": 75984
+            "overall": 0.018271923065185547,
+            "peak_memory_bytes": 218281,
+            "memory_delta_bytes": 27095,
+            "tracemalloc_overhead_bytes": 74832
         },
         "create_community_reports": {
-            "overall": 0.5705361366271973,
-            "peak_memory_bytes": 911043,
-            "memory_delta_bytes": 179506,
-            "tracemalloc_overhead_bytes": 500112
+            "overall": 1.979628086090088,
+            "peak_memory_bytes": 2854847,
+            "memory_delta_bytes": 2008572,
+            "tracemalloc_overhead_bytes": 1659504
         },
         "generate_text_embeddings": {
-            "overall": 2.842316150665283,
-            "peak_memory_bytes": 36955451,
-            "memory_delta_bytes": 27736496,
-            "tracemalloc_overhead_bytes": 20555232
+            "overall": 2.955441951751709,
+            "peak_memory_bytes": 36940122,
+            "memory_delta_bytes": 27726227,
+            "tracemalloc_overhead_bytes": 20551040
         }
     }
 }

@@ -15,964 +15,674 @@
   <key id="d0" for="node" attr.name="id" attr.type="string" />
   <graph edgedefault="undirected">
     <node id="&quot;SERIAL DATA CONTROLLER (SDC)&quot;">
-      <data key="d0">36bf2224-267c-4397-9ff6-b1c0bd5f13eb</data>
+      <data key="d0">67ef01a4-cdeb-43d9-9881-d9786262c752</data>
       <data key="d1">0</data>
       <data key="d2">"MODULE"</data>
-      <data key="d3">"The Serial Data Controller is a hardware module providing an APB slave interface and SPI-compatible serial interface for communication with external devices."</data>
+      <data key="d3">"The Serial Data Controller (SDC) is a module that provides an APB slave interface and a SPI-compatible serial interface for communication with external slave devices."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">32</data>
+      <data key="d6">12</data>
     </node>
-    <node id="&quot;APB SLAVE INTERFACE&quot;">
-      <data key="d0">ed4b70ab-375f-44c5-b212-1a91befbc795</data>
+    <node id="&quot;APB INTERFACE&quot;">
+      <data key="d0">aff1ceb1-8c84-4cac-8ee9-913ca5704dce</data>
       <data key="d1">1</data>
       <data key="d2">"INTERFACE"</data>
-      <data key="d3">"An APB slave interface allows host processor configuration and communication with external devices."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">16</data>
-    </node>
-    <node id="&quot;SPI INTERFACE&quot;">
-      <data key="d0">d7b3f8d5-359a-4d9a-98e6-8f6592b02ed6</data>
-      <data key="d1">2</data>
-      <data key="d2">"INTERFACE"</data>
-      <data key="d3">"An SPI interface enables communication with external slave devices, supporting configurable baud rates and hardware flow control."</data>
+      <data key="d3">"The APB interface is used for host processor configuration."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">10</data>
     </node>
+    <node id="&quot;SPI INTERFACE&quot;">
+      <data key="d0">338983ca-f2c7-426d-bb85-97e213320911</data>
+      <data key="d1">2</data>
+      <data key="d2">"INTERFACE"</data>
+      <data key="d3">"The SPI interface is used for communication with external slave devices."</data>
+      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d5">1</data>
+      <data key="d6">7</data>
+    </node>
     <node id="&quot;SYSTEM CLOCK&quot;">
-      <data key="d0">15bbe4e0-9496-44e0-a19c-56fb10e1a4b6</data>
+      <data key="d0">3dec1e15-cb67-4598-8d6d-f03795410a43</data>
       <data key="d1">3</data>
       <data key="d2">"CLOCK"</data>
-      <data key="d3">"The system clock is the primary clock input used for all synchronous logic operations."</data>
+      <data key="d3">"The system clock is the primary clock input for the SDC."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">3</data>
     </node>
     <node id="&quot;SYSTEM RESET&quot;">
-      <data key="d0">71ecc1d3-b9af-4cae-a7eb-c18e66f9f997</data>
+      <data key="d0">c9f8655b-4f06-4df0-aba0-99edbe58b41b</data>
       <data key="d1">4</data>
       <data key="d2">"RESET"</data>
-      <data key="d3">"The system reset signal is asynchronous and active-low, clearing all registers and deasserting the chip select when asserted."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d3">"The system reset is an asynchronous, active-low signal that clears all registers and deasserts the chip select when asserted low."</data>
+      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f'
+ '1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d5">2</data>
+      <data key="d6">4</data>
     </node>
     <node id="&quot;PERIPHERAL SELECT&quot;">
-      <data key="d0">fbf9506f-5ed6-484e-878d-1d35879c0c9a</data>
+      <data key="d0">3bdbe4f2-9be5-45ec-94ed-6abc1932fc49</data>
       <data key="d1">5</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The peripheral select signal is used to select the SDC as an APB slave."</data>
+      <data key="d3">"The peripheral select signal is driven high by the APB master to select the SDC."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
     <node id="&quot;TRANSFER ENABLE&quot;">
-      <data key="d0">dd3e19ca-53fa-4a3b-95b8-e06869c89c70</data>
+      <data key="d0">deca1e63-ff7e-49fd-963d-58f90469b9b4</data>
       <data key="d1">6</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Transfer enable marks the second cycle of an APB transfer."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;WRITE ENABLE&quot;">
-      <data key="d0">fbbd3211-2f16-42ed-80df-2b4b3be69d31</data>
-      <data key="d1">7</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Write enable is used to indicate write operation, generating an active-low write strobe when asserted."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;REGISTER ADDRESS&quot;">
-      <data key="d0">0a9df709-90cc-479c-a617-23c05ad37363</data>
-      <data key="d1">8</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Register address selects the target register for APB transfers."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;WRITE DATA BUS&quot;">
-      <data key="d0">4e7bc8b8-5a51-44c3-8658-cde754e9c2bd</data>
-      <data key="d1">9</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Write data bus carries 32-bit data from the master to SDC during writes."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;READ DATA BUS&quot;">
-      <data key="d0">80369759-4fee-4a52-bc72-e2568627ccd6</data>
-      <data key="d1">10</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Read data bus carries 32-bit data from SDC to the master during reads."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;TRANSFER ACKNOWLEDGE&quot;">
-      <data key="d0">95e4355f-d340-46cf-a875-411c86edc108</data>
-      <data key="d1">11</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Transfer acknowledge is asserted high by SDC to complete APB transactions."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;SERIAL CLOCK&quot;">
-      <data key="d0">e5a08c08-d570-41c3-97bb-992dcaab42fa</data>
-      <data key="d1">12</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Serial clock is generated by SDC, with frequency set by the baud rate divisor."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;MASTER DATA OUTPUT&quot;">
-      <data key="d0">ec16acd4-2aad-449a-a5ee-14d41dec3d48</data>
-      <data key="d1">13</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Master data output is serial data to the external slave, MSB first, shifted on the falling clock edge."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;MASTER DATA INPUT&quot;">
-      <data key="d0">5ace7880-9be8-4c1a-8bde-325ecc19e681</data>
-      <data key="d1">14</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Master data input is serial data from the external slave, sampled on the rising clock edge."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;CHIP SELECT&quot;">
-      <data key="d0">2c08d994-a4c2-48ca-98d2-7d50babcbfb4</data>
-      <data key="d1">15</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Chip select is an active-low output driven low at the start of a frame to address the external slave."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;INTERRUPT REQUEST&quot;">
-      <data key="d0">916bff72-5624-4d2e-9d96-8e931588919c</data>
-      <data key="d1">16</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Interrupt request is asserted when transmission complete or parity error is detected."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;TRANSMISSION COMPLETE&quot;">
-      <data key="d0">2e6f3fd9-dbff-405f-9644-cf0a55e270bf</data>
-      <data key="d1">17</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Transmission complete is pulsed for one clock cycle when the last bit of a frame has been shifted out."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;TRANSMIT ACKNOWLEDGE&quot;">
-      <data key="d0">425deed4-318d-493b-ad48-2b587ebd6d2f</data>
-      <data key="d1">18</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Transmit acknowledge is set when the remote slave confirms receipt of the last transmitted byte."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;FIFO EMPTY STATUS&quot;">
-      <data key="d0">172ecce6-9869-4932-8dc0-e180998b952d</data>
-      <data key="d1">19</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"FIFO empty status is asserted when the transmit buffer has no pending data and is ready for a new frame."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;DATA VALID&quot;">
-      <data key="d0">6ef91503-7105-43e7-ad8f-7b68d4c18e97</data>
-      <data key="d1">20</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Data valid is asserted for one cycle when a new received byte is available in the receive buffer."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;PARITY ERROR FLAG&quot;">
-      <data key="d0">0ba58303-0e47-4685-9bdd-b215d359daa0</data>
-      <data key="d1">21</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Parity error flag is set and held when a parity mismatch is detected on the received byte."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;RECEIVE BUFFER FULL&quot;">
-      <data key="d0">5e75873f-886e-4eff-91dd-13929acdd40a</data>
-      <data key="d1">22</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Receive buffer full is an active-low flag, deasserted when the receive buffer cannot accept additional bytes."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;FLOW CONTROL ENABLE&quot;">
-      <data key="d0">722157c0-b8b0-4e8c-9863-36b9e41a1b6a</data>
-      <data key="d1">23</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"Flow control enable activates CTS/RTS-style handshaking when set in the control register."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">0</data>
-    </node>
-    <node id="&quot;CONTROL REGISTER&quot;">
-      <data key="d0">576ccb2b-0edf-4e32-8549-e5757f4ead69</data>
-      <data key="d1">24</data>
-      <data key="d2">"REGISTER"</data>
-      <data key="d3">The CONTROL REGISTER is a crucial component that contains mode and enable bits for both the APB interface and the serial interface. According to the provided descriptions, the CONTROL REGISTER has a specific set of bits that control the mode and enable the APB interface and serial interface. The descriptions are nearly identical, with no contradictions, indicating a clear understanding of the CONTROL REGISTER's function. 
-
-The CONTROL REGISTER's primary role is to manage the interactions between the APB interface and the serial interface, allowing for flexible configuration and control. By containing mode and enable bits, the CONTROL REGISTER enables the system to switch between different operating modes and to enable or disable the interfaces as needed. This suggests that the CONTROL REGISTER is a key component in the overall system architecture, providing a centralized mechanism for controlling the flow of data between different interfaces.
-
-In summary, the CONTROL REGISTER is a vital component that provides control and configuration capabilities for the APB interface and serial interface. Its mode and enable bits allow for dynamic control of the system, enabling the system to adapt to different operating conditions and requirements. With its centralized control mechanism, the CONTROL REGISTER plays a critical role in ensuring the smooth operation of the system. Overall, the CONTROL REGISTER is an essential component that provides a flexible and configurable interface control mechanism.</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f'
- '1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">2</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;BAUD RATE DIVISOR&quot;">
-      <data key="d0">fbf9e2a7-f8e4-4ad5-8969-bea9626b6d40</data>
-      <data key="d1">25</data>
-      <data key="d2">"REGISTER"</data>
-      <data key="d3">"The baud rate divisor register sets the system clock divisor for SPI clock generation."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f'
- '1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">2</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;STATUS REGISTER&quot;">
-      <data key="d0">80fecd10-60bf-45a5-a0f4-023695df11a9</data>
-      <data key="d1">26</data>
-      <data key="d2">"REGISTER"</data>
-      <data key="d3">"The status register contains all status flags, including receive buffer full, FIFO empty status, transmit acknowledge, and more."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f'
- '1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">2</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;SPI&quot;">
-      <data key="d0">923da855-ffc6-4758-b46d-a6269c7bd0fe</data>
-      <data key="d1">27</data>
-      <data key="d2">"PROTOCOL"</data>
-      <data key="d3">"The SPI protocol is used for communication with external slave devices, supporting configurable baud rates and hardware flow control."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;SYSTEM CLOCK SIGNAL&quot;">
-      <data key="d0">59af4b70-6afd-472b-9abe-3086c065c76f</data>
-      <data key="d1">28</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The system clock signal is the primary clock input used for all synchronous logic operations."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;SYSTEM RESET SIGNAL&quot;">
-      <data key="d0">db758a4a-a0a3-4140-8fd1-fb23ce15d107</data>
-      <data key="d1">29</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The system reset signal is asynchronous and active-low, clearing all registers and deasserting the chip select when asserted."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;PERIPHERAL SELECT SIGNAL&quot;">
-      <data key="d0">93af1cb6-1ba1-4af1-952e-3ecb8624b793</data>
-      <data key="d1">30</data>
-      <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The peripheral select signal is used to select the SDC as an APB slave."</data>
-      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-      <data key="d5">1</data>
-      <data key="d6">1</data>
-    </node>
-    <node id="&quot;TRANSFER ENABLE SIGNAL&quot;">
-      <data key="d0">db4cf501-88c6-475f-adaf-b3572a0006da</data>
-      <data key="d1">31</data>
       <data key="d2">"SIGNAL"</data>
       <data key="d3">"The transfer enable signal marks the second cycle of an APB transfer."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;WRITE ENABLE SIGNAL&quot;">
-      <data key="d0">81c05dcd-e98d-4e8b-b8ca-21334f2da941</data>
-      <data key="d1">32</data>
+    <node id="&quot;WRITE ENABLE&quot;">
+      <data key="d0">f75dd1cc-ff0e-4721-900e-92d32f72b38e</data>
+      <data key="d1">7</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The write enable signal is used to indicate write operation, generating an active-low write strobe when asserted."</data>
+      <data key="d3">"The write enable signal is high for write and low for read operations."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;REGISTER ADDRESS SIGNAL&quot;">
-      <data key="d0">4d05e099-5b70-4e62-b40e-8a223eab2d01</data>
-      <data key="d1">33</data>
+    <node id="&quot;REGISTER ADDRESS&quot;">
+      <data key="d0">1b4da10d-adcb-4197-840b-0cf9b6332e01</data>
+      <data key="d1">8</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The register address signal selects the target register for APB transfers."</data>
+      <data key="d3">"The register address signal is an 8-bit address bus that selects the target register."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;WRITE DATA BUS SIGNAL&quot;">
-      <data key="d0">70eecfa1-6ea6-4468-a5c9-3aec2bab99fe</data>
-      <data key="d1">34</data>
+    <node id="&quot;WRITE DATA BUS&quot;">
+      <data key="d0">d986e63c-7021-40fd-a242-83f70dd1a3f5</data>
+      <data key="d1">9</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The write data bus signal carries 32-bit data from the master to SDC during writes."</data>
+      <data key="d3">"The write data bus is a 32-bit data bus from the master to the SDC during writes."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;READ DATA BUS SIGNAL&quot;">
-      <data key="d0">5ace595a-b7d9-4c3f-8dec-6f1846a94753</data>
-      <data key="d1">35</data>
+    <node id="&quot;READ DATA BUS&quot;">
+      <data key="d0">fa4b8e9c-7465-4949-95b9-bfdea70ba1e3</data>
+      <data key="d1">10</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The read data bus signal carries 32-bit data from SDC to the master during reads."</data>
+      <data key="d3">"The read data bus is a 32-bit data bus from the SDC to the master during reads."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;TRANSFER ACKNOWLEDGE SIGNAL&quot;">
-      <data key="d0">aff96849-fcf0-45d9-b59c-68b2516b5632</data>
-      <data key="d1">36</data>
+    <node id="&quot;TRANSFER ACKNOWLEDGE&quot;">
+      <data key="d0">016bd329-b71a-429e-b108-dba38fbd2e63</data>
+      <data key="d1">11</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The transfer acknowledge signal is asserted high by SDC to complete APB transactions."</data>
+      <data key="d3">"The transfer acknowledge signal is asserted high by the SDC to complete the APB transaction."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;SERIAL CLOCK SIGNAL&quot;">
-      <data key="d0">b5886c73-f12a-43a8-9ebb-93528c10c649</data>
-      <data key="d1">37</data>
+    <node id="&quot;SERIAL CLOCK&quot;">
+      <data key="d0">ec4bd048-e455-44f5-8d58-3366a51e0184</data>
+      <data key="d1">12</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The serial clock signal is generated by SDC, with frequency set by the baud rate divisor."</data>
+      <data key="d3">"The serial clock signal is generated by the SDC and its frequency is set by the baud rate divisor."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;MASTER DATA OUTPUT SIGNAL&quot;">
-      <data key="d0">25954ad4-88da-4c70-85bc-ae126baf0903</data>
-      <data key="d1">38</data>
+    <node id="&quot;MASTER DATA OUTPUT&quot;">
+      <data key="d0">93f733c4-ec40-43f9-a711-c0d68dd4b5a4</data>
+      <data key="d1">13</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The master data output signal is serial data to the external slave, MSB first, shifted on the falling clock edge."</data>
+      <data key="d3">"The master data output signal is the serial data output from the SDC to the external slave."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;MASTER DATA INPUT SIGNAL&quot;">
-      <data key="d0">9f2de708-b673-43fe-afbe-c33047b4ccf9</data>
-      <data key="d1">39</data>
+    <node id="&quot;MASTER DATA INPUT&quot;">
+      <data key="d0">e2e2e127-c015-449e-b082-06e4d63dff2b</data>
+      <data key="d1">14</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The master data input signal is serial data from the external slave, sampled on the rising clock edge."</data>
+      <data key="d3">"The master data input signal is the serial data input from the external slave to the SDC."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;CHIP SELECT SIGNAL&quot;">
-      <data key="d0">22c16dcb-7e7e-4b54-b529-be599112cfd5</data>
-      <data key="d1">40</data>
+    <node id="&quot;CHIP SELECT&quot;">
+      <data key="d0">6ed3577e-de16-41d1-b4b9-cfb109d77f1d</data>
+      <data key="d1">15</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The chip select signal is an active-low output driven low at the start of a frame to address the external slave."</data>
+      <data key="d3">"The chip select signal is an active-low output that is driven low at the start of a frame to address the external slave."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;INTERRUPT REQUEST SIGNAL&quot;">
-      <data key="d0">05cbe243-5db9-4507-8fae-21182d3fab30</data>
-      <data key="d1">41</data>
+    <node id="&quot;INTERRUPT REQUEST&quot;">
+      <data key="d0">b0381e93-039c-4905-a43b-f6c262576f0f</data>
+      <data key="d1">16</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The interrupt request signal is asserted when transmission complete or parity error is detected."</data>
+      <data key="d3">"The interrupt request signal is asserted when transmission is complete or a parity error is detected."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <node id="&quot;TRANSMISSION COMPLETE SIGNAL&quot;">
-      <data key="d0">a8f37fb7-ce5d-4fe0-920d-57e86b75e372</data>
-      <data key="d1">42</data>
+    <node id="&quot;TRANSMISSION COMPLETE&quot;">
+      <data key="d0">2ee5ee69-6b74-49e6-ae6c-a7a9f9f60c58</data>
+      <data key="d1">17</data>
       <data key="d2">"SIGNAL"</data>
       <data key="d3">"The transmission complete signal is pulsed for one clock cycle when the last bit of a frame has been shifted out."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">0</data>
     </node>
-    <node id="&quot;TRANSMIT ACKNOWLEDGE SIGNAL&quot;">
-      <data key="d0">9950638b-05f9-4606-9f88-b26dfb1ef40a</data>
-      <data key="d1">43</data>
+    <node id="&quot;TRANSMIT ACKNOWLEDGE&quot;">
+      <data key="d0">d2df1a40-d564-4136-864d-f2525789c7a8</data>
+      <data key="d1">18</data>
       <data key="d2">"SIGNAL"</data>
       <data key="d3">"The transmit acknowledge signal is set when the remote slave confirms receipt of the last transmitted byte."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">0</data>
     </node>
-    <node id="&quot;FIFO EMPTY STATUS SIGNAL&quot;">
-      <data key="d0">a37ac5fe-7bdd-46cc-bf73-94ef46fcfe00</data>
-      <data key="d1">44</data>
+    <node id="&quot;FIFO EMPTY STATUS&quot;">
+      <data key="d0">74edf1e8-b0bf-40fa-ba1d-18fe7eac7ba4</data>
+      <data key="d1">19</data>
       <data key="d2">"SIGNAL"</data>
       <data key="d3">"The FIFO empty status signal is asserted when the transmit buffer has no pending data and is ready for a new frame."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">0</data>
     </node>
-    <node id="&quot;DATA VALID SIGNAL&quot;">
-      <data key="d0">3afc7dfe-dac7-49a0-bc7a-fc0cf9cf6255</data>
-      <data key="d1">45</data>
+    <node id="&quot;DATA VALID&quot;">
+      <data key="d0">609deb5d-01bc-4a09-8753-45eeaedaa027</data>
+      <data key="d1">20</data>
       <data key="d2">"SIGNAL"</data>
       <data key="d3">"The data valid signal is asserted for one cycle when a new received byte is available in the receive buffer."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">0</data>
     </node>
-    <node id="&quot;PARITY ERROR FLAG SIGNAL&quot;">
-      <data key="d0">4fab91ca-633c-4803-945c-6ccd01ef2412</data>
-      <data key="d1">46</data>
+    <node id="&quot;PARITY ERROR FLAG&quot;">
+      <data key="d0">86202cdb-9133-4430-9364-7d4c07e7c35e</data>
+      <data key="d1">21</data>
       <data key="d2">"SIGNAL"</data>
       <data key="d3">"The parity error flag signal is set and held when a parity mismatch is detected on the received byte."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">0</data>
     </node>
-    <node id="&quot;RECEIVE BUFFER FULL SIGNAL&quot;">
-      <data key="d0">c3ce83ee-6322-4968-9a14-0078d49fb294</data>
-      <data key="d1">47</data>
+    <node id="&quot;RECEIVE BUFFER FULL&quot;">
+      <data key="d0">621d9ab0-6a1a-4221-8012-c33898cec5f1</data>
+      <data key="d1">22</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The receive buffer full signal is an active-low flag, deasserted when the receive buffer cannot accept additional bytes."</data>
+      <data key="d3">"The receive buffer full signal is an active-low flag that is deasserted when the receive buffer cannot accept additional bytes."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">0</data>
     </node>
-    <node id="&quot;FLOW CONTROL ENABLE SIGNAL&quot;">
-      <data key="d0">6f3bbca2-3e9e-45b0-8587-5d8b82ea8367</data>
-      <data key="d1">48</data>
+    <node id="&quot;FLOW CONTROL ENABLE&quot;">
+      <data key="d0">34b56916-3b24-4035-9a21-d04aef2f9117</data>
+      <data key="d1">23</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The flow control enable signal activates CTS/RTS-style handshaking when set in the control register."</data>
+      <data key="d3">"The flow control enable signal is set in the control register to activate CTS/RTS-style handshaking."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">0</data>
     </node>
-    <node id="&quot;PARAMETER&quot;">
-      <data key="d0">1941fae3-1765-44de-9cbd-f6525054767b</data>
-      <data key="d1">49</data>
+    <node id="&quot;CONTROL REGISTER&quot;">
+      <data key="d0">bf744a66-b0b0-47c3-88eb-df537ac6c421</data>
+      <data key="d1">24</data>
       <data key="d2">"PARAMETER"</data>
-      <data key="d3">"The SDC has several parameters that can be configured, including the baud rate divisor and flow control enable."</data>
+      <data key="d3">"The control register is a register that contains mode and enable bits."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">5</data>
     </node>
-    <node id="&quot;BUS&quot;">
-      <data key="d0">9fc1025e-45f9-455b-8f90-b5bb8d60d936</data>
-      <data key="d1">50</data>
-      <data key="d2">"BUS"</data>
-      <data key="d3">"The SDC uses the APB bus for communication with the host processor."</data>
+    <node id="&quot;BAUD RATE DIVISOR&quot;">
+      <data key="d0">d4bfcc4c-1e24-4d9f-9032-31165a750cd9</data>
+      <data key="d1">25</data>
+      <data key="d2">"PARAMETER"</data>
+      <data key="d3">"The baud rate divisor is a register that divides the system clock to generate the SPI clock."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">4</data>
     </node>
-    <node id="&quot;CLOCK&quot;">
-      <data key="d0">b271bbd2-87da-48cb-9301-9359c92e5be5</data>
-      <data key="d1">51</data>
-      <data key="d2">"CLOCK"</data>
-      <data key="d3">"The SDC uses a system clock signal for all synchronous logic operations."</data>
+    <node id="&quot;STATUS REGISTER&quot;">
+      <data key="d0">90fbaa5b-dc56-415e-9da1-46dc1e5151c4</data>
+      <data key="d1">26</data>
+      <data key="d2">"PARAMETER"</data>
+      <data key="d3">"The status register is a read-only register that contains status flags."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">4</data>
     </node>
-    <node id="&quot;RESET&quot;">
-      <data key="d0">adfda712-c006-4138-8efb-8e2117fe7d87</data>
-      <data key="d1">52</data>
-      <data key="d2">"RESET"</data>
-      <data key="d3">"The SDC has a system reset signal that clears all registers and deasserts the chip select when asserted."</data>
+    <node id="&quot;RECEIVE BUFFER&quot;">
+      <data key="d0">1677ebc7-a583-408e-bf40-ad3ad3f401eb</data>
+      <data key="d1">27</data>
+      <data key="d2">"MODULE"</data>
+      <data key="d3">"The receive buffer is a component of the SDC that stores received data."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">2</data>
     </node>
-    <node id="&quot;INTERFACE&quot;">
-      <data key="d0">5d269af5-0978-45ad-9dfd-964a909d6206</data>
-      <data key="d1">53</data>
-      <data key="d2">"INTERFACE"</data>
-      <data key="d3">"The SDC has two interfaces: APB slave interface and SPI interface."</data>
+    <node id="&quot;TRANSMIT BUFFER&quot;">
+      <data key="d0">10e9be45-abd1-4623-a300-bb1482a8a87e</data>
+      <data key="d1">28</data>
+      <data key="d2">"MODULE"</data>
+      <data key="d3">"The transmit buffer is a component of the SDC that stores data to be transmitted."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">2</data>
     </node>
-    <node id="&quot;PROTOCOL&quot;">
-      <data key="d0">2c225375-92cd-4fde-acaf-87fb0fda4f1d</data>
-      <data key="d1">54</data>
+    <node id="&quot;SPI PROTOCOL&quot;">
+      <data key="d0">a930e1d1-3da3-4a55-9e12-b09fc7a0660c</data>
+      <data key="d1">29</data>
       <data key="d2">"PROTOCOL"</data>
-      <data key="d3">"The SDC uses two protocols: APB and SPI."</data>
+      <data key="d3">"The SPI protocol is used for communication with external slave devices."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
-      <data key="d6">1</data>
+      <data key="d6">3</data>
     </node>
-    <node id="&quot;SIGNAL&quot;">
-      <data key="d0">06dc7529-bb09-4add-9824-a6a71b8c1004</data>
-      <data key="d1">55</data>
+    <node id="&quot;APB PROTOCOL&quot;">
+      <data key="d0">0a7b7cf5-9773-4746-b57f-9ff3436f7ecf</data>
+      <data key="d1">30</data>
+      <data key="d2">"PROTOCOL"</data>
+      <data key="d3">"The APB protocol is used for host processor configuration."</data>
+      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d5">1</data>
+      <data key="d6">2</data>
+    </node>
+    <node id="&quot;FLOW CONTROL&quot;">
+      <data key="d0">23918916-cd67-481d-a933-9f6275514ca4</data>
+      <data key="d1">31</data>
+      <data key="d2">"PARAMETER"</data>
+      <data key="d3">"The flow control is a parameter that determines whether CTS/RTS-style handshaking is enabled."</data>
+      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d5">1</data>
+      <data key="d6">4</data>
+    </node>
+    <node id="&quot;PARITY CHECKING&quot;">
+      <data key="d0">042ea95a-8e87-49b4-8d10-e99e9574132b</data>
+      <data key="d1">32</data>
+      <data key="d2">"PARAMETER"</data>
+      <data key="d3">"The parity checking is a parameter that determines whether parity checking is enabled."</data>
+      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d5">1</data>
+      <data key="d6">2</data>
+    </node>
+    <node id="&quot;INTERRUPT GENERATION&quot;">
+      <data key="d0">9c6baa0d-d085-47af-828f-494a3007ed4e</data>
+      <data key="d1">33</data>
+      <data key="d2">"PARAMETER"</data>
+      <data key="d3">"The interrupt generation is a parameter that determines whether interrupts are generated."</data>
+      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d5">1</data>
+      <data key="d6">2</data>
+    </node>
+    <node id="&quot;CTS&quot;">
+      <data key="d0">5f62c79e-2f32-43dc-a444-d1c76e43baed</data>
+      <data key="d1">34</data>
       <data key="d2">"SIGNAL"</data>
-      <data key="d3">"The SDC has several signals, including the system clock signal, system reset signal, and interrupt request signal."</data>
+      <data key="d3">"The CTS signal is used for flow control."</data>
       <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
       <data key="d5">1</data>
       <data key="d6">1</data>
     </node>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;APB SLAVE INTERFACE&quot;">
-      <data key="d7">2b5c4c93-b9e5-439f-8cf1-b23e0a37d4a7</data>
+    <node id="&quot;RTS&quot;">
+      <data key="d0">8e36d207-2787-4758-940a-f34405d94723</data>
+      <data key="d1">35</data>
+      <data key="d2">"SIGNAL"</data>
+      <data key="d3">"The RTS signal is used for flow control."</data>
+      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d5">1</data>
+      <data key="d6">1</data>
+    </node>
+    <node id="&quot;SPI CLOCK&quot;">
+      <data key="d0">136611d3-7d74-4d23-8038-f50869a0374f</data>
+      <data key="d1">36</data>
+      <data key="d2">"CLOCK"</data>
+      <data key="d3">"The SPI clock is generated by the SDC and is used for SPI communication."</data>
+      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d5">1</data>
+      <data key="d6">1</data>
+    </node>
+    <node id="&quot;APB CLOCK&quot;">
+      <data key="d0">249c6d3c-731a-452b-b2cf-2f64be332259</data>
+      <data key="d1">37</data>
+      <data key="d2">"CLOCK"</data>
+      <data key="d3">"The APB clock is used for APB communication."</data>
+      <data key="d4">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d5">1</data>
+      <data key="d6">1</data>
+    </node>
+    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;APB INTERFACE&quot;">
+      <data key="d7">ee82907f-9974-4311-a40c-e45af3cfa05f</data>
       <data key="d8">0</data>
-      <data key="d9">The SERIAL DATA CONTROLLER (SDC) provides an APB SLAVE INTERFACE for communication with the host processor. This interface enables the SDC to facilitate configuration and communication with the host processor, as well as with external devices. Through the APB SLAVE INTERFACE, the SDC allows the host processor to configure and interact with the SDC, and also enables the SDC to communicate with external devices. This functionality is crucial for the SDC's operation, as it relies on the APB SLAVE INTERFACE to exchange data and commands with the host processor and external devices. 
-
-The SERIAL DATA CONTROLLER (SDC) and the APB SLAVE INTERFACE work together to enable seamless communication and configuration. The SDC's provision of the APB SLAVE INTERFACE is a key aspect of its design, as it allows for flexibility and ease of use in a variety of applications. By providing a standard interface for communication, the SDC and the APB SLAVE INTERFACE simplify the process of integrating the SDC into larger systems, and enable developers to focus on other aspects of their design. 
-
-In summary, the SERIAL DATA CONTROLLER (SDC) and the APB SLAVE INTERFACE are closely related, with the SDC providing the APB SLAVE INTERFACE for communication and configuration. This interface is a critical component of the SDC's functionality, and enables the SDC to interact with the host processor and external devices. By providing a comprehensive and flexible interface, the SDC and the APB SLAVE INTERFACE enable efficient and effective communication, and are essential components in a wide range of applications.</data>
-      <data key="d10">18.0</data>
-      <data key="d11">48</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f'
- '1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+      <data key="d9">"The SDC has an APB interface for host processor configuration."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">22</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;SPI INTERFACE&quot;">
-      <data key="d7">1286101a-211f-4dbb-8e4d-cd51c29ad2c0</data>
+      <data key="d7">8ca71f29-e932-4a84-88f8-21ef92d94ba6</data>
       <data key="d8">1</data>
-      <data key="d9">The SERIAL DATA CONTROLLER (SDC) is a device that enables communication with external slave devices using the SPI INTERFACE. It provides an SPI INTERFACE for communication with these external devices, supporting various features that facilitate efficient data transfer. One of the key features of the SDC is its ability to support configurable baud rates, which allows for flexibility in communication speed. Additionally, the SDC also supports hardware flow control, ensuring that data transmission is managed effectively and reducing the likelihood of errors or data loss.
-
-Through the SPI INTERFACE, the SDC establishes a connection with external slave devices, allowing for the exchange of data between the SDC and these devices. The SPI INTERFACE is a crucial component of the SDC, as it enables the SDC to communicate with external devices and transfer data. The SDC's support for configurable baud rates and hardware flow control makes it a reliable and efficient device for managing communication with external slave devices.
-
-Overall, the SERIAL DATA CONTROLLER (SDC) and its SPI INTERFACE work together to provide a robust and flexible communication system. The SDC's features, including configurable baud rates and hardware flow control, make it an effective device for managing data transfer with external slave devices. By utilizing the SPI INTERFACE, the SDC can communicate with a variety of external devices, making it a versatile and useful device in a range of applications.</data>
-      <data key="d10">10.0</data>
-      <data key="d11">42</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f'
- '1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;SYSTEM CLOCK&quot;">
-      <data key="d7">b3e8f312-7e3a-4bbf-882f-ca7880866443</data>
-      <data key="d8">2</data>
-      <data key="d9">"The system clock is used for all synchronous logic operations within the SDC."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
+      <data key="d9">"The SDC has a SPI interface for communication with external slave devices."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">19</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;SYSTEM RESET&quot;">
-      <data key="d7">3646eabb-5f06-4735-a6a4-bd3c99508b07</data>
-      <data key="d8">3</data>
-      <data key="d9">"The system reset clears all registers and deasserts the chip select when asserted to the SDC."</data>
+      <data key="d7">6df68536-2721-4bb6-a858-fa537dcc0db7</data>
+      <data key="d8">15</data>
+      <data key="d9">"The system reset signal is used to reset the SDC."</data>
       <data key="d10">9.0</data>
-      <data key="d11">33</data>
+      <data key="d11">16</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;INTERRUPT REQUEST&quot;">
-      <data key="d7">5e63c5f7-d982-416a-b4cd-02a235e071eb</data>
-      <data key="d8">15</data>
-      <data key="d9">"Interrupt request is asserted when transmission complete or parity error is detected, which is enabled using the SDC."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;TRANSMISSION COMPLETE&quot;">
-      <data key="d7">88f0810a-93a5-469f-8f14-bbc98b858598</data>
+      <data key="d7">4417baca-8bd0-4692-aaa7-dd128dea2ff0</data>
       <data key="d8">16</data>
-      <data key="d9">"Transmission complete is pulsed for one clock cycle when the last bit of a frame has been shifted out, which is enabled using the SDC."</data>
+      <data key="d9">"The interrupt request signal is generated by the SDC when transmission is complete or a parity error is detected."</data>
       <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;TRANSMIT ACKNOWLEDGE&quot;">
-      <data key="d7">07692a83-4e71-4f63-b721-ba6bd93ea734</data>
-      <data key="d8">17</data>
-      <data key="d9">"Transmit acknowledge is set when the remote slave confirms receipt of the last transmitted byte, which is enabled using the SDC."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;FIFO EMPTY STATUS&quot;">
-      <data key="d7">edcd1b7f-a421-4aec-a2b0-d39cefa7c799</data>
-      <data key="d8">18</data>
-      <data key="d9">"FIFO empty status is asserted when the transmit buffer has no pending data and is ready for a new frame, which is enabled using the SDC."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;DATA VALID&quot;">
-      <data key="d7">bc354e53-00a7-4811-b084-b92de0853801</data>
-      <data key="d8">19</data>
-      <data key="d9">"Data valid is asserted for one cycle when a new received byte is available in the receive buffer, which is enabled using the SDC."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;PARITY ERROR FLAG&quot;">
-      <data key="d7">2a98164c-f090-4c64-93e3-31e85dd6ea53</data>
-      <data key="d8">20</data>
-      <data key="d9">"Parity error flag is set and held when a parity mismatch is detected on the received byte, which is enabled using the SDC."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;RECEIVE BUFFER FULL&quot;">
-      <data key="d7">4f632deb-3608-4087-9abc-73f7c9e69106</data>
-      <data key="d8">21</data>
-      <data key="d9">"Receive buffer full is an active-low flag, deasserted when the receive buffer cannot accept additional bytes, which is enabled using the SDC."</data>
-      <data key="d10">1.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;SPI&quot;">
-      <data key="d7">4bfb3f2a-cb39-4b69-83d7-bd038b98cfcc</data>
-      <data key="d8">22</data>
-      <data key="d9">"The SDC uses the SPI protocol for communication with external slave devices, supporting configurable baud rates and hardware flow control."</data>
-      <data key="d10">9.0</data>
-      <data key="d11">33</data>
+      <data key="d11">13</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;CONTROL REGISTER&quot;">
-      <data key="d7">158f435d-d27f-4b9d-bcfe-ed9430697807</data>
-      <data key="d8">23</data>
-      <data key="d9">"The control register is part of the SDC, containing mode and enable bits for the APB interface and serial interface."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
+      <data key="d7">00541f2c-f099-4cbf-98b4-5e49e992339b</data>
+      <data key="d8">17</data>
+      <data key="d9">"The control register is a part of the SDC."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">17</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;BAUD RATE DIVISOR&quot;">
-      <data key="d7">1bb206a8-0ea1-40f8-a01d-b25c61623a24</data>
-      <data key="d8">24</data>
-      <data key="d9">"The baud rate divisor register is part of the SDC, setting the system clock divisor for SPI clock generation."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
+      <data key="d7">2cd489d9-d9e6-4933-8260-3a1d41b90731</data>
+      <data key="d8">18</data>
+      <data key="d9">"The baud rate divisor is a part of the SDC."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">16</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;STATUS REGISTER&quot;">
-      <data key="d7">b33f00ac-8041-492c-b509-a4158ac8dbe6</data>
+      <data key="d7">90828513-c097-441b-8882-435c501f8ed8</data>
+      <data key="d8">19</data>
+      <data key="d9">"The status register is a part of the SDC."</data>
+      <data key="d10">1.0</data>
+      <data key="d11">16</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;RECEIVE BUFFER&quot;">
+      <data key="d7">bf72bff6-0a2f-4af9-a3aa-cb3e62a546eb</data>
+      <data key="d8">20</data>
+      <data key="d9">"The SDC has a receive buffer."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">14</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;TRANSMIT BUFFER&quot;">
+      <data key="d7">210d7200-7249-4988-a655-0972e140e3d2</data>
+      <data key="d8">21</data>
+      <data key="d9">"The SDC has a transmit buffer."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">14</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;FLOW CONTROL&quot;">
+      <data key="d7">7c84d226-fab8-440c-a58a-db7b533af014</data>
+      <data key="d8">24</data>
+      <data key="d9">"The SDC has flow control."</data>
+      <data key="d10">8.0</data>
+      <data key="d11">16</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;PARITY CHECKING&quot;">
+      <data key="d7">1cd61cde-a95e-4cd9-b3c0-1115957f219a</data>
       <data key="d8">25</data>
-      <data key="d9">"The status register is part of the SDC, containing all status flags, including receive buffer full, FIFO empty status, transmit acknowledge, and more."</data>
+      <data key="d9">"The SDC has parity checking."</data>
       <data key="d10">8.0</data>
-      <data key="d11">33</data>
+      <data key="d11">14</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;SYSTEM CLOCK SIGNAL&quot;">
-      <data key="d7">eb082eb0-35ee-4d8a-ba72-ff3fc4e29f69</data>
+    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;INTERRUPT GENERATION&quot;">
+      <data key="d7">079dfbc7-b6e8-4f86-b1b9-5249c5c26268</data>
       <data key="d8">26</data>
-      <data key="d9">"The system clock signal is used by the SDC for all synchronous logic operations."</data>
-      <data key="d10">9.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;SYSTEM RESET SIGNAL&quot;">
-      <data key="d7">76aca763-7263-46ff-a08e-81ef99b2be60</data>
-      <data key="d8">27</data>
-      <data key="d9">"The system reset signal clears all registers and deasserts the chip select when asserted to the SDC."</data>
-      <data key="d10">9.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;INTERRUPT REQUEST SIGNAL&quot;">
-      <data key="d7">27a0ed76-1162-4918-8ad4-c96f7fef76f1</data>
-      <data key="d8">39</data>
-      <data key="d9">"The interrupt request signal is asserted when transmission complete or parity error is detected, and is part of the SDC."</data>
+      <data key="d9">"The SDC has interrupt generation."</data>
       <data key="d10">8.0</data>
-      <data key="d11">33</data>
+      <data key="d11">14</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;TRANSMISSION COMPLETE SIGNAL&quot;">
-      <data key="d7">dbb0fa1a-1e80-4317-8804-e830fbc5af25</data>
-      <data key="d8">40</data>
-      <data key="d9">"The transmission complete signal is pulsed for one clock cycle when the last bit of a frame has been shifted out, and is part of the SDC."</data>
+    <edge source="&quot;APB INTERFACE&quot;" target="&quot;SYSTEM CLOCK&quot;">
+      <data key="d7">37554dd9-583f-4540-b438-72f274533185</data>
+      <data key="d8">2</data>
+      <data key="d9">"The APB interface operates on the system clock."</data>
       <data key="d10">8.0</data>
-      <data key="d11">33</data>
+      <data key="d11">13</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;TRANSMIT ACKNOWLEDGE SIGNAL&quot;">
-      <data key="d7">28dd8d91-4b79-4c20-8c36-e310c505870b</data>
-      <data key="d8">41</data>
-      <data key="d9">"The transmit acknowledge signal is set when the remote slave confirms receipt of the last transmitted byte, and is part of the SDC."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;FIFO EMPTY STATUS SIGNAL&quot;">
-      <data key="d7">ac82034a-0c1c-4671-9cad-70f6e29e59e4</data>
-      <data key="d8">42</data>
-      <data key="d9">"The FIFO empty status signal is asserted when the transmit buffer has no pending data and is ready for a new frame, and is part of the SDC."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;DATA VALID SIGNAL&quot;">
-      <data key="d7">04ad5aec-573b-4254-bf54-f6c120c226c1</data>
-      <data key="d8">43</data>
-      <data key="d9">"The data valid signal is asserted for one cycle when a new received byte is available in the receive buffer, and is part of the SDC."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;PARITY ERROR FLAG SIGNAL&quot;">
-      <data key="d7">8029b3d4-751c-41f2-bca3-ed52fd658201</data>
-      <data key="d8">44</data>
-      <data key="d9">"The parity error flag signal is set and held when a parity mismatch is detected on the received byte, and is part of the SDC."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;RECEIVE BUFFER FULL SIGNAL&quot;">
-      <data key="d7">f368d0e4-6566-4a7e-ad1a-d18f6af0a6c8</data>
-      <data key="d8">45</data>
-      <data key="d9">"The receive buffer full signal is an active-low flag, deasserted when the receive buffer cannot accept additional bytes, and is part of the SDC."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;FLOW CONTROL ENABLE SIGNAL&quot;">
-      <data key="d7">9fffaa0b-38ae-4738-8ad7-bebf57341fa2</data>
-      <data key="d8">46</data>
-      <data key="d9">"The flow control enable signal activates CTS/RTS-style handshaking when set in the control register, and is part of the SDC."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;PARAMETER&quot;">
-      <data key="d7">00b4f05b-742e-4f5c-afa1-91010dae51f7</data>
-      <data key="d8">47</data>
-      <data key="d9">"The SDC has several parameters that can be configured, including the baud rate divisor and flow control enable."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;BUS&quot;">
-      <data key="d7">380295f8-1e75-40ba-b1ed-a8f5c5b58a09</data>
-      <data key="d8">48</data>
-      <data key="d9">"The SDC uses the APB bus for communication with the host processor."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;CLOCK&quot;">
-      <data key="d7">6b5d4f89-c0da-43f8-a297-e7bfd7ee9860</data>
-      <data key="d8">49</data>
-      <data key="d9">"The SDC uses a system clock signal for all synchronous logic operations."</data>
-      <data key="d10">9.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;RESET&quot;">
-      <data key="d7">e921fedf-1716-49f4-8074-20a3e71fc7b6</data>
-      <data key="d8">50</data>
-      <data key="d9">"The SDC has a system reset signal that clears all registers and deasserts the chip select when asserted."</data>
-      <data key="d10">9.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;INTERFACE&quot;">
-      <data key="d7">43363f75-9836-41bd-aab4-4d956f98cd80</data>
-      <data key="d8">51</data>
-      <data key="d9">"The SDC has two interfaces: APB slave interface and SPI interface."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;PROTOCOL&quot;">
-      <data key="d7">bf109ab3-b977-4c18-89e3-82845aa1f732</data>
-      <data key="d8">52</data>
-      <data key="d9">"The SDC uses two protocols: APB and SPI."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;SERIAL DATA CONTROLLER (SDC)&quot;" target="&quot;SIGNAL&quot;">
-      <data key="d7">a54e866a-9b1b-45a9-8e5b-b6e0968c2565</data>
-      <data key="d8">53</data>
-      <data key="d9">"The SDC has several signals, including the system clock signal, system reset signal, and interrupt request signal."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">33</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;PERIPHERAL SELECT&quot;">
-      <data key="d7">3d468779-3dc3-4e89-a5b5-e3a584976be5</data>
+    <edge source="&quot;APB INTERFACE&quot;" target="&quot;PERIPHERAL SELECT&quot;">
+      <data key="d7">4b2e1330-5b29-4464-81f4-e657636069ee</data>
       <data key="d8">4</data>
-      <data key="d9">"The peripheral select signal is used to select the SDC as an APB slave, allowing host processor configuration and communication with external devices."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">17</data>
+      <data key="d9">"The peripheral select signal is used to select the SDC on the APB interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">11</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;TRANSFER ENABLE&quot;">
-      <data key="d7">c8abe7d7-24ba-434a-88ef-324c18fbf617</data>
+    <edge source="&quot;APB INTERFACE&quot;" target="&quot;TRANSFER ENABLE&quot;">
+      <data key="d7">ec7551de-8173-4c23-b2c9-59b86ec2a37a</data>
       <data key="d8">5</data>
-      <data key="d9">"Transfer enable marks the second cycle of an APB transfer, which is enabled using the SDC's APB slave interface."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
+      <data key="d9">"The transfer enable signal is used to mark the second cycle of an APB transfer on the APB interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">11</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;WRITE ENABLE&quot;">
-      <data key="d7">02a9a1e4-e5c5-40bd-bd51-e1ae1171e128</data>
+    <edge source="&quot;APB INTERFACE&quot;" target="&quot;WRITE ENABLE&quot;">
+      <data key="d7">d720300f-1755-4175-aed1-2fc360a3472c</data>
       <data key="d8">6</data>
-      <data key="d9">"Write enable is used to indicate write operation to the SDC, generating an active-low write strobe when asserted."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
+      <data key="d9">"The write enable signal is used to determine the direction of data transfer on the APB interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">11</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;REGISTER ADDRESS&quot;">
-      <data key="d7">e1a131b2-187b-4a72-bc90-b890ad006b92</data>
+    <edge source="&quot;APB INTERFACE&quot;" target="&quot;REGISTER ADDRESS&quot;">
+      <data key="d7">cfaf66e9-63ae-4da1-9164-436c6a579b04</data>
       <data key="d8">7</data>
-      <data key="d9">"Register address selects the target register for APB transfers in the SDC, which is enabled using the SDC's APB slave interface."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
+      <data key="d9">"The register address signal is used to select the target register on the APB interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">11</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;WRITE DATA BUS&quot;">
-      <data key="d7">71fb571f-ed62-4970-ad5f-999ea52c44bd</data>
+    <edge source="&quot;APB INTERFACE&quot;" target="&quot;WRITE DATA BUS&quot;">
+      <data key="d7">8e547661-a1c3-4635-9c91-fd3da02cb54f</data>
       <data key="d8">8</data>
-      <data key="d9">"Write data bus carries 32-bit data from the master to SDC during writes, which is enabled using the SDC's APB slave interface."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
+      <data key="d9">"The write data bus is used to transfer data from the master to the SDC on the APB interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">11</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;READ DATA BUS&quot;">
-      <data key="d7">2cfa5be5-0a13-4a0c-8e65-9ee5dc19b80f</data>
+    <edge source="&quot;APB INTERFACE&quot;" target="&quot;READ DATA BUS&quot;">
+      <data key="d7">bb0b1ca3-118f-4f66-9414-112d4d8fe128</data>
       <data key="d8">9</data>
-      <data key="d9">"Read data bus carries 32-bit data from SDC to the master during reads, which is enabled using the SDC's APB slave interface."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
+      <data key="d9">"The read data bus is used to transfer data from the SDC to the master on the APB interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">11</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;TRANSFER ACKNOWLEDGE&quot;">
-      <data key="d7">07a38a40-0212-4e07-9235-af45383fd334</data>
+    <edge source="&quot;APB INTERFACE&quot;" target="&quot;TRANSFER ACKNOWLEDGE&quot;">
+      <data key="d7">902e5b25-9b9e-4f8a-be1d-d570f254db97</data>
       <data key="d8">10</data>
-      <data key="d9">"Transfer acknowledge is asserted high by SDC to complete APB transactions, which is enabled using the SDC's APB slave interface."</data>
+      <data key="d9">"The transfer acknowledge signal is used to complete the APB transaction on the APB interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">11</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;APB INTERFACE&quot;" target="&quot;APB PROTOCOL&quot;">
+      <data key="d7">f67853b3-7e7e-455e-9eb9-add761038033</data>
+      <data key="d8">22</data>
+      <data key="d9">"The APB interface uses the APB protocol."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">12</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;SPI INTERFACE&quot;" target="&quot;SYSTEM CLOCK&quot;">
+      <data key="d7">f710a093-df71-43a5-9dcf-6cf3690bd43d</data>
+      <data key="d8">3</data>
+      <data key="d9">"The SPI interface operates on the system clock."</data>
       <data key="d10">8.0</data>
-      <data key="d11">17</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;PERIPHERAL SELECT SIGNAL&quot;">
-      <data key="d7">2961e50a-0836-4986-83b8-93d12d23fcec</data>
-      <data key="d8">28</data>
-      <data key="d9">"The peripheral select signal is used to select the SDC as an APB slave."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">17</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;TRANSFER ENABLE SIGNAL&quot;">
-      <data key="d7">52802808-9da4-4bd1-a779-83dc70fb2f62</data>
-      <data key="d8">29</data>
-      <data key="d9">"The transfer enable signal marks the second cycle of an APB transfer."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;WRITE ENABLE SIGNAL&quot;">
-      <data key="d7">1d588a57-b84f-4556-8fd6-037e24b1c6f1</data>
-      <data key="d8">30</data>
-      <data key="d9">"The write enable signal is used to indicate write operation to the SDC, generating an active-low write strobe when asserted."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;REGISTER ADDRESS SIGNAL&quot;">
-      <data key="d7">266cc1a6-3101-4749-9259-804dac758d2a</data>
-      <data key="d8">31</data>
-      <data key="d9">"The register address signal selects the target register for APB transfers."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;WRITE DATA BUS SIGNAL&quot;">
-      <data key="d7">d11bbcf3-189a-4984-ae3f-0cda3ccbd67e</data>
-      <data key="d8">32</data>
-      <data key="d9">"The write data bus signal carries 32-bit data from the master to SDC during writes."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;READ DATA BUS SIGNAL&quot;">
-      <data key="d7">02afade8-ae50-4158-a591-330f9060b4cf</data>
-      <data key="d8">33</data>
-      <data key="d9">"The read data bus signal carries 32-bit data from SDC to the master during reads."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">17</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;TRANSFER ACKNOWLEDGE SIGNAL&quot;">
-      <data key="d7">ee14593c-82b8-4f4c-9a56-98c647716f55</data>
-      <data key="d8">34</data>
-      <data key="d9">"The transfer acknowledge signal is asserted high by SDC to complete APB transactions."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">17</data>
-      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
-    </edge>
-    <edge source="&quot;APB SLAVE INTERFACE&quot;" target="&quot;SPI INTERFACE&quot;">
-      <data key="d7">3b58a669-b26d-4092-9dcd-6f414ecdfaf8</data>
-      <data key="d8">54</data>
-      <data key="d9">"The APB slave interface and SPI interface are both part of the SDC, and are used for communication with the host processor and external slave devices, respectively."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">26</data>
+      <data key="d11">10</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SPI INTERFACE&quot;" target="&quot;SERIAL CLOCK&quot;">
-      <data key="d7">a38b5703-4fba-450e-8e4c-6e31f60d3bfa</data>
+      <data key="d7">7bbab668-f1cc-420e-adfa-8b8d3d331e78</data>
       <data key="d8">11</data>
-      <data key="d9">"Serial clock is generated by SDC, with frequency set by the baud rate divisor, which is used in the SPI interface for communication with external slave devices."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">11</data>
+      <data key="d9">"The serial clock signal is generated by the SDC and is used on the SPI interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">8</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SPI INTERFACE&quot;" target="&quot;MASTER DATA OUTPUT&quot;">
-      <data key="d7">f473dc30-28cc-40e1-88c9-643df138f604</data>
+      <data key="d7">147996e3-9197-452b-a05e-2ddf44b473a9</data>
       <data key="d8">12</data>
-      <data key="d9">"Master data output is serial data to the external slave, MSB first, shifted on the falling clock edge, which is used in the SPI interface for communication with external slave devices."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">11</data>
+      <data key="d9">"The master data output signal is used to transmit data from the SDC to the external slave on the SPI interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">8</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SPI INTERFACE&quot;" target="&quot;MASTER DATA INPUT&quot;">
-      <data key="d7">e7cdd713-8dbf-4ba7-8813-e1cd5597269f</data>
+      <data key="d7">2423600a-015d-45a1-8688-b4ae239d3220</data>
       <data key="d8">13</data>
-      <data key="d9">"Master data input is serial data from the external slave, sampled on the rising clock edge, which is used in the SPI interface for communication with external slave devices."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">11</data>
+      <data key="d9">"The master data input signal is used to receive data from the external slave on the SPI interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">8</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
     <edge source="&quot;SPI INTERFACE&quot;" target="&quot;CHIP SELECT&quot;">
-      <data key="d7">d9857aef-fc83-47d9-a015-914dbaf88a00</data>
+      <data key="d7">4d0e6d07-db3e-4b72-b3dd-d427635cdb2b</data>
       <data key="d8">14</data>
-      <data key="d9">"Chip select is an active-low output driven low at the start of a frame to address the external slave, which is used in the SPI interface for communication with external slave devices."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">11</data>
+      <data key="d9">"The chip select signal is used to address the external slave on the SPI interface."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">8</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;SPI INTERFACE&quot;" target="&quot;SERIAL CLOCK SIGNAL&quot;">
-      <data key="d7">472f032a-20a9-4b93-a1f5-725b51104c01</data>
+    <edge source="&quot;SPI INTERFACE&quot;" target="&quot;SPI PROTOCOL&quot;">
+      <data key="d7">955e6754-defc-429a-807f-2699c80120fb</data>
+      <data key="d8">23</data>
+      <data key="d9">"The SPI interface uses the SPI protocol."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">10</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;SYSTEM CLOCK&quot;" target="&quot;BAUD RATE DIVISOR&quot;">
+      <data key="d7">1c298edf-25ff-4922-bb9e-6eb26fd88f42</data>
+      <data key="d8">33</data>
+      <data key="d9">"The system clock is divided by the baud rate divisor to generate the SPI clock."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">7</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;SYSTEM RESET&quot;" target="&quot;CONTROL REGISTER&quot;">
+      <data key="d7">868999ba-e3f6-4283-bce5-09403160d4b1</data>
+      <data key="d8">34</data>
+      <data key="d9">"The system reset clears the control register."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">9</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;SYSTEM RESET&quot;" target="&quot;BAUD RATE DIVISOR&quot;">
+      <data key="d7">5445353b-1f5b-4d05-a72d-7a9e035dbcee</data>
       <data key="d8">35</data>
-      <data key="d9">"The serial clock signal is generated by SDC, with frequency set by the baud rate divisor, and is used in the SPI interface for communication with external slave devices."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">11</data>
+      <data key="d9">"The system reset clears the baud rate divisor."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">8</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;SPI INTERFACE&quot;" target="&quot;MASTER DATA OUTPUT SIGNAL&quot;">
-      <data key="d7">2100f54b-950c-4086-b3de-e09db3a83673</data>
+    <edge source="&quot;SYSTEM RESET&quot;" target="&quot;STATUS REGISTER&quot;">
+      <data key="d7">e221260d-fbfb-46fe-8c89-0c3fe35269b4</data>
       <data key="d8">36</data>
-      <data key="d9">"The master data output signal is serial data to the external slave, MSB first, shifted on the falling clock edge, and is used in the SPI interface for communication with external slave devices."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">11</data>
+      <data key="d9">"The system reset clears the status register."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">8</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;SPI INTERFACE&quot;" target="&quot;MASTER DATA INPUT SIGNAL&quot;">
-      <data key="d7">f3d25402-abdc-407e-952c-e1b140ed8bb1</data>
+    <edge source="&quot;CONTROL REGISTER&quot;" target="&quot;FLOW CONTROL&quot;">
+      <data key="d7">5558743b-90fd-4c58-84bf-0b4c6095bbbf</data>
+      <data key="d8">27</data>
+      <data key="d9">"The control register determines whether flow control is enabled."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">9</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;CONTROL REGISTER&quot;" target="&quot;PARITY CHECKING&quot;">
+      <data key="d7">f6d3d11a-6c43-4a8d-8d71-930a7c746ffe</data>
+      <data key="d8">28</data>
+      <data key="d9">"The control register determines whether parity checking is enabled."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">7</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;CONTROL REGISTER&quot;" target="&quot;INTERRUPT GENERATION&quot;">
+      <data key="d7">13952671-6a60-4387-99d5-5cfe2df554a6</data>
+      <data key="d8">29</data>
+      <data key="d9">"The control register determines whether interrupt generation is enabled."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">7</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;BAUD RATE DIVISOR&quot;" target="&quot;SPI PROTOCOL&quot;">
+      <data key="d7">5330dbf9-7188-4c96-8c1f-3aa9ad5d44e8</data>
+      <data key="d8">30</data>
+      <data key="d9">"The baud rate divisor is used to generate the SPI clock."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">7</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;STATUS REGISTER&quot;" target="&quot;RECEIVE BUFFER&quot;">
+      <data key="d7">cea4f588-8414-45b6-9a5a-5a5b0b52144a</data>
+      <data key="d8">31</data>
+      <data key="d9">"The status register contains status flags related to the receive buffer."</data>
+      <data key="d10">8.0</data>
+      <data key="d11">6</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;STATUS REGISTER&quot;" target="&quot;TRANSMIT BUFFER&quot;">
+      <data key="d7">4907a588-9692-4d67-87b4-da7c4da041c9</data>
+      <data key="d8">32</data>
+      <data key="d9">"The status register contains status flags related to the transmit buffer."</data>
+      <data key="d10">8.0</data>
+      <data key="d11">6</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;SPI PROTOCOL&quot;" target="&quot;SPI CLOCK&quot;">
+      <data key="d7">abbceef5-2903-4263-a7b1-be0f9365dc05</data>
+      <data key="d8">39</data>
+      <data key="d9">"The SPI clock is used for SPI communication."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">4</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;APB PROTOCOL&quot;" target="&quot;APB CLOCK&quot;">
+      <data key="d7">e2c4ae6b-0cef-4892-8a6c-b055515b5c56</data>
+      <data key="d8">40</data>
+      <data key="d9">"The APB clock is used for APB communication."</data>
+      <data key="d10">1.0</data>
+      <data key="d11">3</data>
+      <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
+    </edge>
+    <edge source="&quot;FLOW CONTROL&quot;" target="&quot;CTS&quot;">
+      <data key="d7">530ab304-922c-4f6d-be75-07d13888c7e0</data>
       <data key="d8">37</data>
-      <data key="d9">"The master data input signal is serial data from the external slave, sampled on the rising clock edge, and is used in the SPI interface for communication with external slave devices."</data>
-      <data key="d10">8.0</data>
-      <data key="d11">11</data>
+      <data key="d9">"The CTS signal is used for flow control."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">5</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
-    <edge source="&quot;SPI INTERFACE&quot;" target="&quot;CHIP SELECT SIGNAL&quot;">
-      <data key="d7">33568384-61e4-46b0-9c6d-98ac0928cd6e</data>
+    <edge source="&quot;FLOW CONTROL&quot;" target="&quot;RTS&quot;">
+      <data key="d7">cdcc63e6-619a-43d5-bef5-add0b294ccee</data>
       <data key="d8">38</data>
-      <data key="d9">"The chip select signal is an active-low output driven low at the start of a frame to address the external slave, and is used in the SPI interface for communication with external slave devices."</data>
-      <data key="d10">7.0</data>
-      <data key="d11">11</data>
+      <data key="d9">"The RTS signal is used for flow control."</data>
+      <data key="d10">9.0</data>
+      <data key="d11">5</data>
       <data key="d12">['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']</data>
     </edge>
   </graph>

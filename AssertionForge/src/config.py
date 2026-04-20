@@ -4,8 +4,8 @@ from utils import get_user, get_host
 from collections import OrderedDict 
 
 # task = 'build_KG'
-# task = 'build_KG'
 task = 'gen_plan'
+
 
 ROOT = Path(__file__).resolve().parents[1]
 

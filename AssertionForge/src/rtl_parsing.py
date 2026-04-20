@@ -2,6 +2,8 @@ from utils_gen_plan import count_tokens_in_file
 import os
 import re
 import sys
+import json
+from datetime import datetime
 import networkx as nx
 from signal_aligner import SignalAligner
 from utils_LLM import get_llm
@@ -145,6 +147,35 @@ def link_spec_and_rtl_graphs(spec_kg: nx.Graph, design_dir: str) -> nx.Graph:
     print(f"SignalAligner returned {len(alias_table)} lookup keys")
     unresolved = aligner.get_unresolved_signals()
     print(f"SignalAligner unresolved entries (<0.7 confidence): {len(unresolved)}")
+
+    # Persist a high-level signal mapping overview for this run
+    if hasattr(saver, 'logdir') and saver.logdir:
+        try:
+            overview_path = os.path.join(saver.logdir, "signal_mapping_overview.json")
+            alias_summary_path = os.path.join(
+                out_dir,
+                os.path.basename(design_dir),
+                "alias_summary.json",
+            )
+            payload = {
+                "generated_at": datetime.now().isoformat(),
+                "design_dir": design_dir,
+                "logdir": saver.logdir,
+                "aligner_output_dir": out_dir,
+                "alias_lookup_key_count": len(alias_table),
+                "unresolved_count": len(unresolved),
+                "alias_summary_path": alias_summary_path,
+                "notes": [
+                    "This file summarizes what was passed through the signal mapping stage.",
+                    "Detailed per-signal decisions are in signal_mapping_decisions.json.",
+                    "Raw LLM prompts and responses are under aligner_output_dir/<design_name>/.",
+                ],
+            }
+            with open(overview_path, "w") as f:
+                json.dump(payload, f, indent=2)
+            print(f"Saved signal mapping overview to {overview_path}")
+        except Exception as e:
+            print(f"Warning: failed to save signal mapping overview: {e}")
 
     # Add additional links based on signal name matching
     signal_link_count = link_signals_to_spec(combined_kg, rtl_node_mapping, aligner)
@@ -372,6 +403,7 @@ def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict, aligner=
     link_count = 0
     created_links = []  # Store details of created links
     mapping_logs = []   # Store logs specifically for saving to file
+    mapping_records = []  # Structured per-signal decision records
 
     # Identify RTL signal nodes (ports and internal signals)
     rtl_signal_nodes = [
@@ -380,12 +412,21 @@ def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict, aligner=
         if data.get('source') == 'rtl' and data.get('type') in ['port', 'signal']
     ]
 
-    # Identify spec nodes
-    spec_nodes = [
-        node
-        for node, data in combined_kg.nodes(data=True)
-        if data.get('source') != 'rtl'
-    ]
+    # Identify spec nodes (restrict to signal-like semantic nodes only)
+    allowed_spec_types = {
+        'SIGNAL',
+        'CLOCK',
+        'RESET',
+        'REGISTER',
+        'PORT',
+    }
+    spec_nodes = []
+    for node, data in combined_kg.nodes(data=True):
+        if data.get('source') == 'rtl':
+            continue 
+        node_type = str(data.get('type', '')).strip('"').upper()
+        if node_type in allowed_spec_types:
+            spec_nodes.append(node)
 
     print(
         f"\nAttempting to link {len(rtl_signal_nodes)} RTL signals to {len(spec_nodes)} spec nodes"
@@ -436,6 +477,15 @@ def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict, aligner=
         
         mapping_logs.append(f"RTL Signal: {signal_name}")
         mapping_logs.append(f"  -> normalized: {normalized_signal_name}")
+        signal_record = {
+            "rtl_node_id": signal_node,
+            "rtl_signal_raw": signal_name,
+            "rtl_signal_normalized": normalized_signal_name,
+            "alignment_found": bool(alignment),
+            "alignment": alignment if alignment else None,
+            "method": "llm_alignment" if alignment and alignment.get('confidence', 0) >= 0.7 else "fallback_string_fuzzy",
+            "created_links": [],
+        }
         if alignment:
             mapping_logs.append(f"  --> LLM Alignment output: {alignment}")
         else:
@@ -455,14 +505,15 @@ def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict, aligner=
                         continue
 
                     node_name = combined_kg.nodes[spec_node].get('name', '')
-                    node_desc = combined_kg.nodes[spec_node].get('description', '')
                     node_name_norm = str(node_name).strip('"').strip().lower()
-                    node_desc_norm = str(node_desc).lower()
                     is_match = (
                         mention_norm == node_name_norm
                         or mention_norm in node_name_norm
-                        or node_name_norm in mention_norm
-                        or (len(mention_norm) >= 6 and mention_norm in node_desc_norm)
+                        or (
+                            len(mention_norm) >= 8
+                            and len(node_name_norm) >= 8
+                            and node_name_norm in mention_norm
+                        )
                     )
 
                     if is_match:
@@ -487,6 +538,17 @@ def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict, aligner=
                         msg = f"Linked spec node to RTL signal (LLM): {spec_node} --corresponds_to--> {signal_node}"
                         print(msg)
                         mapping_logs.append(f"  [SUCCESS] {msg}")
+                        signal_record["created_links"].append(
+                            {
+                                "spec_node_id": spec_node,
+                                "spec_node_name": combined_kg.nodes[spec_node].get('name', ''),
+                                "relationship": "corresponds_to",
+                                "confidence": alignment.get('confidence'),
+                                "canonical": alignment.get('canonical_name'),
+                                "active_low": alignment.get('active_low', False),
+                                "match_method": alignment.get('match_method', 'llm_alignment'),
+                            }
+                        )
                         matched_spec_nodes.add(spec_node)
         else:
             # Fallback to existing logic
@@ -526,7 +588,17 @@ def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict, aligner=
                         msg = f"Linked spec node to RTL signal (String matching): {spec_node} --references--> {signal_node}"
                         print(msg)
                         mapping_logs.append(f"  [SUCCESS] {msg}")
+                        signal_record["created_links"].append(
+                            {
+                                "spec_node_id": spec_node,
+                                "spec_node_name": combined_kg.nodes[spec_node].get('name', ''),
+                                "relationship": "references",
+                                "confidence": 0.5,
+                                "match_method": "string_fuzzy",
+                            }
+                        )
         mapping_logs.append("-" * 40)
+        mapping_records.append(signal_record)
 
     # Save mapping logs to file
     if hasattr(saver, 'logdir') and saver.logdir:
@@ -535,6 +607,40 @@ def link_signals_to_spec(combined_kg: nx.Graph, rtl_node_mapping: dict, aligner=
         with open(log_file_path, "w") as f:
             f.write("\n".join(mapping_logs))
         print(f"Saved signal mapping log to {log_file_path}")
+
+        try:
+            json_file_path = os.path.join(saver.logdir, "signal_mapping_decisions.json")
+            alias_values = []
+            if aligner is not None and hasattr(aligner, 'alias_table'):
+                seen_aliases = set()
+                for entry in aligner.alias_table.values():
+                    if not isinstance(entry, dict):
+                        continue
+                    k = (
+                        entry.get('rtl_module', ''),
+                        entry.get('rtl_name', ''),
+                        entry.get('canonical_name', ''),
+                    )
+                    if k in seen_aliases:
+                        continue
+                    seen_aliases.add(k)
+                    alias_values.append(entry)
+
+            payload = {
+                "generated_at": datetime.now().isoformat(),
+                "rtl_signal_count": len(rtl_signal_nodes),
+                "spec_node_count": len(spec_nodes),
+                "created_link_count": link_count,
+                "rtl_signal_names": [combined_kg.nodes[n].get('name', str(n)) for n in rtl_signal_nodes],
+                "spec_node_names": [combined_kg.nodes[n].get('name', str(n)) for n in spec_nodes],
+                "alias_table_unique_entries": alias_values,
+                "per_signal_decisions": mapping_records,
+            }
+            with open(json_file_path, "w") as f:
+                json.dump(payload, f, indent=2)
+            print(f"Saved structured signal mapping decisions to {json_file_path}")
+        except Exception as e:
+            print(f"Warning: failed to save structured signal mapping decisions: {e}")
 
     # Print summary of signal links
     if link_count > 0:
