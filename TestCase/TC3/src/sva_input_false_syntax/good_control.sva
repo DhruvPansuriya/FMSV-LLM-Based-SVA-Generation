@@ -1,0 +1,4 @@
+property p_ok;
+  @(posedge PCLK) (PSEL && PENABLE) |-> ##1 (PREADY == 1'b1);
+endproperty
+assert property (p_ok);

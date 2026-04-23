@@ -1,0 +1,50 @@
+Starting local embedding proxy: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/local_embedding_proxy.py
+Waiting for embedding proxy to be ready...
+Embedding proxy is ready.
+Derived base directory: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec
+Step 1: Processing input file(s)
+Cleaned up input folder: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec/graph_rag_apb/input
+PDF Statistics for apb_spec.pdf:
+  Pages: 1
+  File size: 0.00 MB
+  Word count: 276
+  Token count: 424
+Step 2: Initializing GraphRAG
+export PYTHONPATH='/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-llm:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-common:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-cache:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-chunking:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-vectors:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-storage:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-input:$PYTHONPATH' && "/opt/homebrew/opt/python@3.14/bin/python3.14" -m graphrag init --root '/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec/graph_rag_apb' --model gpt-4-turbo-preview --embedding text-embedding-3-small
+GraphRAG project already initialized. Skipping initialization.
+Step 3: Updating .env file
+Copied .env from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/rag_apb/.env to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec/graph_rag_apb
+Step 4: Updating settings.yaml file
+Copied settings.yaml from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/rag_apb/settings.yaml to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec/graph_rag_apb
+Step 5: Copying entity extraction prompt
+Copied entity extraction prompt from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/entity_extraction.txt to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec/graph_rag_apb/prompts/entity_extraction.txt
+Step 6: Running GraphRAG indexing
+Running command: /opt/homebrew/opt/python@3.14/bin/python3.14 -u -m graphrag index --verbose --root /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec/graph_rag_apb
+PYTHONPATH set to: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-llm:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-common:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-cache:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-chunking:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-vectors:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-storage:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-input
+--------------------------------------------------
+Starting GraphRAG Indexing (output streaming to console)...
+--------------------------------------------------
+GraphRAG indexing completed successfully
+Step 7: Detecting GraphRAG log folder
+Running command: /opt/homebrew/opt/python@3.14/bin/python3.14 -u -m graphrag index --verbose --root /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec/graph_rag_apb
+PYTHONPATH set to: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-llm:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-common:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-cache:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-chunking:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-vectors:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-storage:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-input
+--------------------------------------------------
+Starting GraphRAG Indexing (output streaming to console)...
+--------------------------------------------------
+GraphRAG indexing completed successfully
+No new GraphRAG log folder detected
+Process completed successfully
+Timer log ***********************************************************
+Total duration 39.308 secs
+create_directory_structure       : 12.428 secs (31.62%)
+clean_input_folder               : 0.471 msecs (0.00%)
+process_files                    : 100.047 msecs (0.25%)
+initialize_graphrag              : 643.619 msecs (1.64%)
+Updating .env file               : 0.693 msecs (0.00%)
+Updating settings.yaml file      : 0.372 msecs (0.00%)
+Copying entity extraction prompt : 0.493 msecs (0.00%)
+run_graphrag_index               : 26.134 secs (66.49%)
+Timer log ***********************************************************
+Total time: 39.308 secs; Total number of files: 4; Total folder size: 22.26 KiB
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/build_KG_2026-04-19T05-04-51.983824_Mac_dhruvrpansuriya
+build_KG_2026-04-19T05-04-51.983824_Mac_dhruvrpansuriya

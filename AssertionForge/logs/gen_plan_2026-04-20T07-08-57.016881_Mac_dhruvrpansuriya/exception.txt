@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 40, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 26, in main
+    gen_plan()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 206, in gen_plan
+    nl_plans = generate_nl_plans(
+        spec_text,
+    ...<4 lines>...
+        context_summarizer,  # Pass the context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 538, in generate_nl_plans
+    return generate_dynamic_nl_plans(
+        spec_text, kg, llm_agent, valid_signals, rtl_knowledge, context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 583, in generate_dynamic_nl_plans
+    dynamic_context_list = prompt_builder.build_prompt(
+        query=query,
+    ...<2 lines>...
+        enable_context_enhancement=FLAGS.enable_context_enhancement,  # Pass the enhancement flag
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/dynamic_prompt_builder.py", line 143, in build_prompt
+    contexts = generator.get_contexts(
+        start_nodes,
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_generator_path.py", line 63, in get_contexts
+    significant_paths = self._find_significant_paths(node_id)
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_generator_path.py", line 138, in _find_significant_paths
+    path_metrics = self._calculate_path_metrics(path)
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_generator_path.py", line 254, in _calculate_path_metrics
+    'edge_density': nx.density(subgraph),
+                    ~~~~~~~~~~^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/classes/function.py", line 132, in density
+    m = number_of_edges(G)
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/classes/function.py", line 103, in number_of_edges
+    return G.number_of_edges()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/classes/graph.py", line 2008, in number_of_edges
+    return int(self.size())
+               ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/classes/graph.py", line 1954, in size
+    s = sum(d for v, d in self.degree(weight=weight))
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/classes/graph.py", line 1954, in <genexpr>
+    s = sum(d for v, d in self.degree(weight=weight))
+                          ~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/classes/reportviews.py", line 536, in __iter__
+    yield (n, len(nbrs) + (n in nbrs))
+              ~~~^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/classes/coreviews.py", line 291, in __len__
+    return sum(1 for n in self._atlas if self.NODE_OK(n))
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/classes/coreviews.py", line 291, in <genexpr>
+    return sum(1 for n in self._atlas if self.NODE_OK(n))
+                                         ~~~~~~~~~~~~^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/classes/coreviews.py", line 355, in new_node_ok
+    return self.NODE_OK(nbr) and self.EDGE_OK(node, nbr)
+           ~~~~~~~~~~~~^^^^^
+KeyboardInterrupt
+

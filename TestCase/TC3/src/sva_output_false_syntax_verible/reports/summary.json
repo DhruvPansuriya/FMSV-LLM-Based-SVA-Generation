@@ -1,0 +1,17 @@
+{
+  "total": 5,
+  "accepted": 2,
+  "discarded": 3,
+  "accepted_files": [
+    "bad_missing_semicolon.sva",
+    "good_control.sva"
+  ],
+  "discarded_files": [
+    "bad_bad_operator.sva",
+    "bad_missing_endproperty.sva",
+    "bad_unbalanced_paren.sva"
+  ],
+  "alias_json_used": null,
+  "valid_alias_count": 0,
+  "loop_a_enabled": false
+}

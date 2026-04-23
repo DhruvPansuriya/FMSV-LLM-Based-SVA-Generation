@@ -1,0 +1,12 @@
+{
+  "total": 2,
+  "accepted": 0,
+  "discarded": 2,
+  "accepted_files": [],
+  "discarded_files": [
+    "bad_signal_1.sv",
+    "ok_1.sv"
+  ],
+  "alias_json_used": "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/output/TC3/signal_aliases.json",
+  "valid_alias_count": 26
+}

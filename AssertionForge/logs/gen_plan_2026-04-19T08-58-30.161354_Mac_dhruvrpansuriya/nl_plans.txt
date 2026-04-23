@@ -1,0 +1,37 @@
+Signal PADDR:
+Plan 1: PADDR: that when PADDR is within the range of 0 to 1023, the signal PSLVERR will be low, indicating no error.
+Plan 2: PADDR: that if PADDR is within the range of 1024 to 2047, the signal PSLVERR will be high, indicating an error.
+Plan 3: PADDR: that the address signal PADDR will be stable for at least one clock cycle when PENABLE is high and PSEL is high.
+Plan 4: PADDR: that when PADDR is within the range of 0 to 31, the signal PRDATA will reflect the written data.
+Plan 5: PADDR: that if PADDR is outside the range of 0 to 1023, the signal PREADY will be low, indicating that the slave is not ready.
+Plan 6: PADDR: that the address signal PADDR will be within the range of 0 to 1023 when PRESETn is high and PCLK is rising.
+Plan 7: PADDR: that when PADDR is within the range of 32 to 63, the signal PSLVERR will be low and PRDATA will reflect the written data.
+Plan 8: PADDR: that if PADDR is within the range of 64 to 95, the signal PREADY will be high and PRDATA will be valid.
+Plan 9: PADDR: that the address signal PADDR will be within the range of 0 to 31 when PWRITE is low and PSEL is high.
+Plan 10: PADDR: that when PADDR is within the range of 128 to 159, the signal PSLVERR will be low and PRDATA will reflect the written data.
+
+Signal PCLK:
+Plan 11: PCLK: that when PCLK has a rising edge, PADDR will be stable for the next clock cycle.
+Plan 12: PCLK: that after a reset signal PRESETn is deasserted, PCLK will have at least 3 rising edges before PENABLE is asserted.
+Plan 13: PCLK: that the time between two consecutive rising edges of PCLK must always be greater than or equal to the minimum clock period.
+Plan 14: PCLK: that when PWRITE is high, PCLK will have at least one rising edge before PREADY becomes high.
+Plan 15: PCLK: that PSEL will remain high for at least two consecutive rising edges of PCLK during a write transfer.
+Plan 16: PCLK: that the number of rising edges of PCLK between two consecutive assertions of PENABLE will be at least one.
+Plan 17: PCLK: that during a read transfer, PRDATA will be stable for at least one clock cycle after the rising edge of PCLK when PREADY is high.
+Plan 18: PCLK: that PCLK will have at least one rising edge after PRESETn becomes deasserted before PSLVERR can be asserted.
+Plan 19: PCLK: that the rising edge of PCLK will always occur after the falling edge of PRESETn.
+Plan 20: PCLK: that when PADDR is being driven, there must be at least one rising edge of PCLK before PADDR changes value.
+Plan 21: PCLK: that PCLK will have a rising edge within 2 clock cycles after PRESETn is deasserted to indicate the start of normal operation.
+
+Signal PENABLE:
+Plan 22: PENABLE: that when PENABLE is asserted, PREADY will be high in the next cycle if PADDR is within the valid range.
+Plan 23: PENABLE: that when PENABLE is asserted and PSEL is high, the transfer will complete at the end of the ACCESS cycle if PREADY is high.
+Plan 24: PENABLE: that PENABLE will be low during the IDLE state and will be asserted during the ACCESS state.
+Plan 25: PENABLE: that when PENABLE is asserted and PWRITE is high, the write data PWDATA will be written to the address specified by PADDR.
+Plan 26: PENABLE: that if PENABLE is asserted and PADDR is out of range, PSLVERR will be set high.
+Plan 27: PENABLE: that PENABLE will be deasserted when the transfer is complete and the bus returns to the IDLE state.
+Plan 28: PENABLE: that when PENABLE is asserted and PSEL is high, the read data PRDATA will be valid if PREADY is high.
+Plan 29: PENABLE: that PENABLE will be low during the SETUP state and will be asserted during the ACCESS state if PSEL is high.
+Plan 30: PENABLE: that when PENABLE is asserted and PWRITE is low, the read data PRDATA will be read from the address specified by PADDR.
+Plan 31: PENABLE: that if PENABLE is asserted and PREADY is low, the bus will remain in the ACCESS state until PREADY becomes high.
+

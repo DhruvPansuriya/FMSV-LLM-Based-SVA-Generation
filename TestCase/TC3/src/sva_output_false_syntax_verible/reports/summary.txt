@@ -1,0 +1,23 @@
+SVA Batch Filter + Repair Summary
+==================================
+Input dir: TestCase/TC3/src/sva_input_false_syntax
+Output dir: TestCase/TC3/src/sva_output_false_syntax_verible
+Loop A enabled: False
+Alias JSON: N/A (Loop A disabled)
+Valid alias count: 0
+Total files: 5
+Accepted: 2
+Discarded: 3
+
+Discard reasons:
+- bad_bad_operator.sva: Loop B failed after 1 repair attempt (Verible syntax still invalid)
+Final Verible error:
+/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmp9brs4494.sv:3:37-38: syntax error at token "=>"
+/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmp9brs4494.sv:4:1-11: syntax error at token "endproperty"
+- bad_missing_endproperty.sva: Loop B failed after 1 repair attempt (Verible syntax still invalid)
+Final Verible error:
+/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmpqij5hmlx.sv:3:3: syntax error at token "@"
+- bad_unbalanced_paren.sva: Loop B failed after 1 repair attempt (Verible syntax still invalid)
+Final Verible error:
+/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmpp025d4kx.sv:3:60: syntax error at token ";"
+/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmpp025d4kx.sv:4:1-11: syntax error at token "endproperty"

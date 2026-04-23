@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-04-20T20:10:01.221339",
+  "design_dir": "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3",
+  "logdir": "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T07-39-32.292780_Mac_dhruvrpansuriya",
+  "aligner_output_dir": "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T07-39-32.292780_Mac_dhruvrpansuriya/output",
+  "alias_lookup_key_count": 53,
+  "unresolved_count": 1,
+  "alias_summary_path": "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T07-39-32.292780_Mac_dhruvrpansuriya/output/TC3/alias_summary.json",
+  "notes": [
+    "This file summarizes what was passed through the signal mapping stage.",
+    "Detailed per-signal decisions are in signal_mapping_decisions.json.",
+    "Raw LLM prompts and responses are under aligner_output_dir/<design_name>/."
+  ]
+}

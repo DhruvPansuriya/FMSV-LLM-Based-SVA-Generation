@@ -1,0 +1,868 @@
+Starting the test plan generation process...
+Step 1: Reading the PDF file(s)...
+First 5 lines of spec_text (truncated):
+The APB (Advanced Peripheral Bus) is part of the AMBA protocol family. It provides a low-cost interface that is optimized for minimal power consumption and reduced interface complexity.
+The APB interface consists of the following signals:
+- PCLK: Clock signal.
+- PRESETn: Active low reset signal.
+- PADDR: Address bus (up to 32 bits).
+...
+Total number of lines in spec_text: 32
+Step 2: Loading and processing the Knowledge Graph...
+Knowledge Graph loaded from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec/graph_rag_apb/output/clustered_graph.graphml
+Number of nodes: 18
+Number of edges: 17
+
+Example node attributes:
+  type: SIGNAL
+  description: PCLK is the clock signal for the APB interface.
+  id: 2e49663b-e751-42ff-abce-188e4bc55385
+
+Example edge attributes:
+  description: The APB uses the PRESETn signal for reset operations.
+  weight: 18.0
+
+Node attribute keys:
+id, description, type
+
+Edge attribute keys:
+description, weight
+Step 2b: Refining Knowledge Graph with RTL information...
+Starting Knowledge Graph refinement with RTL from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/rtl
+Initial specification KG has 18 nodes and 17 edges
+
+=== Specification KG Analysis ===
+Node types in specification KG:
+  - PROTOCOL: 2 nodes
+  - SIGNAL: 7 nodes
+  - BUS: 3 nodes
+  - STATE: 3 nodes
+  - OPERATION: 3 nodes
+Specification KG has 0 nodes with 'text' attributes for matching
+Built knowledge graph with 40 nodes and 50 edges
+Built RTL KG with 40 nodes and 50 edges
+Added 40 RTL nodes and 50 RTL edges to combined KG
+
+=== Link Summary ===
+Total links created: 19
+- contains_spec: 18 links
+- contains_implementation: 1 links
+
+=== Link Examples ===
+
+Examples of 'contains_spec' links:
+  1. design_root --contains_spec--> APB
+     Target node details:
+       type: PROTOCOL
+       description: The APB is a part of the AMBA protocol family with a low-cost interface for minimal power consumption and reduced interface complexity.
+       id: fbdea67e-2ea8-4434-b47b-ff108dfa5716
+  2. design_root --contains_spec--> AMBA PROTOCOL FAMILY
+     Target node details:
+       type: PROTOCOL
+       description: The AMBA protocol family is a set of protocols for bus communication, of which APB is a part.
+       id: 3e57ffd6-7954-4cec-873e-9080634d52f8
+  3. design_root --contains_spec--> PCLK
+     Target node details:
+       type: SIGNAL
+       description: PCLK is the clock signal for the APB interface.
+       id: 2e49663b-e751-42ff-abce-188e4bc55385
+
+Examples of 'contains_implementation' links:
+  1. design_root --contains_implementation--> rtl_0
+     Target node details:
+       type: module
+       name: apb_slave
+       original_id: module:apb_slave
+       source: rtl
+Created 19 links between specification and RTL nodes
+
+Attempting to link 10 RTL signals to 19 spec nodes
+Created 0 additional links based on signal name matching
+Graph is already connected
+Graph is connected
+Number of connected components: 1
+Number of bridges between RTL and spec: 1
+  Bridge 1: rtl_0 (module: apb_slave) ---> design_root (root: Design Root)
+
+=== High-Degree Nodes (Hubs) ===
+  Node: rtl_0 (module: apb_slave)
+  Degree: 40 connections
+  Source: rtl
+  Connected to:
+    - rtl_1 (port: input  wire        pclk)
+    - rtl_2 (port: input  wire        presetn)
+    - rtl_3 (port: input  wire        psel)
+    - rtl_4 (port: input  wire        penable)
+    - rtl_5 (port: input  wire        pwrite)
+    - ... and 35 more
+
+  Node: design_root (root: Design Root)
+  Degree: 19 connections
+  Source: spec
+  Connected to:
+    - APB (PROTOCOL: APB)
+    - AMBA PROTOCOL FAMILY (PROTOCOL: AMBA PROTOCOL FAMILY)
+    - PCLK (SIGNAL: PCLK)
+    - PRESETN (SIGNAL: PRESETN)
+    - PADDR (BUS: PADDR)
+    - ... and 14 more
+
+  Node: APB (PROTOCOL: APB)
+  Degree: 14 connections
+  Source: spec
+  Connected to:
+    - PCLK (SIGNAL: PCLK)
+    - PRESETN (SIGNAL: PRESETN)
+    - PADDR (BUS: PADDR)
+    - PSEL (SIGNAL: PSEL)
+    - PENABLE (SIGNAL: PENABLE)
+    - ... and 9 more
+
+  Node: PWRITE (SIGNAL: PWRITE)
+  Degree: 4 connections
+  Source: spec
+  Connected to:
+    - APB (PROTOCOL: APB)
+    - WRITE TRANSFER (OPERATION: WRITE TRANSFER)
+    - READ TRANSFER (OPERATION: READ TRANSFER)
+    - design_root (root: Design Root)
+
+  Node: rtl_18 (verification_point: data_stability)
+  Degree: 4 connections
+  Source: rtl
+  Connected to:
+    - rtl_0 (module: apb_slave)
+    - rtl_7 (port: input  wire [31:0] pwdata)
+    - rtl_8 (port: output reg  [31:0] prdata)
+    - rtl_3 (port: input  wire        psel)
+
+Combined KG now has 59 nodes and 86 edges
+Refined Knowledge Graph now has 59 nodes and 86 edges
+Step 3: Initializing the language model...
+Step 4: Extracting valid signal names...
+Valid signal names: PADDR, PCLK, PENABLE, PRDATA, PREADY, PRESETn, PSEL, PSLVERR, PWDATA, PWRITE
+Step 5: Generating natural language test plans...
+
+=== KG Structure ===
+KG is a dictionary with keys: ['nodes', 'edges']
+  nodes: list with 59 items
+    First item type: <class 'dict'>
+    First item keys: ['id', 'attributes']
+  edges: list with 86 items
+    First item type: <class 'dict'>
+    First item keys: ['source', 'target', 'attributes']
+
+Building signal name to node ID mapping for 10 signals...
+
+=== Building signal to node mapping for 10 signals ===
+Valid signals: ['PCLK', 'PRESETn', 'PSEL', 'PENABLE', 'PWRITE', 'PADDR', 'PWDATA', 'PRDATA', 'PREADY', 'PSLVERR']
+KG structure: ['nodes', 'edges']
+Number of nodes in KG: 59
+
+Node type distribution in KG:
+  PROTOCOL: 2 nodes
+  SIGNAL: 7 nodes
+  BUS: 3 nodes
+  STATE: 3 nodes
+  OPERATION: 3 nodes
+  module: 1 nodes
+  port: 10 nodes
+  fsm: 1 nodes
+  protocol_pattern: 5 nodes
+  verification_point: 2 nodes
+  assignment: 21 nodes
+  root: 1 nodes
+
+Signal mentions by node type:
+  PCLK: No mentions found in node names
+  PRESETn: No mentions found in node names
+  PSEL: No mentions found in node names
+  PENABLE: No mentions found in node names
+  PWRITE: No mentions found in node names
+  PADDR: No mentions found in node names
+  PWDATA: No mentions found in node names
+  PRDATA: {'assignment': 2}
+  PREADY: {'assignment': 4}
+  PSLVERR: {'assignment': 4}
+
+=== Signal mapping results ===
+WARNING: No node mapping found for signal 'PCLK'
+WARNING: No node mapping found for signal 'PRESETn'
+WARNING: No node mapping found for signal 'PSEL'
+WARNING: No node mapping found for signal 'PENABLE'
+WARNING: No node mapping found for signal 'PWRITE'
+Signal 'PADDR' mapped to 1 nodes: ['rtl_38']
+WARNING: No node mapping found for signal 'PWDATA'
+Signal 'PRDATA' mapped to 2 nodes: ['rtl_27', 'rtl_38']
+Signal 'PREADY' mapped to 4 nodes: ['rtl_25', 'rtl_33', 'rtl_34', 'rtl_35']
+Signal 'PSLVERR' mapped to 4 nodes: ['rtl_26', 'rtl_31', 'rtl_36', 'rtl_37']
+Created mappings for 4 signals
+Signal 'PREADY' mapped to 4 nodes: ['rtl_25', 'rtl_33', 'rtl_34', 'rtl_35']
+Signal 'PSLVERR' mapped to 4 nodes: ['rtl_26', 'rtl_31', 'rtl_36', 'rtl_37']
+Signal 'PRDATA' mapped to 2 nodes: ['rtl_27', 'rtl_38']
+Signal 'PADDR' mapped to 1 nodes: ['rtl_38']
+Using LLM-based context pruning
+Processing signal 1/10: PADDR
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PADDR']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: The APB (Advanced Peripheral Bus) is part of the AMBA protocol family. It provides a low-cost interface that is optimized for minimal power consumption and reduced interface complexity. The APB interface consists of the following signals: - PCLK: Clock signal. - PRESETn: Active low reset signal. - PADDR: Address bus (up to 32 bits). - PSEL: Select signal. - PENABLE: Enable signal. - PWRITE: Read/Write control signal. High for write, low for read. - PWDATA: Write data bus (up to 32 bits). - PRDATA: Read data bus (up to 32 bits). - PREADY: Ready signal. - PSLVERR: Slave error signal.
+
+Processing generator: path
+Mapped signal 'PADDR' to 1 nodes
+Using 1/1 valid nodes for path context generation
+  Found 30 potential endpoints for rtl_38
+Found 155 significant paths for node rtl_38
+Generated 155 path-based contexts
+path generator returned 155 contexts
+Added 155 contexts from path, total now: 165
+Sample path context: PATH ANALYSIS FROM PRDATA_assignment TO PSLVERR
+Path length: 5 nodes with clustering 0.47
+Source: PRDATA_assignment (assignment) in module apb_slave
+Target: PSLVERR (SIGNAL) in module unknown
+
+Relationship chain:
+  PRDATA_assignment (assignment in apb_slave) part_of apb_slave (module)
+  apb_slave (module) contains_implementation Design Root (root)
+  Design Root (root) contains_spec APB (PROTOCOL)
+  APB (PROTOCOL) → PSLVERR (SIGNAL)
+
+Analysis:
+  • Cross-module path connecting: apb_slave
+
+Pruning 165 contexts...
+Using LLM-based context pruning
+Pruning 165 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 16.12 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 4 of type rag
+Evaluating 155 contexts of type 'path'
+Pre-filtering 155 contexts of type 'path' based on score
+LLM evaluation for path took 15.55 seconds
+Selected context 0 of type path
+Selected context 2 of type path
+Selected context 3 of type path
+Selected context 4 of type path
+Final selection: 8 contexts
+After pruning: 8 contexts remain
+Selected contexts by type: {'rag': 4, 'path': 4}
+Context distribution plan: {'rag': [4], 'path': [4], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 7
+Prompt 1: 8 contexts, 608 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal PADDR
+Processing dynamic context 1/1 for PADDR
+Generated 10 plans from context 1 for signal PADDR
+Generated 10 unique plans for signal PADDR from 10 total plans
+Processing signal 2/10: PCLK
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PCLK']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: );
+
+  // Internal memory (16 registers of 32-bits)
+  reg [DATA_WIDTH-1:0] mem [0:15];
+  
+  // State machine for wait state injection (for demonstration)
+  // STATE_IDLE: 0, STATE_ACCESS: 1
+  reg state;
+  localparam IDLE = 1'b0, ACCESS = 1'b1;
+
+  // ---------------------------------------------------------------------------
+  // APB Protocol Logic
+  // ---------------------------------------------------------------------------
+  always @(posedge PCLK or negedge PRESETn) begin
+
+Processing generator: path
+No mapping found for 'PCLK', using as-is
+Using 1/1 valid nodes for path context generation
+  Found 30 potential endpoints for PCLK
+Found 698 significant paths for node PCLK
+Generated 698 path-based contexts
+path generator returned 698 contexts
+Added 698 contexts from path, total now: 708
+Sample path context: PATH ANALYSIS FROM PCLK TO PENABLE
+Path length: 5 nodes with clustering 0.80
+Source: PCLK (SIGNAL) in module unknown
+Target: PENABLE (SIGNAL) in module unknown
+
+Relationship chain:
+  PCLK (SIGNAL) → APB (PROTOCOL)
+  APB (PROTOCOL) → PRESETN (SIGNAL)
+  PRESETN (SIGNAL) contains_spec Design Root (root)
+  Design Root (root) contains_spec PENABLE (SIGNAL)
+
+Analysis:
+
+Pruning 708 contexts...
+Using LLM-based context pruning
+Pruning 708 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 15.36 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 3 of type rag
+Evaluating 698 contexts of type 'path'
+Pre-filtering 698 contexts of type 'path' based on score
+LLM evaluation for path took 15.73 seconds
+Selected context 0 of type path
+Selected context 1 of type path
+Selected context 2 of type path
+Selected context 4 of type path
+Final selection: 7 contexts
+After pruning: 7 contexts remain
+Selected contexts by type: {'rag': 3, 'path': 4}
+Context distribution plan: {'rag': [3], 'path': [4], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 7
+Prompt 1: 7 contexts, 453 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal PCLK
+Processing dynamic context 1/1 for PCLK
+Generated 10 plans from context 1 for signal PCLK
+Generated 10 unique plans for signal PCLK from 10 total plans
+Processing signal 3/10: PENABLE
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PENABLE']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context:            // Access Phase
+           if (PSEL && PENABLE) begin
+             PREADY <= 1'b1; // Ready to complete transfer
+             
+             // Check address range (simulation of error for out-of-bound access)
+             if (PADDR[31:6] != 0) begin // Assuming base address 0 for simplicity
+                PSLVERR <= 1'b1; 
+             end else begin
+                PSLVERR <= 1'b0;
+                
+                // Read/Write Logic
+
+Processing generator: path
+No mapping found for 'PENABLE', using as-is
+Using 1/1 valid nodes for path context generation
+  Found 30 potential endpoints for PENABLE
+Found 716 significant paths for node PENABLE
+Generated 716 path-based contexts
+path generator returned 716 contexts
+Added 716 contexts from path, total now: 726
+Sample path context: PATH ANALYSIS FROM PENABLE TO APB
+Path length: 2 nodes with clustering 0.00
+Source: PENABLE (SIGNAL) in module unknown
+Target: APB (PROTOCOL) in module unknown
+
+Relationship chain:
+  PENABLE (SIGNAL) → APB (PROTOCOL)
+
+Analysis:
+
+Pruning 726 contexts...
+Using LLM-based context pruning
+Pruning 726 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 15.62 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 3 of type rag
+Evaluating 716 contexts of type 'path'
+Pre-filtering 716 contexts of type 'path' based on score
+LLM evaluation for path took 15.68 seconds
+Selected context 0 of type path
+Selected context 1 of type path
+Selected context 2 of type path
+Selected context 4 of type path
+Final selection: 8 contexts
+After pruning: 8 contexts remain
+Selected contexts by type: {'rag': 4, 'path': 4}
+Context distribution plan: {'rag': [4], 'path': [4], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 7
+Prompt 1: 8 contexts, 492 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal PENABLE
+Processing dynamic context 1/1 for PENABLE
+Generated 10 plans from context 1 for signal PENABLE
+Generated 10 unique plans for signal PENABLE from 10 total plans
+Reached max signals limit (3), stopping.
+Step 6: Generating SVAs...
+
+=== KG Structure ===
+KG is a dictionary with keys: ['nodes', 'edges']
+  nodes: list with 59 items
+    First item type: <class 'dict'>
+    First item keys: ['id', 'attributes']
+  edges: list with 86 items
+    First item type: <class 'dict'>
+    First item keys: ['source', 'target', 'attributes']
+
+Building signal name to node ID mapping for 10 signals...
+
+=== Building signal to node mapping for 10 signals ===
+Valid signals: ['PCLK', 'PRESETn', 'PSEL', 'PENABLE', 'PWRITE', 'PADDR', 'PWDATA', 'PRDATA', 'PREADY', 'PSLVERR']
+KG structure: ['nodes', 'edges']
+Number of nodes in KG: 59
+
+Node type distribution in KG:
+  PROTOCOL: 2 nodes
+  SIGNAL: 7 nodes
+  BUS: 3 nodes
+  STATE: 3 nodes
+  OPERATION: 3 nodes
+  module: 1 nodes
+  port: 10 nodes
+  fsm: 1 nodes
+  protocol_pattern: 5 nodes
+  verification_point: 2 nodes
+  assignment: 21 nodes
+  root: 1 nodes
+
+Signal mentions by node type:
+  PCLK: No mentions found in node names
+  PRESETn: No mentions found in node names
+  PSEL: No mentions found in node names
+  PENABLE: No mentions found in node names
+  PWRITE: No mentions found in node names
+  PADDR: No mentions found in node names
+  PWDATA: No mentions found in node names
+  PRDATA: {'assignment': 2}
+  PREADY: {'assignment': 4}
+  PSLVERR: {'assignment': 4}
+
+=== Signal mapping results ===
+WARNING: No node mapping found for signal 'PCLK'
+WARNING: No node mapping found for signal 'PRESETn'
+WARNING: No node mapping found for signal 'PSEL'
+WARNING: No node mapping found for signal 'PENABLE'
+WARNING: No node mapping found for signal 'PWRITE'
+Signal 'PADDR' mapped to 1 nodes: ['rtl_38']
+WARNING: No node mapping found for signal 'PWDATA'
+Signal 'PRDATA' mapped to 2 nodes: ['rtl_27', 'rtl_38']
+Signal 'PREADY' mapped to 4 nodes: ['rtl_25', 'rtl_33', 'rtl_34', 'rtl_35']
+Signal 'PSLVERR' mapped to 4 nodes: ['rtl_26', 'rtl_31', 'rtl_36', 'rtl_37']
+Created mappings for 4 signals
+Signal 'PREADY' mapped to 4 nodes: ['rtl_25', 'rtl_33', 'rtl_34', 'rtl_35']
+Signal 'PSLVERR' mapped to 4 nodes: ['rtl_26', 'rtl_31', 'rtl_36', 'rtl_37']
+Signal 'PRDATA' mapped to 2 nodes: ['rtl_27', 'rtl_38']
+Signal 'PADDR' mapped to 1 nodes: ['rtl_38']
+Using LLM-based context pruning
+Processing signal 1/3: PADDR
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PADDR']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: The APB (Advanced Peripheral Bus) is part of the AMBA protocol family. It provides a low-cost interface that is optimized for minimal power consumption and reduced interface complexity. The APB interface consists of the following signals: - PCLK: Clock signal. - PRESETn: Active low reset signal. - PADDR: Address bus (up to 32 bits). - PSEL: Select signal. - PENABLE: Enable signal. - PWRITE: Read/Write control signal. High for write, low for read. - PWDATA: Write data bus (up to 32 bits). - PRDATA: Read data bus (up to 32 bits). - PREADY: Ready signal. - PSLVERR: Slave error signal.
+
+Processing generator: path
+Mapped signal 'PADDR' to 1 nodes
+Using 1/1 valid nodes for path context generation
+  Found 30 potential endpoints for rtl_38
+Found 180 significant paths for node rtl_38
+Generated 180 path-based contexts
+path generator returned 180 contexts
+Added 180 contexts from path, total now: 190
+Sample path context: PATH ANALYSIS FROM PRDATA_assignment TO APB
+Path length: 4 nodes with clustering 0.00
+Source: PRDATA_assignment (assignment) in module apb_slave
+Target: APB (PROTOCOL) in module unknown
+
+Relationship chain:
+  PRDATA_assignment (assignment in apb_slave) part_of apb_slave (module)
+  apb_slave (module) contains_implementation Design Root (root)
+  Design Root (root) contains_spec APB (PROTOCOL)
+
+Analysis:
+  • Cross-module path connecting: apb_slave
+
+Pruning 190 contexts...
+Using LLM-based context pruning
+Pruning 190 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 15.41 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 4 of type rag
+Evaluating 180 contexts of type 'path'
+Pre-filtering 180 contexts of type 'path' based on score
+LLM evaluation for path took 16.11 seconds
+Selected context 0 of type path
+Selected context 1 of type path
+Selected context 2 of type path
+Selected context 3 of type path
+Final selection: 8 contexts
+After pruning: 8 contexts remain
+Selected contexts by type: {'rag': 4, 'path': 4}
+Context distribution plan: {'rag': [4], 'path': [4], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 15
+Prompt 1: 8 contexts, 623 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal PADDR
+Processing context 1 with all 10 plans
+
+Strategy Effectiveness:
+Strategy 1: 10 SVAs extracted
+Strategy 2: 10 SVAs extracted
+Strategy 3: 0 SVAs extracted
+Strategy 4: 0 SVAs extracted
+Strategy 9: 0 SVAs extracted
+Total unique SVAs after cleaning: 10
+Generated 10 SVAs from context 1 for signal PADDR
+Generated 10 unique SVAs for signal PADDR from 10 total SVAs
+Processing signal 2/3: PCLK
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PCLK']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: );
+
+  // Internal memory (16 registers of 32-bits)
+  reg [DATA_WIDTH-1:0] mem [0:15];
+  
+  // State machine for wait state injection (for demonstration)
+  // STATE_IDLE: 0, STATE_ACCESS: 1
+  reg state;
+  localparam IDLE = 1'b0, ACCESS = 1'b1;
+
+  // ---------------------------------------------------------------------------
+  // APB Protocol Logic
+  // ---------------------------------------------------------------------------
+  always @(posedge PCLK or negedge PRESETn) begin
+
+Processing generator: path
+No mapping found for 'PCLK', using as-is
+Using 1/1 valid nodes for path context generation
+  Found 30 potential endpoints for PCLK
+Found 687 significant paths for node PCLK
+Generated 687 path-based contexts
+path generator returned 687 contexts
+Added 687 contexts from path, total now: 697
+Sample path context: PATH ANALYSIS FROM PCLK TO APB
+Path length: 2 nodes with clustering 0.00
+Source: PCLK (SIGNAL) in module unknown
+Target: APB (PROTOCOL) in module unknown
+
+Relationship chain:
+  PCLK (SIGNAL) → APB (PROTOCOL)
+
+Analysis:
+
+Pruning 697 contexts...
+Using LLM-based context pruning
+Pruning 697 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 15.47 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 3 of type rag
+Evaluating 687 contexts of type 'path'
+Pre-filtering 687 contexts of type 'path' based on score
+LLM evaluation for path took 15.33 seconds
+Selected context 0 of type path
+Selected context 1 of type path
+Selected context 2 of type path
+Selected context 4 of type path
+Final selection: 7 contexts
+After pruning: 7 contexts remain
+Selected contexts by type: {'rag': 3, 'path': 4}
+Context distribution plan: {'rag': [3], 'path': [4], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 15
+Prompt 1: 7 contexts, 452 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal PCLK
+Processing context 1 with all 10 plans
+
+Strategy Effectiveness:
+Strategy 1: 7 SVAs extracted
+Strategy 2: 9 SVAs extracted
+Strategy 3: 0 SVAs extracted
+Strategy 4: 0 SVAs extracted
+Strategy 9: 0 SVAs extracted
+Total unique SVAs after cleaning: 9
+Generated 9 SVAs from context 1 for signal PCLK
+Generated 9 unique SVAs for signal PCLK from 9 total SVAs
+Processing signal 3/3: PENABLE
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PENABLE']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context:            // Access Phase
+           if (PSEL && PENABLE) begin
+             PREADY <= 1'b1; // Ready to complete transfer
+             
+             // Check address range (simulation of error for out-of-bound access)
+             if (PADDR[31:6] != 0) begin // Assuming base address 0 for simplicity
+                PSLVERR <= 1'b1; 
+             end else begin
+                PSLVERR <= 1'b0;
+                
+                // Read/Write Logic
+
+Processing generator: path
+No mapping found for 'PENABLE', using as-is
+Using 1/1 valid nodes for path context generation
+  Found 30 potential endpoints for PENABLE
+Found 746 significant paths for node PENABLE
+Generated 746 path-based contexts
+path generator returned 746 contexts
+Added 746 contexts from path, total now: 756
+Sample path context: PATH ANALYSIS FROM PENABLE TO PREADY_assignment
+Path length: 6 nodes with clustering 0.50
+Source: PENABLE (SIGNAL) in module unknown
+Target: PREADY_assignment (assignment) in module apb_slave
+
+Relationship chain:
+  PENABLE (SIGNAL) → APB (PROTOCOL)
+  APB (PROTOCOL) → PCLK (SIGNAL)
+  PCLK (SIGNAL) contains_spec Design Root (root)
+  Design Root (root) contains_implementation apb_slave (module)
+  apb_slave (module) part_of PREADY_assignment (assignment in apb_slave)
+
+Analysis:
+  • Cross-module path connecting: apb_slave
+
+Pruning 756 contexts...
+Using LLM-based context pruning
+Pruning 756 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 15.40 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 3 of type rag
+Evaluating 746 contexts of type 'path'
+Pre-filtering 746 contexts of type 'path' based on score
+LLM evaluation for path took 15.35 seconds
+Selected context 0 of type path
+Selected context 1 of type path
+Selected context 2 of type path
+Selected context 4 of type path
+Final selection: 8 contexts
+After pruning: 8 contexts remain
+Selected contexts by type: {'rag': 4, 'path': 4}
+Context distribution plan: {'rag': [4], 'path': [4], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 15
+Prompt 1: 8 contexts, 500 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal PENABLE
+Processing context 1 with all 10 plans
+
+Strategy Effectiveness:
+Strategy 1: 10 SVAs extracted
+Strategy 2: 10 SVAs extracted
+Strategy 3: 0 SVAs extracted
+Strategy 4: 0 SVAs extracted
+Strategy 9: 0 SVAs extracted
+Total unique SVAs after cleaning: 10
+Generated 10 SVAs from context 1 for signal PENABLE
+Generated 10 unique SVAs for signal PENABLE from 10 total SVAs
+
+Generated SVAs:
+1. @(posedge PCLK) (!PRESETn) ##2 ((PADDR >= 0) && (PADDR <= 15));
+2. @(posedge PCLK) ((PADDR >= 0) && (PADDR <= 7)) |-> ((PADDR >= 0) && (PADDR <= 15)) && (PWRITE);
+3. @(posedge PCLK) (!PRESETn) ##6 ((PADDR >= 24) && (PADDR <= 31)) && (!PSLVERR);
+4. @(posedge PCLK) ((PADDR >= 24) && (PADDR <= 31)) && (PENABLE) |-> ((PADDR >= 0) && (PADDR <= 31));
+5. @(posedge PCLK) (!PRESETn) ##4 ((PADDR >= 8) && (PADDR <= 15)) && (PSEL);
+6. @(posedge PCLK) (!PRESETn) ##5 ((PADDR >= 16) && (PADDR <= 23)) && (PREADY);
+7. @(posedge PCLK) ((PADDR >= 16) && (PADDR <= 23)) |-> ((PADDR >= 0) && (PADDR <= 31));
+8. @(posedge PCLK) (!PRESETn) ##3 ((PADDR >= 0) && (PADDR <= 7));
+9. @(posedge PCLK) ((PADDR >= 8) && (PADDR <= 15)) && (PENABLE) && (PSEL) |-> ((PADDR >= 0) && (PADDR <= 31));
+10. @(posedge PCLK) ((PADDR >= 0) && (PADDR <= 31)) |-> ((PADDR >= 0) && (PADDR <= 31));
+11. @(posedge PCLK) ##5 (!PWRITE && PREADY) |-> $isvalid(PRDATA);
+12. @(posedge PCLK) (!PSEL) |-> !PENABLE;
+13. @(posedge PCLK) (!PRESETn) |-> $stable PSLVERR;
+14. @(posedge PCLK) (PENABLE && PSEL) |-> ##1 PREADY;
+15. @(posedge PCLK) ##3 (PRESETn && $stable PCLK) |-> !PSLVERR;
+16. @(posedge PRESETn) ##1 $stable PADDR;
+17. @(posedge PCLK) ##5 (!PWRITE && PREADY) |-> PRDATA !== '0;
+18. @(posedge PRESETn) ##2 $stable PADDR;
+19. @(posedge PCLK) (PENABLE && !PSLVERR) |-> PSLVERR == 1'b0;
+20. @(posedge PCLK) (PENABLE && PSEL) |-> ##1 $isvalid(PRDATA);
+21. @(posedge PCLK) (PENABLE && !PSEL) |-> ##1 state != ACCESS;
+22. @(posedge PCLK) (!PENABLE && PRESETn) |-> ##1 state == IDLE;
+23. @(posedge PCLK) (PENABLE && PSEL) |-> ##1 PREADY;
+24. @(posedge PCLK) (PENABLE && PWRITE) |-> ##1 PREADY;
+25. @(posedge PCLK) (PSEL && !PENABLE) |-> ##1 state == ACCESS;
+26. @(posedge PCLK) (PENABLE && (PADDR[31:6] == 0)) |-> ##1 !PSLVERR;
+27. @(posedge PCLK) (PENABLE && (PADDR[31:6] != 0)) |-> ##1 PSLVERR;
+28. @(posedge PCLK) (PENABLE && !PWRITE) |-> ##1 PREADY;
+29. @(posedge PCLK) (PENABLE && PSEL) |-> ##1 $isvalid(PWDATA);
+
+Step 7: Writing SVAs to files...
+Step 8: Generating SBY configs for SymbiYosys...
+Step 9: Running SymbiYosys...
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+Step 10: Analyzing coverage of proven SVAs...
+Skipping detailed coverage analysis (JasperGold specific).
+Step 11: Analyzing and printing results...
+
+Detailed SVA Results:
++----------+----------------+-----------------+
+|   SVA ID | Proof Status   | Error Message   |
++==========+================+=================+
+|        0 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        1 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        2 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        3 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        4 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        5 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        6 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        7 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        8 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        9 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       10 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       11 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       12 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       13 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       14 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       15 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       16 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       17 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       18 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       19 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       20 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       21 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       22 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       23 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       24 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       25 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       26 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       27 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       28 | inconclusive   |                 |
++----------+----------------+-----------------+
+
+Syntax-correct SVAs: 29 out of 29
+
+Detailed SVA results saved to: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-03-21T04-20-04.109787_Mac_dhruvrpansuriya/sva_details.csv
+
+General Statistics:
+PDF Statistics:
+  Number of pages: 2
+  Number of tokens: 424
+  File size: 2321 bytes
+
+Natural Language Test Plans:
+  Total number of plans generated: 30
+  Number of signals with plans: 3
+  Average plans per signal: 10.00
+  Average plan length: 28.27 words
+
+SVAs:
+  Number of SVAs generated: 29
+  Average SVA length: 10.66 words
+
+JasperGold Results Summary:
+  Total SVAs evaluated: 29
+  Proven: 0
+  Counterexample found: 0
+  Inconclusive: 29
+  Errors: 0
+  Syntax-correct SVAs: 29
+  Success rate: 0.00%
+
+Detailed results saved in:
+  SVA files: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-03-21T04-20-04.109787_Mac_dhruvrpansuriya/tbs
+  Jasper reports: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-03-21T04-20-04.109787_Mac_dhruvrpansuriya/jasper_reports
+  Detailed SVA report: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-03-21T04-20-04.109787_Mac_dhruvrpansuriya/sva_details.csv
+
+Coverage Report:
+
+Final Results (Tab-separated for easy copying to spreadsheets):
+# Assertions	# Syntax Correct Assertions	# Proven Assertions	Syntax Correction Rate	Pass/Proven Rate	Stimuli Statement Coverage	Stimuli Branch Coverage	Stimuli Functional Coverage	Stimuli Toggle Coverage	Stimuli Expression Coverage	COI Statement Coverage	COI Branch Coverage	COI Functional Coverage	COI Toggle Coverage	COI Expression Coverage
+29	29	0	1.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+Test plan generation and coverage evaluation process completed.
+Timer log ***********************************************************
+Total duration 4.000 mins, 50.940 secs
+Read PDF                        : 90.657 msecs (0.03%)
+Load and process KG             : 2.295 msecs (0.00%)
+Refine KG with RTL              : 452.478 msecs (0.16%)
+Initialize LLM                  : 0.034 msecs (0.00%)
+Extract valid signals           : 0.016 msecs (0.00%)
+Generate NL plans               : 2.000 mins, 24.731 secs (49.75%)
+Generate SVAs                   : 2.000 mins, 25.329 secs (49.95%)
+Write SVAs to files             : 14.773 msecs (0.01%)
+Generate SBY configs            : 9.082 msecs (0.00%)
+Run SymbiYosys                  : 273.088 msecs (0.09%)
+Analyze coverage of proven SVAs : 0.086 msecs (0.00%)
+Analyze results                 : 37.710 msecs (0.01%)
+Timer log ***********************************************************
+Total time: 4.000 mins, 50.941 secs; Total number of files: 93; Total folder size: 95.10 KiB
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-03-21T04-20-04.109787_Mac_dhruvrpansuriya
+gen_plan_2026-03-21T04-20-04.109787_Mac_dhruvrpansuriya

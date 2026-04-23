@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 37, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 25, in main
+    build_KG()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_KG_graphRAG.py", line 132, in build_KG
+    initialize_graphrag(graph_rag_dir)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_KG_graphRAG.py", line 459, in initialize_graphrag
+    raise RuntimeError("GraphRAG initialization failed")
+RuntimeError: GraphRAG initialization failed
+

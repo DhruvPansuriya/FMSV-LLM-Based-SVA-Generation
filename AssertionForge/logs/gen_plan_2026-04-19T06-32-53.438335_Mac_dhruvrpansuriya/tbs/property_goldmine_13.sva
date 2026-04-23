@@ -1,0 +1,22 @@
+module apb_props #(
+  parameter ADDR_WIDTH = 32,
+  parameter DATA_WIDTH = 32
+)(
+  input  wire                    PCLK,
+  input  wire                    PRESETn,
+  input  wire [ADDR_WIDTH-1:0]   PADDR,
+  input  wire                    PSEL,
+  input  wire                    PENABLE,
+  input  wire                    PWRITE,
+  input  wire [DATA_WIDTH-1:0]   PWDATA,
+  input  wire [DATA_WIDTH-1:0]   PRDATA,
+  input  wire                    PREADY,
+  input  wire                    PSLVERR
+);
+
+property a13;
+@(posedge PCLK) (!PRESETn) |-> (PADDR == '0 && PENABLE == '0 && PWRITE == '0 && PSEL == '0 && PWDATA == '0 && PRDATA == '0 && PREADY == '0 && PSLVERR == '0);
+endproperty
+assert_a13: assert property(a13);
+
+endmodule

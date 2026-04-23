@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 44, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 32, in main
+    build_KG()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_KG_graphRAG.py", line 169, in build_KG
+    raise RuntimeError("GraphRAG indexing failed")
+RuntimeError: GraphRAG indexing failed
+

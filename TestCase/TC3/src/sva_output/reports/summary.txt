@@ -1,0 +1,15 @@
+SVA Batch Filter + Repair Summary
+==================================
+Input dir: TestCase/TC3/src/sva_input
+Output dir: TestCase/TC3/src/sva_output
+Alias JSON: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/output/TC3/signal_aliases.json
+Valid alias count: 26
+Total files: 2
+Accepted: 0
+Discarded: 2
+
+Discard reasons:
+- bad_signal_1.sv: Loop A failed after 1 repair attempt. Still invalid signal(s): foo_sig
+- ok_1.sv: Loop B failed after 1 repair attempt (Verible syntax still invalid)
+Final Verible error:
+verible-verilog-syntax not found in PATH

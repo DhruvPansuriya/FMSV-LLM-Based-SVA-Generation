@@ -1,0 +1,386 @@
+Starting the test plan generation process...
+Step 1: Reading the PDF file(s)...
+First 5 lines of spec_text (truncated):
+Serial Data Controller (SDC) — Design Specification v1.0
+Document ID: SDC-SPEC-001 | Status: Draft
+1. Overview
+The Serial Data Controller (SDC) provides an APB slave interface for host processor configuration and a
+SPI-compatible serial interface for communication with external slave devices. It supports configurable baud rates,
+...
+Total number of lines in spec_text: 99
+Step 2: Loading and processing the Knowledge Graph...
+Knowledge Graph loaded from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller/output/clustered_graph.graphml
+Number of nodes: 56
+Number of edges: 55
+
+Example node attributes:
+  id: 2c08d994-a4c2-48ca-98d2-7d50babcbfb4
+  human_readable_id: 15
+  type: "SIGNAL"
+  description: "Chip select is an active-low output driven low at the start of a frame to address the external slave."
+  text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+  frequency: 1
+  degree: 1
+
+Example edge attributes:
+  id: b33f00ac-8041-492c-b509-a4158ac8dbe6
+  human_readable_id: 25
+  description: "The status register is part of the SDC, containing all status flags, including receive buffer full, FIFO empty status, transmit acknowledge, and more."
+  weight: 8.0
+  combined_degree: 33
+  text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+
+Node attribute keys:
+degree, text_unit_ids, id, description, human_readable_id, frequency, type
+
+Edge attribute keys:
+combined_degree, text_unit_ids, id, description, human_readable_id, weight
+Step 2b: Refining Knowledge Graph with RTL information...
+Starting Knowledge Graph refinement with RTL from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3
+Initial specification KG has 56 nodes and 55 edges
+
+=== Specification KG Analysis ===
+Node types in specification KG:
+  - "MODULE": 1 nodes
+  - "INTERFACE": 3 nodes
+  - "CLOCK": 2 nodes
+  - "RESET": 2 nodes
+  - "SIGNAL": 41 nodes
+  - "REGISTER": 3 nodes
+  - "PROTOCOL": 2 nodes
+  - "PARAMETER": 1 nodes
+  - "BUS": 1 nodes
+Specification KG has 0 nodes with 'text' attributes for matching
+Built knowledge graph with 217 nodes and 265 edges
+Built RTL KG with 217 nodes and 265 edges
+Added 217 RTL nodes and 265 RTL edges to combined KG
+
+=== Link Summary ===
+Total links created: 59
+- contains_spec: 56 links
+- contains_implementation: 3 links
+
+=== Link Examples ===
+
+Examples of 'contains_spec' links:
+  1. design_root --contains_spec--> "SERIAL DATA CONTROLLER (SDC)"
+     Target node details:
+       id: 36bf2224-267c-4397-9ff6-b1c0bd5f13eb
+       human_readable_id: 0
+       type: "MODULE"
+       description: "The Serial Data Controller is a hardware module providing an APB slave interface and SPI-compatible serial interface for communication with external devices."
+       text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+       frequency: 1
+       degree: 32
+  2. design_root --contains_spec--> "APB SLAVE INTERFACE"
+     Target node details:
+       id: ed4b70ab-375f-44c5-b212-1a91befbc795
+       human_readable_id: 1
+       type: "INTERFACE"
+       description: "An APB slave interface allows host processor configuration and communication with external devices."
+       text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+       frequency: 1
+       degree: 16
+  3. design_root --contains_spec--> "SPI INTERFACE"
+     Target node details:
+       id: d7b3f8d5-359a-4d9a-98e6-8f6592b02ed6
+       human_readable_id: 2
+       type: "INTERFACE"
+       description: "An SPI interface enables communication with external slave devices, supporting configurable baud rates and hardware flow control."
+       text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+       frequency: 1
+       degree: 10
+
+Examples of 'contains_implementation' links:
+  1. design_root --contains_implementation--> rtl_0
+     Target node details:
+       type: module
+       name: sdc_top
+       original_id: module:sdc_top
+       source: rtl
+  2. design_root --contains_implementation--> rtl_1
+     Target node details:
+       type: module
+       name: sdc_tx
+       original_id: module:sdc_tx
+       source: rtl
+  3. design_root --contains_implementation--> rtl_2
+     Target node details:
+       type: module
+       name: sdc_rx
+       original_id: module:sdc_rx
+       source: rtl
+Created 59 links between specification and RTL nodes
+
+Attempting to link 34 RTL signals to 57 spec nodes
+Saved signal mapping log to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-19T21-25-41.681166_Mac_dhruvrpansuriya/signal_mapping_calls.txt
+Created 0 additional links based on signal name matching
+Graph is already connected
+Graph is connected
+Number of connected components: 1
+Number of bridges between RTL and spec: 3
+  Bridge 1: rtl_0 (module: sdc_top) ---> design_root (root: Design Root)
+  Bridge 2: rtl_1 (module: sdc_tx) ---> design_root (root: Design Root)
+  Bridge 3: rtl_2 (module: sdc_rx) ---> design_root (root: Design Root)
+
+=== High-Degree Nodes (Hubs) ===
+  Node: rtl_0 (module: sdc_top)
+  Degree: 80 connections
+  Source: rtl
+  Connected to:
+    - rtl_3 (port: input  wire        nRST)
+    - rtl_4 (port: // Spec: "system reset"        (active-low)
+    input  wire        PCLK)
+    - rtl_5 (port: // Spec: "system clock"
+    input  wire        PSEL)
+    - rtl_6 (port: // Spec: "peripheral select"
+    input  wire        PENABLE)
+    - rtl_7 (port: // Spec: "transfer enable"
+    input  wire        PWRITE)
+    - ... and 75 more
+
+  Node: rtl_1 (module: sdc_tx)
+  Degree: 73 connections
+  Source: rtl
+  Connected to:
+    - rtl_0 (module: sdc_top)
+    - rtl_18 (port: input  wire        clk)
+    - rtl_19 (port: rst_n)
+    - rtl_20 (port: tx_start)
+    - rtl_21 (port: fc_en)
+    - ... and 68 more
+
+  Node: rtl_2 (module: sdc_rx)
+  Degree: 68 connections
+  Source: rtl
+  Connected to:
+    - rtl_0 (module: sdc_top)
+    - rtl_29 (port: input  wire       clk)
+    - rtl_30 (port: rst_n)
+    - rtl_31 (port: miso_in)
+    - rtl_32 (port: sck_in)
+    - ... and 63 more
+
+  Node: design_root (root: Design Root)
+  Degree: 59 connections
+  Source: spec
+  Connected to:
+    - "SERIAL DATA CONTROLLER (SDC)" ("MODULE": "SERIAL DATA CONTROLLER (SDC)")
+    - "APB SLAVE INTERFACE" ("INTERFACE": "APB SLAVE INTERFACE")
+    - "SPI INTERFACE" ("INTERFACE": "SPI INTERFACE")
+    - "SYSTEM CLOCK" ("CLOCK": "SYSTEM CLOCK")
+    - "SYSTEM RESET" ("RESET": "SYSTEM RESET")
+    - ... and 54 more
+
+  Node: "SERIAL DATA CONTROLLER (SDC)" ("MODULE": "SERIAL DATA CONTROLLER (SDC)")
+  Degree: 33 connections
+  Source: spec
+  Connected to:
+    - "APB SLAVE INTERFACE" ("INTERFACE": "APB SLAVE INTERFACE")
+    - "SPI INTERFACE" ("INTERFACE": "SPI INTERFACE")
+    - "SYSTEM CLOCK" ("CLOCK": "SYSTEM CLOCK")
+    - "SYSTEM RESET" ("RESET": "SYSTEM RESET")
+    - "INTERRUPT REQUEST" ("SIGNAL": "INTERRUPT REQUEST")
+    - ... and 28 more
+
+Combined KG now has 274 nodes and 379 edges
+Refined Knowledge Graph now has 274 nodes and 379 edges
+Step 3: Initializing the language model...
+Step 4: Extracting valid signal names...
+Valid signal names: IRQ_OUT, MISO, MOSI, PADDR, PCLK, PENABLE, PRDATA, PREADY, PSEL, PWDATA, PWRITE, SCK, SS_N, WE_N, nRST
+Step 5: Generating natural language test plans...
+
+=== KG Structure ===
+KG is a dictionary with keys: ['nodes', 'edges']
+  nodes: list with 274 items
+    First item type: <class 'dict'>
+    First item keys: ['id', 'attributes']
+  edges: list with 379 items
+    First item type: <class 'dict'>
+    First item keys: ['source', 'target', 'attributes']
+
+Building signal name to node ID mapping for 15 signals...
+
+=== Building signal to node mapping for 15 signals ===
+Valid signals: {'PSEL', 'PRDATA', 'SCK', 'PADDR', 'nRST', 'MOSI', 'PCLK', 'IRQ_OUT', 'PWDATA', 'PREADY', 'SS_N', 'PWRITE', 'MISO', 'PENABLE', 'WE_N'}
+KG structure: ['nodes', 'edges']
+Number of nodes in KG: 274
+
+Node type distribution in KG:
+  "MODULE": 1 nodes
+  "INTERFACE": 3 nodes
+  "CLOCK": 2 nodes
+  "RESET": 2 nodes
+  "SIGNAL": 41 nodes
+  "REGISTER": 3 nodes
+  "PROTOCOL": 2 nodes
+  "PARAMETER": 1 nodes
+  "BUS": 1 nodes
+  module: 3 nodes
+  port: 34 nodes
+  fsm: 4 nodes
+  protocol_pattern: 13 nodes
+  verification_point: 7 nodes
+  assignment: 156 nodes
+  root: 1 nodes
+
+Signal mentions by node type:
+  PSEL: {'port': 1}
+  PRDATA: {'port': 1, 'assignment': 9}
+  SCK: {'port': 1}
+  PADDR: {'port': 1}
+  nRST: {'port': 1}
+  MOSI: {'port': 1}
+  PCLK: {'port': 1}
+  IRQ_OUT: {'port': 1, 'assignment': 6}
+  PWDATA: {'port': 1}
+  PREADY: {'port': 1, 'assignment': 3}
+  SS_N: {'port': 1, 'assignment': 6}
+  PWRITE: {'port': 1}
+  MISO: {'port': 1}
+  PENABLE: {'port': 1}
+  WE_N: {'port': 1, 'assignment': 3}
+
+=== Signal mapping results ===
+Signal 'PSEL' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PRDATA' mapped to 9 nodes: ['rtl_75', 'rtl_76', 'rtl_77', 'rtl_127', 'rtl_128', 'rtl_129', 'rtl_179', 'rtl_180', 'rtl_181']
+WARNING: No node mapping found for signal 'SCK'
+WARNING: No node mapping found for signal 'PADDR'
+WARNING: No node mapping found for signal 'nRST'
+WARNING: No node mapping found for signal 'MOSI'
+WARNING: No node mapping found for signal 'PCLK'
+Signal 'IRQ_OUT' mapped to 6 nodes: ['rtl_78', 'rtl_79', 'rtl_130', 'rtl_131', 'rtl_182', 'rtl_183']
+Signal 'PWDATA' mapped to 6 nodes: ['rtl_72', 'rtl_73', 'rtl_124', 'rtl_125', 'rtl_176', 'rtl_177']
+Signal 'PREADY' mapped to 3 nodes: ['rtl_62', 'rtl_114', 'rtl_166']
+Signal 'SS_N' mapped to 6 nodes: ['rtl_71', 'rtl_74', 'rtl_123', 'rtl_126', 'rtl_175', 'rtl_178']
+Signal 'PWRITE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+WARNING: No node mapping found for signal 'MISO'
+Signal 'PENABLE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'WE_N' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Created mappings for 9 signals
+Signal 'WE_N' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PENABLE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PSEL' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PWRITE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PREADY' mapped to 3 nodes: ['rtl_62', 'rtl_114', 'rtl_166']
+Signal 'SS_N' mapped to 6 nodes: ['rtl_71', 'rtl_74', 'rtl_123', 'rtl_126', 'rtl_175', 'rtl_178']
+Signal 'PWDATA' mapped to 6 nodes: ['rtl_72', 'rtl_73', 'rtl_124', 'rtl_125', 'rtl_176', 'rtl_177']
+Signal 'PRDATA' mapped to 9 nodes: ['rtl_75', 'rtl_76', 'rtl_77', 'rtl_127', 'rtl_128', 'rtl_129', 'rtl_179', 'rtl_180', 'rtl_181']
+Signal 'IRQ_OUT' mapped to 6 nodes: ['rtl_78', 'rtl_79', 'rtl_130', 'rtl_131', 'rtl_182', 'rtl_183']
+Using LLM-based context pruning
+Processing signal 1/15: IRQ_OUT
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['IRQ_OUT']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: 
+    always @(posedge PCLK or negedge nRST) begin
+        if (!nRST) IRQ_OUT <= 1'b0;
+        else       IRQ_OUT <= tx_done_pulse | par_err_latch;
+    end
+
+endmodule
+
+
+module sdc_tx (
+    input  wire        clk, rst_n, tx_start, fc_en,
+    input  wire [15:0] baud_div,
+    input  wire [7:0]  tx_data,
+    output wire        sck_out, mosi_out, tx_done, fifo_empty,
+    output reg         ack_flag
+);
+    reg [15:0] baud_cnt;
+
+Processing generator: path
+Mapped signal 'IRQ_OUT' to 6 nodes
+Using 6/6 valid nodes for path context generation
+  Found 30 potential endpoints for rtl_130
+Found 234 significant paths for node rtl_130
+  Found 30 potential endpoints for rtl_131
+Found 473 significant paths for node rtl_131
+  Found 30 potential endpoints for rtl_182
+Found 237 significant paths for node rtl_182
+  Found 30 potential endpoints for rtl_183
+Found 290 significant paths for node rtl_183
+  Found 30 potential endpoints for rtl_78
+Found 199 significant paths for node rtl_78
+  Found 30 potential endpoints for rtl_79
+Found 248 significant paths for node rtl_79
+Generated 1681 path-based contexts
+path generator returned 1681 contexts
+Added 1681 contexts from path, total now: 1691
+Sample path context: PATH ANALYSIS FROM IRQ_OUT_assignment TO bit_cnt_assignment
+Path length: 3 nodes with clustering 0.00
+Source: IRQ_OUT_assignment (assignment) in module sdc_tx
+Target: bit_cnt_assignment (assignment) in module sdc_tx
+
+Relationship chain:
+  IRQ_OUT_assignment (assignment in sdc_tx) part_of sdc_tx (module)
+  sdc_tx (module) part_of bit_cnt_assignment (assignment in sdc_tx)
+
+Analysis:
+  • Cross-module path connecting: sdc_tx
+
+Pruning 1691 contexts...
+Using LLM-based context pruning
+Pruning 1691 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 0.19 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 4 of type rag
+Evaluating 1681 contexts of type 'path'
+Pre-filtering 1681 contexts of type 'path' based on score
+LLM evaluation for path took 15.86 seconds
+Selected context 0 of type path
+Selected context 1 of type path
+Selected context 2 of type path
+Selected context 3 of type path
+Final selection: 8 contexts
+After pruning: 8 contexts remain
+Selected contexts by type: {'rag': 4, 'path': 4}
+Context distribution plan: {'rag': [4], 'path': [4], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 7
+Prompt 1: 8 contexts, 678 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal IRQ_OUT
+Processing dynamic context 1/1 for IRQ_OUT
+Initializing LLMLingua compressor (microsoft/llmlingua-2-xlm-roberta-large-meetingbank)...
+Compressing the context prompt for IRQ_OUT (dynamic context 1)...
+Compression Complete: 1285 -> 1072 tokens.
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 40, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 26, in main
+    gen_plan()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 206, in gen_plan
+    nl_plans = generate_nl_plans(
+        spec_text,
+    ...<4 lines>...
+        context_summarizer,  # Pass the context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 538, in generate_nl_plans
+    return generate_dynamic_nl_plans(
+        spec_text, kg, llm_agent, valid_signals, rtl_knowledge, context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 643, in generate_dynamic_nl_plans
+    result = llm_inference(
+        llm_agent, full_prompt_compressed, f"NL_Plans_{signal_name}_{context_idx+1}"
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/utils_LLM.py", line 192, in llm_inference
+    return agent.invoke(prompt, temperature=temperature)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/utils_LLM.py", line 155, in invoke
+    time.sleep(15)
+    ~~~~~~~~~~^^^^
+KeyboardInterrupt
+
+Total time: 29.639 secs; Total number of files: 6; Total folder size: 42.16 KiB
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-19T21-25-41.681166_Mac_dhruvrpansuriya
+gen_plan_2026-04-19T21-25-41.681166_Mac_dhruvrpansuriya

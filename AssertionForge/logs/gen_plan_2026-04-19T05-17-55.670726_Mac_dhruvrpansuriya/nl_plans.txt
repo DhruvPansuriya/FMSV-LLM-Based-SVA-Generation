@@ -1,0 +1,6 @@
+Signal PADDR:
+
+Signal PCLK:
+
+Signal PENABLE:
+

@@ -1,0 +1,295 @@
+Starting the test plan generation process...
+Step 1: Reading the PDF file(s)...
+First 5 lines of spec_text (truncated):
+The APB (Advanced Peripheral Bus) is part of the AMBA protocol family. It provides a low-cost interface that is optimized for minimal power consumption and reduced interface complexity.
+The APB interface consists of the following signals:
+- PCLK: Clock signal.
+- PRESETn: Active low reset signal.
+- PADDR: Address bus (up to 32 bits).
+...
+Total number of lines in spec_text: 27
+Step 2: Loading and processing the Knowledge Graph...
+Knowledge Graph loaded from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/spec/graph_rag_apb/output/clustered_graph.graphml
+Number of nodes: 27
+Number of edges: 12
+
+Example node attributes:
+  type: BUS
+  description: The system bus is connected to the APB interface.
+  id: be366200-4390-4b25-a8c8-09cd825fc695
+
+Example edge attributes:
+  description: Based on the provided data, I will generate a comprehensive summary of the entities, APB INTERFACE and PXZR, including information from all descriptions.
+
+The APB interface (APB INTERFACE) is a type of interface used in electronic design. One of its key characteristics is that it uses a specific signal as the reset signal. This reset signal is provided by the PXZR entity.
+
+PXZR, being the reset signal for the APB interface, is likely a critical component that plays a vital role in the proper functioning of the APB interface. However, without further information, the exact nature and purpose of PXZR can be considered unknown.
+
+Given the limited information provided, the only concrete fact is that the APB interface utilizes PXZR as its reset signal. Therefore, any information related to PXZR can be inferred only in the context of its role within the APB interface, and vice versa.
+
+To provide a more complete picture, additional information about the PXZR entity, such as its function or parameters, would be necessary. The description "has_parameter" is a vague term that may refer to properties or attributes of the PXZR entity but without specifying what these parameters are.
+
+In summary, the primary relationship between APB INTERFACE and PXZR is that PXZR serves as the reset signal for the APB interface, but the specifics of PXZR's properties and purpose cannot be ascertained from the provided information.
+
+Full comprehensive description:
+
+APB INTERFACE is a type of electronic interface that utilizes PXZR as a reset signal. PXZR is a crucial component that plays a vital role in the proper functioning of the APB interface. The exact nature, purpose, and properties of PXZR, particularly its "parameters," cannot be specified due to the lack of information.
+  weight: 17.0
+
+Node attribute keys:
+type, description, id
+
+Edge attribute keys:
+description, weight
+Step 2b: Refining Knowledge Graph with RTL information...
+Starting Knowledge Graph refinement with RTL from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/rtl
+Initial specification KG has 27 nodes and 12 edges
+
+=== Specification KG Analysis ===
+Node types in specification KG:
+  - INTERFACE: 1 nodes
+  - PROTOCOL: 1 nodes
+  - PARAMETER: 11 nodes
+  - REFERENCE: 3 nodes
+  - SIGNAL: 10 nodes
+  - BUS: 1 nodes
+Specification KG has 0 nodes with 'text' attributes for matching
+Built knowledge graph with 40 nodes and 50 edges
+Built RTL KG with 40 nodes and 50 edges
+Added 40 RTL nodes and 50 RTL edges to combined KG
+
+=== Link Summary ===
+Total links created: 28
+- contains_spec: 27 links
+- contains_implementation: 1 links
+
+=== Link Examples ===
+
+Examples of 'contains_spec' links:
+  1. design_root --contains_spec--> APB INTERFACE
+     Target node details:
+       type: INTERFACE
+       description: The APB interface is designed for low bandwidth control accesses.
+       id: bcd678ef-5d41-4143-bada-161e73e62e54
+  2. design_root --contains_spec--> ADVANCED PERIPHERAL BUS
+     Target node details:
+       type: PROTOCOL
+       description: The Advanced Peripheral Bus is a low-cost interface that is part of the Advanced Microcontroller Bus Architecture (AMBA) protocol family.
+       id: c329975f-5c67-4579-88b5-b8f45ebed253
+  3. design_root --contains_spec--> LOW-BANDWIDTH PERIPHERALS
+     Target node details:
+       type: PARAMETER
+       description: APB interface is optimized for minimal power consumption and reduced interface complexity for low-bandwidth peripherals.
+       id: bdc7eadf-93ae-42ae-892d-d21f0d6d659b
+
+Examples of 'contains_implementation' links:
+  1. design_root --contains_implementation--> rtl_0
+     Target node details:
+       type: module
+       name: apb_slave
+       original_id: module:apb_slave
+       source: rtl
+Created 28 links between specification and RTL nodes
+
+Attempting to link 10 RTL signals to 28 spec nodes
+Created 0 additional links based on signal name matching
+Graph is already connected
+Graph is connected
+Number of connected components: 1
+Number of bridges between RTL and spec: 1
+  Bridge 1: rtl_0 (module: apb_slave) ---> design_root (root: Design Root)
+
+=== High-Degree Nodes (Hubs) ===
+  Node: rtl_0 (module: apb_slave)
+  Degree: 40 connections
+  Source: rtl
+  Connected to:
+    - rtl_1 (port: input  wire        pclk)
+    - rtl_2 (port: input  wire        presetn)
+    - rtl_3 (port: input  wire        psel)
+    - rtl_4 (port: input  wire        penable)
+    - rtl_5 (port: input  wire        pwrite)
+    - ... and 35 more
+
+  Node: design_root (root: Design Root)
+  Degree: 28 connections
+  Source: spec
+  Connected to:
+    - APB INTERFACE (INTERFACE: APB INTERFACE)
+    - ADVANCED PERIPHERAL BUS (PROTOCOL: ADVANCED PERIPHERAL BUS)
+    - LOW-BANDWIDTH PERIPHERALS (PARAMETER: LOW-BANDWIDTH PERIPHERALS)
+    - ADVANCED MICROCONTROLLER BUS ARCHITECTURE (AMBA) PROTOCOL FAMILY (REFERENCE: ADVANCED MICROCONTROLLER BUS ARCHITECTURE (AMBA) PROTOCOL FAMILY)
+    - AXI PROTOCOL (REFERENCE: AXI PROTOCOL)
+    - ... and 23 more
+
+  Node: APB INTERFACE (INTERFACE: APB INTERFACE)
+  Degree: 12 connections
+  Source: spec
+  Connected to:
+    - ADVANCED PERIPHERAL BUS (PROTOCOL: ADVANCED PERIPHERAL BUS)
+    - PCLK (SIGNAL: PCLK)
+    - PXZR (SIGNAL: PXZR)
+    - PADDR (SIGNAL: PADDR)
+    - PSELX (SIGNAL: PSELX)
+    - ... and 7 more
+
+  Node: rtl_18 (verification_point: data_stability)
+  Degree: 4 connections
+  Source: rtl
+  Connected to:
+    - rtl_0 (module: apb_slave)
+    - rtl_7 (port: input  wire [31:0] pwdata)
+    - rtl_8 (port: output reg  [31:0] prdata)
+    - rtl_3 (port: input  wire        psel)
+
+  Node: ADVANCED PERIPHERAL BUS (PROTOCOL: ADVANCED PERIPHERAL BUS)
+  Degree: 3 connections
+  Source: spec
+  Connected to:
+    - APB INTERFACE (INTERFACE: APB INTERFACE)
+    - LOW-BANDWIDTH PERIPHERALS (PARAMETER: LOW-BANDWIDTH PERIPHERALS)
+    - design_root (root: Design Root)
+
+Combined KG now has 68 nodes and 90 edges
+Refined Knowledge Graph now has 68 nodes and 90 edges
+Step 3: Initializing the language model...
+Step 4: Extracting valid signal names...
+Valid signal names: PADDR, PCLK, PENABLE, PRDATA, PREADY, PRESETn, PSEL, PSLVERR, PWDATA, PWRITE
+Step 5: Generating natural language test plans...
+
+=== KG Structure ===
+KG is a dictionary with keys: ['nodes', 'edges']
+  nodes: list with 68 items
+    First item type: <class 'dict'>
+    First item keys: ['id', 'attributes']
+  edges: list with 90 items
+    First item type: <class 'dict'>
+    First item keys: ['source', 'target', 'attributes']
+
+Building signal name to node ID mapping for 10 signals...
+
+=== Building signal to node mapping for 10 signals ===
+Valid signals: ['PCLK', 'PRESETn', 'PSEL', 'PENABLE', 'PWRITE', 'PADDR', 'PWDATA', 'PRDATA', 'PREADY', 'PSLVERR']
+KG structure: ['nodes', 'edges']
+Number of nodes in KG: 68
+
+Node type distribution in KG:
+  INTERFACE: 1 nodes
+  PROTOCOL: 1 nodes
+  PARAMETER: 11 nodes
+  REFERENCE: 3 nodes
+  SIGNAL: 10 nodes
+  BUS: 1 nodes
+  module: 1 nodes
+  port: 10 nodes
+  fsm: 1 nodes
+  protocol_pattern: 5 nodes
+  verification_point: 2 nodes
+  assignment: 21 nodes
+  root: 1 nodes
+
+Signal mentions by node type:
+  PCLK: No mentions found in node names
+  PRESETn: No mentions found in node names
+  PSEL: No mentions found in node names
+  PENABLE: No mentions found in node names
+  PWRITE: No mentions found in node names
+  PADDR: No mentions found in node names
+  PWDATA: No mentions found in node names
+  PRDATA: {'assignment': 2}
+  PREADY: {'assignment': 4}
+  PSLVERR: {'assignment': 4}
+
+=== Signal mapping results ===
+WARNING: No node mapping found for signal 'PCLK'
+WARNING: No node mapping found for signal 'PRESETn'
+WARNING: No node mapping found for signal 'PSEL'
+WARNING: No node mapping found for signal 'PENABLE'
+WARNING: No node mapping found for signal 'PWRITE'
+Signal 'PADDR' mapped to 1 nodes: ['rtl_38']
+WARNING: No node mapping found for signal 'PWDATA'
+Signal 'PRDATA' mapped to 2 nodes: ['rtl_27', 'rtl_38']
+Signal 'PREADY' mapped to 4 nodes: ['rtl_25', 'rtl_33', 'rtl_34', 'rtl_35']
+Signal 'PSLVERR' mapped to 4 nodes: ['rtl_26', 'rtl_31', 'rtl_36', 'rtl_37']
+Created mappings for 4 signals
+Signal 'PREADY' mapped to 4 nodes: ['rtl_25', 'rtl_33', 'rtl_34', 'rtl_35']
+Signal 'PSLVERR' mapped to 4 nodes: ['rtl_26', 'rtl_31', 'rtl_36', 'rtl_37']
+Signal 'PRDATA' mapped to 2 nodes: ['rtl_27', 'rtl_38']
+Signal 'PADDR' mapped to 1 nodes: ['rtl_38']
+Using LLM-based context pruning
+Processing signal 1/10: PADDR
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PADDR']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: The APB (Advanced Peripheral Bus) is part of the AMBA protocol family. It provides a low-cost interface that is optimized for minimal power consumption and reduced interface complexity. The APB interface consists of the following signals: - PCLK: Clock signal. - PRESETn: Active low reset signal. - PADDR: Address bus (up to 32 bits). - PSEL: Select signal. - PENABLE: Enable signal. - PWRITE: Read/Write control signal. High for write, low for read. - PWDATA: Write data bus (up to 32 bits). - PRDATA: Read data bus (up to 32 bits). - PREADY: Ready signal. - PSLVERR: Slave error signal.
+
+Processing generator: path
+Mapped signal 'PADDR' to 1 nodes
+Using 1/1 valid nodes for path context generation
+  Found 30 potential endpoints for rtl_38
+Found 124 significant paths for node rtl_38
+Generated 124 path-based contexts
+path generator returned 124 contexts
+Added 124 contexts from path, total now: 134
+Sample path context: PATH ANALYSIS FROM PRDATA_assignment TO PSLVERR_assignment
+Path length: 3 nodes with clustering 0.00
+Source: PRDATA_assignment (assignment) in module apb_slave
+Target: PSLVERR_assignment (assignment) in module apb_slave
+
+Relationship chain:
+  PRDATA_assignment (assignment in apb_slave) part_of apb_slave (module)
+  apb_slave (module) part_of PSLVERR_assignment (assignment in apb_slave)
+
+Analysis:
+  • Cross-module path connecting: apb_slave
+
+Pruning 134 contexts...
+Using LLM-based context pruning
+Pruning 134 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 44, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 30, in main
+    gen_plan()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 183, in gen_plan
+    nl_plans = generate_nl_plans(
+        spec_text,
+    ...<4 lines>...
+        context_summarizer,  # Pass the context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 485, in generate_nl_plans
+    return generate_dynamic_nl_plans(
+        spec_text, kg, llm_agent, valid_signals, rtl_knowledge, context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 530, in generate_dynamic_nl_plans
+    dynamic_context_list = prompt_builder.build_prompt(
+        query=query,
+    ...<2 lines>...
+        enable_context_enhancement=FLAGS.enable_context_enhancement,  # Pass the enhancement flag
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/dynamic_prompt_builder.py", line 193, in build_prompt
+    selected_contexts = self.llm_pruner.prune(
+        all_contexts, query, signal_name
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_pruner.py", line 111, in prune
+    result = self._call_llm(prompt, f"context_eval_{context_type}")
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_pruner.py", line 259, in _call_llm
+    return llm_inference(self.llm_agent, prompt, tag)
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/utils_LLM.py", line 102, in llm_inference
+    return agent.invoke(prompt, temperature=temperature)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/utils_LLM.py", line 65, in invoke
+    time.sleep(15)
+    ~~~~~~~~~~^^^^
+KeyboardInterrupt
+
+Total time: 6.802 secs; Total number of files: 5; Total folder size: 34.93 KiB
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-03-21T03-59-26.719752_Mac_dhruvrpansuriya
+gen_plan_2026-03-21T03-59-26.719752_Mac_dhruvrpansuriya

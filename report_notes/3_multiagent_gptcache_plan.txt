@@ -1,0 +1,90 @@
+Title: Multiagent Usage with GPTCache (Planned Design for Project-2 Reporting)
+
+1) IDEA
+The core idea is to use a multiagent LLM architecture where different agents specialize in different reasoning tasks, while a shared GPTCache layer de-duplicates repeated prompts/responses across all agents and models.
+
+Why this is needed:
+- The pipeline issues many similar prompts repeatedly (signal alignment, context synthesis, plan generation, SVA generation, repairs).
+- Running all requests directly against cloud models is expensive and latency-heavy.
+- Multiagent decomposition improves quality, but can increase call volume unless caching is centralized.
+
+So the design objective is:
+- improve quality through specialization,
+- improve cloud efficiency through a single shared semantic cache.
+
+2) PROPOSED IMPLEMENTATION (NOT FULLY IMPLEMENTED YET)
+Proposed agent roles:
+- Agent A: Spec Understanding Agent
+  - Extracts requirement-level semantics, constraints, and terminology.
+- Agent B: RTL Grounding Agent
+  - Maps spec semantics to RTL structure/signals/modules.
+- Agent C: Assertion Planner Agent
+  - Converts requirements into test-plan style verification intents.
+- Agent D: SVA Synthesizer/Repair Agent
+  - Generates and repairs final assertion candidates.
+- Optional Agent E: Consistency/Referee Agent
+  - Cross-checks generated assertions against requirements and syntax diagnostics.
+
+Model strategy:
+- Gemini and Groq are both used as model backends.
+- Router decides backend by subtask characteristics:
+  - long-context or high-level summarization tasks,
+  - strict JSON alignment tasks,
+  - low-latency iterative repair tasks.
+
+Shared GPTCache strategy:
+- A single cache namespace sits in front of all model backends.
+- Key is built from normalized prompt + task type + important context hash.
+- If hit:
+  - serve cached completion directly (no cloud call).
+- If miss:
+  - route to selected model, store result in cache, return response.
+
+3) TECHNICAL DETAILS (REPORT-READY)
+A. Request pipeline (conceptual)
+1) Request arrives with task metadata.
+2) Prompt normalization + hashing.
+3) Shared GPTCache lookup.
+4) Cache HIT -> return cached response.
+5) Cache MISS -> model router selects Gemini or Groq.
+6) Response returned and written back to shared cache.
+7) Downstream agent continues orchestration.
+
+B. Data/control interfaces
+- Unified agent input schema:
+  - `task_type`
+  - `design_id`
+  - `context_bundle`
+  - `temperature/format constraints`
+- Unified response envelope:
+  - `content`
+  - `model_name`
+  - `cache_hit`
+  - `latency_ms`
+  - `token_usage`
+
+C. Expected benefits
+- Lower API cost through reuse of repeated calls.
+- Lower end-to-end latency for iterative workflows.
+- Better reliability via specialized agents and optional referee pass.
+- Better observability through per-agent + per-cache telemetry.
+
+D. Metrics for evaluation (recommended in report)
+- Cache hit rate (%).
+- Average latency reduction vs no-cache baseline.
+- Token/cost reduction per run.
+- Assertion acceptance rate after syntax/semantic checks.
+- Number of regeneration loops required per assertion.
+
+E. Risks and mitigations
+- Risk: stale cache returns outdated answer after prompt changes.
+  - Mitigation: include prompt version + design hash in key.
+- Risk: cross-agent contamination of cache entries.
+  - Mitigation: agent/task-specific key prefixing.
+- Risk: model-specific output format mismatch.
+  - Mitigation: strict response envelope + schema validation.
+
+4) CURRENT STATUS STATEMENT (HONEST FOR REPORT)
+- Full multiagent orchestration with shared GPTCache is planned and partially scaffolded conceptually.
+- Current implementation already demonstrates caching and LLM orchestration patterns in parts of the system, but a complete Project-2 style end-to-end multiagent controller is still under active development.
+- The architecture and interfaces above are the intended production design to be completed next.

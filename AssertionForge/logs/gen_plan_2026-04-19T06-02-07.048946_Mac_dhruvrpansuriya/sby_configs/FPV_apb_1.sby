@@ -1,0 +1,16 @@
+[options]
+mode prove
+
+[engines]
+smtbmc
+
+[script]
+read -formal apb_slave.v
+read -formal bindings.sva
+read -formal property_goldmine_1.sva
+prep -top apb_slave
+
+[files]
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/rtl/apb_slave.v
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-19T06-02-07.048946_Mac_dhruvrpansuriya/tbs/property_goldmine_1.sva
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/apb/rtl/bindings.sva

@@ -1,0 +1,48 @@
+Starting local embedding proxy: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/local_embedding_proxy.py
+Waiting for embedding proxy to be ready...
+Embedding proxy exited prematurely with code 1
+Failed to start embedding proxy or it is not responding.
+Derived base directory: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC1
+Step 1: Processing input file(s)
+Cleaned up input folder: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC1/graph_rag_sockit/input
+PDF Statistics for sockit.pdf:
+  Pages: 29
+  File size: 0.35 MB
+  Word count: 8078
+  Token count: 13102
+Step 2: Initializing GraphRAG
+export PYTHONPATH='/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-llm:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-common:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-cache:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-chunking:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-vectors:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-storage:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-input:$PYTHONPATH' && "/opt/homebrew/opt/python@3.14/bin/python3.14" -m graphrag init --root '/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC1/graph_rag_sockit' --model gpt-4-turbo-preview --embedding text-embedding-3-small
+Error during initialization:
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag/graphrag/__main__.py", line 6, in <module>
+    from graphrag.cli.main import app
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag/graphrag/cli/main.py", line 13, in <module>
+    from graphrag.config.defaults import (
+    ...<3 lines>...
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag/graphrag/config/defaults.py", line 13, in <module>
+    from graphrag_llm.config import AuthMethod
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-llm/graphrag_llm/__init__.py", line 6, in <module>
+    import nest_asyncio2
+ModuleNotFoundError: No module named 'nest_asyncio2'
+
+An error occurred: GraphRAG initialization failed
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 37, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 25, in main
+    build_KG()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_KG_graphRAG.py", line 132, in build_KG
+    initialize_graphrag(graph_rag_dir)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_KG_graphRAG.py", line 459, in initialize_graphrag
+    raise RuntimeError("GraphRAG initialization failed")
+RuntimeError: GraphRAG initialization failed
+
+Total time: 28.038 secs; Total number of files: 5; Total folder size: 20.45 KiB
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/build_KG_2026-04-19T04-32-52.548331_Mac_dhruvrpansuriya
+build_KG_2026-04-19T04-32-52.548331_Mac_dhruvrpansuriya

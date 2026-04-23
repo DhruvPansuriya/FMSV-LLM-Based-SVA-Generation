@@ -1,0 +1,36 @@
+Signal PADDR:
+Plan 1: PADDR: that when PADDR is within the range of 0 to 31, in the next cycle PADDR will remain within the range of 0 to 31, using the signals 'PCLK' for the clock edge and 'PADDR' for the address being checked.
+Plan 2: PADDR: that the address PADDR has a value between 0 and 15, inclusive, 2 clock cycles after the reset signal PRESETn becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 3: PADDR: that if the address 'PADDR' is within the range of 16 to 23 inclusive, then in the subsequent cycles, 'PADDR' must continue to be within the range of 16 to 31 inclusive, using the signals 'PADDR' and 'PCLK'.
+Plan 4: PADDR: that the address signal 'PADDR' is within the range 0 to 7 inclusive, starting from three clock cycles after the reset signal 'PRESETn' becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 5: PADDR: that when PADDR is within the range of 24 to 31, in the next cycle PADDR will remain within the range of 16 to 31, using the signals 'PCLK' for the clock edge and 'PADDR' for the address being checked.
+Plan 6: PADDR: that the address PADDR has a value between 8 and 15, inclusive, 1 clock cycle after the reset signal PRESETn becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 7: PADDR: that if the address 'PADDR' is within the range of 0 to 7 inclusive, then in the subsequent cycles, 'PADDR' must continue to be within the range of 0 to 15 inclusive, using the signals 'PADDR' and 'PCLK'.
+Plan 8: PADDR: that the address signal 'PADDR' is within the range 16 to 23 inclusive, starting from two clock cycles after the reset signal 'PRESETn' becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 9: PADDR: that when PADDR is within the range of 8 to 15, in the next cycle PADDR will remain within the range of 0 to 15, using the signals 'PCLK' for the clock edge and 'PADDR' for the address being checked.
+Plan 10: PADDR: that the address PADDR has a value between 24 and 31, inclusive, 3 clock cycles after the reset signal PRESETn becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+
+Signal PCLK:
+Plan 11: PCLK: that when PCLK rises, the signal PENABLE will be asserted in the next clock cycle if PSEL is high.
+Plan 12: PCLK: that the signal PWRITE will be stable for at least one clock cycle after PCLK rises.
+Plan 13: PCLK: that the signal PRDATA will be valid and within the range of 0 to 255 when PREADY is high, one clock cycle after PCLK rises.
+Plan 14: PCLK: that the signal PADDR will remain stable for at least one clock cycle after PCLK rises, when PSEL is high.
+Plan 15: PCLK: that when PCLK falls, the signal PSLVERR will be low if the transfer was successful.
+Plan 16: PCLK: that the signal PWDATA will be latched and remain stable for at least one clock cycle after PCLK rises, when PWRITE is high.
+Plan 17: PCLK: that when PCLK rises, the signal PREADY will be asserted if the transfer can be completed in the current clock cycle.
+Plan 18: PCLK: that the signal PRESETn will be ignored when PCLK is low.
+Plan 19: PCLK: that when PCLK rises, the signal PSEL will determine the slave device being accessed.
+Plan 20: PCLK: that the signal PCLK will have a frequency of at least 10 MHz and a duty cycle of 50% ± 5%.
+
+Signal PENABLE:
+Plan 21: PENABLE: that when PENABLE is high and PSEL is high, PREADY will be high in the next cycle if the address is within the valid range.
+Plan 22: PENABLE: that when PENABLE is low and PSEL is high, the bus will be in the setup phase and PREADY will be low.
+Plan 23: PENABLE: that if PENABLE is high and PWRITE is high, the bus will be in the access phase and PRDATA will be valid.
+Plan 24: PENABLE: that when PENABLE is high and PSLVERR is high, the transfer will be considered an error and PREADY will be low.
+Plan 25: PENABLE: that if PENABLE is low and PRESETn is low, the bus will be in the reset state and PREADY will be low.
+Plan 26: PENABLE: that when PENABLE is high and PADDR is within the valid range, PSLVERR will be low and PREADY will be high.
+Plan 27: PENABLE: that if PENABLE is high and PSEL is low, the bus will be in the idle state and PREADY will be low.
+Plan 28: PENABLE: that when PENABLE is high and PWRITE is low, the bus will be in the access phase and PRDATA will be valid.
+Plan 29: PENABLE: that if PENABLE is high and PCLK is high, the bus will be in the access phase and PREADY will be high if the address is within the valid range.
+Plan 30: PENABLE: that when PENABLE is low and PCLK is high, the bus will be in the setup phase or idle state and PREADY will be low.
+

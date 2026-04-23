@@ -1,0 +1,82 @@
+Title: Signal Mapping (Spec-to-RTL Alignment)
+
+1) IDEA
+The goal of signal mapping is to bridge the semantic gap between natural-language specification terms and real RTL signal names. In practice, spec text may say “system reset” while RTL uses names like nRST or rst_n. If we do not align these, generated assertions can reference semantically correct but syntactically nonexistent signals, and graph-based retrieval cannot connect spec intent to implementation details.
+
+So the idea is:
+- extract spec-side signal-like entities,
+- extract RTL ports/signals,
+- use an LLM to map RTL names to spec mentions with confidence,
+- write these mappings into a lookup table,
+- and use the mappings to add cross-graph edges (`corresponds_to`) between spec nodes and RTL nodes.
+
+2) IMPLEMENTATION (CURRENT)
+Implemented modules:
+- `AssertionForge/src/signal_aligner.py`
+- `AssertionForge/src/rtl_parsing.py` (`link_signals_to_spec`)
+
+Implemented pipeline flow:
+A. Input preparation
+- Spec entities are extracted from KG node types such as SIGNAL/CLOCK/RESET/PORT/REGISTER.
+- RTL signal list is extracted from parsed RTL modules and ports.
+- Signal names are normalized to reduce parser/comment/noise artifacts.
+
+B. LLM alignment
+- Prompt includes:
+  - extracted spec mentions,
+  - extracted RTL signal list (module.signal style),
+  - spec context excerpt,
+  - strict JSON output schema.
+- LLM returns JSON alignments with:
+  - `canonical_name`
+  - `spec_mentions`
+  - `rtl_name`
+  - `rtl_module`
+  - `active_low`
+  - `confidence`
+  - `match_method`
+  - `reasoning`
+
+C. Alias table construction
+- Alignments are normalized and inserted into alias lookup maps.
+- Lookup supports normalized and fuzzy fallback variants.
+
+D. Graph update attempt
+- In `link_signals_to_spec`, each RTL signal attempts LLM-based lookup.
+- If confidence >= 0.7, edges are added using relationship/type `corresponds_to`.
+- If unresolved/low confidence, string-based fallback can add weaker references.
+
+3) TECHNICAL DETAILS
+Important technical choices:
+- Confidence gating threshold used: 0.7.
+- Active-low polarity is explicitly tracked in alignment metadata.
+- Logging and diagnostics are first-class (for reproducibility and debugging).
+
+Generated artifacts (per run) include:
+- Prompt and response traces:
+  - `alignment_system_prompt.txt`
+  - `alignment_user_prompt.txt`
+  - `alignment_full_prompt.txt`
+  - `alignment_raw_response.txt` (and retry variant if needed)
+- Input snapshots:
+  - `spec_entities.json`
+  - `rtl_signals.json`
+  - `alignment_input_bundle.json`
+- Mapping outputs:
+  - `signal_aliases.json`
+  - `alias_summary.json`
+  - `alias_lookup_table.json`
+- Graph-linking diagnostics:
+  - `signal_mapping_calls.txt`
+  - `signal_mapping_decisions.json`
+  - `signal_mapping_overview.json`
+
+Expected effect on downstream system:
+- Better graph connectivity between spec and RTL domains.
+- Better context retrieval for plan/SVA generation.
+- Better explainability via detailed logs.
+
+Known limitations (current):
+- Mapping quality depends on spec node naming consistency and parser cleanliness.
+- Some runs may show strong LLM aliases but weak/zero final edge creation if mention-to-node matching is too strict/noisy.
+- Additional normalization and mention matching improvements can improve edge materialization.

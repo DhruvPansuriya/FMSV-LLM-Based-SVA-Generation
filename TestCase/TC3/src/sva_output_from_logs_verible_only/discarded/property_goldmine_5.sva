@@ -1,0 +1,24 @@
+module sdc_top (
+    input  wire        nRST,      // Spec: "system reset"        (active-low)
+    input  wire        PCLK,      // Spec: "system clock"
+    input  wire        PSEL,      // Spec: "peripheral select"
+    input  wire        PENABLE,   // Spec: "transfer enable"
+    input  wire        PWRITE,    // Spec: "write enable"
+    input  wire [7:0]  PADDR,     // Spec: "register address"
+    input  wire [31:0] PWDATA,    // Spec: "write data bus"
+    output reg  [31:0] PRDATA,    // Spec: "read data bus"
+    output wire        PREADY,    // Spec: "transfer acknowledge"
+    output wire        SCK,       // Spec: "serial clock"
+    output wire        MOSI,      // Spec: "master data output"
+    input  wire        MISO,      // Spec: "master data input"
+    output reg         SS_N,      // Spec: "chip select"         (active-low)
+    output reg         IRQ_OUT,   // Spec: "interrupt request"
+    output wire        WE_N       // Spec: "write enable strobe" (active-low)
+);
+
+property a5;
+@(posedge PCLK) (!nRST) && (tx_done_pulse || par_err_latch) |-> (IRQ_OUT == 1'b1);
+endproperty
+assert_a5: assert property(a5);
+
+endmodule

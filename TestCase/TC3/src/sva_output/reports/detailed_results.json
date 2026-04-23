@@ -1,0 +1,24 @@
+[
+  {
+    "file_name": "bad_signal_1.sv",
+    "status": "discarded",
+    "final_sva": "assert property (@(posedge pclk) disable iff (!nrst) foo_sig |-> penable);",
+    "loop_a_repaired": true,
+    "loop_b_repaired": false,
+    "reason": "Loop A failed after 1 repair attempt. Still invalid signal(s): foo_sig",
+    "invalid_signals_before_repair": [
+      "foo_sig"
+    ],
+    "syntax_error_before_repair": ""
+  },
+  {
+    "file_name": "ok_1.sv",
+    "status": "discarded",
+    "final_sva": "assert property (@(posedge pclk) disable iff (!nrst) psel |-> penable);",
+    "loop_a_repaired": false,
+    "loop_b_repaired": true,
+    "reason": "Loop B failed after 1 repair attempt (Verible syntax still invalid)\nFinal Verible error:\nverible-verilog-syntax not found in PATH",
+    "invalid_signals_before_repair": [],
+    "syntax_error_before_repair": "verible-verilog-syntax not found in PATH"
+  }
+]

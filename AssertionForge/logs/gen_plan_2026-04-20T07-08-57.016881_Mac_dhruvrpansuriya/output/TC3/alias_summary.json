@@ -1,0 +1,243 @@
+{
+  "count": 34,
+  "mappings": [
+    {
+      "canonical": "system_clock",
+      "rtl_name": "sdc_top.pclk",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "system_reset",
+      "rtl_name": "sdc_top.nrst",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": true
+    },
+    {
+      "canonical": "peripheral_select",
+      "rtl_name": "sdc_top.psel",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "transfer_enable",
+      "rtl_name": "sdc_top.penable",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "write_enable",
+      "rtl_name": "sdc_top.pwrite",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "register_address",
+      "rtl_name": "sdc_top.paddr",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "write_data_bus",
+      "rtl_name": "sdc_top.pwdata",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "read_data_bus",
+      "rtl_name": "sdc_top.prdata",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "transfer_acknowledge",
+      "rtl_name": "sdc_top.pready",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "serial_clock",
+      "rtl_name": "sdc_top.sck",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "master_data_output",
+      "rtl_name": "sdc_top.mosi",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "master_data_input",
+      "rtl_name": "sdc_top.miso",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "chip_select",
+      "rtl_name": "sdc_top.ss_n",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": true
+    },
+    {
+      "canonical": "interrupt_request",
+      "rtl_name": "sdc_top.irq_out",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "write_enable_n",
+      "rtl_name": "sdc_top.we_n",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": true
+    },
+    {
+      "canonical": "transmit_clock",
+      "rtl_name": "sdc_tx.clk",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "transmit_reset_n",
+      "rtl_name": "sdc_tx.rst_n",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": true
+    },
+    {
+      "canonical": "transmit_start",
+      "rtl_name": "sdc_tx.tx_start",
+      "rtl_module": "sdc_tx",
+      "confidence": 0.5,
+      "active_low": false
+    },
+    {
+      "canonical": "flow_control_enable",
+      "rtl_name": "sdc_tx.fc_en",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "baud_rate_divisor",
+      "rtl_name": "sdc_tx.baud_div",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "transmit_data",
+      "rtl_name": "sdc_tx.tx_data",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "transmit_serial_clock",
+      "rtl_name": "sdc_tx.sck_out",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "transmit_master_data_output",
+      "rtl_name": "sdc_tx.mosi_out",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "transmit_done",
+      "rtl_name": "sdc_tx.tx_done",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "fifo_empty",
+      "rtl_name": "sdc_tx.fifo_empty",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "transmit_acknowledge",
+      "rtl_name": "sdc_tx.ack_flag",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "receive_clock",
+      "rtl_name": "sdc_rx.clk",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "receive_reset_n",
+      "rtl_name": "sdc_rx.rst_n",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": true
+    },
+    {
+      "canonical": "receive_master_data_input",
+      "rtl_name": "sdc_rx.miso_in",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "receive_serial_clock",
+      "rtl_name": "sdc_rx.sck_in",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "data_valid",
+      "rtl_name": "sdc_rx.dv",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "parity_error_flag",
+      "rtl_name": "sdc_rx.par_err",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false
+    },
+    {
+      "canonical": "receive_buffer_full_n",
+      "rtl_name": "sdc_rx.buf_full_n",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": true
+    },
+    {
+      "canonical": "receive_data",
+      "rtl_name": "sdc_rx.rx_data",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false
+    }
+  ]
+}

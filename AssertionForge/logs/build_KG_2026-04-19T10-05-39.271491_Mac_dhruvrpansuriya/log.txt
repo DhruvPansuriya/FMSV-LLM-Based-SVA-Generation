@@ -1,0 +1,32 @@
+Starting local embedding proxy: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/local_embedding_proxy.py
+Waiting for embedding proxy to be ready...
+Embedding proxy is ready.
+Derived base directory: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3
+Step 1: Processing input file(s)
+Cleaned up input folder: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller/input
+PDF Statistics for toy_sdc_spec.pdf:
+  Pages: 6
+  File size: 0.01 MB
+  Word count: 1958
+  Token count: 2578
+Step 2: Initializing GraphRAG
+export PYTHONPATH='/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-llm:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-common:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-cache:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-chunking:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-vectors:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-storage:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-input:$PYTHONPATH' && "/opt/homebrew/opt/python@3.14/bin/python3.14" -m graphrag init --root '/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller' --model gpt-4-turbo-preview --embedding text-embedding-3-small
+GraphRAG project already initialized. Skipping initialization.
+Step 3: Updating .env file
+Copied .env from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/rag_apb/.env to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller
+Step 4: Updating settings.yaml file
+Copied settings.yaml from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/rag_apb/settings.yaml to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller
+Step 5: Copying entity extraction prompt
+Copied entity extraction prompt from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/entity_extraction.txt to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller/prompts/entity_extraction.txt
+Step 6: Running GraphRAG indexing
+Running command: /opt/homebrew/opt/python@3.14/bin/python3.14 -u -m graphrag index --verbose --root /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller
+PYTHONPATH set to: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-llm:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-common:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-cache:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-chunking:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-vectors:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-storage:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-input
+--------------------------------------------------
+Starting GraphRAG Indexing (output streaming to console)...
+--------------------------------------------------
+GraphRAG indexing completed successfully
+Step 7: Detecting GraphRAG log folder
+Running command: /opt/homebrew/opt/python@3.14/bin/python3.14 -u -m graphrag index --verbose --root /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller
+PYTHONPATH set to: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-llm:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-common:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-cache:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-chunking:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-vectors:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-storage:/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag/packages/graphrag-input
+--------------------------------------------------
+Starting GraphRAG Indexing (output streaming to console)...

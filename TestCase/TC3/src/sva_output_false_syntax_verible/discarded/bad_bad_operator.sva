@@ -1,0 +1,4 @@
+property p_bad4;
+  @(posedge PCLK) (PSEL == 1'b1) |=>=> (PREADY == 1'b1);
+endproperty
+assert property (p_bad4);

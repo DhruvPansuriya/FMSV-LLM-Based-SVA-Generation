@@ -1,0 +1,4 @@
+property p_bad1;
+  @(posedge PCLK) (PSEL && PENABLE) |-> (PRDATA == PWDATA)
+endproperty
+assert property (p_bad1);

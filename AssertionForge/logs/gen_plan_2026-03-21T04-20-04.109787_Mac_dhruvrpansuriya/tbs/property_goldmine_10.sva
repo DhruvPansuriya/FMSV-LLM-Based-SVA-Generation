@@ -1,0 +1,22 @@
+module apb_props #(
+  parameter ADDR_WIDTH = 32,
+  parameter DATA_WIDTH = 32
+)(
+  input  wire                    PCLK,
+  input  wire                    PRESETn,
+  input  wire [ADDR_WIDTH-1:0]   PADDR,
+  input  wire                    PSEL,
+  input  wire                    PENABLE,
+  input  wire                    PWRITE,
+  input  wire [DATA_WIDTH-1:0]   PWDATA,
+  input  wire [DATA_WIDTH-1:0]   PRDATA,
+  input  wire                    PREADY,
+  input  wire                    PSLVERR
+);
+
+property a10;
+@(posedge PCLK) ##5 (!PWRITE && PREADY) |-> $isvalid(PRDATA);
+endproperty
+assert_a10: assert property(a10);
+
+endmodule

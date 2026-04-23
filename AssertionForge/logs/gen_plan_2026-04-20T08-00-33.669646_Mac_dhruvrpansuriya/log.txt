@@ -1,0 +1,906 @@
+Starting the test plan generation process...
+Step 1: Reading the PDF file(s)...
+First 5 lines of spec_text (truncated):
+Serial Data Controller (SDC) — Design Specification v1.0
+Document ID: SDC-SPEC-001 | Status: Draft
+1. Overview
+The Serial Data Controller (SDC) provides an APB slave interface for host processor configuration and a
+SPI-compatible serial interface for communication with external slave devices. It supports configurable baud rates,
+...
+Total number of lines in spec_text: 99
+Step 2: Loading and processing the Knowledge Graph...
+Knowledge Graph loaded from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller/output/clustered_graph.graphml
+Number of nodes: 38
+Number of edges: 41
+
+Example node attributes:
+  id: 6ed3577e-de16-41d1-b4b9-cfb109d77f1d
+  human_readable_id: 15
+  type: "SIGNAL"
+  description: "The chip select signal is an active-low output that is driven low at the start of a frame to address the external slave."
+  text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+  frequency: 1
+  degree: 1
+
+Example edge attributes:
+  id: ec7551de-8173-4c23-b2c9-59b86ec2a37a
+  human_readable_id: 5
+  description: "The transfer enable signal is used to mark the second cycle of an APB transfer on the APB interface."
+  weight: 9.0
+  combined_degree: 11
+  text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+
+Node attribute keys:
+id, type, degree, frequency, description, human_readable_id, text_unit_ids
+
+Edge attribute keys:
+id, combined_degree, weight, description, human_readable_id, text_unit_ids
+Step 2b: Refining Knowledge Graph with RTL information...
+Starting Knowledge Graph refinement with RTL from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3
+Initial specification KG has 38 nodes and 41 edges
+
+=== Specification KG Analysis ===
+Node types in specification KG:
+  - "MODULE": 3 nodes
+  - "INTERFACE": 2 nodes
+  - "CLOCK": 3 nodes
+  - "RESET": 1 nodes
+  - "SIGNAL": 21 nodes
+  - "PARAMETER": 6 nodes
+  - "PROTOCOL": 2 nodes
+Specification KG has 0 nodes with 'text' attributes for matching
+Built knowledge graph with 217 nodes and 265 edges
+Built RTL KG with 217 nodes and 265 edges
+Added 217 RTL nodes and 265 RTL edges to combined KG
+
+=== Link Summary ===
+Total links created: 38
+- contains_spec: 35 links
+- contains_implementation: 3 links
+
+=== Link Examples ===
+
+Examples of 'contains_spec' links:
+  1. design_root --contains_spec--> "APB INTERFACE"
+     Target node details:
+       id: aff1ceb1-8c84-4cac-8ee9-913ca5704dce
+       human_readable_id: 1
+       type: "INTERFACE"
+       description: "The APB interface is used for host processor configuration."
+       text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+       frequency: 1
+       degree: 10
+  2. design_root --contains_spec--> "SPI INTERFACE"
+     Target node details:
+       id: 338983ca-f2c7-426d-bb85-97e213320911
+       human_readable_id: 2
+       type: "INTERFACE"
+       description: "The SPI interface is used for communication with external slave devices."
+       text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+       frequency: 1
+       degree: 7
+  3. design_root --contains_spec--> "SYSTEM CLOCK"
+     Target node details:
+       id: 3dec1e15-cb67-4598-8d6d-f03795410a43
+       human_readable_id: 3
+       type: "CLOCK"
+       description: "The system clock is the primary clock input for the SDC."
+       text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+       frequency: 1
+       degree: 3
+
+Examples of 'contains_implementation' links:
+  1. design_root --contains_implementation--> rtl_0
+     Target node details:
+       type: module
+       name: sdc_top
+       original_id: module:sdc_top
+       source: rtl
+  2. design_root --contains_implementation--> rtl_1
+     Target node details:
+       type: module
+       name: sdc_tx
+       original_id: module:sdc_tx
+       source: rtl
+  3. design_root --contains_implementation--> rtl_2
+     Target node details:
+       type: module
+       name: sdc_rx
+       original_id: module:sdc_rx
+       source: rtl
+Created 38 links between specification and RTL nodes
+SignalAligner returned 53 lookup keys
+SignalAligner unresolved entries (<0.7 confidence): 1
+Saved signal mapping overview to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/signal_mapping_overview.json
+
+Attempting to link 34 RTL signals to 25 spec nodes
+Saved signal mapping log to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/signal_mapping_calls.txt
+Saved structured signal mapping decisions to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/signal_mapping_decisions.json
+Created 0 additional links based on signal name matching
+Graph is already connected
+Graph is connected
+Number of connected components: 1
+Number of bridges between RTL and spec: 3
+  Bridge 1: rtl_0 (module: sdc_top) ---> design_root (root: Design Root)
+  Bridge 2: rtl_1 (module: sdc_tx) ---> design_root (root: Design Root)
+  Bridge 3: rtl_2 (module: sdc_rx) ---> design_root (root: Design Root)
+
+=== High-Degree Nodes (Hubs) ===
+  Node: rtl_0 (module: sdc_top)
+  Degree: 80 connections
+  Source: rtl
+  Connected to:
+    - rtl_3 (port: input  wire        nRST)
+    - rtl_4 (port: // Spec: "system reset"        (active-low)
+    input  wire        PCLK)
+    - rtl_5 (port: // Spec: "system clock"
+    input  wire        PSEL)
+    - rtl_6 (port: // Spec: "peripheral select"
+    input  wire        PENABLE)
+    - rtl_7 (port: // Spec: "transfer enable"
+    input  wire        PWRITE)
+    - ... and 75 more
+
+  Node: rtl_1 (module: sdc_tx)
+  Degree: 73 connections
+  Source: rtl
+  Connected to:
+    - rtl_0 (module: sdc_top)
+    - rtl_18 (port: input  wire        clk)
+    - rtl_19 (port: rst_n)
+    - rtl_20 (port: tx_start)
+    - rtl_21 (port: fc_en)
+    - ... and 68 more
+
+  Node: rtl_2 (module: sdc_rx)
+  Degree: 68 connections
+  Source: rtl
+  Connected to:
+    - rtl_0 (module: sdc_top)
+    - rtl_29 (port: input  wire       clk)
+    - rtl_30 (port: rst_n)
+    - rtl_31 (port: miso_in)
+    - rtl_32 (port: sck_in)
+    - ... and 63 more
+
+  Node: design_root (root: Design Root)
+  Degree: 38 connections
+  Source: spec
+  Connected to:
+    - "APB INTERFACE" ("INTERFACE": "APB INTERFACE")
+    - "SPI INTERFACE" ("INTERFACE": "SPI INTERFACE")
+    - "SYSTEM CLOCK" ("CLOCK": "SYSTEM CLOCK")
+    - "SYSTEM RESET" ("RESET": "SYSTEM RESET")
+    - "PERIPHERAL SELECT" ("SIGNAL": "PERIPHERAL SELECT")
+    - ... and 33 more
+
+  Node: "SERIAL DATA CONTROLLER (SDC)" ("MODULE": "SERIAL DATA CONTROLLER (SDC)")
+  Degree: 12 connections
+  Source: spec
+  Connected to:
+    - "APB INTERFACE" ("INTERFACE": "APB INTERFACE")
+    - "SPI INTERFACE" ("INTERFACE": "SPI INTERFACE")
+    - "SYSTEM RESET" ("RESET": "SYSTEM RESET")
+    - "INTERRUPT REQUEST" ("SIGNAL": "INTERRUPT REQUEST")
+    - "CONTROL REGISTER" ("PARAMETER": "CONTROL REGISTER")
+    - ... and 7 more
+
+Combined KG now has 256 nodes and 344 edges
+Refined Knowledge Graph now has 256 nodes and 344 edges
+Step 3: Initializing the language model...
+Step 4: Extracting valid signal names...
+Valid signal names: IRQ_OUT, MISO, MOSI, PADDR, PCLK, PENABLE, PRDATA, PREADY, PSEL, PWDATA, PWRITE, SCK, SS_N, WE_N, nRST
+Step 5: Generating natural language test plans...
+
+=== KG Structure ===
+KG is a dictionary with keys: ['nodes', 'edges']
+  nodes: list with 256 items
+    First item type: <class 'dict'>
+    First item keys: ['id', 'attributes']
+  edges: list with 344 items
+    First item type: <class 'dict'>
+    First item keys: ['source', 'target', 'attributes']
+
+Building signal name to node ID mapping for 15 signals...
+
+=== Building signal to node mapping for 15 signals ===
+Valid signals: {'PCLK', 'SS_N', 'MISO', 'PSEL', 'PWDATA', 'PREADY', 'WE_N', 'PWRITE', 'SCK', 'PRDATA', 'MOSI', 'IRQ_OUT', 'PADDR', 'PENABLE', 'nRST'}
+KG structure: ['nodes', 'edges']
+Number of nodes in KG: 256
+
+Node type distribution in KG:
+  "MODULE": 3 nodes
+  "INTERFACE": 2 nodes
+  "CLOCK": 3 nodes
+  "RESET": 1 nodes
+  "SIGNAL": 21 nodes
+  "PARAMETER": 6 nodes
+  "PROTOCOL": 2 nodes
+  module: 3 nodes
+  port: 34 nodes
+  fsm: 4 nodes
+  protocol_pattern: 13 nodes
+  verification_point: 7 nodes
+  assignment: 156 nodes
+  root: 1 nodes
+
+Signal mentions by node type:
+  PCLK: {'port': 1}
+  SS_N: {'port': 1, 'assignment': 6}
+  MISO: {'port': 1}
+  PSEL: {'port': 1}
+  PWDATA: {'port': 1}
+  PREADY: {'port': 1, 'assignment': 3}
+  WE_N: {'port': 1, 'assignment': 3}
+  PWRITE: {'port': 1}
+  SCK: {'port': 1}
+  PRDATA: {'port': 1, 'assignment': 9}
+  MOSI: {'port': 1}
+  IRQ_OUT: {'port': 1, 'assignment': 6}
+  PADDR: {'port': 1}
+  PENABLE: {'port': 1}
+  nRST: {'port': 1}
+
+=== Signal mapping results ===
+WARNING: No node mapping found for signal 'PCLK'
+Signal 'SS_N' mapped to 6 nodes: ['rtl_71', 'rtl_74', 'rtl_123', 'rtl_126', 'rtl_175', 'rtl_178']
+WARNING: No node mapping found for signal 'MISO'
+Signal 'PSEL' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PWDATA' mapped to 6 nodes: ['rtl_72', 'rtl_73', 'rtl_124', 'rtl_125', 'rtl_176', 'rtl_177']
+Signal 'PREADY' mapped to 3 nodes: ['rtl_62', 'rtl_114', 'rtl_166']
+Signal 'WE_N' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PWRITE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+WARNING: No node mapping found for signal 'SCK'
+Signal 'PRDATA' mapped to 9 nodes: ['rtl_75', 'rtl_76', 'rtl_77', 'rtl_127', 'rtl_128', 'rtl_129', 'rtl_179', 'rtl_180', 'rtl_181']
+WARNING: No node mapping found for signal 'MOSI'
+Signal 'IRQ_OUT' mapped to 6 nodes: ['rtl_78', 'rtl_79', 'rtl_130', 'rtl_131', 'rtl_182', 'rtl_183']
+WARNING: No node mapping found for signal 'PADDR'
+Signal 'PENABLE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+WARNING: No node mapping found for signal 'nRST'
+Created mappings for 9 signals
+Signal 'WE_N' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PENABLE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PSEL' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PWRITE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PREADY' mapped to 3 nodes: ['rtl_62', 'rtl_114', 'rtl_166']
+Signal 'SS_N' mapped to 6 nodes: ['rtl_71', 'rtl_74', 'rtl_123', 'rtl_126', 'rtl_175', 'rtl_178']
+Signal 'PWDATA' mapped to 6 nodes: ['rtl_72', 'rtl_73', 'rtl_124', 'rtl_125', 'rtl_176', 'rtl_177']
+Signal 'PRDATA' mapped to 9 nodes: ['rtl_75', 'rtl_76', 'rtl_77', 'rtl_127', 'rtl_128', 'rtl_129', 'rtl_179', 'rtl_180', 'rtl_181']
+Signal 'IRQ_OUT' mapped to 6 nodes: ['rtl_78', 'rtl_79', 'rtl_130', 'rtl_131', 'rtl_182', 'rtl_183']
+Using LLM-based context pruning
+Processing signal 1/15: IRQ_OUT
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['IRQ_OUT']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: 
+    always @(posedge PCLK or negedge nRST) begin
+        if (!nRST) IRQ_OUT <= 1'b0;
+        else       IRQ_OUT <= tx_done_pulse | par_err_latch;
+    end
+
+endmodule
+
+
+module sdc_tx (
+    input  wire        clk, rst_n, tx_start, fc_en,
+    input  wire [15:0] baud_div,
+    input  wire [7:0]  tx_data,
+    output wire        sck_out, mosi_out, tx_done, fifo_empty,
+    output reg         ack_flag
+);
+    reg [15:0] baud_cnt;
+
+Processing generator: path
+Mapped signal 'IRQ_OUT' to 6 nodes
+Using 6/6 valid nodes for path context generation
+  Found 30 potential endpoints for rtl_130
+Found 104 significant paths for node rtl_130
+  Found 30 potential endpoints for rtl_131
+Found 177 significant paths for node rtl_131
+  Found 30 potential endpoints for rtl_182
+Found 142 significant paths for node rtl_182
+  Found 30 potential endpoints for rtl_183
+Found 127 significant paths for node rtl_183
+  Found 30 potential endpoints for rtl_78
+Found 136 significant paths for node rtl_78
+  Found 30 potential endpoints for rtl_79
+Found 142 significant paths for node rtl_79
+Generated 828 path-based contexts
+path generator returned 828 contexts
+Added 828 contexts from path, total now: 838
+Sample path context: PATH ANALYSIS FROM IRQ_OUT_assignment TO BAUD_DIV_REG_assignment
+Path length: 3 nodes with clustering 0.00
+Source: IRQ_OUT_assignment (assignment) in module sdc_tx
+Target: BAUD_DIV_REG_assignment (assignment) in module sdc_tx
+
+Relationship chain:
+  IRQ_OUT_assignment (assignment in sdc_tx) part_of sdc_tx (module)
+  sdc_tx (module) part_of BAUD_DIV_REG_assignment (assignment in sdc_tx)
+
+Analysis:
+  • Cross-module path connecting: sdc_tx
+
+Pruning 838 contexts...
+Using LLM-based context pruning
+Pruning 838 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 0.07 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 2 of type rag
+Evaluating 828 contexts of type 'path'
+Pre-filtering 828 contexts of type 'path' based on score
+LLM evaluation for path took 15.65 seconds
+Selected context 0 of type path
+Selected context 1 of type path
+Selected context 2 of type path
+Selected context 4 of type path
+Final selection: 7 contexts
+After pruning: 7 contexts remain
+Selected contexts by type: {'rag': 3, 'path': 4}
+Context distribution plan: {'rag': [3], 'path': [4], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 7
+Prompt 1: 7 contexts, 581 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal IRQ_OUT
+Processing dynamic context 1/1 for IRQ_OUT
+Initializing LLMLingua compressor (microsoft/llmlingua-2-xlm-roberta-large-meetingbank)...
+Compressing the context prompt for IRQ_OUT (dynamic context 1)...
+Compression Complete: 1176 -> 969 tokens.
+DEBUG: Raw output from LLM for IRQ_OUT:
+Plan: IRQ_OUT: that when PCLK rises and nRST is high, IRQ_OUT will be set to 1 if either tx_done_pulse or par_err_latch is high.
+Plan: IRQ_OUT: that when nRST is low, IRQ_OUT will be reset to 0 in the next cycle of PCLK.
+Plan: IRQ_OUT: that when PCLK rises and nRST is high, IRQ_OUT will remain low if both tx_done_pulse and par_err_latch are low.
+Plan: IRQ_OUT: that when PCLK falls and nRST is low, IRQ_OUT will not change state until nRST rises.
+Plan: IRQ_OUT: that after nRST rises, IRQ_OUT will remain low for at least one cycle of PCLK before being set high by tx_done_pulse or par_err_latch.
+Plan: IRQ_OUT: that when PCLK rises and nRST is high, a high tx_done_pulse will set IRQ_OUT high regardless of the state of par_err_latch.
+Plan: IRQ_OUT: that when PCLK rises and nRST is high, a high par_err_latch will set IRQ_OUT high regardless of the state of tx_done_pulse.
+Plan: IRQ_OUT: that when nRST is high and PCLK rises, a low tx_done_pulse and a low par_err_latch will result in IRQ_OUT remaining low.
+Plan: IRQ_OUT: that in a continuous sequence of rising PCLK edges with nRST high, IRQ_OUT will accurately reflect the state of tx_done_pulse or par_err_latch.
+Plan: IRQ_OUT: that the state of IRQ_OUT will not be affected by changes in PADDR, PENABLE, PRDATA, PREADY, PSEL, PWRITE, or PWDATA when nRST is high and PCLK rises.
+
+Generated 10 plans from context 1 for signal IRQ_OUT
+Generated 10 unique plans for signal IRQ_OUT from 10 total plans
+Processing signal 2/15: MISO
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['MISO']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: Logic 0 = buffer full. 6 FIFO empty status High = transmit buffer empty. 5 Transmit acknowledge Set when slave confirms receipt. 4 Parity error flag Set on receive parity mismatch. Sticky. 3 Data valid High for one cycle on new receive byte. 2 Transmission complete Pulsed one cycle when frame ends. 1 Flow control enable Reflects control register bit 3. 0 Reserved — 4. Reset and Interrupt Behavior On assertion of system reset: baud rate divisor clears to 0, chip select deasserts, transmit acknowledge clears, parity error flag clears, and interrupt request deasserts. The interrupt request is a registered
+
+Processing generator: path
+No mapping found for 'MISO', using as-is
+Using 0/1 valid nodes for path context generation
+No valid nodes found in graph for path analysis
+path generator returned 0 contexts
+
+Pruning 10 contexts...
+Using LLM-based context pruning
+Pruning 10 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 0.11 seconds
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 3 of type rag
+Final selection: 3 contexts
+After pruning: 3 contexts remain
+Selected contexts by type: {'rag': 3}
+Context distribution plan: {'rag': [3], 'path': [0], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 7
+Prompt 1: 3 contexts, 210 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal MISO
+Processing dynamic context 1/1 for MISO
+Compressing the context prompt for MISO (dynamic context 1)...
+Compression Complete: 508 -> 423 tokens.
+DEBUG: Raw output from LLM for MISO:
+Plan: MISO: that when PCLK has a rising edge and MISO is high, in the next cycle MISO will remain high until SCK changes.
+Plan: MISO: that if WE_N is low and PADDR is within the range of 0x00 to 0x04, then MISO will reflect the value of PWDATA in the subsequent cycles.
+Plan: MISO: that the value of MISO is constant when nRST is low, and MISO will be in a known state when nRST becomes high.
+Plan: MISO: that when PSEL is high and PENABLE is low, MISO will not change until PENABLE becomes high or PSEL becomes low.
+Plan: MISO: that if SS_N is low, then MISO will be in a high-impedance state when SCK is high.
+Plan: MISO: that the input data MISO has a value between 0 and 1, inclusive, 2 clock cycles after the reset signal nRST becomes deasserted.
+Plan: MISO: that when PADDR is 0x08, then MISO will reflect the status of the receive buffer full and parity error flag in the subsequent cycles.
+Plan: MISO: that if IRQ_OUT is high, then MISO will remain in a known state until IRQ_OUT becomes low or PCLK has a rising edge.
+Plan: MISO: that the value of MISO is not dependent on the value of PWRITE when PSEL is low.
+Plan: MISO: that when PCLK has a rising edge, MISO will change its value based on the value of SCK in the previous cycle.
+
+Generated 10 plans from context 1 for signal MISO
+Generated 10 unique plans for signal MISO from 10 total plans
+Processing signal 3/15: MOSI
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['MOSI']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: Logic 0 = buffer full. 6 FIFO empty status High = transmit buffer empty. 5 Transmit acknowledge Set when slave confirms receipt. 4 Parity error flag Set on receive parity mismatch. Sticky. 3 Data valid High for one cycle on new receive byte. 2 Transmission complete Pulsed one cycle when frame ends. 1 Flow control enable Reflects control register bit 3. 0 Reserved — 4. Reset and Interrupt Behavior On assertion of system reset: baud rate divisor clears to 0, chip select deasserts, transmit acknowledge clears, parity error flag clears, and interrupt request deasserts. The interrupt request is a registered
+
+Processing generator: path
+No mapping found for 'MOSI', using as-is
+Using 0/1 valid nodes for path context generation
+No valid nodes found in graph for path analysis
+path generator returned 0 contexts
+
+Pruning 10 contexts...
+Using LLM-based context pruning
+Pruning 10 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 15.81 seconds
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 4 of type rag
+Final selection: 3 contexts
+After pruning: 3 contexts remain
+Selected contexts by type: {'rag': 3}
+Context distribution plan: {'rag': [3], 'path': [0], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 7
+Prompt 1: 3 contexts, 255 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal MOSI
+Processing dynamic context 1/1 for MOSI
+Compressing the context prompt for MOSI (dynamic context 1)...
+Compression Complete: 479 -> 415 tokens.
+DEBUG: Raw output from LLM for MOSI:
+Plan: MOSI: that when PSEL is high and PENABLE is high, MOSI will be valid data in the next cycle after PCLK edge.
+Plan: MOSI: that when PWRITE is high and PADDR is within the range of 0x00 to 0x08, MOSI will be stable after 2 cycles of PCLK.
+Plan: MOSI: that after nRST is deasserted, MOSI will be in a valid state after 5 cycles of PCLK.
+Plan: MOSI: that when PCLK is rising and PSEL is high, MOSI will be updated with new data.
+Plan: MOSI: that if PWDATA is within the range of 0 to 255, then MOSI will be within the same range after 1 cycle of PCLK.
+Plan: MOSI: that when PENABLE is low, MOSI will remain in its previous state until PENABLE becomes high.
+Plan: MOSI: that when PADDR is 0x00, MOSI will be set to a default value after reset signal nRST is deasserted.
+Plan: MOSI: that in the absence of PCLK signal, MOSI will remain in its current state.
+Plan: MOSI: that when PRDATA is valid and PREADY is high, MOSI will be valid data for the next transfer.
+Plan: MOSI: that the transition of PSEL from low to high will cause MOSI to be updated with new data after 1 cycle of PCLK.
+
+Generated 10 plans from context 1 for signal MOSI
+Generated 10 unique plans for signal MOSI from 10 total plans
+Reached max signals limit (3), stopping.
+Step 6: Generating SVAs...
+
+=== KG Structure ===
+KG is a dictionary with keys: ['nodes', 'edges']
+  nodes: list with 256 items
+    First item type: <class 'dict'>
+    First item keys: ['id', 'attributes']
+  edges: list with 344 items
+    First item type: <class 'dict'>
+    First item keys: ['source', 'target', 'attributes']
+
+Building signal name to node ID mapping for 15 signals...
+
+=== Building signal to node mapping for 15 signals ===
+Valid signals: {'PCLK', 'SS_N', 'MISO', 'PSEL', 'PWDATA', 'PREADY', 'WE_N', 'PWRITE', 'SCK', 'PRDATA', 'MOSI', 'IRQ_OUT', 'PADDR', 'PENABLE', 'nRST'}
+KG structure: ['nodes', 'edges']
+Number of nodes in KG: 256
+
+Node type distribution in KG:
+  "MODULE": 3 nodes
+  "INTERFACE": 2 nodes
+  "CLOCK": 3 nodes
+  "RESET": 1 nodes
+  "SIGNAL": 21 nodes
+  "PARAMETER": 6 nodes
+  "PROTOCOL": 2 nodes
+  module: 3 nodes
+  port: 34 nodes
+  fsm: 4 nodes
+  protocol_pattern: 13 nodes
+  verification_point: 7 nodes
+  assignment: 156 nodes
+  root: 1 nodes
+
+Signal mentions by node type:
+  PCLK: {'port': 1}
+  SS_N: {'port': 1, 'assignment': 6}
+  MISO: {'port': 1}
+  PSEL: {'port': 1}
+  PWDATA: {'port': 1}
+  PREADY: {'port': 1, 'assignment': 3}
+  WE_N: {'port': 1, 'assignment': 3}
+  PWRITE: {'port': 1}
+  SCK: {'port': 1}
+  PRDATA: {'port': 1, 'assignment': 9}
+  MOSI: {'port': 1}
+  IRQ_OUT: {'port': 1, 'assignment': 6}
+  PADDR: {'port': 1}
+  PENABLE: {'port': 1}
+  nRST: {'port': 1}
+
+=== Signal mapping results ===
+WARNING: No node mapping found for signal 'PCLK'
+Signal 'SS_N' mapped to 6 nodes: ['rtl_71', 'rtl_74', 'rtl_123', 'rtl_126', 'rtl_175', 'rtl_178']
+WARNING: No node mapping found for signal 'MISO'
+Signal 'PSEL' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PWDATA' mapped to 6 nodes: ['rtl_72', 'rtl_73', 'rtl_124', 'rtl_125', 'rtl_176', 'rtl_177']
+Signal 'PREADY' mapped to 3 nodes: ['rtl_62', 'rtl_114', 'rtl_166']
+Signal 'WE_N' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PWRITE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+WARNING: No node mapping found for signal 'SCK'
+Signal 'PRDATA' mapped to 9 nodes: ['rtl_75', 'rtl_76', 'rtl_77', 'rtl_127', 'rtl_128', 'rtl_129', 'rtl_179', 'rtl_180', 'rtl_181']
+WARNING: No node mapping found for signal 'MOSI'
+Signal 'IRQ_OUT' mapped to 6 nodes: ['rtl_78', 'rtl_79', 'rtl_130', 'rtl_131', 'rtl_182', 'rtl_183']
+WARNING: No node mapping found for signal 'PADDR'
+Signal 'PENABLE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+WARNING: No node mapping found for signal 'nRST'
+Created mappings for 9 signals
+Signal 'WE_N' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PENABLE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PSEL' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PWRITE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PREADY' mapped to 3 nodes: ['rtl_62', 'rtl_114', 'rtl_166']
+Signal 'SS_N' mapped to 6 nodes: ['rtl_71', 'rtl_74', 'rtl_123', 'rtl_126', 'rtl_175', 'rtl_178']
+Signal 'PWDATA' mapped to 6 nodes: ['rtl_72', 'rtl_73', 'rtl_124', 'rtl_125', 'rtl_176', 'rtl_177']
+Signal 'PRDATA' mapped to 9 nodes: ['rtl_75', 'rtl_76', 'rtl_77', 'rtl_127', 'rtl_128', 'rtl_129', 'rtl_179', 'rtl_180', 'rtl_181']
+Signal 'IRQ_OUT' mapped to 6 nodes: ['rtl_78', 'rtl_79', 'rtl_130', 'rtl_131', 'rtl_182', 'rtl_183']
+Using LLM-based context pruning
+Processing signal 1/3: IRQ_OUT
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['IRQ_OUT']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: 
+    always @(posedge PCLK or negedge nRST) begin
+        if (!nRST) IRQ_OUT <= 1'b0;
+        else       IRQ_OUT <= tx_done_pulse | par_err_latch;
+    end
+
+endmodule
+
+
+module sdc_tx (
+    input  wire        clk, rst_n, tx_start, fc_en,
+    input  wire [15:0] baud_div,
+    input  wire [7:0]  tx_data,
+    output wire        sck_out, mosi_out, tx_done, fifo_empty,
+    output reg         ack_flag
+);
+    reg [15:0] baud_cnt;
+
+Processing generator: path
+Mapped signal 'IRQ_OUT' to 6 nodes
+Using 6/6 valid nodes for path context generation
+  Found 30 potential endpoints for rtl_130
+Found 139 significant paths for node rtl_130
+  Found 30 potential endpoints for rtl_131
+Found 152 significant paths for node rtl_131
+  Found 30 potential endpoints for rtl_182
+Found 169 significant paths for node rtl_182
+  Found 30 potential endpoints for rtl_183
+Found 156 significant paths for node rtl_183
+  Found 30 potential endpoints for rtl_78
+Found 174 significant paths for node rtl_78
+  Found 30 potential endpoints for rtl_79
+Found 205 significant paths for node rtl_79
+Generated 995 path-based contexts
+path generator returned 995 contexts
+Added 995 contexts from path, total now: 1005
+Sample path context: PATH ANALYSIS FROM IRQ_OUT_assignment TO "PARITY CHECKING"
+Path length: 6 nodes with clustering 0.39
+Source: IRQ_OUT_assignment (assignment) in module sdc_tx
+Target: "PARITY CHECKING" ("PARAMETER") in module unknown
+
+Relationship chain:
+  IRQ_OUT_assignment (assignment in sdc_tx) part_of sdc_tx (module)
+  sdc_tx (module) instantiates sdc_top (module)
+  sdc_top (module) instantiates sdc_rx (module)
+  sdc_rx (module) contains_implementation Design Root (root)
+  Design Root (root) contains_spec "PARITY CHECKING" ("PARAMETER")
+
+Analysis:
+  • Cross-module path connecting: sdc_tx, sdc_top, sdc_rx
+
+Pruning 1005 contexts...
+Using LLM-based context pruning
+Pruning 1005 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 0.09 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 4 of type rag
+Evaluating 995 contexts of type 'path'
+Pre-filtering 995 contexts of type 'path' based on score
+LLM evaluation for path took 0.06 seconds
+Selected context 0 of type path
+Selected context 1 of type path
+Selected context 2 of type path
+Selected context 3 of type path
+Final selection: 8 contexts
+After pruning: 8 contexts remain
+Selected contexts by type: {'rag': 4, 'path': 4}
+Context distribution plan: {'rag': [4], 'path': [4], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 15
+Prompt 1: 8 contexts, 692 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal IRQ_OUT
+Processing context 1 with all 10 plans
+Compressing SVA prompt for IRQ_OUT (context 1)...
+Compression Complete: 1311 -> 1092 tokens.
+
+Strategy Effectiveness:
+Strategy 1: 9 SVAs extracted
+Strategy 2: 9 SVAs extracted
+Strategy 3: 0 SVAs extracted
+Strategy 4: 0 SVAs extracted
+Strategy 9: 0 SVAs extracted
+Total unique SVAs after cleaning: 8
+Generated 8 SVAs from context 1 for signal IRQ_OUT
+Generated 8 unique SVAs for signal IRQ_OUT from 8 total SVAs
+Processing signal 2/3: MISO
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['MISO']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: Logic 0 = buffer full. 6 FIFO empty status High = transmit buffer empty. 5 Transmit acknowledge Set when slave confirms receipt. 4 Parity error flag Set on receive parity mismatch. Sticky. 3 Data valid High for one cycle on new receive byte. 2 Transmission complete Pulsed one cycle when frame ends. 1 Flow control enable Reflects control register bit 3. 0 Reserved — 4. Reset and Interrupt Behavior On assertion of system reset: baud rate divisor clears to 0, chip select deasserts, transmit acknowledge clears, parity error flag clears, and interrupt request deasserts. The interrupt request is a registered
+
+Processing generator: path
+No mapping found for 'MISO', using as-is
+Using 0/1 valid nodes for path context generation
+No valid nodes found in graph for path analysis
+path generator returned 0 contexts
+
+Pruning 10 contexts...
+Using LLM-based context pruning
+Pruning 10 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 0.07 seconds
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 3 of type rag
+Final selection: 3 contexts
+After pruning: 3 contexts remain
+Selected contexts by type: {'rag': 3}
+Context distribution plan: {'rag': [3], 'path': [0], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 15
+Prompt 1: 3 contexts, 218 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal MISO
+Processing context 1 with all 10 plans
+Compressing SVA prompt for MISO (context 1)...
+Compression Complete: 518 -> 435 tokens.
+
+Strategy Effectiveness:
+Strategy 1: 10 SVAs extracted
+Strategy 2: 10 SVAs extracted
+Strategy 3: 0 SVAs extracted
+Strategy 4: 0 SVAs extracted
+Strategy 9: 0 SVAs extracted
+Total unique SVAs after cleaning: 10
+Generated 10 SVAs from context 1 for signal MISO
+Generated 10 unique SVAs for signal MISO from 10 total SVAs
+Processing signal 3/3: MOSI
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['MOSI']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context: Logic 0 = buffer full. 6 FIFO empty status High = transmit buffer empty. 5 Transmit acknowledge Set when slave confirms receipt. 4 Parity error flag Set on receive parity mismatch. Sticky. 3 Data valid High for one cycle on new receive byte. 2 Transmission complete Pulsed one cycle when frame ends. 1 Flow control enable Reflects control register bit 3. 0 Reserved — 4. Reset and Interrupt Behavior On assertion of system reset: baud rate divisor clears to 0, chip select deasserts, transmit acknowledge clears, parity error flag clears, and interrupt request deasserts. The interrupt request is a registered
+
+Processing generator: path
+No mapping found for 'MOSI', using as-is
+Using 0/1 valid nodes for path context generation
+No valid nodes found in graph for path analysis
+path generator returned 0 contexts
+
+Pruning 10 contexts...
+Using LLM-based context pruning
+Pruning 10 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 0.09 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 4 of type rag
+Final selection: 4 contexts
+After pruning: 4 contexts remain
+Selected contexts by type: {'rag': 4}
+Context distribution plan: {'rag': [4], 'path': [0], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 15
+Prompt 1: 4 contexts, 363 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal MOSI
+Processing context 1 with all 10 plans
+Compressing SVA prompt for MOSI (context 1)...
+Compression Complete: 624 -> 542 tokens.
+
+Strategy Effectiveness:
+Strategy 1: 7 SVAs extracted
+Strategy 2: 7 SVAs extracted
+Strategy 3: 0 SVAs extracted
+Strategy 4: 0 SVAs extracted
+Strategy 9: 0 SVAs extracted
+Total unique SVAs after cleaning: 7
+Generated 7 SVAs from context 1 for signal MOSI
+Generated 7 unique SVAs for signal MOSI from 7 total SVAs
+
+Generated SVAs:
+1. @(posedge PCLK) (!nRST) && tx_done_pulse |-> (IRQ_OUT == 1'b1);
+2. @(posedge PCLK) (!nRST) && par_err_latch |-> (IRQ_OUT == 1'b1);
+3. @(posedge PCLK) (!nRST) && !tx_done_pulse && !par_err_latch |-> (IRQ_OUT == 1'b0);
+4. @(posedge PCLK) (!nRST) && !(tx_done_pulse || par_err_latch) |-> (IRQ_OUT == 1'b0);
+5. @(posedge nRST) ##1 (IRQ_OUT == 1'b0);
+6. @(posedge PCLK) (!nRST) && (tx_done_pulse || par_err_latch) |-> (IRQ_OUT == 1'b1);
+7. @(posedge PCLK) (!nRST) |-> (IRQ_OUT == (tx_done_pulse || par_err_latch));
+8. @(posedge PCLK) nRST |-> $stable(IRQ_OUT);
+9. @(posedge PCLK) (WE_N == 1'b0 && PADDR >= 8'h00 && PADDR <= 8'h04) |-> ##1 (MISO == PWDATA);
+10. @(posedge PCLK) (MISO == 1'b1) |-> ##1 (MISO == 1'b1) until (SCK !== SCK);
+11. @(posedge PCLK) (PSEL == 1'b1 && PENABLE == 1'b0) |-> (MISO == $stable(MISO)) until (PENABLE == 1'b1 || PSEL == 1'b0);
+12. @(posedge PCLK) (1) |-> (MISO == $past(MISO)) until (SCK !== $past(SCK));
+13. @(posedge nRST) (1) |-> (MISO == 1'b0);
+14. @(posedge PCLK) (PSEL == 1'b0) |-> (MISO == $stable(MISO));
+15. @(posedge PCLK) (SS_N == 1'b0 && SCK == 1'b1) |-> (MISO == 1'bz);
+16. @(posedge PCLK) (PADDR == 8'h08) |-> ##1 (MISO == {RX_BUF_FULL_N, par_err_latch});
+17. @(posedge PCLK) (IRQ_OUT == 1'b1) |-> (MISO == $stable(MISO)) until (IRQ_OUT == 1'b0);
+18. @(posedge nRST) (1) |-> ##2 (MISO >= 1'b0 && MISO <= 1'b1);
+19. @(posedge PCLK) (PWRITE && PSEL && PENABLE) |-> (MOSI == PWDATA[7:0]);
+20. @(posedge PCLK) (1 == 1) |-> (MOSI != IRQ_OUT);
+21. @(posedge PCLK) (1 == 1) |-> ((PSEL && PENABLE) -> (MOSI == PWDATA[7:0])) && ((!PSEL || !PENABLE) -> (MOSI == 1'bz));
+22. @(posedge PCLK) (!(PSEL || PENABLE)) |-> (MOSI == 1'bz);
+23. @(posedge PCLK) (fc_en && !SS_N) |-> (MOSI == PWDATA[7:0]);
+24. @(posedge PCLK) (PSEL && PENABLE) |-> ##1 (MOSI == PWDATA[7:0]);
+25. @(posedge PCLK) (1 == 1) |-> (MOSI != PRDATA);
+
+Step 7: Writing SVAs to files...
+Step 8: Generating SBY configs for SymbiYosys...
+Step 9: Running SymbiYosys...
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+WARNING: SymbiYosys executable not found at /usr/bin/sby. Please update src/config.py
+Step 10: Analyzing coverage of proven SVAs...
+Skipping detailed coverage analysis (JasperGold specific).
+Step 11: Analyzing and printing results...
+
+Detailed SVA Results:
++----------+----------------+-----------------+
+|   SVA ID | Proof Status   | Error Message   |
++==========+================+=================+
+|        0 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        1 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        2 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        3 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        4 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        5 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        6 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        7 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        8 | inconclusive   |                 |
++----------+----------------+-----------------+
+|        9 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       10 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       11 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       12 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       13 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       14 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       15 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       16 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       17 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       18 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       19 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       20 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       21 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       22 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       23 | inconclusive   |                 |
++----------+----------------+-----------------+
+|       24 | inconclusive   |                 |
++----------+----------------+-----------------+
+
+Syntax-correct SVAs: 25 out of 25
+
+Detailed SVA results saved to: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/sva_details.csv
+
+General Statistics:
+PDF Statistics:
+  Number of pages: 4
+  Number of tokens: 953
+  File size: 5641 bytes
+
+Natural Language Test Plans:
+  Total number of plans generated: 30
+  Number of signals with plans: 3
+  Average plans per signal: 10.00
+  Average plan length: 21.63 words
+
+SVAs:
+  Number of SVAs generated: 25
+  Average SVA length: 11.12 words
+
+JasperGold Results Summary:
+  Total SVAs evaluated: 25
+  Proven: 0
+  Counterexample found: 0
+  Inconclusive: 25
+  Errors: 0
+  Syntax-correct SVAs: 25
+  Success rate: 0.00%
+
+Detailed results saved in:
+  SVA files: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/tbs
+  Jasper reports: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/jasper_reports
+  Detailed SVA report: /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/sva_details.csv
+
+Coverage Report:
+
+Final Results (Tab-separated for easy copying to spreadsheets):
+# Assertions	# Syntax Correct Assertions	# Proven Assertions	Syntax Correction Rate	Pass/Proven Rate	Stimuli Statement Coverage	Stimuli Branch Coverage	Stimuli Functional Coverage	Stimuli Toggle Coverage	Stimuli Expression Coverage	COI Statement Coverage	COI Branch Coverage	COI Functional Coverage	COI Toggle Coverage	COI Expression Coverage
+25	25	0	1.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+LLMLingua summary written to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya/llmlingua_summary.txt
+Total Token Reduction: 16.03% (4616 -> 3876)
+Test plan generation and coverage evaluation process completed.
+Timer log ***********************************************************
+Total duration 1.000 min, 43.863 secs
+Read PDF                        : 88.549 msecs (0.09%)
+Load and process KG             : 3.319 msecs (0.00%)
+Refine KG with RTL              : 934.599 msecs (0.90%)
+Initialize LLM                  : 0.018 msecs (0.00%)
+Extract valid signals           : 0.388 msecs (0.00%)
+Generate NL plans               : 1.000 min, 19.125 secs (76.18%)
+Generate SVAs                   : 23.003 secs (22.15%)
+Write SVAs to files             : 5.294 msecs (0.01%)
+Generate SBY configs            : 3.266 msecs (0.00%)
+Run SymbiYosys                  : 554.921 msecs (0.53%)
+Analyze coverage of proven SVAs : 0.066 msecs (0.00%)
+Analyze results                 : 144.841 msecs (0.14%)
+Timer log ***********************************************************
+Total time: 1.000 min, 43.864 secs; Total number of files: 95; Total folder size: 233.04 KiB
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya
+gen_plan_2026-04-20T08-00-33.669646_Mac_dhruvrpansuriya

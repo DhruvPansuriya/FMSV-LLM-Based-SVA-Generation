@@ -1,0 +1,40 @@
+{
+  "source_graph": "TestCase/TC3/graph_rag_toy_sdc_controller/output/clustered_graph.graphml",
+  "seed_queries": [],
+  "seed_nodes_found": 0,
+  "subgraph_stats": {
+    "nodes": 38,
+    "edges": 41,
+    "node_type_counts": {
+      "other": 17,
+      "spec": 21
+    },
+    "edge_type_counts": {
+      "other": 41
+    }
+  },
+  "full_graph_stats": {
+    "nodes": 38,
+    "edges": 41,
+    "node_type_counts": {
+      "other": 17,
+      "spec": 21
+    },
+    "edge_type_counts": {
+      "other": 41
+    }
+  },
+  "legend": {
+    "node_colors": {
+      "rtl": "blue",
+      "spec": "gray",
+      "other": "teal"
+    },
+    "edge_colors": {
+      "alignment(corresponds_to)": "red",
+      "rtl_struct": "blue",
+      "spec_rel": "gray",
+      "other": "lightgray"
+    }
+  }
+}

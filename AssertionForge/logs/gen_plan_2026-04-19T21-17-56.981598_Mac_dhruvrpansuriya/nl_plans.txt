@@ -1,0 +1,35 @@
+Signal IRQ_OUT:
+Plan 1: IRQ_OUT: that when PCLK rises and nRST is high, IRQ_OUT will be set to 1 if either tx_done_pulse or par_err_latch is high.
+Plan 2: IRQ_OUT: that when nRST is low, IRQ_OUT will be reset to 0 in the next cycle of PCLK.
+Plan 3: IRQ_OUT: that when PCLK rises and nRST is high, IRQ_OUT will remain low if both tx_done_pulse and par_err_latch are low.
+Plan 4: IRQ_OUT: that when PCLK falls and nRST is low, IRQ_OUT will not change state until nRST rises.
+Plan 5: IRQ_OUT: that after nRST rises, IRQ_OUT will remain low for at least one cycle of PCLK before being set high by tx_done_pulse or par_err_latch.
+Plan 6: IRQ_OUT: that when PCLK rises and nRST is high, a high tx_done_pulse will set IRQ_OUT high regardless of the state of par_err_latch.
+Plan 7: IRQ_OUT: that when PCLK rises and nRST is high, a high par_err_latch will set IRQ_OUT high regardless of the state of tx_done_pulse.
+Plan 8: IRQ_OUT: that when nRST is high and PCLK rises, a low tx_done_pulse and a low par_err_latch will result in IRQ_OUT remaining low.
+Plan 9: IRQ_OUT: that in a continuous sequence of rising PCLK edges with nRST high, IRQ_OUT will accurately reflect the state of tx_done_pulse or par_err_latch.
+Plan 10: IRQ_OUT: that the state of IRQ_OUT will not be affected by changes in PADDR, PENABLE, PRDATA, PREADY, PSEL, PWRITE, or PWDATA when nRST is high and PCLK rises.
+
+Signal MISO:
+Plan 11: MISO: that when MISO is high, the next clock cycle will have MISO still high, using the signal 'PCLK' for the clock edge and 'MISO' for the data being checked.
+Plan 12: MISO: that the input data 'MISO' has a value between 0 and 1, inclusive, 2 clock cycles after the reset signal 'nRST' becomes deasserted, using the signals 'nRST', 'PCLK', and 'MISO'.
+Plan 13: MISO: that if the input data 'MISO' is low, then in the subsequent cycles, 'MISO' must continue to be low, using the signals 'MISO' and 'PCLK'.
+Plan 14: MISO: that the input data signal 'MISO' will have a value of 0 when 'WE_N' is low, starting from one clock cycle after the reset signal 'nRST' becomes deasserted, using the signals 'nRST', 'PCLK', 'WE_N', and 'MISO'.
+Plan 15: MISO: that when 'PADDR' is within the range of 0 to 15, 'MISO' will be within the range of 0 to 1, inclusive, in the next cycle, using the signals 'PADDR', 'PCLK', and 'MISO'.
+Plan 16: MISO: that the input data 'MISO' has a value between 0 and 1, inclusive, 5 clock cycles after the reset signal 'nRST' becomes deasserted and 'PENABLE' is high, using the signals 'nRST', 'PCLK', 'PENABLE', and 'MISO'.
+Plan 17: MISO: that the input data signal 'MISO' is within the range 0 to 1, inclusive, when 'PSEL' is high and 'PWRITE' is low, using the signals 'PSEL', 'PWRITE', and 'MISO'.
+Plan 18: MISO: that when 'SCK' is high, 'MISO' will be within the range of 0 to 1, inclusive, in the next cycle, using the signals 'SCK', 'PCLK', and 'MISO'.
+
+Signal MOSI:
+Plan 19: MOSI: that when PSEL is high and PENABLE is high, MOSI will be valid for one cycle after the rising edge of PCLK.
+Plan 20: MOSI: that when PWRITE is low, MOSI will be in a high-impedance state within two cycles after the rising edge of PCLK.
+Plan 21: MOSI: that when PADDR is within the range of 0x00 to 0x08, MOSI will be actively driven with valid data within one cycle after the rising edge of PCLK.
+Plan 22: MOSI: that if PWDATA is within the range of 138 to 153 inclusive, then MOSI must continue to be within the valid range of 0 to 255 inclusive, following the rising edge of PCLK.
+Plan 23: MOSI: that the signal MOSI will be deasserted (logic 0) when nRST is low, and will remain so until nRST becomes high again.
+Plan 24: MOSI: that when SS_N is low, MOSI will be actively driven with valid data within one cycle after the rising edge of PCLK.
+Plan 25: MOSI: that after PCLK rising edge and when PSEL is high, if PENABLE is high, then MOSI will be updated with valid data in the subsequent cycle.
+Plan 26: MOSI: that after four clock cycles following the deassertion of nRST, when WE_N is low, MOSI will have valid data within the range of 0 to 255 inclusive, on every rising edge of PCLK.
+Plan 27: MOSI: that PREADY being high will not affect MOSI, which remains valid and active when PSEL is high and PENABLE is high.
+Plan 28: MOSI: that on every rising edge of PCLK when PSEL is high, if PWRITE is high and PADDR is within the valid range, then MOSI must reflect the data from PWDATA with no delay.
+Plan 29: MOSI: that during reset (nRST low), MOSI will be in an undefined state and may be either high or low until nRST goes high, after which it will follow the protocol for data transmission.
+

@@ -1,0 +1,57 @@
+Signal PADDR:
+Plan 1: Test that the address bus PADDR is within the valid range (0 to 32) when the PSEL signal is high.
+Plan 2: Verify that the PWRITE signal controls the direction of data transfer (high for write, low for read).
+Plan 3: Test that the PENABLE signal enables the transfer of data when high.
+Plan 4: Check that the PRDATA signal returns the correct data when a read operation is performed.
+Plan 5: Verify that the PREADY signal indicates when the slave is ready to transfer data.
+Plan 6: Test that the PSLVERR signal is set to 1 when a slave error occurs.
+Plan 7: Verify that the PWDATA signal is within the valid range (0 to 255) when a write operation is performed.
+Plan 8: Test that the PRESETn signal resets the slave when low.
+Plan 9: Use signals 'PCLK' for clock edge, 'PWDATA' for data checked, input data within valid range, not reset.
+Plan 10: Use signals 'PWDATA', 'PCLK', input data, 'PWDATA' within range.
+Plan 11: Use signals 'PRESETn', 'PCLK', 'PWDATA', input data.
+
+Signal PCLK:
+Plan 12: Check that the clock signal PCLK is stable and not glitching, ensuring that it only toggles at the expected frequency.
+Plan 13: Verify that the address bus PADDR is within the valid range (0 to 32 bits) when PSEL is asserted.
+Plan 14: Test that the select signal PSEL remains high when PENABLE is asserted, and the bus is in the ACCESS state.
+Plan 15: Check that the enable signal PENABLE is asserted one cycle after PSEL, and the bus is in the ACCESS state.
+Plan 16: Verify that the read/write control signal PWRITE is set correctly (high for write, low for read) when PSEL is asserted.
+Plan 17: Test that the write data bus PWDATA remains within a valid range (e.g., 0 to 255) when PWRITE is high and PSEL is asserted.
+Plan 18: Verify that the read data bus PRDATA is within a valid range (e.g., 0 to 255) when PWRITE is low and PSEL is asserted.
+Plan 19: Check that the ready signal PREADY is asserted when the transfer is complete, and the bus returns to the IDLE state.
+Plan 20: Test that the slave error signal PSLVERR is not asserted when the transfer is successful.
+Plan 21: Verify that the reset signal PRESETn is correctly deasserted after a reset, and the bus returns to the IDLE state.
+Plan 22: Test that the clock signal PCLK is not affected by the reset signal PRESETn when it is deasserted.
+Plan 23: Check that the address bus PADDR is reset to a default value (e.g., 0) when the reset signal PRESETn is asserted.
+Plan 24: Verify that the write data bus PWDATA is within a valid range (e.g., 0 to 45) four clock cycles after the reset signal PRESETn is deasserted.
+Plan 25: Test that the read/write control signal PWRITE is set correctly (high for write, low for read) three clock cycles after the reset signal PRESETn is deasserted.
+Plan 26: Check that the select signal PSEL is deasserted when the reset signal PRESETn is asserted, and the bus returns to the IDLE state.
+Plan 27: PWDATA within range 100 to 150 next cycle PWDATA remain within range 120 to 180. Use signals 'PCLK' for clock edge 'PWDATA' for data checked.
+Plan 28: PADDR within range 10 to 20 next cycle PADDR remain within range 15 to 25. Use signals 'PCLK' for clock edge 'PADDR' for data checked.
+Plan 29: PWRITE high next cycle PWRITE remain high. Use signals 'PCLK' for clock edge 'PWRITE' for data checked.
+Plan 30: PSEL high next cycle PSEL remain high. Use signals 'PCLK' for clock edge 'PSEL' for data checked.
+Plan 31: PRESETn low next cycle PRESETn remain low. Use signals 'PRESETn', 'PCLK' for data checked.
+
+Signal PENABLE:
+Plan 32: PADDR within range 0 to 255 next cycle remain within range 0 to 255.
+Plan 33: PCLK clock edge is stable for 3 consecutive cycles.
+Plan 34: PENABLE is high for 2 consecutive cycles when PSEL is high.
+Plan 35: PRDATA within range 0 to 255 when PREADY is high.
+Plan 36: PREADY is high for 1 cycle when PENABLE is high and PSEL is high.
+Plan 37: PRESETn is low for 2 consecutive cycles, then PWDATA is within range 0 to 45 inclusive.
+Plan 38: PSEL is high for 1 cycle when PADDR is within range 0 to 255.
+Plan 39: PSLVERR is low when PREADY is high and PENABLE is high.
+Plan 40: PWDATA within range 138 to 153 inclusive for 2 consecutive cycles when PCLK is stable.
+Plan 41: PWRITE is high for 1 cycle when PWDATA is within range 230 to 255.
+Plan 42: PADDR is within range 0 to 255 for 3 consecutive cycles when PCLK is stable.
+Plan 43: PENABLE is low for 2 consecutive cycles when PSEL is low.
+Plan 44: PRDATA is within range 0 to 255 for 2 consecutive cycles when PREADY is high.
+Plan 45: PREADY is low for 1 cycle when PENABLE is low and PSEL is high.
+Plan 46: PRESETn is high for 2 consecutive cycles, then PWDATA is within range 83 to 165 inclusive.
+Plan 47: PSEL is low for 1 cycle when PADDR is outside range 0 to 255.
+Plan 48: PSLVERR is high when PREADY is low and PENABLE is high.
+Plan 49: PWDATA is within range 0 to 45 inclusive for 2 consecutive cycles when PRESETn is low.
+Plan 50: PWRITE is low for 1 cycle when PWDATA is outside range 230 to 255.
+Plan 51: PCLK clock edge is stable for 5 consecutive cycles, then PADDR is within range 0 to 255.
+

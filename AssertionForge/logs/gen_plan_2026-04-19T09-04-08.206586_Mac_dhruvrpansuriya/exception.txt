@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 37, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 23, in main
+    gen_plan()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 206, in gen_plan
+    nl_plans = generate_nl_plans(
+        spec_text,
+    ...<4 lines>...
+        context_summarizer,  # Pass the context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 538, in generate_nl_plans
+    return generate_dynamic_nl_plans(
+        spec_text, kg, llm_agent, valid_signals, rtl_knowledge, context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 583, in generate_dynamic_nl_plans
+    dynamic_context_list = prompt_builder.build_prompt(
+        query=query,
+    ...<2 lines>...
+        enable_context_enhancement=FLAGS.enable_context_enhancement,  # Pass the enhancement flag
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/dynamic_prompt_builder.py", line 186, in build_prompt
+    selected_contexts = self.llm_pruner.prune(
+        all_contexts, query, signal_name
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_pruner.py", line 104, in prune
+    result = self._call_llm(prompt, f"context_eval_{context_type}")
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_pruner.py", line 252, in _call_llm
+    return llm_inference(self.llm_agent, prompt, tag)
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/utils_LLM.py", line 192, in llm_inference
+    return agent.invoke(prompt, temperature=temperature)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/utils_LLM.py", line 155, in invoke
+    time.sleep(15)
+    ~~~~~~~~~~^^^^
+KeyboardInterrupt
+

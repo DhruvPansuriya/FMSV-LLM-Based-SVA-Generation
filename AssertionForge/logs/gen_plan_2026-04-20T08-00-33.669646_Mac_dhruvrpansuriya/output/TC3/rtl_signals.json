@@ -1,0 +1,274 @@
+[
+  {
+    "module_name": "sdc_top",
+    "signal_name": "nrst",
+    "raw_signal_name": "input  wire        nRST",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "pclk",
+    "raw_signal_name": "// Spec: \"system reset\"        (active-low)\n    input  wire        PCLK",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "psel",
+    "raw_signal_name": "// Spec: \"system clock\"\n    input  wire        PSEL",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "penable",
+    "raw_signal_name": "// Spec: \"peripheral select\"\n    input  wire        PENABLE",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "pwrite",
+    "raw_signal_name": "// Spec: \"transfer enable\"\n    input  wire        PWRITE",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "paddr",
+    "raw_signal_name": "// Spec: \"write enable\"\n    input  wire [7:0]  PADDR",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "pwdata",
+    "raw_signal_name": "// Spec: \"register address\"\n    input  wire [31:0] PWDATA",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "prdata",
+    "raw_signal_name": "// Spec: \"write data bus\"\n    output reg  [31:0] PRDATA",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "pready",
+    "raw_signal_name": "// Spec: \"read data bus\"\n    output wire        PREADY",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "sck",
+    "raw_signal_name": "// Spec: \"transfer acknowledge\"\n    output wire        SCK",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "mosi",
+    "raw_signal_name": "// Spec: \"serial clock\"\n    output wire        MOSI",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "miso",
+    "raw_signal_name": "// Spec: \"master data output\"\n    input  wire        MISO",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "ss_n",
+    "raw_signal_name": "// Spec: \"master data input\"\n    output reg         SS_N",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "irq_out",
+    "raw_signal_name": "// Spec: \"chip select\"         (active-low)\n    output reg         IRQ_OUT",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_top",
+    "signal_name": "we_n",
+    "raw_signal_name": "// Spec: \"interrupt request\"\n    output wire        WE_N       // Spec: \"write enable strobe\" (active-low)",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "clk",
+    "raw_signal_name": "input  wire        clk",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "rst_n",
+    "raw_signal_name": "rst_n",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "tx_start",
+    "raw_signal_name": "tx_start",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "fc_en",
+    "raw_signal_name": "fc_en",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "baud_div",
+    "raw_signal_name": "input  wire [15:0] baud_div",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "tx_data",
+    "raw_signal_name": "input  wire [7:0]  tx_data",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "sck_out",
+    "raw_signal_name": "output wire        sck_out",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "mosi_out",
+    "raw_signal_name": "mosi_out",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "tx_done",
+    "raw_signal_name": "tx_done",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "fifo_empty",
+    "raw_signal_name": "fifo_empty",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_tx",
+    "signal_name": "ack_flag",
+    "raw_signal_name": "output reg         ack_flag",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_rx",
+    "signal_name": "clk",
+    "raw_signal_name": "input  wire       clk",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_rx",
+    "signal_name": "rst_n",
+    "raw_signal_name": "rst_n",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_rx",
+    "signal_name": "miso_in",
+    "raw_signal_name": "miso_in",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_rx",
+    "signal_name": "sck_in",
+    "raw_signal_name": "sck_in",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_rx",
+    "signal_name": "dv",
+    "raw_signal_name": "output reg        dv",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_rx",
+    "signal_name": "par_err",
+    "raw_signal_name": "par_err",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_rx",
+    "signal_name": "buf_full_n",
+    "raw_signal_name": "output wire       buf_full_n",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  },
+  {
+    "module_name": "sdc_rx",
+    "signal_name": "rx_data",
+    "raw_signal_name": "output reg [7:0]  rx_data",
+    "direction": "unknown",
+    "width": null,
+    "is_port": true
+  }
+]

@@ -1,0 +1,36 @@
+Signal PADDR:
+Plan 1: PADDR: that when PADDR is within the range of 0 to 31, in the next cycle PADDR will remain within the valid address range.
+Plan 2: PADDR: that the address signal PADDR has a value between 0 and 15, inclusive, 2 clock cycles after the reset signal PRESETn becomes deasserted, as indicated by the signal PCLK.
+Plan 3: PADDR: that if the address signal PADDR is within the range of 16 to 23 inclusive, then in the subsequent cycles, PADDR must continue to be within the range of 0 to 31 inclusive, as synchronized by the signal PCLK.
+Plan 4: PADDR: that the address signal PADDR is within the range 0 to 7 inclusive, starting from three clock cycles after the reset signal PRESETn becomes deasserted, as indicated by the signal PCLK.
+Plan 5: PADDR: that when PADDR is within the range of 24 to 31, in the next cycle PADDR will remain within the valid address range, as controlled by the signal PENABLE.
+Plan 6: PADDR: that the address signal PADDR has a value between 8 and 15, inclusive, 4 clock cycles after the reset signal PRESETn becomes deasserted, as indicated by the signal PCLK and the select signal PSEL.
+Plan 7: PADDR: that if the address signal PADDR is within the range of 0 to 7 inclusive, then in the subsequent cycles, PADDR must continue to be within the range of 0 to 15 inclusive, as synchronized by the signal PCLK and the write signal PWRITE.
+Plan 8: PADDR: that the address signal PADDR is within the range 16 to 23 inclusive, starting from five clock cycles after the reset signal PRESETn becomes deasserted, as indicated by the signal PCLK and the ready signal PREADY.
+Plan 9: PADDR: that when PADDR is within the range of 8 to 15, in the next cycle PADDR will remain within the valid address range, as controlled by the signal PENABLE and the select signal PSEL.
+Plan 10: PADDR: that the address signal PADDR has a value between 24 and 31, inclusive, 6 clock cycles after the reset signal PRESETn becomes deasserted, as indicated by the signal PCLK and the error signal PSLVERR.
+
+Signal PCLK:
+Plan 11: PCLK: that when PCLK rises, if PENABLE is high and PSEL is high, then in the next clock cycle, PREADY will be high if the transfer is completed.
+Plan 12: PCLK: that if PRESETn is low, then PCLK will not affect the state of PSLVERR until PRESETn becomes high.
+Plan 13: PCLK: that when PCLK falls, if PWRITE is high, then in the next clock cycle, PRDATA will be invalid until PREADY becomes high.
+Plan 14: PCLK: that after reset (PRESETn becomes high), PCLK will start generating clock edges, and PADDR will be stable after 2 clock cycles.
+Plan 15: PCLK: that if PCLK is stable and PENABLE is high, then PSLVERR will be low if the transfer is successful.
+Plan 16: PCLK: that when PCLK rises, if PSEL is low, then PENABLE will be ignored in the current clock cycle.
+Plan 17: PCLK: that if PRESETn is high and PCLK is stable, then PADDR will be valid after 1 clock cycle.
+Plan 18: PCLK: that when PCLK falls, if PENABLE is low, then PREADY will be low in the next clock cycle.
+Plan 19: PCLK: that after 5 clock cycles of PCLK, if PWRITE is low, then PRDATA will be valid if PREADY is high.
+Plan 20: PCLK: that if PCLK is not oscillating and PRESETn is high, then PSLVERR will be low after 3 clock cycles.
+
+Signal PENABLE:
+Plan 21: PENABLE: that when PENABLE is asserted and PSEL is high, PREADY will be set to 1 in the next clock cycle, as indicated by the clock signal PCLK.
+Plan 22: PENABLE: that if PENABLE is low and PSEL is asserted, the state machine will move to the ACCESS phase in the next clock cycle, as determined by the clock signal PCLK.
+Plan 23: PENABLE: that when PENABLE is asserted and PADDR is within the valid range, PSLVERR will be set to 0, indicating no error, as checked by the clock signal PCLK.
+Plan 24: PENABLE: that if PENABLE is asserted and PWRITE is high, the write transfer will complete at the end of the ACCESS cycle, as indicated by the clock signal PCLK and the PREADY signal.
+Plan 25: PENABLE: that when PENABLE is asserted and PSEL is high, PRDATA will be valid in the next clock cycle, as determined by the clock signal PCLK and the PREADY signal.
+Plan 26: PENABLE: that if PENABLE is low and PRESETn is asserted, the state machine will remain in the IDLE state, as checked by the clock signal PCLK.
+Plan 27: PENABLE: that when PENABLE is asserted and PADDR is out of range, PSLVERR will be set to 1, indicating an error, as checked by the clock signal PCLK.
+Plan 28: PENABLE: that if PENABLE is asserted and PSEL is low, the state machine will not move to the ACCESS phase, as determined by the clock signal PCLK.
+Plan 29: PENABLE: that when PENABLE is asserted and PWRITE is low, the read transfer will complete at the end of the ACCESS cycle, as indicated by the clock signal PCLK and the PREADY signal.
+Plan 30: PENABLE: that if PENABLE is asserted and PSEL is high, PWDATA will be valid in the next clock cycle, as determined by the clock signal PCLK and the PREADY signal.
+

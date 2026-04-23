@@ -1,0 +1,301 @@
+Attempting to link 34 RTL signals to 57 spec nodes
+
+RTL Signal: input  wire        nRST
+  -> normalized: nrst
+  --> LLM Alignment output: {'canonical_name': 'system_reset', 'spec_mentions': ['SYSTEM RESET', 'SYSTEM RESET SIGNAL', 'RESET'], 'rtl_name': 'sdc_top.nrst', 'rtl_module': 'sdc_top', 'active_low': True, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The system reset signal is asynchronous and active-low, matching the RTL signal sdc_top.nrst.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET SIGNAL" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "RESET" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET SIGNAL" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "RESET" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET SIGNAL" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "RESET" --corresponds_to--> rtl_3
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_3
+----------------------------------------
+RTL Signal: // Spec: "system reset"        (active-low)
+    input  wire        PCLK
+  -> normalized: pclk
+  --> LLM Alignment output: {'canonical_name': 'system_clock', 'spec_mentions': ['SYSTEM CLOCK', 'SYSTEM CLOCK SIGNAL', 'CLOCK'], 'rtl_name': 'sdc_top.pclk', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The system clock signal is the primary clock input used for all synchronous logic operations, matching the RTL signal sdc_top.pclk.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM CLOCK" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "BAUD RATE DIVISOR" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM CLOCK SIGNAL" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "CLOCK" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM CLOCK SIGNAL" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "CLOCK" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM CLOCK" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMISSION COMPLETE" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "BAUD RATE DIVISOR" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM CLOCK SIGNAL" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK SIGNAL" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT SIGNAL" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT SIGNAL" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMISSION COMPLETE SIGNAL" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "CLOCK" --corresponds_to--> rtl_4
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_4
+----------------------------------------
+RTL Signal: // Spec: "system clock"
+    input  wire        PSEL
+  -> normalized: psel
+  --> LLM Alignment output: {'canonical_name': 'peripheral_select', 'spec_mentions': ['PERIPHERAL SELECT', 'PERIPHERAL SELECT SIGNAL'], 'rtl_name': 'sdc_top.psel', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The peripheral select signal is used to select the SDC as an APB slave, matching the RTL signal sdc_top.psel.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "PERIPHERAL SELECT" --corresponds_to--> rtl_5
+  [SUCCESS] Linked spec node to RTL signal (LLM): "PERIPHERAL SELECT SIGNAL" --corresponds_to--> rtl_5
+  [SUCCESS] Linked spec node to RTL signal (LLM): "PERIPHERAL SELECT" --corresponds_to--> rtl_5
+  [SUCCESS] Linked spec node to RTL signal (LLM): "PERIPHERAL SELECT SIGNAL" --corresponds_to--> rtl_5
+----------------------------------------
+RTL Signal: // Spec: "peripheral select"
+    input  wire        PENABLE
+  -> normalized: penable
+  --> LLM Alignment output: {'canonical_name': 'transfer_enable', 'spec_mentions': ['TRANSFER ENABLE', 'TRANSFER ENABLE SIGNAL'], 'rtl_name': 'sdc_top.penable', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The transfer enable signal marks the second cycle of an APB transfer, matching the RTL signal sdc_top.penable.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSFER ENABLE" --corresponds_to--> rtl_6
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSFER ENABLE SIGNAL" --corresponds_to--> rtl_6
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSFER ENABLE SIGNAL" --corresponds_to--> rtl_6
+----------------------------------------
+RTL Signal: // Spec: "transfer enable"
+    input  wire        PWRITE
+  -> normalized: pwrite
+  --> LLM Alignment output: {'canonical_name': 'write_enable', 'spec_mentions': ['WRITE ENABLE', 'WRITE ENABLE SIGNAL'], 'rtl_name': 'sdc_top.pwrite', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The write enable signal is used to indicate write operation, matching the RTL signal sdc_top.pwrite.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "WRITE ENABLE" --corresponds_to--> rtl_7
+  [SUCCESS] Linked spec node to RTL signal (LLM): "WRITE ENABLE SIGNAL" --corresponds_to--> rtl_7
+  [SUCCESS] Linked spec node to RTL signal (LLM): "WRITE ENABLE SIGNAL" --corresponds_to--> rtl_7
+----------------------------------------
+RTL Signal: // Spec: "write enable"
+    input  wire [7:0]  PADDR
+  -> normalized: paddr
+  --> LLM Alignment output: {'canonical_name': 'register_address', 'spec_mentions': ['REGISTER ADDRESS', 'REGISTER ADDRESS SIGNAL'], 'rtl_name': 'sdc_top.paddr', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The register address signal selects the target register for APB transfers, matching the RTL signal sdc_top.paddr.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "REGISTER ADDRESS" --corresponds_to--> rtl_8
+  [SUCCESS] Linked spec node to RTL signal (LLM): "REGISTER ADDRESS SIGNAL" --corresponds_to--> rtl_8
+  [SUCCESS] Linked spec node to RTL signal (LLM): "REGISTER ADDRESS SIGNAL" --corresponds_to--> rtl_8
+----------------------------------------
+RTL Signal: // Spec: "register address"
+    input  wire [31:0] PWDATA
+  -> normalized: pwdata
+  --> LLM Alignment output: {'canonical_name': 'write_data_bus', 'spec_mentions': ['WRITE DATA BUS', 'WRITE DATA BUS SIGNAL'], 'rtl_name': 'sdc_top.pwdata', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The write data bus signal carries 32-bit data from the master to SDC during writes, matching the RTL signal sdc_top.pwdata.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "WRITE DATA BUS" --corresponds_to--> rtl_9
+  [SUCCESS] Linked spec node to RTL signal (LLM): "WRITE DATA BUS SIGNAL" --corresponds_to--> rtl_9
+  [SUCCESS] Linked spec node to RTL signal (LLM): "WRITE DATA BUS SIGNAL" --corresponds_to--> rtl_9
+----------------------------------------
+RTL Signal: // Spec: "write data bus"
+    output reg  [31:0] PRDATA
+  -> normalized: prdata
+  --> LLM Alignment output: {'canonical_name': 'read_data_bus', 'spec_mentions': ['READ DATA BUS', 'READ DATA BUS SIGNAL'], 'rtl_name': 'sdc_top.prdata', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The read data bus signal carries 32-bit data from SDC to the master during reads, matching the RTL signal sdc_top.prdata.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "READ DATA BUS" --corresponds_to--> rtl_10
+  [SUCCESS] Linked spec node to RTL signal (LLM): "READ DATA BUS SIGNAL" --corresponds_to--> rtl_10
+  [SUCCESS] Linked spec node to RTL signal (LLM): "READ DATA BUS SIGNAL" --corresponds_to--> rtl_10
+----------------------------------------
+RTL Signal: // Spec: "read data bus"
+    output wire        PREADY
+  -> normalized: pready
+  --> LLM Alignment output: {'canonical_name': 'transfer_acknowledge', 'spec_mentions': ['TRANSFER ACKNOWLEDGE', 'TRANSFER ACKNOWLEDGE SIGNAL'], 'rtl_name': 'sdc_top.pready', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The transfer acknowledge signal is asserted high by SDC to complete APB transactions, matching the RTL signal sdc_top.pready.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSFER ACKNOWLEDGE" --corresponds_to--> rtl_11
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSFER ACKNOWLEDGE SIGNAL" --corresponds_to--> rtl_11
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSFER ACKNOWLEDGE SIGNAL" --corresponds_to--> rtl_11
+----------------------------------------
+RTL Signal: // Spec: "transfer acknowledge"
+    output wire        SCK
+  -> normalized: sck
+  --> LLM Alignment output: {'canonical_name': 'serial_clock', 'spec_mentions': ['SERIAL CLOCK', 'SERIAL CLOCK SIGNAL'], 'rtl_name': 'sdc_top.sck', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The serial clock signal is generated by SDC, with frequency set by the baud rate divisor, matching the RTL signal sdc_top.sck.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK" --corresponds_to--> rtl_12
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK SIGNAL" --corresponds_to--> rtl_12
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK SIGNAL" --corresponds_to--> rtl_12
+----------------------------------------
+RTL Signal: // Spec: "serial clock"
+    output wire        MOSI
+  -> normalized: mosi
+  --> LLM Alignment output: {'canonical_name': 'master_data_output', 'spec_mentions': ['MASTER DATA OUTPUT', 'MASTER DATA OUTPUT SIGNAL'], 'rtl_name': 'sdc_top.mosi', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The master data output signal is serial data to the external slave, MSB first, shifted on the falling clock edge, matching the RTL signal sdc_top.mosi.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT" --corresponds_to--> rtl_13
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT SIGNAL" --corresponds_to--> rtl_13
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT SIGNAL" --corresponds_to--> rtl_13
+----------------------------------------
+RTL Signal: // Spec: "master data output"
+    input  wire        MISO
+  -> normalized: miso
+  --> LLM Alignment output: {'canonical_name': 'master_data_input', 'spec_mentions': ['MASTER DATA INPUT', 'MASTER DATA INPUT SIGNAL'], 'rtl_name': 'sdc_top.miso', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The master data input signal is serial data from the external slave, sampled on the rising clock edge, matching the RTL signal sdc_top.miso.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT" --corresponds_to--> rtl_14
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT SIGNAL" --corresponds_to--> rtl_14
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT SIGNAL" --corresponds_to--> rtl_14
+----------------------------------------
+RTL Signal: // Spec: "master data input"
+    output reg         SS_N
+  -> normalized: ss_n
+  --> LLM Alignment output: {'canonical_name': 'chip_select', 'spec_mentions': ['CHIP SELECT', 'CHIP SELECT SIGNAL'], 'rtl_name': 'sdc_top.ss_n', 'rtl_module': 'sdc_top', 'active_low': True, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The chip select signal is an active-low output driven low at the start of a frame to address the external slave, matching the RTL signal sdc_top.ss_n.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET" --corresponds_to--> rtl_15
+  [SUCCESS] Linked spec node to RTL signal (LLM): "CHIP SELECT" --corresponds_to--> rtl_15
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET SIGNAL" --corresponds_to--> rtl_15
+  [SUCCESS] Linked spec node to RTL signal (LLM): "CHIP SELECT SIGNAL" --corresponds_to--> rtl_15
+  [SUCCESS] Linked spec node to RTL signal (LLM): "RESET" --corresponds_to--> rtl_15
+  [SUCCESS] Linked spec node to RTL signal (LLM): "CHIP SELECT SIGNAL" --corresponds_to--> rtl_15
+----------------------------------------
+RTL Signal: // Spec: "chip select"         (active-low)
+    output reg         IRQ_OUT
+  -> normalized: irq_out
+  --> LLM Alignment output: {'canonical_name': 'interrupt_request', 'spec_mentions': ['INTERRUPT REQUEST', 'INTERRUPT REQUEST SIGNAL'], 'rtl_name': 'sdc_top.irq_out', 'rtl_module': 'sdc_top', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The interrupt request signal is asserted when transmission complete or parity error is detected, matching the RTL signal sdc_top.irq_out.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "INTERRUPT REQUEST" --corresponds_to--> rtl_16
+  [SUCCESS] Linked spec node to RTL signal (LLM): "INTERRUPT REQUEST SIGNAL" --corresponds_to--> rtl_16
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_16
+  [SUCCESS] Linked spec node to RTL signal (LLM): "INTERRUPT REQUEST SIGNAL" --corresponds_to--> rtl_16
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_16
+----------------------------------------
+RTL Signal: // Spec: "interrupt request"
+    output wire        WE_N       // Spec: "write enable strobe" (active-low)
+  -> normalized: we_n
+  --> LLM Alignment output: {'canonical_name': 'write_enable_n', 'spec_mentions': ['WRITE ENABLE'], 'rtl_name': 'sdc_top.we_n', 'rtl_module': 'sdc_top', 'active_low': True, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The write enable signal is used to indicate write operation, generating an active-low write strobe when asserted, matching the RTL signal sdc_top.we_n.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "WRITE ENABLE" --corresponds_to--> rtl_17
+  [SUCCESS] Linked spec node to RTL signal (LLM): "WRITE ENABLE SIGNAL" --corresponds_to--> rtl_17
+----------------------------------------
+RTL Signal: input  wire        clk
+  -> normalized: clk
+  --> LLM Alignment output: {'canonical_name': 'receive_clock', 'spec_mentions': ['CLOCK'], 'rtl_name': 'sdc_rx.clk', 'rtl_module': 'sdc_rx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The receive clock signal is used for reception operations, matching the RTL signal sdc_rx.clk.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM CLOCK" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMISSION COMPLETE" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "BAUD RATE DIVISOR" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM CLOCK SIGNAL" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK SIGNAL" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT SIGNAL" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT SIGNAL" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMISSION COMPLETE SIGNAL" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "CLOCK" --corresponds_to--> rtl_18
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_18
+----------------------------------------
+RTL Signal: rst_n
+  -> normalized: rst_n
+  --> LLM Alignment output: {'canonical_name': 'receive_reset_n', 'spec_mentions': ['RESET'], 'rtl_name': 'sdc_rx.rst_n', 'rtl_module': 'sdc_rx', 'active_low': True, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The receive reset signal is used to reset the receiver, matching the RTL signal sdc_rx.rst_n.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET" --corresponds_to--> rtl_19
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET SIGNAL" --corresponds_to--> rtl_19
+  [SUCCESS] Linked spec node to RTL signal (LLM): "RESET" --corresponds_to--> rtl_19
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_19
+----------------------------------------
+RTL Signal: tx_start
+  -> normalized: tx_start
+  --> LLM Alignment output: {'canonical_name': 'transmit_start', 'spec_mentions': ['TRANSMISSION COMPLETE'], 'rtl_name': 'sdc_tx.tx_start', 'rtl_module': 'sdc_tx', 'active_low': False, 'confidence': 0.5, 'match_method': 'llm_alignment', 'reasoning': 'The transmit start signal may be related to the transmission complete signal, but the naming convention is different.'}
+  [FALLBACK] Using string matching fallback
+----------------------------------------
+RTL Signal: fc_en
+  -> normalized: fc_en
+  --> LLM Alignment output: {'canonical_name': 'flow_control_enable', 'spec_mentions': ['FLOW CONTROL ENABLE', 'FLOW CONTROL ENABLE SIGNAL'], 'rtl_name': 'sdc_tx.fc_en', 'rtl_module': 'sdc_tx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The flow control enable signal activates CTS/RTS-style handshaking when set in the control register, matching the RTL signal sdc_tx.fc_en.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "FLOW CONTROL ENABLE" --corresponds_to--> rtl_21
+  [SUCCESS] Linked spec node to RTL signal (LLM): "FLOW CONTROL ENABLE SIGNAL" --corresponds_to--> rtl_21
+  [SUCCESS] Linked spec node to RTL signal (LLM): "PARAMETER" --corresponds_to--> rtl_21
+  [SUCCESS] Linked spec node to RTL signal (LLM): "FLOW CONTROL ENABLE SIGNAL" --corresponds_to--> rtl_21
+----------------------------------------
+RTL Signal: input  wire [15:0] baud_div
+  -> normalized: baud_div
+  --> LLM Alignment output: {'canonical_name': 'baud_rate_divisor', 'spec_mentions': ['BAUD RATE DIVISOR'], 'rtl_name': 'sdc_tx.baud_div', 'rtl_module': 'sdc_tx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The baud rate divisor signal sets the system clock divisor for SPI clock generation, matching the RTL signal sdc_tx.baud_div.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK" --corresponds_to--> rtl_22
+  [SUCCESS] Linked spec node to RTL signal (LLM): "BAUD RATE DIVISOR" --corresponds_to--> rtl_22
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK SIGNAL" --corresponds_to--> rtl_22
+  [SUCCESS] Linked spec node to RTL signal (LLM): "PARAMETER" --corresponds_to--> rtl_22
+----------------------------------------
+RTL Signal: input  wire [7:0]  tx_data
+  -> normalized: tx_data
+  --> LLM Alignment output: {'canonical_name': 'transmit_data', 'spec_mentions': ['MASTER DATA OUTPUT'], 'rtl_name': 'sdc_tx.tx_data', 'rtl_module': 'sdc_tx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The transmit data signal is serial data to the external slave, MSB first, shifted on the falling clock edge, matching the RTL signal sdc_tx.tx_data.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT" --corresponds_to--> rtl_23
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT SIGNAL" --corresponds_to--> rtl_23
+----------------------------------------
+RTL Signal: output wire        sck_out
+  -> normalized: sck_out
+  --> LLM Alignment output: {'canonical_name': 'transmit_serial_clock', 'spec_mentions': ['SERIAL CLOCK'], 'rtl_name': 'sdc_tx.sck_out', 'rtl_module': 'sdc_tx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The transmit serial clock signal is generated by SDC, with frequency set by the baud rate divisor, matching the RTL signal sdc_tx.sck_out.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK" --corresponds_to--> rtl_24
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK SIGNAL" --corresponds_to--> rtl_24
+----------------------------------------
+RTL Signal: mosi_out
+  -> normalized: mosi_out
+  --> LLM Alignment output: {'canonical_name': 'transmit_master_data_output', 'spec_mentions': ['MASTER DATA OUTPUT'], 'rtl_name': 'sdc_tx.mosi_out', 'rtl_module': 'sdc_tx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The transmit master data output signal is serial data to the external slave, MSB first, shifted on the falling clock edge, matching the RTL signal sdc_tx.mosi_out.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT" --corresponds_to--> rtl_25
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT SIGNAL" --corresponds_to--> rtl_25
+----------------------------------------
+RTL Signal: tx_done
+  -> normalized: tx_done
+  --> LLM Alignment output: {'canonical_name': 'transmit_done', 'spec_mentions': ['TRANSMISSION COMPLETE'], 'rtl_name': 'sdc_tx.tx_done', 'rtl_module': 'sdc_tx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The transmit done signal is pulsed for one clock cycle when the last bit of a frame has been shifted out, matching the RTL signal sdc_tx.tx_done.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "INTERRUPT REQUEST" --corresponds_to--> rtl_26
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMISSION COMPLETE" --corresponds_to--> rtl_26
+  [SUCCESS] Linked spec node to RTL signal (LLM): "INTERRUPT REQUEST SIGNAL" --corresponds_to--> rtl_26
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMISSION COMPLETE SIGNAL" --corresponds_to--> rtl_26
+----------------------------------------
+RTL Signal: fifo_empty
+  -> normalized: fifo_empty
+  --> LLM Alignment output: {'canonical_name': 'fifo_empty', 'spec_mentions': ['FIFO EMPTY STATUS'], 'rtl_name': 'sdc_tx.fifo_empty', 'rtl_module': 'sdc_tx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The FIFO empty signal is asserted when the transmit buffer has no pending data and is ready for a new frame, matching the RTL signal sdc_tx.fifo_empty.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "FIFO EMPTY STATUS" --corresponds_to--> rtl_27
+  [SUCCESS] Linked spec node to RTL signal (LLM): "STATUS REGISTER" --corresponds_to--> rtl_27
+  [SUCCESS] Linked spec node to RTL signal (LLM): "FIFO EMPTY STATUS SIGNAL" --corresponds_to--> rtl_27
+----------------------------------------
+RTL Signal: output reg         ack_flag
+  -> normalized: ack_flag
+  --> LLM Alignment output: {'canonical_name': 'transmit_acknowledge', 'spec_mentions': ['TRANSMIT ACKNOWLEDGE'], 'rtl_name': 'sdc_tx.ack_flag', 'rtl_module': 'sdc_tx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The transmit acknowledge signal is set when the remote slave confirms receipt of the last transmitted byte, matching the RTL signal sdc_tx.ack_flag.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMIT ACKNOWLEDGE" --corresponds_to--> rtl_28
+  [SUCCESS] Linked spec node to RTL signal (LLM): "STATUS REGISTER" --corresponds_to--> rtl_28
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMIT ACKNOWLEDGE SIGNAL" --corresponds_to--> rtl_28
+----------------------------------------
+RTL Signal: input  wire       clk
+  -> normalized: clk
+  --> LLM Alignment output: {'canonical_name': 'receive_clock', 'spec_mentions': ['CLOCK'], 'rtl_name': 'sdc_rx.clk', 'rtl_module': 'sdc_rx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The receive clock signal is used for reception operations, matching the RTL signal sdc_rx.clk.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM CLOCK" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMISSION COMPLETE" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "BAUD RATE DIVISOR" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM CLOCK SIGNAL" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK SIGNAL" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA OUTPUT SIGNAL" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT SIGNAL" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "TRANSMISSION COMPLETE SIGNAL" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "CLOCK" --corresponds_to--> rtl_29
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_29
+----------------------------------------
+RTL Signal: rst_n
+  -> normalized: rst_n
+  --> LLM Alignment output: {'canonical_name': 'receive_reset_n', 'spec_mentions': ['RESET'], 'rtl_name': 'sdc_rx.rst_n', 'rtl_module': 'sdc_rx', 'active_low': True, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The receive reset signal is used to reset the receiver, matching the RTL signal sdc_rx.rst_n.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET" --corresponds_to--> rtl_30
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SYSTEM RESET SIGNAL" --corresponds_to--> rtl_30
+  [SUCCESS] Linked spec node to RTL signal (LLM): "RESET" --corresponds_to--> rtl_30
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SIGNAL" --corresponds_to--> rtl_30
+----------------------------------------
+RTL Signal: miso_in
+  -> normalized: miso_in
+  --> LLM Alignment output: {'canonical_name': 'receive_master_data_input', 'spec_mentions': ['MASTER DATA INPUT'], 'rtl_name': 'sdc_rx.miso_in', 'rtl_module': 'sdc_rx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The receive master data input signal is serial data from the external slave, sampled on the rising clock edge, matching the RTL signal sdc_rx.miso_in.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT" --corresponds_to--> rtl_31
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT SIGNAL" --corresponds_to--> rtl_31
+----------------------------------------
+RTL Signal: sck_in
+  -> normalized: sck_in
+  --> LLM Alignment output: {'canonical_name': 'receive_serial_clock', 'spec_mentions': ['SERIAL CLOCK'], 'rtl_name': 'sdc_rx.sck_in', 'rtl_module': 'sdc_rx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The receive serial clock signal is generated by the external slave, matching the RTL signal sdc_rx.sck_in.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK" --corresponds_to--> rtl_32
+  [SUCCESS] Linked spec node to RTL signal (LLM): "SERIAL CLOCK SIGNAL" --corresponds_to--> rtl_32
+----------------------------------------
+RTL Signal: output reg        dv
+  -> normalized: dv
+  --> LLM Alignment output: {'canonical_name': 'data_valid', 'spec_mentions': ['DATA VALID'], 'rtl_name': 'sdc_rx.dv', 'rtl_module': 'sdc_rx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The data valid signal is asserted for one cycle when a new received byte is available in the receive buffer, matching the RTL signal sdc_rx.dv.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "DATA VALID" --corresponds_to--> rtl_33
+  [SUCCESS] Linked spec node to RTL signal (LLM): "DATA VALID SIGNAL" --corresponds_to--> rtl_33
+----------------------------------------
+RTL Signal: par_err
+  -> normalized: par_err
+  --> LLM Alignment output: {'canonical_name': 'parity_error_flag', 'spec_mentions': ['PARITY ERROR FLAG'], 'rtl_name': 'sdc_rx.par_err', 'rtl_module': 'sdc_rx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The parity error flag signal is set and held when a parity mismatch is detected on the received byte, matching the RTL signal sdc_rx.par_err.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "PARITY ERROR FLAG" --corresponds_to--> rtl_34
+  [SUCCESS] Linked spec node to RTL signal (LLM): "PARITY ERROR FLAG SIGNAL" --corresponds_to--> rtl_34
+----------------------------------------
+RTL Signal: output wire       buf_full_n
+  -> normalized: buf_full_n
+  --> LLM Alignment output: {'canonical_name': 'receive_buffer_full_n', 'spec_mentions': ['RECEIVE BUFFER FULL'], 'rtl_name': 'sdc_rx.buf_full_n', 'rtl_module': 'sdc_rx', 'active_low': True, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The receive buffer full signal is an active-low flag, deasserted when the receive buffer cannot accept additional data, matching the RTL signal sdc_rx.buf_full_n.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "RECEIVE BUFFER FULL" --corresponds_to--> rtl_35
+  [SUCCESS] Linked spec node to RTL signal (LLM): "STATUS REGISTER" --corresponds_to--> rtl_35
+  [SUCCESS] Linked spec node to RTL signal (LLM): "RECEIVE BUFFER FULL SIGNAL" --corresponds_to--> rtl_35
+----------------------------------------
+RTL Signal: output reg [7:0]  rx_data
+  -> normalized: rx_data
+  --> LLM Alignment output: {'canonical_name': 'receive_data', 'spec_mentions': ['MASTER DATA INPUT'], 'rtl_name': 'sdc_rx.rx_data', 'rtl_module': 'sdc_rx', 'active_low': False, 'confidence': 1.0, 'match_method': 'llm_alignment', 'reasoning': 'The receive data signal is serial data from the external slave, sampled on the rising clock edge, matching the RTL signal sdc_rx.rx_data.'}
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT" --corresponds_to--> rtl_36
+  [SUCCESS] Linked spec node to RTL signal (LLM): "MASTER DATA INPUT SIGNAL" --corresponds_to--> rtl_36
+----------------------------------------

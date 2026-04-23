@@ -1,0 +1,734 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-04-20">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="6" title="human_readable_id" type="string" />
+      <attribute id="7" title="description" type="string" />
+      <attribute id="8" title="combined_degree" type="string" />
+      <attribute id="9" title="text_unit_ids" type="string" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="human_readable_id" type="string" />
+      <attribute id="1" title="type" type="string" />
+      <attribute id="2" title="description" type="string" />
+      <attribute id="3" title="text_unit_ids" type="string" />
+      <attribute id="4" title="frequency" type="string" />
+      <attribute id="5" title="degree" type="string" />
+    </attributes>
+    <nodes>
+      <node id="67ef01a4-cdeb-43d9-9881-d9786262c752" label="&quot;SERIAL DATA CONTROLLER (SDC)&quot;">
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="&quot;MODULE&quot;" />
+          <attvalue for="2" value="&quot;The Serial Data Controller (SDC) is a module that provides an APB slave interface and a SPI-compatible serial interface for communication with external slave devices.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="12" />
+        </attvalues>
+      </node>
+      <node id="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" label="&quot;APB INTERFACE&quot;">
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="&quot;INTERFACE&quot;" />
+          <attvalue for="2" value="&quot;The APB interface is used for host processor configuration.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="10" />
+        </attvalues>
+      </node>
+      <node id="338983ca-f2c7-426d-bb85-97e213320911" label="&quot;SPI INTERFACE&quot;">
+        <attvalues>
+          <attvalue for="0" value="2" />
+          <attvalue for="1" value="&quot;INTERFACE&quot;" />
+          <attvalue for="2" value="&quot;The SPI interface is used for communication with external slave devices.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="7" />
+        </attvalues>
+      </node>
+      <node id="3dec1e15-cb67-4598-8d6d-f03795410a43" label="&quot;SYSTEM CLOCK&quot;">
+        <attvalues>
+          <attvalue for="0" value="3" />
+          <attvalue for="1" value="&quot;CLOCK&quot;" />
+          <attvalue for="2" value="&quot;The system clock is the primary clock input for the SDC.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="3" />
+        </attvalues>
+      </node>
+      <node id="c9f8655b-4f06-4df0-aba0-99edbe58b41b" label="&quot;SYSTEM RESET&quot;">
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="&quot;RESET&quot;" />
+          <attvalue for="2" value="&quot;The system reset is an asynchronous, active-low signal that clears all registers and deasserts the chip select when asserted low.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f'&#10; '1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="4" />
+        </attvalues>
+      </node>
+      <node id="3bdbe4f2-9be5-45ec-94ed-6abc1932fc49" label="&quot;PERIPHERAL SELECT&quot;">
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The peripheral select signal is driven high by the APB master to select the SDC.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="deca1e63-ff7e-49fd-963d-58f90469b9b4" label="&quot;TRANSFER ENABLE&quot;">
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The transfer enable signal marks the second cycle of an APB transfer.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="f75dd1cc-ff0e-4721-900e-92d32f72b38e" label="&quot;WRITE ENABLE&quot;">
+        <attvalues>
+          <attvalue for="0" value="7" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The write enable signal is high for write and low for read operations.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="1b4da10d-adcb-4197-840b-0cf9b6332e01" label="&quot;REGISTER ADDRESS&quot;">
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The register address signal is an 8-bit address bus that selects the target register.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="d986e63c-7021-40fd-a242-83f70dd1a3f5" label="&quot;WRITE DATA BUS&quot;">
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The write data bus is a 32-bit data bus from the master to the SDC during writes.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="fa4b8e9c-7465-4949-95b9-bfdea70ba1e3" label="&quot;READ DATA BUS&quot;">
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The read data bus is a 32-bit data bus from the SDC to the master during reads.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="016bd329-b71a-429e-b108-dba38fbd2e63" label="&quot;TRANSFER ACKNOWLEDGE&quot;">
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The transfer acknowledge signal is asserted high by the SDC to complete the APB transaction.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="ec4bd048-e455-44f5-8d58-3366a51e0184" label="&quot;SERIAL CLOCK&quot;">
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The serial clock signal is generated by the SDC and its frequency is set by the baud rate divisor.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="93f733c4-ec40-43f9-a711-c0d68dd4b5a4" label="&quot;MASTER DATA OUTPUT&quot;">
+        <attvalues>
+          <attvalue for="0" value="13" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The master data output signal is the serial data output from the SDC to the external slave.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="e2e2e127-c015-449e-b082-06e4d63dff2b" label="&quot;MASTER DATA INPUT&quot;">
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The master data input signal is the serial data input from the external slave to the SDC.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="6ed3577e-de16-41d1-b4b9-cfb109d77f1d" label="&quot;CHIP SELECT&quot;">
+        <attvalues>
+          <attvalue for="0" value="15" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The chip select signal is an active-low output that is driven low at the start of a frame to address the external slave.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="b0381e93-039c-4905-a43b-f6c262576f0f" label="&quot;INTERRUPT REQUEST&quot;">
+        <attvalues>
+          <attvalue for="0" value="16" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The interrupt request signal is asserted when transmission is complete or a parity error is detected.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="2ee5ee69-6b74-49e6-ae6c-a7a9f9f60c58" label="&quot;TRANSMISSION COMPLETE&quot;">
+        <attvalues>
+          <attvalue for="0" value="17" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The transmission complete signal is pulsed for one clock cycle when the last bit of a frame has been shifted out.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0" />
+        </attvalues>
+      </node>
+      <node id="d2df1a40-d564-4136-864d-f2525789c7a8" label="&quot;TRANSMIT ACKNOWLEDGE&quot;">
+        <attvalues>
+          <attvalue for="0" value="18" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The transmit acknowledge signal is set when the remote slave confirms receipt of the last transmitted byte.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0" />
+        </attvalues>
+      </node>
+      <node id="74edf1e8-b0bf-40fa-ba1d-18fe7eac7ba4" label="&quot;FIFO EMPTY STATUS&quot;">
+        <attvalues>
+          <attvalue for="0" value="19" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The FIFO empty status signal is asserted when the transmit buffer has no pending data and is ready for a new frame.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0" />
+        </attvalues>
+      </node>
+      <node id="609deb5d-01bc-4a09-8753-45eeaedaa027" label="&quot;DATA VALID&quot;">
+        <attvalues>
+          <attvalue for="0" value="20" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The data valid signal is asserted for one cycle when a new received byte is available in the receive buffer.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0" />
+        </attvalues>
+      </node>
+      <node id="86202cdb-9133-4430-9364-7d4c07e7c35e" label="&quot;PARITY ERROR FLAG&quot;">
+        <attvalues>
+          <attvalue for="0" value="21" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The parity error flag signal is set and held when a parity mismatch is detected on the received byte.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0" />
+        </attvalues>
+      </node>
+      <node id="621d9ab0-6a1a-4221-8012-c33898cec5f1" label="&quot;RECEIVE BUFFER FULL&quot;">
+        <attvalues>
+          <attvalue for="0" value="22" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The receive buffer full signal is an active-low flag that is deasserted when the receive buffer cannot accept additional bytes.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0" />
+        </attvalues>
+      </node>
+      <node id="34b56916-3b24-4035-9a21-d04aef2f9117" label="&quot;FLOW CONTROL ENABLE&quot;">
+        <attvalues>
+          <attvalue for="0" value="23" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The flow control enable signal is set in the control register to activate CTS/RTS-style handshaking.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0" />
+        </attvalues>
+      </node>
+      <node id="bf744a66-b0b0-47c3-88eb-df537ac6c421" label="&quot;CONTROL REGISTER&quot;">
+        <attvalues>
+          <attvalue for="0" value="24" />
+          <attvalue for="1" value="&quot;PARAMETER&quot;" />
+          <attvalue for="2" value="&quot;The control register is a register that contains mode and enable bits.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="5" />
+        </attvalues>
+      </node>
+      <node id="d4bfcc4c-1e24-4d9f-9032-31165a750cd9" label="&quot;BAUD RATE DIVISOR&quot;">
+        <attvalues>
+          <attvalue for="0" value="25" />
+          <attvalue for="1" value="&quot;PARAMETER&quot;" />
+          <attvalue for="2" value="&quot;The baud rate divisor is a register that divides the system clock to generate the SPI clock.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="4" />
+        </attvalues>
+      </node>
+      <node id="90fbaa5b-dc56-415e-9da1-46dc1e5151c4" label="&quot;STATUS REGISTER&quot;">
+        <attvalues>
+          <attvalue for="0" value="26" />
+          <attvalue for="1" value="&quot;PARAMETER&quot;" />
+          <attvalue for="2" value="&quot;The status register is a read-only register that contains status flags.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="4" />
+        </attvalues>
+      </node>
+      <node id="1677ebc7-a583-408e-bf40-ad3ad3f401eb" label="&quot;RECEIVE BUFFER&quot;">
+        <attvalues>
+          <attvalue for="0" value="27" />
+          <attvalue for="1" value="&quot;MODULE&quot;" />
+          <attvalue for="2" value="&quot;The receive buffer is a component of the SDC that stores received data.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="2" />
+        </attvalues>
+      </node>
+      <node id="10e9be45-abd1-4623-a300-bb1482a8a87e" label="&quot;TRANSMIT BUFFER&quot;">
+        <attvalues>
+          <attvalue for="0" value="28" />
+          <attvalue for="1" value="&quot;MODULE&quot;" />
+          <attvalue for="2" value="&quot;The transmit buffer is a component of the SDC that stores data to be transmitted.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="2" />
+        </attvalues>
+      </node>
+      <node id="a930e1d1-3da3-4a55-9e12-b09fc7a0660c" label="&quot;SPI PROTOCOL&quot;">
+        <attvalues>
+          <attvalue for="0" value="29" />
+          <attvalue for="1" value="&quot;PROTOCOL&quot;" />
+          <attvalue for="2" value="&quot;The SPI protocol is used for communication with external slave devices.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="3" />
+        </attvalues>
+      </node>
+      <node id="0a7b7cf5-9773-4746-b57f-9ff3436f7ecf" label="&quot;APB PROTOCOL&quot;">
+        <attvalues>
+          <attvalue for="0" value="30" />
+          <attvalue for="1" value="&quot;PROTOCOL&quot;" />
+          <attvalue for="2" value="&quot;The APB protocol is used for host processor configuration.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="2" />
+        </attvalues>
+      </node>
+      <node id="23918916-cd67-481d-a933-9f6275514ca4" label="&quot;FLOW CONTROL&quot;">
+        <attvalues>
+          <attvalue for="0" value="31" />
+          <attvalue for="1" value="&quot;PARAMETER&quot;" />
+          <attvalue for="2" value="&quot;The flow control is a parameter that determines whether CTS/RTS-style handshaking is enabled.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="4" />
+        </attvalues>
+      </node>
+      <node id="042ea95a-8e87-49b4-8d10-e99e9574132b" label="&quot;PARITY CHECKING&quot;">
+        <attvalues>
+          <attvalue for="0" value="32" />
+          <attvalue for="1" value="&quot;PARAMETER&quot;" />
+          <attvalue for="2" value="&quot;The parity checking is a parameter that determines whether parity checking is enabled.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="2" />
+        </attvalues>
+      </node>
+      <node id="9c6baa0d-d085-47af-828f-494a3007ed4e" label="&quot;INTERRUPT GENERATION&quot;">
+        <attvalues>
+          <attvalue for="0" value="33" />
+          <attvalue for="1" value="&quot;PARAMETER&quot;" />
+          <attvalue for="2" value="&quot;The interrupt generation is a parameter that determines whether interrupts are generated.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="2" />
+        </attvalues>
+      </node>
+      <node id="5f62c79e-2f32-43dc-a444-d1c76e43baed" label="&quot;CTS&quot;">
+        <attvalues>
+          <attvalue for="0" value="34" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The CTS signal is used for flow control.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="8e36d207-2787-4758-940a-f34405d94723" label="&quot;RTS&quot;">
+        <attvalues>
+          <attvalue for="0" value="35" />
+          <attvalue for="1" value="&quot;SIGNAL&quot;" />
+          <attvalue for="2" value="&quot;The RTS signal is used for flow control.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="136611d3-7d74-4d23-8038-f50869a0374f" label="&quot;SPI CLOCK&quot;">
+        <attvalues>
+          <attvalue for="0" value="36" />
+          <attvalue for="1" value="&quot;CLOCK&quot;" />
+          <attvalue for="2" value="&quot;The SPI clock is generated by the SDC and is used for SPI communication.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="249c6d3c-731a-452b-b2cf-2f64be332259" label="&quot;APB CLOCK&quot;">
+        <attvalues>
+          <attvalue for="0" value="37" />
+          <attvalue for="1" value="&quot;CLOCK&quot;" />
+          <attvalue for="2" value="&quot;The APB clock is used for APB communication.&quot;" />
+          <attvalue for="3" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" id="ee82907f-9974-4311-a40c-e45af3cfa05f" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="0" />
+          <attvalue for="7" value="&quot;The SDC has an APB interface for host processor configuration.&quot;" />
+          <attvalue for="8" value="22" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="338983ca-f2c7-426d-bb85-97e213320911" id="8ca71f29-e932-4a84-88f8-21ef92d94ba6" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="1" />
+          <attvalue for="7" value="&quot;The SDC has a SPI interface for communication with external slave devices.&quot;" />
+          <attvalue for="8" value="19" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="c9f8655b-4f06-4df0-aba0-99edbe58b41b" id="6df68536-2721-4bb6-a858-fa537dcc0db7" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="15" />
+          <attvalue for="7" value="&quot;The system reset signal is used to reset the SDC.&quot;" />
+          <attvalue for="8" value="16" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="b0381e93-039c-4905-a43b-f6c262576f0f" id="4417baca-8bd0-4692-aaa7-dd128dea2ff0" weight="8.0">
+        <attvalues>
+          <attvalue for="6" value="16" />
+          <attvalue for="7" value="&quot;The interrupt request signal is generated by the SDC when transmission is complete or a parity error is detected.&quot;" />
+          <attvalue for="8" value="13" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="bf744a66-b0b0-47c3-88eb-df537ac6c421" id="00541f2c-f099-4cbf-98b4-5e49e992339b" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="17" />
+          <attvalue for="7" value="&quot;The control register is a part of the SDC.&quot;" />
+          <attvalue for="8" value="17" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="d4bfcc4c-1e24-4d9f-9032-31165a750cd9" id="2cd489d9-d9e6-4933-8260-3a1d41b90731" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="18" />
+          <attvalue for="7" value="&quot;The baud rate divisor is a part of the SDC.&quot;" />
+          <attvalue for="8" value="16" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="90fbaa5b-dc56-415e-9da1-46dc1e5151c4" id="90828513-c097-441b-8882-435c501f8ed8" weight="1.0">
+        <attvalues>
+          <attvalue for="6" value="19" />
+          <attvalue for="7" value="&quot;The status register is a part of the SDC.&quot;" />
+          <attvalue for="8" value="16" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="1677ebc7-a583-408e-bf40-ad3ad3f401eb" id="bf72bff6-0a2f-4af9-a3aa-cb3e62a546eb" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="20" />
+          <attvalue for="7" value="&quot;The SDC has a receive buffer.&quot;" />
+          <attvalue for="8" value="14" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="10e9be45-abd1-4623-a300-bb1482a8a87e" id="210d7200-7249-4988-a655-0972e140e3d2" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="21" />
+          <attvalue for="7" value="&quot;The SDC has a transmit buffer.&quot;" />
+          <attvalue for="8" value="14" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="23918916-cd67-481d-a933-9f6275514ca4" id="7c84d226-fab8-440c-a58a-db7b533af014" weight="8.0">
+        <attvalues>
+          <attvalue for="6" value="24" />
+          <attvalue for="7" value="&quot;The SDC has flow control.&quot;" />
+          <attvalue for="8" value="16" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="042ea95a-8e87-49b4-8d10-e99e9574132b" id="1cd61cde-a95e-4cd9-b3c0-1115957f219a" weight="8.0">
+        <attvalues>
+          <attvalue for="6" value="25" />
+          <attvalue for="7" value="&quot;The SDC has parity checking.&quot;" />
+          <attvalue for="8" value="14" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="67ef01a4-cdeb-43d9-9881-d9786262c752" target="9c6baa0d-d085-47af-828f-494a3007ed4e" id="079dfbc7-b6e8-4f86-b1b9-5249c5c26268" weight="8.0">
+        <attvalues>
+          <attvalue for="6" value="26" />
+          <attvalue for="7" value="&quot;The SDC has interrupt generation.&quot;" />
+          <attvalue for="8" value="14" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" target="3dec1e15-cb67-4598-8d6d-f03795410a43" id="37554dd9-583f-4540-b438-72f274533185" weight="8.0">
+        <attvalues>
+          <attvalue for="6" value="2" />
+          <attvalue for="7" value="&quot;The APB interface operates on the system clock.&quot;" />
+          <attvalue for="8" value="13" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" target="3bdbe4f2-9be5-45ec-94ed-6abc1932fc49" id="4b2e1330-5b29-4464-81f4-e657636069ee" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="4" />
+          <attvalue for="7" value="&quot;The peripheral select signal is used to select the SDC on the APB interface.&quot;" />
+          <attvalue for="8" value="11" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" target="deca1e63-ff7e-49fd-963d-58f90469b9b4" id="ec7551de-8173-4c23-b2c9-59b86ec2a37a" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="5" />
+          <attvalue for="7" value="&quot;The transfer enable signal is used to mark the second cycle of an APB transfer on the APB interface.&quot;" />
+          <attvalue for="8" value="11" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" target="f75dd1cc-ff0e-4721-900e-92d32f72b38e" id="d720300f-1755-4175-aed1-2fc360a3472c" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="6" />
+          <attvalue for="7" value="&quot;The write enable signal is used to determine the direction of data transfer on the APB interface.&quot;" />
+          <attvalue for="8" value="11" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" target="1b4da10d-adcb-4197-840b-0cf9b6332e01" id="cfaf66e9-63ae-4da1-9164-436c6a579b04" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="7" />
+          <attvalue for="7" value="&quot;The register address signal is used to select the target register on the APB interface.&quot;" />
+          <attvalue for="8" value="11" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" target="d986e63c-7021-40fd-a242-83f70dd1a3f5" id="8e547661-a1c3-4635-9c91-fd3da02cb54f" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="&quot;The write data bus is used to transfer data from the master to the SDC on the APB interface.&quot;" />
+          <attvalue for="8" value="11" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" target="fa4b8e9c-7465-4949-95b9-bfdea70ba1e3" id="bb0b1ca3-118f-4f66-9414-112d4d8fe128" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="&quot;The read data bus is used to transfer data from the SDC to the master on the APB interface.&quot;" />
+          <attvalue for="8" value="11" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" target="016bd329-b71a-429e-b108-dba38fbd2e63" id="902e5b25-9b9e-4f8a-be1d-d570f254db97" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="10" />
+          <attvalue for="7" value="&quot;The transfer acknowledge signal is used to complete the APB transaction on the APB interface.&quot;" />
+          <attvalue for="8" value="11" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="aff1ceb1-8c84-4cac-8ee9-913ca5704dce" target="0a7b7cf5-9773-4746-b57f-9ff3436f7ecf" id="f67853b3-7e7e-455e-9eb9-add761038033" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="22" />
+          <attvalue for="7" value="&quot;The APB interface uses the APB protocol.&quot;" />
+          <attvalue for="8" value="12" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="338983ca-f2c7-426d-bb85-97e213320911" target="3dec1e15-cb67-4598-8d6d-f03795410a43" id="f710a093-df71-43a5-9dcf-6cf3690bd43d" weight="8.0">
+        <attvalues>
+          <attvalue for="6" value="3" />
+          <attvalue for="7" value="&quot;The SPI interface operates on the system clock.&quot;" />
+          <attvalue for="8" value="10" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="338983ca-f2c7-426d-bb85-97e213320911" target="ec4bd048-e455-44f5-8d58-3366a51e0184" id="7bbab668-f1cc-420e-adfa-8b8d3d331e78" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="11" />
+          <attvalue for="7" value="&quot;The serial clock signal is generated by the SDC and is used on the SPI interface.&quot;" />
+          <attvalue for="8" value="8" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="338983ca-f2c7-426d-bb85-97e213320911" target="93f733c4-ec40-43f9-a711-c0d68dd4b5a4" id="147996e3-9197-452b-a05e-2ddf44b473a9" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="12" />
+          <attvalue for="7" value="&quot;The master data output signal is used to transmit data from the SDC to the external slave on the SPI interface.&quot;" />
+          <attvalue for="8" value="8" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="338983ca-f2c7-426d-bb85-97e213320911" target="e2e2e127-c015-449e-b082-06e4d63dff2b" id="2423600a-015d-45a1-8688-b4ae239d3220" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="13" />
+          <attvalue for="7" value="&quot;The master data input signal is used to receive data from the external slave on the SPI interface.&quot;" />
+          <attvalue for="8" value="8" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="338983ca-f2c7-426d-bb85-97e213320911" target="6ed3577e-de16-41d1-b4b9-cfb109d77f1d" id="4d0e6d07-db3e-4b72-b3dd-d427635cdb2b" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="14" />
+          <attvalue for="7" value="&quot;The chip select signal is used to address the external slave on the SPI interface.&quot;" />
+          <attvalue for="8" value="8" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="338983ca-f2c7-426d-bb85-97e213320911" target="a930e1d1-3da3-4a55-9e12-b09fc7a0660c" id="955e6754-defc-429a-807f-2699c80120fb" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="23" />
+          <attvalue for="7" value="&quot;The SPI interface uses the SPI protocol.&quot;" />
+          <attvalue for="8" value="10" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="3dec1e15-cb67-4598-8d6d-f03795410a43" target="d4bfcc4c-1e24-4d9f-9032-31165a750cd9" id="1c298edf-25ff-4922-bb9e-6eb26fd88f42" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="33" />
+          <attvalue for="7" value="&quot;The system clock is divided by the baud rate divisor to generate the SPI clock.&quot;" />
+          <attvalue for="8" value="7" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="c9f8655b-4f06-4df0-aba0-99edbe58b41b" target="bf744a66-b0b0-47c3-88eb-df537ac6c421" id="868999ba-e3f6-4283-bce5-09403160d4b1" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="34" />
+          <attvalue for="7" value="&quot;The system reset clears the control register.&quot;" />
+          <attvalue for="8" value="9" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="c9f8655b-4f06-4df0-aba0-99edbe58b41b" target="d4bfcc4c-1e24-4d9f-9032-31165a750cd9" id="5445353b-1f5b-4d05-a72d-7a9e035dbcee" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="35" />
+          <attvalue for="7" value="&quot;The system reset clears the baud rate divisor.&quot;" />
+          <attvalue for="8" value="8" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="c9f8655b-4f06-4df0-aba0-99edbe58b41b" target="90fbaa5b-dc56-415e-9da1-46dc1e5151c4" id="e221260d-fbfb-46fe-8c89-0c3fe35269b4" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="36" />
+          <attvalue for="7" value="&quot;The system reset clears the status register.&quot;" />
+          <attvalue for="8" value="8" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="bf744a66-b0b0-47c3-88eb-df537ac6c421" target="23918916-cd67-481d-a933-9f6275514ca4" id="5558743b-90fd-4c58-84bf-0b4c6095bbbf" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="27" />
+          <attvalue for="7" value="&quot;The control register determines whether flow control is enabled.&quot;" />
+          <attvalue for="8" value="9" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="bf744a66-b0b0-47c3-88eb-df537ac6c421" target="042ea95a-8e87-49b4-8d10-e99e9574132b" id="f6d3d11a-6c43-4a8d-8d71-930a7c746ffe" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="28" />
+          <attvalue for="7" value="&quot;The control register determines whether parity checking is enabled.&quot;" />
+          <attvalue for="8" value="7" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="bf744a66-b0b0-47c3-88eb-df537ac6c421" target="9c6baa0d-d085-47af-828f-494a3007ed4e" id="13952671-6a60-4387-99d5-5cfe2df554a6" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="29" />
+          <attvalue for="7" value="&quot;The control register determines whether interrupt generation is enabled.&quot;" />
+          <attvalue for="8" value="7" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="d4bfcc4c-1e24-4d9f-9032-31165a750cd9" target="a930e1d1-3da3-4a55-9e12-b09fc7a0660c" id="5330dbf9-7188-4c96-8c1f-3aa9ad5d44e8" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="30" />
+          <attvalue for="7" value="&quot;The baud rate divisor is used to generate the SPI clock.&quot;" />
+          <attvalue for="8" value="7" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="90fbaa5b-dc56-415e-9da1-46dc1e5151c4" target="1677ebc7-a583-408e-bf40-ad3ad3f401eb" id="cea4f588-8414-45b6-9a5a-5a5b0b52144a" weight="8.0">
+        <attvalues>
+          <attvalue for="6" value="31" />
+          <attvalue for="7" value="&quot;The status register contains status flags related to the receive buffer.&quot;" />
+          <attvalue for="8" value="6" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="90fbaa5b-dc56-415e-9da1-46dc1e5151c4" target="10e9be45-abd1-4623-a300-bb1482a8a87e" id="4907a588-9692-4d67-87b4-da7c4da041c9" weight="8.0">
+        <attvalues>
+          <attvalue for="6" value="32" />
+          <attvalue for="7" value="&quot;The status register contains status flags related to the transmit buffer.&quot;" />
+          <attvalue for="8" value="6" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="a930e1d1-3da3-4a55-9e12-b09fc7a0660c" target="136611d3-7d74-4d23-8038-f50869a0374f" id="abbceef5-2903-4263-a7b1-be0f9365dc05" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="39" />
+          <attvalue for="7" value="&quot;The SPI clock is used for SPI communication.&quot;" />
+          <attvalue for="8" value="4" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="0a7b7cf5-9773-4746-b57f-9ff3436f7ecf" target="249c6d3c-731a-452b-b2cf-2f64be332259" id="e2c4ae6b-0cef-4892-8a6c-b055515b5c56" weight="1.0">
+        <attvalues>
+          <attvalue for="6" value="40" />
+          <attvalue for="7" value="&quot;The APB clock is used for APB communication.&quot;" />
+          <attvalue for="8" value="3" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="23918916-cd67-481d-a933-9f6275514ca4" target="5f62c79e-2f32-43dc-a444-d1c76e43baed" id="530ab304-922c-4f6d-be75-07d13888c7e0" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="37" />
+          <attvalue for="7" value="&quot;The CTS signal is used for flow control.&quot;" />
+          <attvalue for="8" value="5" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+      <edge source="23918916-cd67-481d-a933-9f6275514ca4" target="8e36d207-2787-4758-940a-f34405d94723" id="cdcc63e6-619a-43d5-bef5-add0b294ccee" weight="9.0">
+        <attvalues>
+          <attvalue for="6" value="38" />
+          <attvalue for="7" value="&quot;The RTS signal is used for flow control.&quot;" />
+          <attvalue for="8" value="5" />
+          <attvalue for="9" value="['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

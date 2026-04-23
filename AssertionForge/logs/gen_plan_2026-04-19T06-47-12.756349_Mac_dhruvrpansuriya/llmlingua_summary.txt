@@ -1,0 +1,17 @@
+LLMLingua Token Reduction Summary
+=================================
+
+Overall Statistics:
+  Tokens without LLMLingua : 6005
+  Tokens with LLMLingua    : 5060
+  Total Token Reduction    : 15.74%
+
+Detailed Breakdown:
+  Dynamic NL Generation:
+    Origin: 2989, Compressed: 2515
+  Static NL Generation:
+    Origin: 0, Compressed: 0
+  Dynamic SVA Generation:
+    Origin: 3016, Compressed: 2545
+  Static SVA Generation:
+    Origin: 0, Compressed: 0

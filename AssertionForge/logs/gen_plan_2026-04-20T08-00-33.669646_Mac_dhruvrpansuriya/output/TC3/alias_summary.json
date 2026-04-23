@@ -1,0 +1,414 @@
+{
+  "count": 36,
+  "mappings": [
+    {
+      "canonical": "system_clock",
+      "rtl_name": "sdc_top.pclk",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "SYSTEM CLOCK",
+        "SYSTEM CLOCK SIGNAL",
+        "CLOCK SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "system_reset",
+      "rtl_name": "sdc_top.nrst",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": true,
+      "spec_mentions": [
+        "SYSTEM RESET"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "peripheral_select",
+      "rtl_name": "sdc_top.psel",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "PERIPHERAL SELECT"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "transfer_enable",
+      "rtl_name": "sdc_top.penable",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "TRANSFER ENABLE"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "write_enable",
+      "rtl_name": "sdc_top.pwrite",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "WRITE ENABLE"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "register_address",
+      "rtl_name": "sdc_top.paddr",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "REGISTER ADDRESS"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "write_data_bus",
+      "rtl_name": "sdc_top.pwdata",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "WRITE DATA BUS"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "read_data_bus",
+      "rtl_name": "sdc_top.prdata",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "READ DATA BUS"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "transfer_acknowledge",
+      "rtl_name": "sdc_top.pready",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "TRANSFER ACKNOWLEDGE",
+        "TRANSFER ACKNOWLEDGE SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "serial_clock",
+      "rtl_name": "sdc_top.sck",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "SERIAL CLOCK",
+        "SERIAL CLOCK SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "master_data_output",
+      "rtl_name": "sdc_top.mosi",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "MASTER DATA OUTPUT",
+        "MASTER DATA OUTPUT SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "master_data_input",
+      "rtl_name": "sdc_top.miso",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "MASTER DATA INPUT",
+        "MASTER DATA INPUT SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "chip_select",
+      "rtl_name": "sdc_top.ss_n",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": true,
+      "spec_mentions": [
+        "CHIP SELECT",
+        "CHIP SELECT SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "interrupt_request",
+      "rtl_name": "sdc_top.irq_out",
+      "rtl_module": "sdc_top",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "INTERRUPT REQUEST",
+        "INTERRUPT REQUEST SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "transmission_complete",
+      "rtl_name": "sdc_tx.tx_done",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "TRANSMISSION COMPLETE",
+        "TRANSMISSION COMPLETE SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "transmit_acknowledge",
+      "rtl_name": "sdc_tx.ack_flag",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "TRANSMIT ACKNOWLEDGE",
+        "TRANSMIT ACKNOWLEDGE SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "fifo_empty_status",
+      "rtl_name": "sdc_tx.fifo_empty",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "FIFO EMPTY STATUS",
+        "FIFO EMPTY STATUS SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "data_valid",
+      "rtl_name": "sdc_rx.dv",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "DATA VALID",
+        "DATA VALID SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "parity_error_flag",
+      "rtl_name": "sdc_rx.par_err",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "PARITY ERROR FLAG",
+        "PARITY ERROR FLAG SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "receive_buffer_full",
+      "rtl_name": "sdc_rx.buf_full_n",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": true,
+      "spec_mentions": [
+        "RECEIVE BUFFER FULL",
+        "RECEIVE BUFFER FULL SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "flow_control_enable",
+      "rtl_name": "sdc_tx.fc_en",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "FLOW CONTROL ENABLE",
+        "FLOW CONTROL ENABLE SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "clock_signal",
+      "rtl_name": "sdc_tx.clk",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "CLOCK SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "system_clock_signal",
+      "rtl_name": "sdc_rx.clk",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "SYSTEM CLOCK SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "serial_clock_signal",
+      "rtl_name": "sdc_rx.sck_in",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "SERIAL CLOCK SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "master_data_output_signal",
+      "rtl_name": "sdc_tx.mosi_out",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "MASTER DATA OUTPUT SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "master_data_input_signal",
+      "rtl_name": "sdc_rx.miso_in",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "MASTER DATA INPUT SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "transfer_acknowledge_signal",
+      "rtl_name": "sdc_rx.dv",
+      "rtl_module": "sdc_rx",
+      "confidence": 0.8,
+      "active_low": false,
+      "spec_mentions": [
+        "TRANSFER ACKNOWLEDGE SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "interrupt_request_signal",
+      "rtl_name": "sdc_rx.par_err",
+      "rtl_module": "sdc_rx",
+      "confidence": 0.8,
+      "active_low": false,
+      "spec_mentions": [
+        "INTERRUPT REQUEST SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "transmission_complete_signal",
+      "rtl_name": "sdc_tx.tx_done",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "TRANSMISSION COMPLETE SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "transmit_acknowledge_signal",
+      "rtl_name": "sdc_tx.ack_flag",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "TRANSMIT ACKNOWLEDGE SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "fifo_empty_status_signal",
+      "rtl_name": "sdc_tx.fifo_empty",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "FIFO EMPTY STATUS SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "data_valid_signal",
+      "rtl_name": "sdc_rx.dv",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "DATA VALID SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "parity_error_flag_signal",
+      "rtl_name": "sdc_rx.par_err",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "PARITY ERROR FLAG SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "receive_buffer_full_signal",
+      "rtl_name": "sdc_rx.buf_full_n",
+      "rtl_module": "sdc_rx",
+      "confidence": 1.0,
+      "active_low": true,
+      "spec_mentions": [
+        "RECEIVE BUFFER FULL SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "flow_control_enable_signal",
+      "rtl_name": "sdc_tx.fc_en",
+      "rtl_module": "sdc_tx",
+      "confidence": 1.0,
+      "active_low": false,
+      "spec_mentions": [
+        "FLOW CONTROL ENABLE SIGNAL"
+      ],
+      "match_method": "llm_alignment"
+    },
+    {
+      "canonical": "we_n",
+      "rtl_name": "sdc_top.we_n",
+      "rtl_module": "sdc_top",
+      "confidence": 0.0,
+      "active_low": true,
+      "spec_mentions": [],
+      "match_method": "unresolved"
+    }
+  ]
+}

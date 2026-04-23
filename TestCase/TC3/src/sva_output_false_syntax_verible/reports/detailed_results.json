@@ -1,0 +1,52 @@
+[
+  {
+    "file_name": "bad_bad_operator.sva",
+    "status": "discarded",
+    "final_sva": "property p_bad4;\n  @(posedge PCLK) (PSEL == 1'b1) |=>=> (PREADY == 1'b1);\nendproperty\nassert property (p_bad4);",
+    "loop_a_repaired": false,
+    "loop_b_repaired": true,
+    "reason": "Loop B failed after 1 repair attempt (Verible syntax still invalid)\nFinal Verible error:\n/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmp9brs4494.sv:3:37-38: syntax error at token \"=>\"\n/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmp9brs4494.sv:4:1-11: syntax error at token \"endproperty\"",
+    "invalid_signals_before_repair": [],
+    "syntax_error_before_repair": "/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmp14nlmrmh.sv:3:37-38: syntax error at token \"=>\"\n/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmp14nlmrmh.sv:4:1-11: syntax error at token \"endproperty\""
+  },
+  {
+    "file_name": "bad_missing_endproperty.sva",
+    "status": "discarded",
+    "final_sva": "property p_bad3;\n  @(posedge PCLK) (PSEL) |-> ##1 (PREADY);\nassert property (p_bad3);",
+    "loop_a_repaired": false,
+    "loop_b_repaired": true,
+    "reason": "Loop B failed after 1 repair attempt (Verible syntax still invalid)\nFinal Verible error:\n/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmpqij5hmlx.sv:3:3: syntax error at token \"@\"",
+    "invalid_signals_before_repair": [],
+    "syntax_error_before_repair": "/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmpibnvtqfh.sv:3:3: syntax error at token \"@\""
+  },
+  {
+    "file_name": "bad_missing_semicolon.sva",
+    "status": "accepted",
+    "final_sva": "property p_bad1;\n  @(posedge PCLK) (PSEL && PENABLE) |-> (PRDATA == PWDATA)\nendproperty\nassert property (p_bad1);",
+    "loop_a_repaired": false,
+    "loop_b_repaired": false,
+    "reason": "Accepted (passed Loop A + Loop B)",
+    "invalid_signals_before_repair": [],
+    "syntax_error_before_repair": ""
+  },
+  {
+    "file_name": "bad_unbalanced_paren.sva",
+    "status": "discarded",
+    "final_sva": "property p_bad2;\n  @(posedge PCLK) ((PSEL && PENABLE) |-> (PRDATA == PWDATA);\nendproperty\nassert property (p_bad2);",
+    "loop_a_repaired": false,
+    "loop_b_repaired": true,
+    "reason": "Loop B failed after 1 repair attempt (Verible syntax still invalid)\nFinal Verible error:\n/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmpp025d4kx.sv:3:60: syntax error at token \";\"\n/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmpp025d4kx.sv:4:1-11: syntax error at token \"endproperty\"",
+    "invalid_signals_before_repair": [],
+    "syntax_error_before_repair": "/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmppod68n75.sv:3:60: syntax error at token \";\"\n/var/folders/gf/4trhcx9n3036fwzjjkf7gk1h0000gn/T/tmppod68n75.sv:4:1-11: syntax error at token \"endproperty\""
+  },
+  {
+    "file_name": "good_control.sva",
+    "status": "accepted",
+    "final_sva": "property p_ok;\n  @(posedge PCLK) (PSEL && PENABLE) |-> ##1 (PREADY == 1'b1);\nendproperty\nassert property (p_ok);",
+    "loop_a_repaired": false,
+    "loop_b_repaired": false,
+    "reason": "Accepted (passed Loop A + Loop B)",
+    "invalid_signals_before_repair": [],
+    "syntax_error_before_repair": ""
+  }
+]

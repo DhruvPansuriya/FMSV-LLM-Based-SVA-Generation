@@ -1,0 +1,76 @@
+Title: Two-Phase SVA Checking (Alias Validation + Verible Syntax)
+
+1) IDEA
+The SVA filter-repair stage is designed as a two-phase quality gate:
+
+Phase 1 (semantic signal sanity):
+- ensure signal identifiers used by SVA exist in the known RTL alias table.
+- this catches “hallucinated” or typo signals early.
+
+Phase 2 (tool-backed syntax correctness):
+- run Verible parser (`verible-verilog-syntax`) on each SVA.
+- this catches malformed temporal syntax, broken tokens, and grammar errors.
+
+This architecture avoids wasting syntax checks on semantically invalid assertions, and gives explicit repair hooks at each failure mode.
+
+2) IMPLEMENTATION (CURRENT)
+Standalone script location:
+- `TestCase/TC3/src/sva_batch_filter_repair.py`
+
+Current behavior state:
+- Loop A (Phase 1) is now OPTIONAL.
+- Default run mode = Verible-only (Loop A skipped), controlled by:
+  - `--enable-loop-a` to re-enable alias checking.
+
+Main loops in implementation:
+A. Loop A — Signal Name Validator (optional)
+- Extracts identifier candidates by regex.
+- Ignores SV keywords/system functions and configured tokens.
+- Compares candidates against alias table.
+- If invalid found:
+  - constructs repair prompt,
+  - calls `repair_sva_with_llm(...)` stub once,
+  - if still invalid => discard.
+
+B. Loop B — Verible syntax validator
+- Wraps candidate assertion into a temporary module wrapper.
+- Calls `verible-verilog-syntax`.
+- If syntax fails:
+  - one repair attempt through `repair_sva_with_llm(...)` stub,
+  - recheck once,
+  - if still invalid => discard.
+
+3) TECHNICAL DETAILS
+Verible binary resolution (important fix):
+- script resolves Verible in this order:
+  1) explicit `--verible-bin` path,
+  2) system PATH,
+  3) project-local fallback `.tools/verible/**/bin/verible-verilog-syntax`.
+
+This removes brittle dependency on shell PATH and allowed successful local validation even when Homebrew install path was blocked.
+
+I/O and reports:
+- inputs: `.txt`, `.sv`, `.sva` (one assertion per file expected).
+- outputs:
+  - `accepted/`
+  - `discarded/`
+  - `reports/summary.json`
+  - `reports/detailed_results.json`
+  - `reports/summary.txt`
+
+Logging system:
+- run-level log with tool/path/config details.
+- per-iteration logs for every file:
+  - original SVA
+  - Loop A/Loop B pass/fail transitions
+  - exact syntax errors returned by Verible
+  - final accept/discard reason
+
+Observed verification behavior on malformed test set:
+- Invalid operators and unbalanced syntax are reliably rejected by Verible.
+- Assertions that are unusual but grammatically legal can still pass (as expected from syntax-only tooling).
+
+Limitations and next upgrades:
+- `repair_sva_with_llm` is currently a stub; semantic/syntax auto-fix quality is not active yet.
+- Phase-1 identifier extraction can still be improved for noisy text-heavy assertions.
+- Optional third phase (semantic model checking / bounded check) can be added later for behavior-level validation.

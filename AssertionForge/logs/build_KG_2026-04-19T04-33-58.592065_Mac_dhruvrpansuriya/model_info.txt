@@ -1,0 +1,14 @@
+task                       : build_KG
+design_name                : sockit
+input_file_path            : /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC1/sockit.pdf
+env_source_path            : /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/rag_apb/.env
+settings_source_path       : /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/data/rag_apb/settings.yaml
+entity_extraction_prompt_source_path : /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/entity_extraction.txt
+graphrag_local_dir         : /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/external/graphrag
+user                       : dhruvrpansuriya
+hostname                   : Mac
+repo_name                  : FMSV---LLM-Based-SVA-Generation
+local_branch_name          : main
+commit_sha                 : 534772236f989ae47f2dc58517344d17affd1cdb
+ts                         : 2026-04-19T04-33-58.592065
+

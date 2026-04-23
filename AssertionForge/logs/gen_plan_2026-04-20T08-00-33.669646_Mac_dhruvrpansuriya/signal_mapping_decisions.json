@@ -1,0 +1,1024 @@
+{
+  "generated_at": "2026-04-20T20:30:40.946430",
+  "rtl_signal_count": 34,
+  "spec_node_count": 25,
+  "created_link_count": 0,
+  "rtl_signal_names": [
+    "input  wire        nRST",
+    "// Spec: \"system reset\"        (active-low)\n    input  wire        PCLK",
+    "// Spec: \"system clock\"\n    input  wire        PSEL",
+    "// Spec: \"peripheral select\"\n    input  wire        PENABLE",
+    "// Spec: \"transfer enable\"\n    input  wire        PWRITE",
+    "// Spec: \"write enable\"\n    input  wire [7:0]  PADDR",
+    "// Spec: \"register address\"\n    input  wire [31:0] PWDATA",
+    "// Spec: \"write data bus\"\n    output reg  [31:0] PRDATA",
+    "// Spec: \"read data bus\"\n    output wire        PREADY",
+    "// Spec: \"transfer acknowledge\"\n    output wire        SCK",
+    "// Spec: \"serial clock\"\n    output wire        MOSI",
+    "// Spec: \"master data output\"\n    input  wire        MISO",
+    "// Spec: \"master data input\"\n    output reg         SS_N",
+    "// Spec: \"chip select\"         (active-low)\n    output reg         IRQ_OUT",
+    "// Spec: \"interrupt request\"\n    output wire        WE_N       // Spec: \"write enable strobe\" (active-low)",
+    "input  wire        clk",
+    "rst_n",
+    "tx_start",
+    "fc_en",
+    "input  wire [15:0] baud_div",
+    "input  wire [7:0]  tx_data",
+    "output wire        sck_out",
+    "mosi_out",
+    "tx_done",
+    "fifo_empty",
+    "output reg         ack_flag",
+    "input  wire       clk",
+    "rst_n",
+    "miso_in",
+    "sck_in",
+    "output reg        dv",
+    "par_err",
+    "output wire       buf_full_n",
+    "output reg [7:0]  rx_data"
+  ],
+  "spec_node_names": [
+    "\"SYSTEM CLOCK\"",
+    "\"SYSTEM RESET\"",
+    "\"PERIPHERAL SELECT\"",
+    "\"TRANSFER ENABLE\"",
+    "\"WRITE ENABLE\"",
+    "\"REGISTER ADDRESS\"",
+    "\"WRITE DATA BUS\"",
+    "\"READ DATA BUS\"",
+    "\"TRANSFER ACKNOWLEDGE\"",
+    "\"SERIAL CLOCK\"",
+    "\"MASTER DATA OUTPUT\"",
+    "\"MASTER DATA INPUT\"",
+    "\"CHIP SELECT\"",
+    "\"INTERRUPT REQUEST\"",
+    "\"TRANSMISSION COMPLETE\"",
+    "\"TRANSMIT ACKNOWLEDGE\"",
+    "\"FIFO EMPTY STATUS\"",
+    "\"DATA VALID\"",
+    "\"PARITY ERROR FLAG\"",
+    "\"RECEIVE BUFFER FULL\"",
+    "\"FLOW CONTROL ENABLE\"",
+    "\"CTS\"",
+    "\"RTS\"",
+    "\"SPI CLOCK\"",
+    "\"APB CLOCK\""
+  ],
+  "alias_table_unique_entries": [
+    {
+      "canonical_name": "system_clock",
+      "spec_mentions": [
+        "SYSTEM CLOCK",
+        "SYSTEM CLOCK SIGNAL",
+        "CLOCK SIGNAL"
+      ],
+      "rtl_name": "sdc_top.pclk",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal pclk is a clock signal, which matches the SYSTEM CLOCK and CLOCK SIGNAL mentions in the spec."
+    },
+    {
+      "canonical_name": "system_reset",
+      "spec_mentions": [
+        "SYSTEM RESET"
+      ],
+      "rtl_name": "sdc_top.nrst",
+      "rtl_module": "sdc_top",
+      "active_low": true,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal nrst is an active-low reset signal, which matches the SYSTEM RESET mention in the spec."
+    },
+    {
+      "canonical_name": "peripheral_select",
+      "spec_mentions": [
+        "PERIPHERAL SELECT"
+      ],
+      "rtl_name": "sdc_top.psel",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal psel is a select signal, which matches the PERIPHERAL SELECT mention in the spec."
+    },
+    {
+      "canonical_name": "transfer_enable",
+      "spec_mentions": [
+        "TRANSFER ENABLE"
+      ],
+      "rtl_name": "sdc_top.penable",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal penable is an enable signal for transfer, which matches the TRANSFER ENABLE mention in the spec."
+    },
+    {
+      "canonical_name": "write_enable",
+      "spec_mentions": [
+        "WRITE ENABLE"
+      ],
+      "rtl_name": "sdc_top.pwrite",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal pwrite is a write enable signal, which matches the WRITE ENABLE mention in the spec."
+    },
+    {
+      "canonical_name": "register_address",
+      "spec_mentions": [
+        "REGISTER ADDRESS"
+      ],
+      "rtl_name": "sdc_top.paddr",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal paddr is an address signal, which matches the REGISTER ADDRESS mention in the spec."
+    },
+    {
+      "canonical_name": "write_data_bus",
+      "spec_mentions": [
+        "WRITE DATA BUS"
+      ],
+      "rtl_name": "sdc_top.pwdata",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal pwdata is a write data bus signal, which matches the WRITE DATA BUS mention in the spec."
+    },
+    {
+      "canonical_name": "read_data_bus",
+      "spec_mentions": [
+        "READ DATA BUS"
+      ],
+      "rtl_name": "sdc_top.prdata",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal prdata is a read data bus signal, which matches the READ DATA BUS mention in the spec."
+    },
+    {
+      "canonical_name": "transfer_acknowledge",
+      "spec_mentions": [
+        "TRANSFER ACKNOWLEDGE",
+        "TRANSFER ACKNOWLEDGE SIGNAL"
+      ],
+      "rtl_name": "sdc_top.pready",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal pready is an acknowledge signal for transfer, which matches the TRANSFER ACKNOWLEDGE mention in the spec."
+    },
+    {
+      "canonical_name": "serial_clock",
+      "spec_mentions": [
+        "SERIAL CLOCK",
+        "SERIAL CLOCK SIGNAL"
+      ],
+      "rtl_name": "sdc_top.sck",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal sck is a serial clock signal, which matches the SERIAL CLOCK mention in the spec."
+    },
+    {
+      "canonical_name": "master_data_output",
+      "spec_mentions": [
+        "MASTER DATA OUTPUT",
+        "MASTER DATA OUTPUT SIGNAL"
+      ],
+      "rtl_name": "sdc_top.mosi",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal mosi is a master data output signal, which matches the MASTER DATA OUTPUT mention in the spec."
+    },
+    {
+      "canonical_name": "master_data_input",
+      "spec_mentions": [
+        "MASTER DATA INPUT",
+        "MASTER DATA INPUT SIGNAL"
+      ],
+      "rtl_name": "sdc_top.miso",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal miso is a master data input signal, which matches the MASTER DATA INPUT mention in the spec."
+    },
+    {
+      "canonical_name": "chip_select",
+      "spec_mentions": [
+        "CHIP SELECT",
+        "CHIP SELECT SIGNAL"
+      ],
+      "rtl_name": "sdc_top.ss_n",
+      "rtl_module": "sdc_top",
+      "active_low": true,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal ss_n is an active-low chip select signal, which matches the CHIP SELECT mention in the spec."
+    },
+    {
+      "canonical_name": "interrupt_request",
+      "spec_mentions": [
+        "INTERRUPT REQUEST",
+        "INTERRUPT REQUEST SIGNAL"
+      ],
+      "rtl_name": "sdc_top.irq_out",
+      "rtl_module": "sdc_top",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal irq_out is an interrupt request signal, which matches the INTERRUPT REQUEST mention in the spec."
+    },
+    {
+      "canonical_name": "transmission_complete_signal",
+      "spec_mentions": [
+        "TRANSMISSION COMPLETE SIGNAL"
+      ],
+      "rtl_name": "sdc_tx.tx_done",
+      "rtl_module": "sdc_tx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal tx_done is a transmission complete signal, which matches the TRANSMISSION COMPLETE SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "transmit_acknowledge_signal",
+      "spec_mentions": [
+        "TRANSMIT ACKNOWLEDGE SIGNAL"
+      ],
+      "rtl_name": "sdc_tx.ack_flag",
+      "rtl_module": "sdc_tx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal ack_flag is a transmit acknowledge signal, which matches the TRANSMIT ACKNOWLEDGE SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "fifo_empty_status_signal",
+      "spec_mentions": [
+        "FIFO EMPTY STATUS SIGNAL"
+      ],
+      "rtl_name": "sdc_tx.fifo_empty",
+      "rtl_module": "sdc_tx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal fifo_empty is a FIFO empty status signal, which matches the FIFO EMPTY STATUS SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "data_valid_signal",
+      "spec_mentions": [
+        "DATA VALID SIGNAL"
+      ],
+      "rtl_name": "sdc_rx.dv",
+      "rtl_module": "sdc_rx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal dv is a data valid signal, which matches the DATA VALID SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "parity_error_flag_signal",
+      "spec_mentions": [
+        "PARITY ERROR FLAG SIGNAL"
+      ],
+      "rtl_name": "sdc_rx.par_err",
+      "rtl_module": "sdc_rx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal par_err is a parity error flag signal, which matches the PARITY ERROR FLAG SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "receive_buffer_full_signal",
+      "spec_mentions": [
+        "RECEIVE BUFFER FULL SIGNAL"
+      ],
+      "rtl_name": "sdc_rx.buf_full_n",
+      "rtl_module": "sdc_rx",
+      "active_low": true,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal buf_full_n is an active-low receive buffer full signal, which matches the RECEIVE BUFFER FULL SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "flow_control_enable_signal",
+      "spec_mentions": [
+        "FLOW CONTROL ENABLE SIGNAL"
+      ],
+      "rtl_name": "sdc_tx.fc_en",
+      "rtl_module": "sdc_tx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal fc_en is a flow control enable signal, which matches the FLOW CONTROL ENABLE SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "system_clock_signal",
+      "spec_mentions": [
+        "SYSTEM CLOCK SIGNAL"
+      ],
+      "rtl_name": "sdc_rx.clk",
+      "rtl_module": "sdc_rx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal clk is a system clock signal, which matches the SYSTEM CLOCK SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "clock_signal",
+      "spec_mentions": [
+        "CLOCK SIGNAL"
+      ],
+      "rtl_name": "sdc_tx.clk",
+      "rtl_module": "sdc_tx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal clk is a clock signal, which matches the CLOCK SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "serial_clock_signal",
+      "spec_mentions": [
+        "SERIAL CLOCK SIGNAL"
+      ],
+      "rtl_name": "sdc_rx.sck_in",
+      "rtl_module": "sdc_rx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal sck_in is a serial clock signal, which matches the SERIAL CLOCK SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "master_data_output_signal",
+      "spec_mentions": [
+        "MASTER DATA OUTPUT SIGNAL"
+      ],
+      "rtl_name": "sdc_tx.mosi_out",
+      "rtl_module": "sdc_tx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal mosi_out is a master data output signal, which matches the MASTER DATA OUTPUT SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "master_data_input_signal",
+      "spec_mentions": [
+        "MASTER DATA INPUT SIGNAL"
+      ],
+      "rtl_name": "sdc_rx.miso_in",
+      "rtl_module": "sdc_rx",
+      "active_low": false,
+      "confidence": 1.0,
+      "match_method": "llm_alignment",
+      "reasoning": "The signal miso_in is a master data input signal, which matches the MASTER DATA INPUT SIGNAL mention in the spec."
+    },
+    {
+      "canonical_name": "we_n",
+      "spec_mentions": [],
+      "rtl_name": "sdc_top.we_n",
+      "rtl_module": "sdc_top",
+      "active_low": true,
+      "confidence": 0.0,
+      "match_method": "unresolved",
+      "reasoning": "No matching spec mention found for the signal we_n."
+    }
+  ],
+  "per_signal_decisions": [
+    {
+      "rtl_node_id": "rtl_3",
+      "rtl_signal_raw": "input  wire        nRST",
+      "rtl_signal_normalized": "nrst",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "system_reset",
+        "spec_mentions": [
+          "SYSTEM RESET"
+        ],
+        "rtl_name": "sdc_top.nrst",
+        "rtl_module": "sdc_top",
+        "active_low": true,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal nrst is an active-low reset signal, which matches the SYSTEM RESET mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_4",
+      "rtl_signal_raw": "// Spec: \"system reset\"        (active-low)\n    input  wire        PCLK",
+      "rtl_signal_normalized": "pclk",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "system_clock",
+        "spec_mentions": [
+          "SYSTEM CLOCK",
+          "SYSTEM CLOCK SIGNAL",
+          "CLOCK SIGNAL"
+        ],
+        "rtl_name": "sdc_top.pclk",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal pclk is a clock signal, which matches the SYSTEM CLOCK and CLOCK SIGNAL mentions in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_5",
+      "rtl_signal_raw": "// Spec: \"system clock\"\n    input  wire        PSEL",
+      "rtl_signal_normalized": "psel",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "peripheral_select",
+        "spec_mentions": [
+          "PERIPHERAL SELECT"
+        ],
+        "rtl_name": "sdc_top.psel",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal psel is a select signal, which matches the PERIPHERAL SELECT mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_6",
+      "rtl_signal_raw": "// Spec: \"peripheral select\"\n    input  wire        PENABLE",
+      "rtl_signal_normalized": "penable",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "transfer_enable",
+        "spec_mentions": [
+          "TRANSFER ENABLE"
+        ],
+        "rtl_name": "sdc_top.penable",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal penable is an enable signal for transfer, which matches the TRANSFER ENABLE mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_7",
+      "rtl_signal_raw": "// Spec: \"transfer enable\"\n    input  wire        PWRITE",
+      "rtl_signal_normalized": "pwrite",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "write_enable",
+        "spec_mentions": [
+          "WRITE ENABLE"
+        ],
+        "rtl_name": "sdc_top.pwrite",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal pwrite is a write enable signal, which matches the WRITE ENABLE mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_8",
+      "rtl_signal_raw": "// Spec: \"write enable\"\n    input  wire [7:0]  PADDR",
+      "rtl_signal_normalized": "paddr",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "register_address",
+        "spec_mentions": [
+          "REGISTER ADDRESS"
+        ],
+        "rtl_name": "sdc_top.paddr",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal paddr is an address signal, which matches the REGISTER ADDRESS mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_9",
+      "rtl_signal_raw": "// Spec: \"register address\"\n    input  wire [31:0] PWDATA",
+      "rtl_signal_normalized": "pwdata",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "write_data_bus",
+        "spec_mentions": [
+          "WRITE DATA BUS"
+        ],
+        "rtl_name": "sdc_top.pwdata",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal pwdata is a write data bus signal, which matches the WRITE DATA BUS mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_10",
+      "rtl_signal_raw": "// Spec: \"write data bus\"\n    output reg  [31:0] PRDATA",
+      "rtl_signal_normalized": "prdata",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "read_data_bus",
+        "spec_mentions": [
+          "READ DATA BUS"
+        ],
+        "rtl_name": "sdc_top.prdata",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal prdata is a read data bus signal, which matches the READ DATA BUS mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_11",
+      "rtl_signal_raw": "// Spec: \"read data bus\"\n    output wire        PREADY",
+      "rtl_signal_normalized": "pready",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "transfer_acknowledge",
+        "spec_mentions": [
+          "TRANSFER ACKNOWLEDGE",
+          "TRANSFER ACKNOWLEDGE SIGNAL"
+        ],
+        "rtl_name": "sdc_top.pready",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal pready is an acknowledge signal for transfer, which matches the TRANSFER ACKNOWLEDGE mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_12",
+      "rtl_signal_raw": "// Spec: \"transfer acknowledge\"\n    output wire        SCK",
+      "rtl_signal_normalized": "sck",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "serial_clock",
+        "spec_mentions": [
+          "SERIAL CLOCK",
+          "SERIAL CLOCK SIGNAL"
+        ],
+        "rtl_name": "sdc_top.sck",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal sck is a serial clock signal, which matches the SERIAL CLOCK mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_13",
+      "rtl_signal_raw": "// Spec: \"serial clock\"\n    output wire        MOSI",
+      "rtl_signal_normalized": "mosi",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "master_data_output",
+        "spec_mentions": [
+          "MASTER DATA OUTPUT",
+          "MASTER DATA OUTPUT SIGNAL"
+        ],
+        "rtl_name": "sdc_top.mosi",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal mosi is a master data output signal, which matches the MASTER DATA OUTPUT mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_14",
+      "rtl_signal_raw": "// Spec: \"master data output\"\n    input  wire        MISO",
+      "rtl_signal_normalized": "miso",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "master_data_input",
+        "spec_mentions": [
+          "MASTER DATA INPUT",
+          "MASTER DATA INPUT SIGNAL"
+        ],
+        "rtl_name": "sdc_top.miso",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal miso is a master data input signal, which matches the MASTER DATA INPUT mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_15",
+      "rtl_signal_raw": "// Spec: \"master data input\"\n    output reg         SS_N",
+      "rtl_signal_normalized": "ss_n",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "chip_select",
+        "spec_mentions": [
+          "CHIP SELECT",
+          "CHIP SELECT SIGNAL"
+        ],
+        "rtl_name": "sdc_top.ss_n",
+        "rtl_module": "sdc_top",
+        "active_low": true,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal ss_n is an active-low chip select signal, which matches the CHIP SELECT mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_16",
+      "rtl_signal_raw": "// Spec: \"chip select\"         (active-low)\n    output reg         IRQ_OUT",
+      "rtl_signal_normalized": "irq_out",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "interrupt_request",
+        "spec_mentions": [
+          "INTERRUPT REQUEST",
+          "INTERRUPT REQUEST SIGNAL"
+        ],
+        "rtl_name": "sdc_top.irq_out",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal irq_out is an interrupt request signal, which matches the INTERRUPT REQUEST mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_17",
+      "rtl_signal_raw": "// Spec: \"interrupt request\"\n    output wire        WE_N       // Spec: \"write enable strobe\" (active-low)",
+      "rtl_signal_normalized": "we_n",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "we_n",
+        "spec_mentions": [],
+        "rtl_name": "sdc_top.we_n",
+        "rtl_module": "sdc_top",
+        "active_low": true,
+        "confidence": 0.0,
+        "match_method": "unresolved",
+        "reasoning": "No matching spec mention found for the signal we_n."
+      },
+      "method": "fallback_string_fuzzy",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_18",
+      "rtl_signal_raw": "input  wire        clk",
+      "rtl_signal_normalized": "clk",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "system_clock_signal",
+        "spec_mentions": [
+          "SYSTEM CLOCK SIGNAL"
+        ],
+        "rtl_name": "sdc_rx.clk",
+        "rtl_module": "sdc_rx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal clk is a system clock signal, which matches the SYSTEM CLOCK SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_19",
+      "rtl_signal_raw": "rst_n",
+      "rtl_signal_normalized": "rst_n",
+      "alignment_found": false,
+      "alignment": null,
+      "method": "fallback_string_fuzzy",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_20",
+      "rtl_signal_raw": "tx_start",
+      "rtl_signal_normalized": "tx_start",
+      "alignment_found": false,
+      "alignment": null,
+      "method": "fallback_string_fuzzy",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_21",
+      "rtl_signal_raw": "fc_en",
+      "rtl_signal_normalized": "fc_en",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "flow_control_enable_signal",
+        "spec_mentions": [
+          "FLOW CONTROL ENABLE SIGNAL"
+        ],
+        "rtl_name": "sdc_tx.fc_en",
+        "rtl_module": "sdc_tx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal fc_en is a flow control enable signal, which matches the FLOW CONTROL ENABLE SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_22",
+      "rtl_signal_raw": "input  wire [15:0] baud_div",
+      "rtl_signal_normalized": "baud_div",
+      "alignment_found": false,
+      "alignment": null,
+      "method": "fallback_string_fuzzy",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_23",
+      "rtl_signal_raw": "input  wire [7:0]  tx_data",
+      "rtl_signal_normalized": "tx_data",
+      "alignment_found": false,
+      "alignment": null,
+      "method": "fallback_string_fuzzy",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_24",
+      "rtl_signal_raw": "output wire        sck_out",
+      "rtl_signal_normalized": "sck_out",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "serial_clock",
+        "spec_mentions": [
+          "SERIAL CLOCK",
+          "SERIAL CLOCK SIGNAL"
+        ],
+        "rtl_name": "sdc_top.sck",
+        "rtl_module": "sdc_top",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal sck is a serial clock signal, which matches the SERIAL CLOCK mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_25",
+      "rtl_signal_raw": "mosi_out",
+      "rtl_signal_normalized": "mosi_out",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "master_data_output_signal",
+        "spec_mentions": [
+          "MASTER DATA OUTPUT SIGNAL"
+        ],
+        "rtl_name": "sdc_tx.mosi_out",
+        "rtl_module": "sdc_tx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal mosi_out is a master data output signal, which matches the MASTER DATA OUTPUT SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_26",
+      "rtl_signal_raw": "tx_done",
+      "rtl_signal_normalized": "tx_done",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "transmission_complete_signal",
+        "spec_mentions": [
+          "TRANSMISSION COMPLETE SIGNAL"
+        ],
+        "rtl_name": "sdc_tx.tx_done",
+        "rtl_module": "sdc_tx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal tx_done is a transmission complete signal, which matches the TRANSMISSION COMPLETE SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_27",
+      "rtl_signal_raw": "fifo_empty",
+      "rtl_signal_normalized": "fifo_empty",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "fifo_empty_status_signal",
+        "spec_mentions": [
+          "FIFO EMPTY STATUS SIGNAL"
+        ],
+        "rtl_name": "sdc_tx.fifo_empty",
+        "rtl_module": "sdc_tx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal fifo_empty is a FIFO empty status signal, which matches the FIFO EMPTY STATUS SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_28",
+      "rtl_signal_raw": "output reg         ack_flag",
+      "rtl_signal_normalized": "ack_flag",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "transmit_acknowledge_signal",
+        "spec_mentions": [
+          "TRANSMIT ACKNOWLEDGE SIGNAL"
+        ],
+        "rtl_name": "sdc_tx.ack_flag",
+        "rtl_module": "sdc_tx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal ack_flag is a transmit acknowledge signal, which matches the TRANSMIT ACKNOWLEDGE SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_29",
+      "rtl_signal_raw": "input  wire       clk",
+      "rtl_signal_normalized": "clk",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "system_clock_signal",
+        "spec_mentions": [
+          "SYSTEM CLOCK SIGNAL"
+        ],
+        "rtl_name": "sdc_rx.clk",
+        "rtl_module": "sdc_rx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal clk is a system clock signal, which matches the SYSTEM CLOCK SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_30",
+      "rtl_signal_raw": "rst_n",
+      "rtl_signal_normalized": "rst_n",
+      "alignment_found": false,
+      "alignment": null,
+      "method": "fallback_string_fuzzy",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_31",
+      "rtl_signal_raw": "miso_in",
+      "rtl_signal_normalized": "miso_in",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "master_data_input_signal",
+        "spec_mentions": [
+          "MASTER DATA INPUT SIGNAL"
+        ],
+        "rtl_name": "sdc_rx.miso_in",
+        "rtl_module": "sdc_rx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal miso_in is a master data input signal, which matches the MASTER DATA INPUT SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_32",
+      "rtl_signal_raw": "sck_in",
+      "rtl_signal_normalized": "sck_in",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "serial_clock_signal",
+        "spec_mentions": [
+          "SERIAL CLOCK SIGNAL"
+        ],
+        "rtl_name": "sdc_rx.sck_in",
+        "rtl_module": "sdc_rx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal sck_in is a serial clock signal, which matches the SERIAL CLOCK SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_33",
+      "rtl_signal_raw": "output reg        dv",
+      "rtl_signal_normalized": "dv",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "data_valid_signal",
+        "spec_mentions": [
+          "DATA VALID SIGNAL"
+        ],
+        "rtl_name": "sdc_rx.dv",
+        "rtl_module": "sdc_rx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal dv is a data valid signal, which matches the DATA VALID SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_34",
+      "rtl_signal_raw": "par_err",
+      "rtl_signal_normalized": "par_err",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "parity_error_flag_signal",
+        "spec_mentions": [
+          "PARITY ERROR FLAG SIGNAL"
+        ],
+        "rtl_name": "sdc_rx.par_err",
+        "rtl_module": "sdc_rx",
+        "active_low": false,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal par_err is a parity error flag signal, which matches the PARITY ERROR FLAG SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_35",
+      "rtl_signal_raw": "output wire       buf_full_n",
+      "rtl_signal_normalized": "buf_full_n",
+      "alignment_found": true,
+      "alignment": {
+        "canonical_name": "receive_buffer_full_signal",
+        "spec_mentions": [
+          "RECEIVE BUFFER FULL SIGNAL"
+        ],
+        "rtl_name": "sdc_rx.buf_full_n",
+        "rtl_module": "sdc_rx",
+        "active_low": true,
+        "confidence": 1.0,
+        "match_method": "llm_alignment",
+        "reasoning": "The signal buf_full_n is an active-low receive buffer full signal, which matches the RECEIVE BUFFER FULL SIGNAL mention in the spec."
+      },
+      "method": "llm_alignment",
+      "created_links": []
+    },
+    {
+      "rtl_node_id": "rtl_36",
+      "rtl_signal_raw": "output reg [7:0]  rx_data",
+      "rtl_signal_normalized": "rx_data",
+      "alignment_found": false,
+      "alignment": null,
+      "method": "fallback_string_fuzzy",
+      "created_links": []
+    }
+  ]
+}

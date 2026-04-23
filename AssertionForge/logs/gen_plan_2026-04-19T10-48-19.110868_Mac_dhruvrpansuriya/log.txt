@@ -1,0 +1,566 @@
+Starting the test plan generation process...
+Step 1: Reading the PDF file(s)...
+First 5 lines of spec_text (truncated):
+Serial Data Controller (SDC) — Design Specification v1.0
+Document ID: SDC-SPEC-001 | Status: Draft
+1. Overview
+The Serial Data Controller (SDC) provides an APB slave interface for host processor configuration and a
+SPI-compatible serial interface for communication with external slave devices. It supports configurable baud rates,
+...
+Total number of lines in spec_text: 99
+Step 2: Loading and processing the Knowledge Graph...
+Knowledge Graph loaded from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller/output/clustered_graph.graphml
+Number of nodes: 56
+Number of edges: 55
+
+Example node attributes:
+  id: 2c08d994-a4c2-48ca-98d2-7d50babcbfb4
+  human_readable_id: 15
+  type: "SIGNAL"
+  description: "Chip select is an active-low output driven low at the start of a frame to address the external slave."
+  text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+  frequency: 1
+  degree: 1
+
+Example edge attributes:
+  id: b33f00ac-8041-492c-b509-a4158ac8dbe6
+  human_readable_id: 25
+  description: "The status register is part of the SDC, containing all status flags, including receive buffer full, FIFO empty status, transmit acknowledge, and more."
+  weight: 8.0
+  combined_degree: 33
+  text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+
+Node attribute keys:
+human_readable_id, description, degree, id, frequency, type, text_unit_ids
+
+Edge attribute keys:
+description, combined_degree, weight, id, text_unit_ids, human_readable_id
+Step 2b: Refining Knowledge Graph with RTL information...
+Starting Knowledge Graph refinement with RTL from /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3
+Initial specification KG has 56 nodes and 55 edges
+
+=== Specification KG Analysis ===
+Node types in specification KG:
+  - "MODULE": 1 nodes
+  - "INTERFACE": 3 nodes
+  - "CLOCK": 2 nodes
+  - "RESET": 2 nodes
+  - "SIGNAL": 41 nodes
+  - "REGISTER": 3 nodes
+  - "PROTOCOL": 2 nodes
+  - "PARAMETER": 1 nodes
+  - "BUS": 1 nodes
+Specification KG has 0 nodes with 'text' attributes for matching
+Built knowledge graph with 217 nodes and 265 edges
+Built RTL KG with 217 nodes and 265 edges
+Added 217 RTL nodes and 265 RTL edges to combined KG
+
+=== Link Summary ===
+Total links created: 59
+- contains_spec: 56 links
+- contains_implementation: 3 links
+
+=== Link Examples ===
+
+Examples of 'contains_spec' links:
+  1. design_root --contains_spec--> "SERIAL DATA CONTROLLER (SDC)"
+     Target node details:
+       id: 36bf2224-267c-4397-9ff6-b1c0bd5f13eb
+       human_readable_id: 0
+       type: "MODULE"
+       description: "The Serial Data Controller is a hardware module providing an APB slave interface and SPI-compatible serial interface for communication with external devices."
+       text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+       frequency: 1
+       degree: 32
+  2. design_root --contains_spec--> "APB SLAVE INTERFACE"
+     Target node details:
+       id: ed4b70ab-375f-44c5-b212-1a91befbc795
+       human_readable_id: 1
+       type: "INTERFACE"
+       description: "An APB slave interface allows host processor configuration and communication with external devices."
+       text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+       frequency: 1
+       degree: 16
+  3. design_root --contains_spec--> "SPI INTERFACE"
+     Target node details:
+       id: d7b3f8d5-359a-4d9a-98e6-8f6592b02ed6
+       human_readable_id: 2
+       type: "INTERFACE"
+       description: "An SPI interface enables communication with external slave devices, supporting configurable baud rates and hardware flow control."
+       text_unit_ids: ['1ebec9d4116bf8cbf50f571b0ab39e17333c538abac0d28b63067bdab402d5970474677a6cee5ae03345e578579b1c858f90bcfd21be21f87c7bb8f66e408a5f']
+       frequency: 1
+       degree: 10
+
+Examples of 'contains_implementation' links:
+  1. design_root --contains_implementation--> rtl_0
+     Target node details:
+       type: module
+       name: sdc_top
+       original_id: module:sdc_top
+       source: rtl
+  2. design_root --contains_implementation--> rtl_1
+     Target node details:
+       type: module
+       name: sdc_tx
+       original_id: module:sdc_tx
+       source: rtl
+  3. design_root --contains_implementation--> rtl_2
+     Target node details:
+       type: module
+       name: sdc_rx
+       original_id: module:sdc_rx
+       source: rtl
+Created 59 links between specification and RTL nodes
+
+Attempting to link 34 RTL signals to 57 spec nodes
+Saved signal mapping log to /Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-19T10-48-19.110868_Mac_dhruvrpansuriya/signal_mapping_calls.txt
+Created 0 additional links based on signal name matching
+Graph is already connected
+Graph is connected
+Number of connected components: 1
+Number of bridges between RTL and spec: 3
+  Bridge 1: rtl_0 (module: sdc_top) ---> design_root (root: Design Root)
+  Bridge 2: rtl_1 (module: sdc_tx) ---> design_root (root: Design Root)
+  Bridge 3: rtl_2 (module: sdc_rx) ---> design_root (root: Design Root)
+
+=== High-Degree Nodes (Hubs) ===
+  Node: rtl_0 (module: sdc_top)
+  Degree: 80 connections
+  Source: rtl
+  Connected to:
+    - rtl_3 (port: input  wire        nRST)
+    - rtl_4 (port: // Spec: "system reset"        (active-low)
+    input  wire        PCLK)
+    - rtl_5 (port: // Spec: "system clock"
+    input  wire        PSEL)
+    - rtl_6 (port: // Spec: "peripheral select"
+    input  wire        PENABLE)
+    - rtl_7 (port: // Spec: "transfer enable"
+    input  wire        PWRITE)
+    - ... and 75 more
+
+  Node: rtl_1 (module: sdc_tx)
+  Degree: 73 connections
+  Source: rtl
+  Connected to:
+    - rtl_0 (module: sdc_top)
+    - rtl_18 (port: input  wire        clk)
+    - rtl_19 (port: rst_n)
+    - rtl_20 (port: tx_start)
+    - rtl_21 (port: fc_en)
+    - ... and 68 more
+
+  Node: rtl_2 (module: sdc_rx)
+  Degree: 68 connections
+  Source: rtl
+  Connected to:
+    - rtl_0 (module: sdc_top)
+    - rtl_29 (port: input  wire       clk)
+    - rtl_30 (port: rst_n)
+    - rtl_31 (port: miso_in)
+    - rtl_32 (port: sck_in)
+    - ... and 63 more
+
+  Node: design_root (root: Design Root)
+  Degree: 59 connections
+  Source: spec
+  Connected to:
+    - "SERIAL DATA CONTROLLER (SDC)" ("MODULE": "SERIAL DATA CONTROLLER (SDC)")
+    - "APB SLAVE INTERFACE" ("INTERFACE": "APB SLAVE INTERFACE")
+    - "SPI INTERFACE" ("INTERFACE": "SPI INTERFACE")
+    - "SYSTEM CLOCK" ("CLOCK": "SYSTEM CLOCK")
+    - "SYSTEM RESET" ("RESET": "SYSTEM RESET")
+    - ... and 54 more
+
+  Node: "SERIAL DATA CONTROLLER (SDC)" ("MODULE": "SERIAL DATA CONTROLLER (SDC)")
+  Degree: 33 connections
+  Source: spec
+  Connected to:
+    - "APB SLAVE INTERFACE" ("INTERFACE": "APB SLAVE INTERFACE")
+    - "SPI INTERFACE" ("INTERFACE": "SPI INTERFACE")
+    - "SYSTEM CLOCK" ("CLOCK": "SYSTEM CLOCK")
+    - "SYSTEM RESET" ("RESET": "SYSTEM RESET")
+    - "INTERRUPT REQUEST" ("SIGNAL": "INTERRUPT REQUEST")
+    - ... and 28 more
+
+Combined KG now has 274 nodes and 379 edges
+Refined Knowledge Graph now has 274 nodes and 379 edges
+Step 3: Initializing the language model...
+Step 4: Extracting valid signal names...
+Valid signal names: PADDR, PCLK, PENABLE, PRDATA, PREADY, PRESETn, PSEL, PSLVERR, PWDATA, PWRITE
+Step 5: Generating natural language test plans...
+
+=== KG Structure ===
+KG is a dictionary with keys: ['nodes', 'edges']
+  nodes: list with 274 items
+    First item type: <class 'dict'>
+    First item keys: ['id', 'attributes']
+  edges: list with 379 items
+    First item type: <class 'dict'>
+    First item keys: ['source', 'target', 'attributes']
+
+Building signal name to node ID mapping for 10 signals...
+
+=== Building signal to node mapping for 10 signals ===
+Valid signals: ['PCLK', 'PRESETn', 'PSEL', 'PENABLE', 'PWRITE', 'PADDR', 'PWDATA', 'PRDATA', 'PREADY', 'PSLVERR']
+KG structure: ['nodes', 'edges']
+Number of nodes in KG: 274
+
+Node type distribution in KG:
+  "MODULE": 1 nodes
+  "INTERFACE": 3 nodes
+  "CLOCK": 2 nodes
+  "RESET": 2 nodes
+  "SIGNAL": 41 nodes
+  "REGISTER": 3 nodes
+  "PROTOCOL": 2 nodes
+  "PARAMETER": 1 nodes
+  "BUS": 1 nodes
+  module: 3 nodes
+  port: 34 nodes
+  fsm: 4 nodes
+  protocol_pattern: 13 nodes
+  verification_point: 7 nodes
+  assignment: 156 nodes
+  root: 1 nodes
+
+Signal mentions by node type:
+  PCLK: {'port': 1}
+  PRESETn: No mentions found in node names
+  PSEL: {'port': 1}
+  PENABLE: {'port': 1}
+  PWRITE: {'port': 1}
+  PADDR: {'port': 1}
+  PWDATA: {'port': 1}
+  PRDATA: {'port': 1, 'assignment': 9}
+  PREADY: {'port': 1, 'assignment': 3}
+  PSLVERR: No mentions found in node names
+
+=== Signal mapping results ===
+WARNING: No node mapping found for signal 'PCLK'
+WARNING: No node mapping found for signal 'PRESETn'
+Signal 'PSEL' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PENABLE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PWRITE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+WARNING: No node mapping found for signal 'PADDR'
+Signal 'PWDATA' mapped to 6 nodes: ['rtl_72', 'rtl_73', 'rtl_124', 'rtl_125', 'rtl_176', 'rtl_177']
+Signal 'PRDATA' mapped to 9 nodes: ['rtl_75', 'rtl_76', 'rtl_77', 'rtl_127', 'rtl_128', 'rtl_129', 'rtl_179', 'rtl_180', 'rtl_181']
+Signal 'PREADY' mapped to 3 nodes: ['rtl_62', 'rtl_114', 'rtl_166']
+WARNING: No node mapping found for signal 'PSLVERR'
+Created mappings for 6 signals
+Signal 'PENABLE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PSEL' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PWRITE' mapped to 3 nodes: ['rtl_61', 'rtl_113', 'rtl_165']
+Signal 'PREADY' mapped to 3 nodes: ['rtl_62', 'rtl_114', 'rtl_166']
+Signal 'PWDATA' mapped to 6 nodes: ['rtl_72', 'rtl_73', 'rtl_124', 'rtl_125', 'rtl_176', 'rtl_177']
+Signal 'PRDATA' mapped to 9 nodes: ['rtl_75', 'rtl_76', 'rtl_77', 'rtl_127', 'rtl_128', 'rtl_129', 'rtl_179', 'rtl_180', 'rtl_181']
+Using LLM-based context pruning
+Processing signal 1/10: PADDR
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PADDR']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context:         .buf_full_n(RX_BUF_FULL_N), .rx_data(PRDATA[7:0])
+    );
+
+    always @(posedge PCLK or negedge nRST) begin
+        if (!nRST) begin
+            BAUD_DIV_REG <= 16'h0; CTRL_REG <= 8'h0; SS_N <= 1'b1;
+        end else if (!WE_N) begin
+            case (PADDR)
+                ADDR_CTRL: CTRL_REG     <= PWDATA[7:0];
+                ADDR_BAUD: BAUD_DIV_REG <= PWDATA[15:0];
+                default: ;
+            endcase
+            SS_N <= 1'b0;
+        end
+    end
+
+    always @(*) begin
+        case (PADDR)
+
+Processing generator: path
+No mapping found for 'PADDR', using as-is
+Using 0/1 valid nodes for path context generation
+No valid nodes found in graph for path analysis
+path generator returned 0 contexts
+
+Pruning 10 contexts...
+Using LLM-based context pruning
+Pruning 10 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 16.17 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 3 of type rag
+Final selection: 3 contexts
+After pruning: 3 contexts remain
+Selected contexts by type: {'rag': 3}
+Context distribution plan: {'rag': [3], 'path': [0], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 7
+Prompt 1: 3 contexts, 207 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal PADDR
+Processing dynamic context 1/1 for PADDR
+Initializing LLMLingua compressor (microsoft/llmlingua-2-xlm-roberta-large-meetingbank)...
+Compressing the context prompt for PADDR (dynamic context 1)...
+Compression Complete: 537 -> 453 tokens.
+DEBUG: Raw output from LLM for PADDR:
+Plan: PADDR: that when PADDR is within the range of 0x00 to 0x08, in the next cycle PADDR will remain within the range of 0x00 to 0x08.
+Plan: PADDR: that the input address PADDR has a value between 0x00 and 0x04 inclusive, 2 clock cycles after the reset signal PRESETn becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan: PADDR: that if the address PADDR is within the range of 0x00 to 0x04, then in the subsequent cycles, PADDR must continue to be within the range of 0x00 to 0x08, using the signals 'PADDR' and 'PCLK'.
+Plan: PADDR: that the address signal 'PADDR' is within the range 0x00 to 0x08 inclusive, starting from three clock cycles after the reset signal 'PRESETn' becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan: PADDR: that when PADDR is equal to 0x00, in the next cycle PADDR will still be equal to 0x00, using the signals 'PADDR' and 'PCLK'.
+Plan: PADDR: that the address PADDR has a value between 0x04 and 0x08 inclusive, 1 clock cycle after the reset signal PRESETn becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan: PADDR: that if the address PADDR is within the range of 0x00 to 0x04, then in the subsequent cycles, PADDR must remain within the range of 0x00 to 0x04, using the signals 'PADDR' and 'PCLK'.
+Plan: PADDR: that the address signal 'PADDR' is within the range 0x00 to 0x04 inclusive, starting from two clock cycles after the reset signal 'PRESETn' becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan: PADDR: that when PADDR is within the range of 0x00 to 0x08, in the next cycle PADDR will remain within the range of 0x00 to 0x08, using the signals 'PADDR' and 'PCLK'.
+Plan: PADDR: that the address PADDR has a value between 0x00 and 0x08 inclusive, 4 clock cycles after the reset signal PRESETn becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+
+Generated 10 plans from context 1 for signal PADDR
+Generated 10 unique plans for signal PADDR from 10 total plans
+Processing signal 2/10: PCLK
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PCLK']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context:         .tx_done(tx_done_pulse), .fifo_empty(TX_FIFO_MT), .ack_flag(tx_ack_flag)
+    );
+
+    sdc_rx u_rx (
+        .clk(PCLK), .rst_n(nRST), .miso_in(MISO), .sck_in(SCK),
+        .dv(dv_out), .par_err(par_err_latch),
+        .buf_full_n(RX_BUF_FULL_N), .rx_data(PRDATA[7:0])
+    );
+
+    always @(posedge PCLK or negedge nRST) begin
+        if (!nRST) begin
+            BAUD_DIV_REG <= 16'h0; CTRL_REG <= 8'h0; SS_N <= 1'b1;
+        end else if (!WE_N) begin
+            case (PADDR)
+                ADDR_CTRL: CTRL_REG     <= PWDATA[7:0];
+                ADDR_BAUD: BAUD_DIV_REG <= PWDATA[15:0];
+
+Processing generator: path
+No mapping found for 'PCLK', using as-is
+Using 0/1 valid nodes for path context generation
+No valid nodes found in graph for path analysis
+path generator returned 0 contexts
+
+Pruning 10 contexts...
+Using LLM-based context pruning
+Pruning 10 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+LLM evaluation for rag took 16.31 seconds
+Selected context 0 of type rag
+Selected context 1 of type rag
+Selected context 2 of type rag
+Selected context 3 of type rag
+Final selection: 4 contexts
+After pruning: 4 contexts remain
+Selected contexts by type: {'rag': 4}
+Context distribution plan: {'rag': [4], 'path': [0], 'motif': [0], 'community': [0], 'local_expansion': [0], 'guided_random_walk': [0]}
+Base prompt token count: 7
+Prompt 1: 4 contexts, 307 tokens
+Created 1 final prompts out of maximum 1
+Generated 1 dynamic contexts for signal PCLK
+Processing dynamic context 1/1 for PCLK
+Compressing the context prompt for PCLK (dynamic context 1)...
+Compression Complete: 646 -> 540 tokens.
+DEBUG: Raw output from LLM for PCLK:
+Plan: PCLK: that when PCLK rises, PENABLE will be asserted for at least one cycle within the next 3 cycles.
+Plan: PCLK: that PADDR remains stable during the rising edge of PCLK when PWRITE is high.
+Plan: PCLK: that if PWRITE is low, then PWDATA must be stable for at least 2 clock cycles of PCLK.
+Plan: PCLK: that on the rising edge of PCLK, if PSEL is high, then PRDATA will be valid within the next cycle.
+Plan: PCLK: that PSLVERR will be deasserted after 2 rising edges of PCLK when PENABLE is low.
+Plan: PCLK: that during the rising edge of PCLK, if PRESETn is low, then PADDR, PWDATA, and PWRITE will be reset to their default values within the next cycle.
+Plan: PCLK: that if PWRITE is high and PADDR is within the range 0x00 to 0x08, then on the next rising edge of PCLK, PRDATA will reflect the written value.
+Plan: PCLK: that on the falling edge of PCLK, PREADY will be asserted when PSEL is high and PENABLE is low.
+Plan: PCLK: that PWDATA will remain stable for at least one cycle of PCLK after PWRITE is deasserted.
+Plan: PCLK: that if PRESETn becomes deasserted, then after 5 rising edges of PCLK, PADDR will have a value between 0x00 and 0x08.
+Plan: PCLK: that when PCLK rises and PSEL is high, then PREADY will be asserted within the next 2 cycles if PENABLE is high.
+Plan: PCLK: that after PRESETn becomes asserted, PWDATA will have a value within the range 0x00 to 0xFF within the next 3 rising edges of PCLK.
+Plan: PCLK: that if PWRITE is high and PADDR is within the range 0x04 to 0x08, then on the next rising edge of PCLK, PRDATA will reflect the written value.
+Plan: PCLK: that during the rising edge of PCLK, if PENABLE is high, then PADDR will be stable for at least one cycle.
+Plan: PCLK: that PSLVERR will be asserted for at least one cycle of PCLK after PWRITE is deasserted and PSEL is high.
+
+Generated 15 plans from context 1 for signal PCLK
+Generated 15 unique plans for signal PCLK from 15 total plans
+Processing signal 3/10: PENABLE
+Building up to 1 prompts with max 6000 tokens each
+start_nodes=['PENABLE']
+
+Processing generator: rag
+RAG generator returned 10 contexts
+Added 10 contexts from rag, total now: 10
+Sample rag context:     wire       dv_out;         // Spec: "data valid"
+    wire       tx_done_pulse;  // Spec: "transmission complete"
+    wire       RX_BUF_FULL_N;  // Spec: "receive buffer full"  (active-low)
+    wire       fc_en;          // Spec: "flow control enable"
+
+    assign WE_N   = ~(PSEL & PENABLE & PWRITE);
+    assign PREADY = 1'b1;
+    assign fc_en  = CTRL_REG[3];
+
+    sdc_tx u_tx (
+        .clk(PCLK), .rst_n(nRST), .baud_div(BAUD_DIV_REG),
+
+Processing generator: path
+Mapped signal 'PENABLE' to 3 nodes
+Using 3/3 valid nodes for path context generation
+  Found 30 potential endpoints for rtl_113
+Found 410 significant paths for node rtl_113
+  Found 30 potential endpoints for rtl_165
+Found 269 significant paths for node rtl_165
+  Found 30 potential endpoints for rtl_61
+Found 333 significant paths for node rtl_61
+Generated 1012 path-based contexts
+path generator returned 1012 contexts
+Added 1012 contexts from path, total now: 1022
+Sample path context: PATH ANALYSIS FROM WE_N_assignment TO PRDATA_assignment
+Path length: 3 nodes with clustering 0.00
+Source: WE_N_assignment (assignment) in module sdc_tx
+Target: PRDATA_assignment (assignment) in module sdc_tx
+
+Relationship chain:
+  WE_N_assignment (assignment in sdc_tx) part_of sdc_tx (module)
+  sdc_tx (module) part_of PRDATA_assignment (assignment in sdc_tx)
+
+Analysis:
+  • Cross-module path connecting: sdc_tx
+
+Pruning 1022 contexts...
+Using LLM-based context pruning
+Pruning 1022 contexts using tolerant LLM pruner
+Evaluating 10 contexts of type 'rag'
+Pre-filtering 10 contexts of type 'rag' based on score
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 236, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/llms/custom_httpx/http_handler.py", line 1047, in post
+    raise e
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/llms/custom_httpx/http_handler.py", line 1029, in post
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/main.py", line 2263, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 560, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 261, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 4721, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jtdtqgsefh8tx1atwhprkhrs` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98716, Requested 1524. Please try again in 3m27.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/utils_LLM.py", line 131, in invoke
+    resp = adapt(
+        completion,
+    ...<5 lines>...
+        num_retries=0 # Disable internal retries so we control the backoff
+    )
+  File "/opt/homebrew/lib/python3.14/site-packages/gptcache/adapter/adapter.py", line 241, in adapt
+    llm_data = time_cal(
+        llm_handler, func_name="llm_request", report_func=chat_cache.report.llm
+    )(*args, **kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/gptcache/utils/time.py", line 9, in inner
+    res = func(*args, **kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/utils.py", line 1769, in wrapper
+    raise e
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/utils.py", line 1590, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/main.py", line 4411, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/opt/homebrew/lib/python3.14/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 392, in exception_type
+    raise RateLimitError(
+    ...<4 lines>...
+    )
+litellm.exceptions.RateLimitError: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jtdtqgsefh8tx1atwhprkhrs` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98716, Requested 1524. Please try again in 3m27.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 40, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 26, in main
+    gen_plan()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 206, in gen_plan
+    nl_plans = generate_nl_plans(
+        spec_text,
+    ...<4 lines>...
+        context_summarizer,  # Pass the context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 538, in generate_nl_plans
+    return generate_dynamic_nl_plans(
+        spec_text, kg, llm_agent, valid_signals, rtl_knowledge, context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 583, in generate_dynamic_nl_plans
+    dynamic_context_list = prompt_builder.build_prompt(
+        query=query,
+    ...<2 lines>...
+        enable_context_enhancement=FLAGS.enable_context_enhancement,  # Pass the enhancement flag
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/dynamic_prompt_builder.py", line 186, in build_prompt
+    selected_contexts = self.llm_pruner.prune(
+        all_contexts, query, signal_name
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_pruner.py", line 104, in prune
+    result = self._call_llm(prompt, f"context_eval_{context_type}")
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_pruner.py", line 252, in _call_llm
+    return llm_inference(self.llm_agent, prompt, tag)
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/utils_LLM.py", line 192, in llm_inference
+    return agent.invoke(prompt, temperature=temperature)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/utils_LLM.py", line 173, in invoke
+    time.sleep(wait_time)
+    ~~~~~~~~~~^^^^^^^^^^^
+KeyboardInterrupt
+
+Total time: 1.000 min, 26.583 secs; Total number of files: 6; Total folder size: 58.30 KiB
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-19T10-48-19.110868_Mac_dhruvrpansuriya
+gen_plan_2026-04-19T10-48-19.110868_Mac_dhruvrpansuriya

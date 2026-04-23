@@ -1,0 +1,283 @@
+Title: AssertionForge — Comprehensive End-to-End System Note
+Audience: PPT/report generation LLM (Project handoff)
+Version: Consolidated snapshot based on current workspace implementation and recent enhancements
+
+======================================================================
+1) EXECUTIVE OVERVIEW
+======================================================================
+AssertionForge is an LLM-assisted formal verification workflow that takes design/spec context and produces SystemVerilog Assertions (SVAs), with graph-based context grounding and post-generation quality control. The system has evolved beyond basic generation by adding:
+
+1. Signal Mapping (Spec <-> RTL semantic alignment)
+2. Improved logging/traceability for LLM prompts, responses, and mapping decisions
+3. Two-loop assertion quality gate (alias-based signal sanity + Verible syntax check)
+4. Standalone TC3 checker utility for batch filtering/repair experiments
+5. Multiagent + shared GPTCache architecture plan (for Project-2 writeup; partially planned, not fully end-to-end implemented yet)
+
+Core objective:
+- Improve correctness, explainability, and cloud efficiency of assertion generation.
+
+======================================================================
+2) HIGH-LEVEL PIPELINE (CONCEPTUAL)
+======================================================================
+
+[Spec/PDF text] + [RTL files]
+        |
+        v
+Build/Load Spec KG  -----> Parse RTL and build RTL KG
+        |                          |
+        +----------- Merge --------+
+                    Combined KG
+                        |
+                        v
+            Signal Mapping / Alignment Layer
+            (LLM + confidence + fallback)
+                        |
+                        v
+            Context selection / plan generation
+                        |
+                        v
+               SVA generation (LLM)
+                        |
+                        v
+         Quality gates (2-phase checker / logs)
+                        |
+                        v
+           Accepted SVAs + diagnostics reports
+
+
+======================================================================
+3) SIGNAL MAPPING (IMPLEMENTED)
+======================================================================
+3.1 Why it exists
+Natural-language specs and RTL use different naming styles (e.g., “system reset” vs `nRST`). Without semantic alignment:
+- Generated assertions may reference non-existent names
+- Graph traversal between spec intent and implementation becomes weak
+- Retrieval quality degrades
+
+3.2 Core implementation files
+- `AssertionForge/src/signal_aligner.py`
+- `AssertionForge/src/rtl_parsing.py` (`link_signals_to_spec` and graph refinement path)
+
+3.3 Logic summary
+A) Extract signal-like entities from spec-side KG nodes.
+B) Extract/normalize RTL signals from parsed RTL knowledge.
+C) Build strict JSON alignment prompt for LLM.
+D) Receive per-signal mappings with confidence, polarity, canonical names.
+E) Build alias lookup table.
+F) Attempt to materialize graph edges (`corresponds_to`) when confidence threshold is met.
+G) Fallback to string-based linking when alignment is unresolved.
+
+3.4 Alignment payload schema
+Per alignment contains:
+- `canonical_name`
+- `spec_mentions`
+- `rtl_name`
+- `rtl_module`
+- `active_low`
+- `confidence`
+- `match_method`
+- `reasoning`
+
+3.5 Thresholding
+- Confidence gate used for LLM-based linking: around 0.7.
+
+3.6 Key generated artifacts
+Prompt/response trace:
+- `alignment_system_prompt.txt`
+- `alignment_user_prompt.txt`
+- `alignment_full_prompt.txt`
+- `alignment_raw_response.txt`
+
+Inputs/outputs:
+- `spec_entities.json`
+- `rtl_signals.json`
+- `alignment_input_bundle.json`
+- `signal_aliases.json`
+- `alias_summary.json`
+- `alias_lookup_table.json`
+
+Decision logs:
+- `signal_mapping_calls.txt`
+- `signal_mapping_decisions.json`
+- `signal_mapping_overview.json`
+
+3.7 Practical note
+In some runs, LLM alignment quality is high but final created bridge edges may still be limited by mention-to-node matching strictness/noise. This is a tuning area, not necessarily an LLM failure.
+
+
+======================================================================
+4) DYNAMIC PROMPT / PLAN / SVA GENERATION (CURRENT FLOW)
+======================================================================
+- Graph + context generators produce per-signal dynamic contexts.
+- NL plans are generated signal-wise.
+- SVAs are generated from plans with context and examples.
+- Compression (LLMLingua usage) is present in generation path to reduce context cost while retaining instruction scaffolding.
+
+Outputs include:
+- `nl_plans.txt`
+- `sva_details.csv`
+- generated `.sva` files under run `tbs/`
+
+
+======================================================================
+5) 2-PHASE ASSERTION QUALITY CHECKING (IMPLEMENTED AS STANDALONE TC3 TOOL)
+======================================================================
+5.1 Standalone requirement
+A fully isolated script was built for TC3, intentionally decoupled from pipeline integration:
+- `TestCase/TC3/src/sva_batch_filter_repair.py`
+
+5.2 Intended 2-phase model
+Phase 1: alias-table signal validation
+- Extract candidate identifiers
+- Compare with valid alias table
+- One repair attempt if invalid
+
+Phase 2: Verible syntax check
+- Wrap assertion in minimal module
+- run `verible-verilog-syntax`
+- One repair attempt if syntax fails
+
+5.3 Current operational mode
+- Default now: Verible-only mode (Loop A skipped by default)
+- Loop A can be re-enabled via `--enable-loop-a`
+
+5.4 Why default was changed
+During testing on noisy/generated corpora, strict Loop A pre-filter over-rejected due text/noise artifacts. Verible-only default was set to focus on hard syntax validation while retaining option to enable full two-phase mode.
+
+5.5 Repair hook
+- `repair_sva_with_llm(...)` is currently stubbed (returns original), with interface ready for future real LLM repair integration.
+
+5.6 Outputs from standalone checker
+Given input directory:
+- `accepted/`
+- `discarded/`
+- `reports/summary.json`
+- `reports/detailed_results.json`
+- `reports/summary.txt`
+- `reports/logs/run_*.log`
+- `reports/logs/iterations/*.log`
+
+5.7 Logging quality
+The checker logs:
+- chosen alias file (when Loop A enabled)
+- valid signal list used for matching
+- loop-level decisions per file
+- exact syntax errors from Verible
+- final status (accepted/discarded)
+
+
+======================================================================
+6) VERIBLE INTEGRATION STATUS
+======================================================================
+Problem encountered:
+- `verible-verilog-syntax not found in PATH` due local installation/toolchain constraints.
+
+Fix implemented:
+Script now resolves Verible robustly in priority order:
+1) explicit `--verible-bin`
+2) PATH
+3) project-local fallback: `.tools/verible/**/bin/verible-verilog-syntax`
+
+A local portable Verible binary was installed under project tools and successfully used by the checker.
+
+Validation outcome (example recent run):
+- TC3 corpus from logs (~25 SVA files)
+- Verible-only run accepted all syntax-valid files once binary was resolved
+- “not found in PATH” error disappeared from reports
+
+
+======================================================================
+7) MULTIAGENT + GPTCACHE (PROJECT-2 WRITEUP: ARCHITECTURE PLAN)
+======================================================================
+Status: planned architecture, partially scaffolded conceptually, not fully end-to-end productionized in one unified controller yet.
+
+7.1 Problem addressed
+Multi-step LLM workflows cause repeated/similar cloud calls, high latency, and cost spikes.
+
+7.2 Proposed multiagent decomposition
+- Agent A: Spec Understanding
+- Agent B: RTL Grounding
+- Agent C: Assertion Planning
+- Agent D: SVA Synthesis/Repair
+- Agent E (optional): Referee/Consistency checker
+
+7.3 Model backends
+- Gemini and Groq both used in strategy.
+- Router selects backend by subtask profile (context-heavy vs strict JSON vs low-latency repair).
+
+7.4 Shared GPTCache concept
+Single shared cache in front of all agents/models:
+- Normalize prompt + task metadata -> key
+- Cache HIT: return response directly
+- Cache MISS: call model, store response, return
+
+7.5 Expected benefits
+- Reduced API cost (duplicate prompt elimination)
+- Lower latency
+- More stable outputs via specialization and optional referee pass
+- Better observability via per-agent + cache metrics
+
+7.6 Suggested evaluation metrics
+- Cache hit ratio
+- latency reduction vs no-cache baseline
+- token/cost reduction
+- assertion acceptance rate
+- regeneration loop count
+
+
+======================================================================
+8) TRACEABILITY & REPRODUCIBILITY STRATEGY
+======================================================================
+A major improvement in this project is observability:
+- Prompt snapshots
+- Raw model responses
+- Mapping decisions
+- Run-level and per-iteration quality logs
+- Structured result JSONs
+
+This makes the workflow auditable and suitable for report/paper evidence.
+
+
+======================================================================
+9) LIMITATIONS / KNOWN GAPS
+======================================================================
+1) Full multiagent orchestrator with shared GPTCache is not fully integrated as one production path yet.
+2) Repair function in standalone checker is currently stubbed.
+3) Alias-based Loop A may need stronger token cleaning for noisy/generated SVAs.
+4) Signal-link edge materialization can still be sensitive to mention matching strategy.
+
+
+======================================================================
+10) RECOMMENDED "FUTURE WORK" SLIDES / REPORT POINTS
+======================================================================
+- Integrate real LLM repair in checker (`repair_sva_with_llm`) with schema-constrained output.
+- Add semantic/formal validation stage after syntax (beyond parser-level checks).
+- Improve mention-matching robustness for signal edge creation.
+- Complete production multiagent controller with GPTCache telemetry dashboard.
+- Add benchmark table: cost/latency/acceptance with and without cache/multiagent.
+
+
+======================================================================
+11) QUICK REFERENCE TO KEY FILES
+======================================================================
+Signal mapping core:
+- `AssertionForge/src/signal_aligner.py`
+- `AssertionForge/src/rtl_parsing.py`
+
+Standalone two-phase checker:
+- `TestCase/TC3/src/sva_batch_filter_repair.py`
+
+Prepared explanatory notes:
+- `report_notes/1_signal_mapping.txt`
+- `report_notes/2_two_phase_verible_checking.txt`
+- `report_notes/3_multiagent_gptcache_plan.txt`
+
+This master note:
+- `report_notes/0_assertionforge_comprehensive_master_note.txt`
+
+
+======================================================================
+12) PRESENTATION-FRIENDLY SUMMARY (ONE SLIDE VERSION)
+======================================================================
+AssertionForge combines graph-grounded LLM generation with robust post-generation validation.
+Key advances include semantic signal mapping, deep run traceability, standalone two-loop quality gating (alias + Verible), and a planned multiagent architecture with shared GPTCache for cloud efficiency. The system now supports reproducible diagnostics, practical batch filtering, and a clear path to production-grade multiagent orchestration.

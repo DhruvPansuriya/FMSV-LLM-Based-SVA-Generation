@@ -1,0 +1,14 @@
+[options]
+mode prove
+
+[engines]
+smtbmc
+
+[script]
+read -formal toy_sdc_top.v
+read -formal property_goldmine_12.sva
+prep -top apb_slave
+
+[files]
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/toy_sdc_top.v
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-19T21-17-56.981598_Mac_dhruvrpansuriya/tbs/property_goldmine_12.sva

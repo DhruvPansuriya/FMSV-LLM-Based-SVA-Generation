@@ -1,0 +1,36 @@
+Starting the test plan generation process...
+Step 1: Reading the PDF file(s)...
+First 5 lines of spec_text (truncated):
+Serial Data Controller (SDC) — Design Specification v1.0
+Document ID: SDC-SPEC-001 | Status: Draft
+1. Overview
+The Serial Data Controller (SDC) provides an APB slave interface for host processor configuration and a
+SPI-compatible serial interface for communication with external slave devices. It supports configurable baud rates,
+...
+Total number of lines in spec_text: 99
+Step 2: Loading and processing the Knowledge Graph...
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 40, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 26, in main
+    gen_plan()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 118, in gen_plan
+    kg_nx, kg_json = load_and_process_kg(FLAGS.KG_path)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 447, in load_and_process_kg
+    G = nx.read_graphml(kg_path)
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/utils/decorators.py", line 784, in func
+    return argmap._lazy_compile(__wrapper)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "<class 'networkx.utils.decorators.argmap'> compilation 6", line 3, in argmap_read_graphml_1
+    import gzip
+    
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/utils/decorators.py", line 194, in _open_file
+    fobj = _dispatch_dict[ext](path, mode=mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/TestCase/TC3/graph_rag_toy_sdc_controller/output/clustered_graph.graphml'
+
+Total time: 97.928 msecs; Total number of files: 5; Total folder size: 22.87 KiB
+/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/logs/gen_plan_2026-04-20T07-19-04.243582_Mac_dhruvrpansuriya
+gen_plan_2026-04-20T07-19-04.243582_Mac_dhruvrpansuriya

@@ -1,0 +1,3 @@
+property p_bad3;
+  @(posedge PCLK) (PSEL) |-> ##1 (PREADY);
+assert property (p_bad3);

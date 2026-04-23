@@ -1,0 +1,11 @@
+SVA Batch Filter + Repair Summary
+==================================
+Input dir: TestCase/TC3/src/sva_input_from_logs
+Output dir: TestCase/TC3/src/sva_output_from_logs_verible_only
+Loop A enabled: False
+Alias JSON: N/A (Loop A disabled)
+Valid alias count: 0
+Total files: 25
+Accepted: 25
+Discarded: 0
+

@@ -1,0 +1,40 @@
+Signal PADDR:
+Plan 1: PADDR: that when PADDR is within the range of 16 to 31, in the next cycle PADDR will remain within the range of 16 to 31, using the signal 'PCLK' for the clock edge.
+Plan 2: PADDR: that the input address PADDR has a value between 0 and 15, inclusive, 2 clock cycles after the reset signal PRESETn becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 3: PADDR: that if the input address 'PADDR' is within the range of 8 to 23 inclusive, then in the subsequent cycles, 'PADDR' must continue to be within the range of 8 to 23 inclusive, using the signals 'PADDR' and 'PCLK'.
+Plan 4: PADDR: that the input address signal 'PADDR' is within the range 0 to 7 inclusive, starting from five clock cycles after the reset signal 'PRESETn' becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 5: PADDR: that when PADDR is within the range of 24 to 29, in the next cycle PADDR will remain within the range of 20 to 29, using the signal 'PCLK' for the clock edge and 'PADDR' for the address being checked.
+Plan 6: PADDR: that the input address PADDR has a value between 16 and 31, inclusive, 4 clock cycles after the reset signal PRESETn becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 7: PADDR: that if the input address 'PADDR' is within the range of 0 to 15 inclusive, then in the subsequent cycles, 'PADDR' must continue to be within the range of 0 to 15 inclusive, using the signals 'PADDR' and 'PCLK'.
+Plan 8: PADDR: that the input address signal 'PADDR' is within the range 8 to 23 inclusive, starting from three clock cycles after the reset signal 'PRESETn' becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+Plan 9: PADDR: that when PADDR is within the range of 0 to 7, in the next cycle PADDR will remain within the range of 0 to 7, using the signal 'PCLK' for the clock edge and 'PADDR' for the address being checked.
+Plan 10: PADDR: that the input address PADDR has a value between 24 and 29, inclusive, 1 clock cycle after the reset signal PRESETn becomes deasserted, using the signals 'PRESETn', 'PCLK', and 'PADDR'.
+
+Signal PCLK:
+Plan 11: PCLK: that when PCLK rises, PENABLE will be asserted in the next clock cycle if PSEL is high.
+Plan 12: PCLK: that the signal PREADY will be high at the next rising edge of PCLK if PENABLE is asserted and PWRITE is low.
+Plan 13: PCLK: that if PSLVERR is high at the rising edge of PCLK, then PSLVERR will remain high until the next rising edge of PCLK.
+Plan 14: PCLK: that when PCLK falls, PRDATA will be valid if PENABLE was asserted in the previous rising edge of PCLK.
+Plan 15: PCLK: that the signal PADDR will remain stable at the next rising edge of PCLK if PSEL is high and PENABLE is asserted.
+Plan 16: PCLK: that at the rising edge of PCLK, if PRESETn is low, all signals (PADDR, PENABLE, PWRITE, PSEL, PWDATA, PRDATA, PREADY, PSLVERR) will be reset to their default values.
+Plan 17: PCLK: that when PCLK rises, if PWRITE is high, then PWDATA will be valid and PREADY will be high in the next clock cycle.
+Plan 18: PCLK: that if PCLK is stable and PRESETn is high, then PSEL will determine whether a transfer (read or write) occurs at the next rising edge of PCLK.
+Plan 19: PCLK: that the signal PCLK will have a frequency that allows at least one full transfer cycle (setup, access, and completion) to occur without any other signal interfering.
+Plan 20: PCLK: that at the next rising edge of PCLK after PRESETn becomes deasserted, PADDR will be set to a valid address if PSEL is high.
+Plan 21: PCLK: that the signal PCLK will control the timing of all APB transfers, with each transfer occurring at the rising edge of PCLK.
+Plan 22: PCLK: that if PCLK is held low for more than one cycle, all APB signals will remain in their current state until PCLK rises again.
+Plan 23: PCLK: that the APB protocol will complete a transfer (either read or write) within a predetermined number of PCLK cycles after PENABLE is asserted.
+Plan 24: PCLK: that PCLK will have a minimum pulse width to ensure that all APB signals can settle before the next rising edge of PCLK.
+
+Signal PENABLE:
+Plan 25: PENABLE: that when PENABLE is asserted, PREADY will be high in the next cycle if PSEL is also asserted.
+Plan 26: PENABLE: that when PENABLE is deasserted, the bus will be in the IDLE state if PSEL is also deasserted.
+Plan 27: PENABLE: that if PENABLE is asserted and PADDR is within the valid range, PSLVERR will be low in the next cycle.
+Plan 28: PENABLE: that when PENABLE is asserted and PWRITE is high, the write data PWDATA will be transferred to the slave.
+Plan 29: PENABLE: that the bus will remain in the ACCESS state if PENABLE is asserted and PREADY is low.
+Plan 30: PENABLE: that if PENABLE is asserted and PSEL is deasserted, the bus will move to the IDLE state in the next cycle.
+Plan 31: PENABLE: that when PENABLE is asserted, PRDATA will be valid if PSEL is also asserted and the transfer is a read operation.
+Plan 32: PENABLE: that the bus will move to the ACCESS state when PENABLE is asserted and PSEL is high, regardless of the value of PADDR.
+Plan 33: PENABLE: that if PENABLE is deasserted and PSEL is asserted, the bus will be in the SETUP state, waiting for PENABLE to be asserted.
+Plan 34: PENABLE: that when PENABLE is asserted and PSLVERR is high, the transfer will be terminated and the bus will move to the IDLE state.
+

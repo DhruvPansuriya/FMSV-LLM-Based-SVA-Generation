@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 40, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/main.py", line 26, in main
+    gen_plan()
+    ~~~~~~~~^^
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 206, in gen_plan
+    nl_plans = generate_nl_plans(
+        spec_text,
+    ...<4 lines>...
+        context_summarizer,  # Pass the context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 538, in generate_nl_plans
+    return generate_dynamic_nl_plans(
+        spec_text, kg, llm_agent, valid_signals, rtl_knowledge, context_summarizer
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/gen_plan.py", line 583, in generate_dynamic_nl_plans
+    dynamic_context_list = prompt_builder.build_prompt(
+        query=query,
+    ...<2 lines>...
+        enable_context_enhancement=FLAGS.enable_context_enhancement,  # Pass the enhancement flag
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/dynamic_prompt_builder.py", line 143, in build_prompt
+    contexts = generator.get_contexts(
+        start_nodes,
+    )
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_generator_path.py", line 63, in get_contexts
+    significant_paths = self._find_significant_paths(node_id)
+  File "/Users/dhruvrpansuriya/Documents/IITG Acad/Sem 6/CS525 FMSV/Project/AssertionForge/src/context_generator_path.py", line 131, in _find_significant_paths
+    all_paths = list(
+        nx.all_simple_paths(
+            self.G, start_node, target, cutoff=max_depth
+        )
+    )
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/algorithms/simple_paths.py", line 257, in all_simple_paths
+    for edge_path in all_simple_edge_paths(G, source, target, cutoff):
+                     ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/algorithms/simple_paths.py", line 377, in all_simple_edge_paths
+    yield from _all_simple_edge_paths(G, source, targets, cutoff)
+  File "/opt/homebrew/lib/python3.14/site-packages/networkx/algorithms/simple_paths.py", line 402, in _all_simple_edge_paths
+    next_edge = next((e for e in stack[-1] if e[1] not in current_path), None)
+KeyboardInterrupt
+
