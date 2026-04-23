@@ -1,72 +1,179 @@
-# AssertionForge: Automated SVA & Verification Plan Generation
+# LLM-Guided Verification Plan and SVA Generation
 
-### CS525: Group2 - Project2 | Member: Pranjal, Dhruv, Shrish
+This repository contains a full workflow for converting hardware specifications and RTL into:
 
+1. structured knowledge graphs,
+2. verification plans, and
+3. generated SystemVerilog Assertions (SVAs),
 
-## Overview
-AssertionForge is an automated pipeline designed to bridge the gap between hardware natural language specifications, RTL code (Verilog), and formal verification. By leveraging advanced Retrieval-Augmented Generation (GraphRAG), local embedding models, and Large Language Models (LLMs), it autonomously generates structural Knowledge Graphs, comprehensive Verification Plans, and syntactically correct SystemVerilog Assertions (SVAs).
+with logging-heavy traceability and standalone quality filtering utilities.
 
-## Detailed Pipeline Architecture
+Project context: CS525 formal methods project work by Group 2.
 
-The complete integrated implementation consists of the following detailed stages:
+## What this repository includes
 
-### 1. Data Ingestion & Preprocessing
-- **Inputs:** The system reads hardware design files (e.g., Verilog/SystemVerilog RTL) and corresponding design specification documents (typically PDFs or text files).
-- **Process:** These documents are parsed, cleaned, and chunked into manageable text segments suitable for vectorization.
+- A graph-assisted LLM pipeline under the core project directory.
+- helper scripts at repository root (embedding proxy, inspection scripts, test utilities).
+- testcase assets under `TestCase/` (including TC3 standalone checker flows).
+- report support material in `report_notes/`.
+- runtime logs under the core project's `logs/` directory for reproducibility.
 
-### 2. Local Embedding Generation
-- **Component:** `local_embedding_proxy.py`
-- **Process:** Instead of relying on expensive external APIs for embeddings, the pipeline uses a locally hosted proxy running the `all-MiniLM-L6-v2` model (typically bound to `http://localhost:5001/v1`).
-- **Function:** This local server receives HTTP requests from the GraphRAG indexer and converts text chunks into high-dimensional vector embeddings.
+## End-to-end architecture
 
-### 3. Knowledge Graph Construction (GraphRAG)
-- **Component:** `AssertionForge/src/gen_KG_graphRAG.py` and Microsoft's GraphRAG framework.
-- **Process:** 
-  - Using the Groq API (`llama-3.1-8b-instant`), the system performs entity-relationship extraction on the text chunks.
-  - It identifies hardware interfaces, signals, modules, and their relational constraints.
-  - These entities and vectors are compiled into a highly-connected Knowledge Graph representing the complete design space and its intended behavior.
+The system uses a staged architecture:
 
-### 4. Verification Plan Formulation
-- **Process:** The LLM queries the constructed Knowledge Graph to identify critical control paths, state transitions, and required behavior.
-- **Output:** A structured, human-readable Verification Plan that details exactly *what* needs to be verified (e.g., specific timing constraints, valid protocol sequences).
+1. **Specification and RTL ingestion**
+  - reads specification text/PDF-derived content and RTL files,
+  - normalizes and prepares data for downstream extraction.
 
-### 5. SystemVerilog Assertion (SVA) Synthesis
-- **Process:** Taking the specific properties outlined in the Verification Plan, the LLM translates these natural language requirements into formal, synthesizable SystemVerilog Assertions (SVAs). 
-- **Context:** The Knowledge Graph ensures the LLM uses the exact signal names, clock domains, and logical relationships present in the actual RTL.
+2. **Embedding generation (local service)**
+  - `local_embedding_proxy.py` serves embeddings (typically `all-MiniLM-L6-v2`) on a local HTTP endpoint,
+  - reduces dependency on external embedding APIs.
 
----
+3. **Knowledge graph construction (GraphRAG-oriented flow)**
+  - entities/relationships are extracted from spec content,
+  - graph artifacts are stored (including parquet-based outputs in GraphRAG folders).
 
-## Output Directories: SVAs, Plans, and Artifacts
+4. **Spec-to-RTL signal alignment**
+  - alignment logic maps natural-language signal mentions to concrete RTL identifiers,
+  - confidence-gated mapping and alias tables are produced,
+  - alignment diagnostics are logged for auditability.
 
-All generated artifacts, configuration inputs, and graph databases are centered around the module's primary data folder. For the APB module, this is located inside `AssertionForge/data/apb/`.
+5. **Plan generation**
+  - graph context is queried to produce verification intent and signal-level test intent,
+  - output is persisted in `nl_plans.txt` and related run artifacts.
 
-* **Base Data Directory:** `AssertionForge/data/apb/`
-* **Prompts:** `AssertionForge/data/apb/spec/graph_rag_apb/prompts/` – Contains the system and user prompts used to instruct the LLM for specific extraction tasks.
-* **Verification Plans:** `AssertionForge/logs/gen_plan_2026-03-21T04-20-04.109787_Mac_dhruvrpansuriya/nl_plans.txt` – Stores the intermediate and final extracted Verification Plan documents detailing the required property checks.
-* **SystemVerilog Assertions (SVAs):** `AssertionForge/logs/gen_plan_2026-03-21T04-20-04.109787_Mac_dhruvrpansuriya/tbs` – The destination for the synthesized, formal SystemVerilog property and assertion files.
-* **Knowledge Graph/Parquet Files:** `AssertionForge/data/apb/spec/graph_rag_apb` – Holds the extracted entities, relationships, communities, and reports serialized as `.parquet` files, representing the full Knowledge Graph structure.
+6. **SVA generation**
+  - generated plans are converted to SystemVerilog assertion candidates,
+  - candidates are emitted under timestamped run directories.
 
----
+7. **Post-generation quality filtering**
+  - standalone TC3 utility supports loop-based filtering and syntax checks,
+  - Verible integration enables parser-level syntax validation.
 
-## How to Run the Pipeline
+## Important directories
 
-### 1. Environment Parsing
-Ensure your virtual environment is active and requirements are installed. Ensure your `AssertionForge/data/apb/spec/graph_rag_apb/.env` and `AssertionForge/data/rag_apb/.env` file contains your valid Groq API key:
-```env
-GROQ_API_KEY=gsk_your_key_here
-```
+### Repository root
 
-### 2. Start the Local Embedding Proxy
-GraphRAG needs the local background service to process embeddings. Run this in a separate terminal or detached process:
-```bash
-python local_embedding_proxy.py --port 5001
-```
-*(Wait until it says "Model loaded successfully")*
+- `README.md`: this project guide.
+- `local_embedding_proxy.py`: local embedding service.
+- `report_notes/`: explanatory writeups and consolidated notes.
+- `TestCase/`: testcase-focused experiments and standalone tooling.
 
-### 3. Execute the Main Pipeline
-Once the embedding server is active, run the main generation script:
-```bash
-cd AssertionForge/src
-python main.py
-```
-This script will initialize the indexing process, query the LLM, and output the generated plans and properties to the respective output folders.
+### Core pipeline directory
+
+- `src/`: core pipeline source files.
+- `data/`: dataset-specific inputs and graph artifacts.
+- `logs/`: timestamped run outputs, plans, generated SVAs, and diagnostics.
+
+### `TestCase/TC3/`
+
+- `src/sva_batch_filter_repair.py`: standalone SVA batch filter/repair checker.
+- smoke input/output folders and reports for local validation runs.
+
+## Logs and reproducibility
+
+This repository is configured to allow uploading run logs so executions can be audited and compared. Logs typically include:
+
+- prompt/response traces,
+- plan files,
+- generated SVA files,
+- signal-mapping decisions,
+- run-level metadata and iterative checker diagnostics.
+
+These files support reproducibility for reports, debugging, and paper artifacts.
+
+## Environment setup
+
+### Python environment
+
+Use Python 3.10+ where possible.
+
+Create and activate a virtual environment, then install dependencies from project requirements (for submodules that include their own `requirements.txt`).
+
+If you use testcase-specific scripts, install additional dependencies documented alongside those scripts.
+
+### API configuration
+
+For LLM-enabled paths, configure required keys in the environment files used by your selected flow. Common locations in this repository include GraphRAG-related `.env` files under the core data directories.
+
+Use your own secret values and do not commit private API keys.
+
+## Running core workflow
+
+### 1) Start embedding proxy
+
+Run local embedding service first so graph/indexing steps can resolve embeddings.
+
+### 2) Run pipeline entrypoint
+
+From the core pipeline `src/` directory, run the main orchestration script used by your current task mode.
+
+### 3) Inspect generated outputs
+
+After run completion, inspect the latest folder in the project's `logs/` directory.
+
+Typical run folders include files such as:
+
+- `nl_plans.txt`
+- `sva_details.csv`
+- generated assertions in `tbs/`
+- auxiliary diagnostics and decision logs
+
+## Standalone TC3 quality checker
+
+`TestCase/TC3/src/sva_batch_filter_repair.py` provides isolated filtering and syntax validation without requiring full pipeline execution.
+
+Capabilities:
+
+- optional Loop A alias-name validation,
+- Loop B Verible syntax validation,
+- optional repair hook interface,
+- structured outputs in accepted/discarded and report files,
+- per-run and per-iteration logs.
+
+Current default mode is Verible-focused validation; Loop A can be enabled explicitly via CLI flag.
+
+## Verible notes
+
+The checker supports multiple ways to resolve `verible-verilog-syntax`:
+
+1. explicit CLI argument,
+2. PATH lookup,
+3. project-local fallback under `.tools/verible/...`.
+
+If PATH-based installation is unavailable on a machine, local binary fallback can be used.
+
+## Development and testing notes
+
+Repository contains helper tests and diagnostics scripts at root, including import checks and API smoke tests.
+
+When modifying generation or checker behavior, validate with:
+
+- at least one short end-to-end run,
+- one malformed-SVA syntax rejection scenario,
+- one known-good SVA acceptance scenario.
+
+## Known limitations
+
+- full multiagent orchestration with shared GPTCache remains an architectural plan and is not yet merged as a single production controller,
+- repair function hooks in standalone checker may still require full LLM-backed implementation,
+- mapping edge creation can be sensitive to mention normalization and confidence thresholds.
+
+## Future work
+
+- complete multiagent controller with role-based model routing,
+- add semantic/formal validity stage beyond syntax checks,
+- expose run metrics dashboard (cost, latency, cache hit ratio, acceptance rate),
+- strengthen alignment fallback and graph edge materialization robustness.
+
+## Reference notes for report preparation
+
+The following documents are prepared for report/PPT generation:
+
+- `report_notes/1_signal_mapping.txt`
+- `report_notes/2_two_phase_verible_checking.txt`
+- `report_notes/3_multiagent_gptcache_plan.txt`
+- the consolidated master note file in `report_notes/`
+
+Use the consolidated master note for one-shot LLM ingestion when generating report narrative.
