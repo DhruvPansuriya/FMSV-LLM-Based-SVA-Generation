@@ -143,13 +143,13 @@ class LiteLLMAgent:
                 if elapsed < 0.5:
                     gptcache_stats["hits"] += 1
                     gptcache_stats["bypassed_prompts"].append(prompt)
-                    print(f"\n⚡ [GPTCache HIT] Bypassed Groq API entirely! Loaded in {elapsed:.3f}s from FAISS/SQLite.")
-                    print(f"👉 Rate Limits Avoided For Request #{gptcache_stats['hits']}")
+                    print(f"\n [GPTCache HIT] Bypassed Groq API entirely! Loaded in {elapsed:.3f}s from FAISS/SQLite.")
+                    print(f" Rate Limits Avoided For Request #{gptcache_stats['hits']}")
                     # print snippet of bypassed prompt
                     print(f"    (Prompt Snippet: {prompt[:100]}...)\n")
                 else:
                     gptcache_stats["misses"] += 1
-                    print(f"\n☁️ [Cache Miss] Prompt evaluated. Network API used (Took {elapsed:.3f}s)")
+                    print(f"\n [Cache Miss] Prompt evaluated. Network API used (Took {elapsed:.3f}s)")
                     print(f"Step complete. Pausing 15s to respect Groq API TPM limits...\n")
                     print(f"    (Prompt Snippet: {prompt[:100]}...)\n")
                     time.sleep(15) 
